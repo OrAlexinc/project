@@ -18,5 +18,6 @@ public class JavaApplication3 {
         System.out.println("test");
      System.out.println("test");
       System.out.println("edited");
+      System.out.println("test from netbeans");
     }
 }
