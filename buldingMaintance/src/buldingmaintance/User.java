@@ -14,6 +14,7 @@ public interface User {
     String lastname="";
     String id="";
     
+    
     void SendMessage();
     void ReciveMessage();
     void payBills();

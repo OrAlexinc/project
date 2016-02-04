@@ -19,6 +19,9 @@ public class Message {
     
     void Message(String content,String fromUser,String toUser){
         setContent(content);
+        setFromUser(fromUser);
+        setToUser(toUser);
+        
         
     };
 /********************************************/
@@ -43,5 +46,23 @@ public class Message {
     public String getToUser(){
         return this.toUser;
     }
+      public void setToUser(String ToUser){
+      this.toUser=toUser;   
+      }
+ 
+    public int getMessageID() {
+        return messageID;
+    }
+
+    public void setMessageID(int messageID) {
+        this.messageID = messageID;
+    }
+
+    @Override
+    public String toString() {
+        return "Message"+ content + "\n from:" + fromUser ;
+    }
+    
+    
     
 }
