@@ -41,7 +41,7 @@ public class Message {
     ///********************************///
     ///******************************///
     public String getToUser(){
-        return this.toUser
+        return this.toUser;
     }
     
 }
