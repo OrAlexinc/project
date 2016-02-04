@@ -87,5 +87,10 @@ public class User {
         Message message=new Message(content,fromUser,toUser);                   //connect to database
     }
     
+    public Message RecieveMessage(String selfUserName){
+        Message message=new Message();
+        
+        return message;
+    }
 
 }
