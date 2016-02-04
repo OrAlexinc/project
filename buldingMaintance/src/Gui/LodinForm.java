@@ -27,22 +27,40 @@ public class LodinForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnLogin = new javax.swing.JButton();
+        lblUsername = new javax.swing.JLabel();
+        lblPassword = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JTextField();
+        txtUsername1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
+
+        btnLogin.setText("Login");
+        getContentPane().add(btnLogin);
+        btnLogin.setBounds(150, 130, 140, 30);
+
+        lblUsername.setText("Username");
+        getContentPane().add(lblUsername);
+        lblUsername.setBounds(20, 70, 58, 30);
+
+        lblPassword.setText("password");
+        lblPassword.setToolTipText("");
+        getContentPane().add(lblPassword);
+        lblPassword.setBounds(360, 70, 60, 16);
+
+        txtPassword.setText("enter password");
+        getContentPane().add(txtPassword);
+        txtPassword.setBounds(240, 70, 110, 22);
+
+        txtUsername1.setText("enter username");
+        getContentPane().add(txtUsername1);
+        txtUsername1.setBounds(90, 70, 110, 22);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gui/hotel3.png"))); // NOI18N
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 430, 526);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -83,6 +101,11 @@ public class LodinForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLogin;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblUsername;
+    private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtUsername1;
     // End of variables declaration//GEN-END:variables
 }
