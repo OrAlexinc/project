@@ -17,6 +17,8 @@ public class Message {
     //Date date;
     
     
+   public Message(){}; 
+    
    public Message(String content,String fromUser,String toUser){
         setContent(content);
         setFromUser(fromUser);
