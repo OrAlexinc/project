@@ -17,7 +17,7 @@ public class Message {
     //Date date;
     
     
-    void Message(String content,String fromUser,String toUser){
+   public Message(String content,String fromUser,String toUser){
         setContent(content);
         setFromUser(fromUser);
         setToUser(toUser);
