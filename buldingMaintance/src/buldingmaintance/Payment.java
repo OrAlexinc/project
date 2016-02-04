@@ -15,6 +15,7 @@ public class Payment {
     private String to;
     private int sum;
     private String note;
+    //private Calendar dateRecived;
     
     public Payment( String from,String to,String note,int sum  ){
       

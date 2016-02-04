@@ -14,7 +14,7 @@ public class Message {
     String content;
     String fromUser;
     String toUser;
-    //Date date;
+    //private Calendar dateRecived;
     
     
    public Message(){}; 
