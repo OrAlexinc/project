@@ -18,11 +18,8 @@ public class Message {
     
     
    public Message(){}; 
-    //fdfdfdfdfd
-    //lkjkhjhjhk
-    //lkjkhaaaaaaaaa
-
-   public Message(String content,String fromUser,String toUser){
+   
+      public Message(String content,String fromUser,String toUser){
         setContent(content);
         setFromUser(fromUser);
         setToUser(toUser);
