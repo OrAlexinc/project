@@ -89,7 +89,6 @@ public class User {
     
     public Message RecieveMessage(String selfUserName){
         Message message=new Message();
-        
         return message;
     }
 
