@@ -4,6 +4,8 @@
  */
 package buldingmaintance;
 
+import DB.DataBase;
+
 /**
  *
  * @author Student
@@ -15,6 +17,10 @@ public class BuldingMaintance {
      */
     public static void main(String[] args) {
 
-        
+      DataBase dataBase = DataBase.GetInstance();  
+      
+      User user=new User();
+      
+      dataBase.AddUser(null);
     }
 }

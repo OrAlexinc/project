@@ -12,7 +12,14 @@ public class User {
    private String userPermission;
    private int apartmentId;
    
-
+     public User(int ID,String firstName,String lastName,String email,String userName,String password,String buildingAddress,String phoneNumber,String userPermission,int apartmentId){
+         setID(ID);
+         setApartmentId(apartmentId);
+         setBuildingAddress(buildingAddress);
+         setEmail(email);
+         setFirstName(firstName);
+         setLastName(lastName);
+     }
     public int getID() {
         return ID;
     }
