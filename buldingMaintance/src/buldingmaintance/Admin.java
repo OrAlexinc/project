@@ -11,21 +11,24 @@ package buldingmaintance;
  */
 public class Admin extends User {
 
-    
-   
+    public Admin(int ID, String firstName, String lastName, String email, String userName, String password, String buildingAddress, String phoneNumber, String userPermission, int apartmentId) {
+        super(ID, firstName, lastName, email, userName, password, buildingAddress, phoneNumber, userPermission, apartmentId);
+    }
+
     @Override
     public Message RecieveMessage(String selfUserName) {
-        return super.RecieveMessage(selfUserName); 
+        return super.RecieveMessage(selfUserName);
     }
 
     @Override
     public void SendMessage(String content, String fromUser, String toUser) {
-        super.SendMessage(content, fromUser, toUser); 
+        super.SendMessage(content, fromUser, toUser);
     }
 
-    public void SeeAllPayments(){
-        
+    public void SeeAllPayments() {
+
     }
+
     @Override
     public void setApartmentId(int apartmentId) {
         super.setApartmentId(apartmentId);
@@ -33,17 +36,17 @@ public class Admin extends User {
 
     @Override
     public int getApartmentId() {
-        return super.getApartmentId(); 
+        return super.getApartmentId();
     }
 
     @Override
     public void setUserPermission(String userPermission) {
-        super.setUserPermission(userPermission); 
+        super.setUserPermission(userPermission);
     }
 
     @Override
     public String getUserPermission() {
-        return super.getUserPermission(); 
+        return super.getUserPermission();
     }
 
     @Override
@@ -68,7 +71,7 @@ public class Admin extends User {
 
     @Override
     public void setPassword(String password) {
-        super.setPassword(password); 
+        super.setPassword(password);
     }
 
     @Override
@@ -78,12 +81,12 @@ public class Admin extends User {
 
     @Override
     public void setUserName(String userName) {
-        super.setUserName(userName); 
+        super.setUserName(userName);
     }
 
     @Override
     public String getUserName() {
-        return super.getUserName(); 
+        return super.getUserName();
     }
 
     @Override
@@ -103,7 +106,7 @@ public class Admin extends User {
 
     @Override
     public String getLastName() {
-        return super.getLastName(); 
+        return super.getLastName();
     }
 
     @Override
@@ -113,17 +116,17 @@ public class Admin extends User {
 
     @Override
     public String getFirstName() {
-        return super.getFirstName(); 
+        return super.getFirstName();
     }
 
     @Override
     public void setID(int ID) {
-        super.setID(ID); 
+        super.setID(ID);
     }
 
     @Override
     public int getID() {
-        return super.getID(); 
+        return super.getID();
     }
-    
+
 }
