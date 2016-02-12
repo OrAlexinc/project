@@ -93,9 +93,10 @@ public class DataBase {
             Class.forName(jdbcDeiver);
 
             Statement statement = connection.createStatement();
-            String insertYser = "insert into  USERS values(" + user.getID() + ",'" + user.getFirstName() + "'"
-                    + ",'" + user.getLastName() + "','" + user.getEmail() + "','" + user.getUserName() + "','" + user.getPassword() + "','" + user.getBuildingAddress() + "',"
-                    + "," + user.getApartmentId() + ",'" + user.getPhoneNumber() + "','" + user.getUserPermission() + "');";
+          String insertYser = "insert into  USERS values(" + user.getID() + ",'" + user.getFirstName() + "'"
+                   + ",'" + user.getLastName() + "','" + user.getEmail() + "','" + user.getUserName() + "','" + user.getPassword() + "','" + user.getBuildingAddress() + "',"
+                   + "," + user.getApartmentId() + ",'" + user.getPhoneNumber() + "','" + user.getUserPermission() + "');";
+            
 
             statement.executeUpdate(insertYser);
         } catch (SQLException sqle) {
