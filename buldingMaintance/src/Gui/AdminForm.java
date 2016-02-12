@@ -27,12 +27,79 @@ public class AdminForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jplMainPannel = new javax.swing.JPanel();
+        btnSendMassege = new javax.swing.JButton();
+        btnReadMessage = new javax.swing.JButton();
+        btnMakePaymnet = new javax.swing.JButton();
+        btnOrder = new javax.swing.JButton();
+        btnViewPayments = new javax.swing.JButton();
+        btnAddMaintaince = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(808, 446));
         getContentPane().setLayout(null);
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 670, 430);
+
+        btnSendMassege.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnSendMassege.setText("send massege");
+        btnSendMassege.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btnReadMessage.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnReadMessage.setText("read messeges");
+        btnReadMessage.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btnMakePaymnet.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnMakePaymnet.setText("make payment");
+        btnMakePaymnet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btnOrder.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnOrder.setText("order  maintinance");
+        btnOrder.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btnViewPayments.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnViewPayments.setText("view payments");
+
+        btnAddMaintaince.setText("jButton1");
+
+        javax.swing.GroupLayout jplMainPannelLayout = new javax.swing.GroupLayout(jplMainPannel);
+        jplMainPannel.setLayout(jplMainPannelLayout);
+        jplMainPannelLayout.setHorizontalGroup(
+            jplMainPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jplMainPannelLayout.createSequentialGroup()
+                .addGroup(jplMainPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnSendMassege, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnReadMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jplMainPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jplMainPannelLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(btnMakePaymnet, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jplMainPannelLayout.createSequentialGroup()
+                            .addGap(47, 47, 47)
+                            .addGroup(jplMainPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btnOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnViewPayments, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnAddMaintaince, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addContainerGap(584, Short.MAX_VALUE))
+        );
+        jplMainPannelLayout.setVerticalGroup(
+            jplMainPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jplMainPannelLayout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(btnSendMassege, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnReadMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnMakePaymnet, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnViewPayments, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnAddMaintaince, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(71, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jplMainPannel);
+        jplMainPannel.setBounds(0, 0, 810, 470);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -73,6 +140,12 @@ public class AdminForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnAddMaintaince;
+    private javax.swing.JButton btnMakePaymnet;
+    private javax.swing.JButton btnOrder;
+    private javax.swing.JButton btnReadMessage;
+    private javax.swing.JButton btnSendMassege;
+    private javax.swing.JButton btnViewPayments;
+    private javax.swing.JPanel jplMainPannel;
     // End of variables declaration//GEN-END:variables
 }
