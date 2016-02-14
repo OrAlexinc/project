@@ -16,6 +16,7 @@ public class AdminForm extends javax.swing.JFrame {
      */
     public AdminForm() {
         initComponents();
+         onOff(false,false,false,false,false,false);
     }
 
     /**
@@ -34,22 +35,49 @@ public class AdminForm extends javax.swing.JFrame {
         btnOrder = new javax.swing.JButton();
         btnViewPayments = new javax.swing.JButton();
         btnAddMaintaince = new javax.swing.JButton();
+        jpnSendMassege = new javax.swing.JPanel();
+        lblSentTo = new javax.swing.JLabel();
+        txtSendTo = new javax.swing.JTextField();
+        txtWriteMassege = new javax.swing.JTextField();
+        btnSend = new javax.swing.JButton();
+        jpnReadMessages = new javax.swing.JPanel();
+        txtShovMessage = new javax.swing.JTextField();
+        btnShowMessages = new javax.swing.JButton();
+        jpnMakePayment = new javax.swing.JPanel();
+        txtSum = new javax.swing.JTextField();
+        txtCommant = new javax.swing.JTextField();
+        btnPay = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(808, 446));
+        setMinimumSize(new java.awt.Dimension(950, 480));
         getContentPane().setLayout(null);
 
         btnSendMassege.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnSendMassege.setText("send massege");
         btnSendMassege.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSendMassege.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendMassegeActionPerformed(evt);
+            }
+        });
 
         btnReadMessage.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnReadMessage.setText("read messeges");
         btnReadMessage.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnReadMessage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReadMessageActionPerformed(evt);
+            }
+        });
 
         btnMakePaymnet.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnMakePaymnet.setText("make payment");
         btnMakePaymnet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMakePaymnet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMakePaymnetActionPerformed(evt);
+            }
+        });
 
         btnOrder.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnOrder.setText("order  maintinance");
@@ -59,6 +87,69 @@ public class AdminForm extends javax.swing.JFrame {
         btnViewPayments.setText("view payments");
 
         btnAddMaintaince.setText("jButton1");
+
+        jpnSendMassege.setOpaque(false);
+        jpnSendMassege.setLayout(null);
+
+        lblSentTo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSentTo.setText("send to");
+        jpnSendMassege.add(lblSentTo);
+        lblSentTo.setBounds(0, 0, 59, 22);
+        jpnSendMassege.add(txtSendTo);
+        txtSendTo.setBounds(0, 0, 6, 22);
+        jpnSendMassege.add(txtWriteMassege);
+        txtWriteMassege.setBounds(50, 50, 504, 183);
+
+        btnSend.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnSend.setText("send");
+        jpnSendMassege.add(btnSend);
+        btnSend.setBounds(38, 261, 120, 50);
+
+        jpnReadMessages.setBackground(new java.awt.Color(255, 102, 51));
+        jpnReadMessages.setOpaque(false);
+        jpnReadMessages.setLayout(null);
+        jpnReadMessages.add(txtShovMessage);
+        txtShovMessage.setBounds(49, 51, 503, 182);
+
+        btnShowMessages.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnShowMessages.setText("show messeges");
+        jpnReadMessages.add(btnShowMessages);
+        btnShowMessages.setBounds(40, 260, 170, 50);
+
+        jpnMakePayment.setOpaque(false);
+
+        btnPay.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnPay.setText("pay");
+
+        javax.swing.GroupLayout jpnMakePaymentLayout = new javax.swing.GroupLayout(jpnMakePayment);
+        jpnMakePayment.setLayout(jpnMakePaymentLayout);
+        jpnMakePaymentLayout.setHorizontalGroup(
+            jpnMakePaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnMakePaymentLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(jpnMakePaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnPay, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCommant, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSum, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(198, Short.MAX_VALUE))
+        );
+        jpnMakePaymentLayout.setVerticalGroup(
+            jpnMakePaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnMakePaymentLayout.createSequentialGroup()
+                .addGap(94, 94, 94)
+                .addComponent(txtSum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(txtCommant, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnPay, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(183, Short.MAX_VALUE))
+        );
+
+        jpnReadMessages.add(jpnMakePayment);
+        jpnMakePayment.setBounds(0, 0, 610, 480);
+
+        jpnSendMassege.add(jpnReadMessages);
+        jpnReadMessages.setBounds(0, 0, 610, 480);
 
         javax.swing.GroupLayout jplMainPannelLayout = new javax.swing.GroupLayout(jplMainPannel);
         jplMainPannel.setLayout(jplMainPannelLayout);
@@ -78,7 +169,8 @@ public class AdminForm extends javax.swing.JFrame {
                                 .addComponent(btnOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnViewPayments, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnAddMaintaince, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(584, Short.MAX_VALUE))
+                .addGap(117, 117, 117)
+                .addComponent(jpnSendMassege, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jplMainPannelLayout.setVerticalGroup(
             jplMainPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,15 +187,43 @@ public class AdminForm extends javax.swing.JFrame {
                 .addComponent(btnViewPayments, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnAddMaintaince, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
+            .addComponent(jpnSendMassege, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         getContentPane().add(jplMainPannel);
-        jplMainPannel.setBounds(0, 0, 810, 470);
+        jplMainPannel.setBounds(0, 0, 950, 480);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSendMassegeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendMassegeActionPerformed
+       onOff(true,false,false,true,false,false);
+    }//GEN-LAST:event_btnSendMassegeActionPerformed
+
+    private void btnReadMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReadMessageActionPerformed
+       onOff(false,true,false,true,true,false);
+    }//GEN-LAST:event_btnReadMessageActionPerformed
+
+    private void btnMakePaymnetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakePaymnetActionPerformed
+       onOff(false,false,true,true,true,true);
+    }//GEN-LAST:event_btnMakePaymnetActionPerformed
+private void onOff(boolean set1,boolean set2,boolean set3,boolean panel1,boolean panel2,boolean panel3){
+    
+    jpnSendMassege.setVisible(panel1);
+    lblSentTo.setVisible(set1);
+    btnSend.setVisible(set1);
+    txtSendTo.setVisible(set1);
+    txtWriteMassege.setVisible(set1);
+    jpnReadMessages.setVisible(panel2);
+    txtShovMessage.setVisible(set2);
+    jpnMakePayment.setVisible(panel3);
+    txtSum.setVisible(set3);
+    txtCommant.setVisible(set3);
+    btnPay.setVisible(set3);
+    
+    
+}
     /**
      * @param args the command line arguments
      */
@@ -143,9 +263,21 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JButton btnAddMaintaince;
     private javax.swing.JButton btnMakePaymnet;
     private javax.swing.JButton btnOrder;
+    private javax.swing.JButton btnPay;
     private javax.swing.JButton btnReadMessage;
+    private javax.swing.JButton btnSend;
     private javax.swing.JButton btnSendMassege;
+    private javax.swing.JButton btnShowMessages;
     private javax.swing.JButton btnViewPayments;
     private javax.swing.JPanel jplMainPannel;
+    private javax.swing.JPanel jpnMakePayment;
+    private javax.swing.JPanel jpnReadMessages;
+    private javax.swing.JPanel jpnSendMassege;
+    private javax.swing.JLabel lblSentTo;
+    private javax.swing.JTextField txtCommant;
+    private javax.swing.JTextField txtSendTo;
+    private javax.swing.JTextField txtShovMessage;
+    private javax.swing.JTextField txtSum;
+    private javax.swing.JTextField txtWriteMassege;
     // End of variables declaration//GEN-END:variables
 }
