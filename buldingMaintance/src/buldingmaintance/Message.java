@@ -1,38 +1,25 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package buldingmaintance;
+import java.sql.Date;
+import java.util.Calendar;
 
-/**
- *
- * @author Student
- */
 public class Message {
     
-    int messageID;
-    String content;
-    String fromUser;
-    String toUser;
-    //private Calendar dateRecived;
-    
-    
-
-  
+    static private int messageID;
+    private String content;
+    private String fromUser;
+    private String toUser;
+    private Calendar timeCreated;
    
-     
-
-   public Message(){};
-
-   public Message(String content,String fromUser,String toUser){
-
+    public Message(){};
+    
+    public Message(String content,String fromUser,String toUser){
         setContent(content);
         setFromUser(fromUser);
         setToUser(toUser);
-        
-        
+        timeCreated=Calendar.getInstance();
+        messageID++;
     };
-/********************************************/
+
     public String getContent() {
         return content;
     }
@@ -40,32 +27,31 @@ public class Message {
     public void setContent(String content) {
         this.content = content;
     }
- /*******************************************/
-/*******************************************/
+ 
     public String getFromUser(){
         return fromUser;
     }
+    
     public void setFromUser(String fromUser){
         this.fromUser= fromUser;
     }
     
-    ///********************************///
-    ///******************************///
     public String getToUser(){
         return this.toUser;
     }
-      public void setToUser(String ToUser){
+     
+    public void setToUser(String ToUser){
       this.toUser=toUser;   
       }
  
     public int getMessageID() {
         return messageID;
     }
-
-    public void setMessageID(int messageID) {
-        this.messageID = messageID;
+    
+    public Calendar getTimeCreated(){
+        return this.timeCreated;
     }
-
+    
     @Override
     public String toString() {
         return "Message"+ content + "\n from:" + fromUser ;

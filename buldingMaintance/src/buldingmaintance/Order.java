@@ -5,6 +5,8 @@
  */
 package buldingmaintance;
 
+import java.util.Calendar;
+
 /**
  *
  * @author mishpuha
@@ -14,12 +16,13 @@ public class Order {
     private String from;
     private String to;
     private String order;
-  //private Calendar dateRecived;
+    private Calendar dateRecieved;
 
     public Order(String from, String to, String order) {
         this.from = from;
         this.to = to;
         this.order = order;
+        dateRecieved=Calendar.getInstance();
     }
     
     
@@ -57,5 +60,7 @@ public class Order {
         this.order = order;
     }
     
-    
+        public Calendar getDateRecieved(){
+        return this.dateRecieved;
+    }
 }
