@@ -16,6 +16,7 @@ import java.util.List;
 public class DataBase {
 
     protected static DataBase instance = new DataBase();
+    
     String jdbcUrl = "jdbc:mysql://localhost:3306/building_maintainance?zeroDateTimeBehavior=convertToNull";
     String jdbcUser = null;
     String jdbcPassword = null;
