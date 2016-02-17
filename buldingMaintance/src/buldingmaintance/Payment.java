@@ -4,28 +4,31 @@
  */
 package buldingmaintance;
 
+import java.util.Calendar;
+
 /**
  *
  * @author Student
  */
 public class Payment {
       
-    private  String paymentLd;
+    static private  String paymentLd;
     private String from;
     private String to;
     private int sum;
-    private String note;
-    //private Calendar dateRecived;
+    private String comment;
+    private Calendar dateRecieved;
     
-    public Payment( String from,String to,String note,int sum  ){
+    public Payment( String from,String to,String comment,int sum  ){
       
         setFrom(from);
         setSum(sum);
-        setNote(note);
+        setComment(comment);
         setSum(sum);
+        dateRecieved=Calendar.getInstance();
     }
 
-    public String getPaymentLd() {
+    public String getPaymentId() {
         return paymentLd;
     }
 
@@ -49,12 +52,12 @@ public class Payment {
         this.to = to;
     }
 
-    public String getNote() {
-        return note;
+    public String getComment() {
+        return comment;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setComment(String note) {
+        this.comment = note;
     }
 
     public int getSum() {
@@ -65,4 +68,7 @@ public class Payment {
         this.sum = sum;
     }
     
+    public Calendar getDateRecieved(){
+        return this.dateRecieved;
+    }
 }

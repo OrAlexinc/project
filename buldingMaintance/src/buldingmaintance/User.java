@@ -13,7 +13,9 @@ public class User {
     private String userPermission;
     private int apartmentId;
 
-    public User(int ID, String firstName, String lastName, String email, String userName, String password, String buildingAddress, String phoneNumber, String userPermission, int apartmentId) {
+    public User(int ID, String firstName, String lastName, String email, 
+                String userName,String password, String buildingAddress, 
+                String phoneNumber, String userPermission, int apartmentId) {
         setID(ID);
         setFirstName(firstName);
         setLastName(lastName);
