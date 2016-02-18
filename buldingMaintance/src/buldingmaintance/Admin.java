@@ -48,10 +48,6 @@ DataBase dataBase = DataBase.GetInstance();
         
     }
     
-    public String fromdb()
-    {
-        return dataBase.messgefromdb();
-    }
 
     @Override
     public String toString() {
