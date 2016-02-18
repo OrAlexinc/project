@@ -20,7 +20,7 @@ public class BuldingMaintance {
 
         DataBase dataBase = DataBase.GetInstance();
 
-        User user = new User(3, "ben", "gilad", "ben@gilad.com", "ben", "gilad", "ariel", "4", "user",5);
+        User user = new User(3, "ben", "gilad", "ben@gilad.com", "ben123", "gilad20", "ariel", "4", "user",5);
 
         dataBase.AddUser(user);
     }

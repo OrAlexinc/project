@@ -4,6 +4,7 @@ import buldingmaintance.*;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -17,8 +18,8 @@ public class DataBase {
 
     protected static DataBase instance = new DataBase();
     String jdbcUrl = "jdbc:mysql://localhost:3306/building_maintainance?zeroDateTimeBehavior=convertToNull";
-    String jdbcUser = null;
-    String jdbcPassword = null;
+    String jdbcUser = "root";
+    String jdbcPassword = "root";
     String jdbcDeiver = "com.mysql.jdbc.Driver";
     List<Message> messages = new ArrayList<Message>();
     List<Order> orders = new ArrayList<Order>();
@@ -47,6 +48,37 @@ public class DataBase {
         return instance;
     }
 
+    public String messgefromdb()
+            
+    { 
+        String name="NULL";
+    try {
+
+            Class.forName(jdbcDeiver);
+            Connection connection
+                    = DriverManager.getConnection(jdbcUrl, jdbcUser, jdbcPassword);
+
+            Statement statement = connection.createStatement();
+            //הוצאת ערכים	
+            String allCustomersQuery = "SELECT * FROM USERS;";
+            ResultSet resultSet = statement.executeQuery(allCustomersQuery);
+
+            while (resultSet.next()) {
+                 name = resultSet.getString("First Name");
+                System.out.println(name);
+            }
+
+            
+            
+        } catch (SQLException sqle) {
+            System.out.println("SQLException: " + sqle.getMessage());
+            System.out.println("Vendor Error: " + sqle.getErrorCode());
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        
+        return name;
+    }
 /*
     public void connectToDataBase() {
         try {
@@ -83,15 +115,16 @@ public class DataBase {
     */
 
     public void AddUser(User user) { //gets an object from type user and adds its fields to database
+        
         try {
             Class.forName(jdbcDeiver);
 
             Statement statement = connection.createStatement();
-          String insertUser = "insert into  USERS values(" + user.getID() + ",'" + user.getFirstName() + "'"
-                   + ",'" + user.getLastName() + "','" + user.getEmail() + "','" + user.getUserName() + "','" 
-                  +user.getPassword() + "','" + user.getBuildingAddress() + "'," + "," + user.getApartmentId()
-                  + ",'" + user.getPhoneNumber() + "','" + user.getUserPermission() + "');";
-            
+     
+             String insertUser = "insert into  USERS values("+ user.getID() +",'" + user.getFirstName() + "',"
+                     + "'" + user.getLastName() + "','" + user.getEmail() + "',"
+                     + "'" + user.getUserName() + "','"+user.getPassword() + "','" + user.getBuildingAddress() + "',"
+                     + "" + user.getApartmentId()+",'" + user.getPhoneNumber() + "','" + user.getUserPermission() + "');";
 
             statement.executeUpdate(insertUser);
         } catch (SQLException sqle) {

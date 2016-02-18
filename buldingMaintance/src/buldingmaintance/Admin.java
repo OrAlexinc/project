@@ -5,12 +5,15 @@
  */
 package buldingmaintance;
 
+import DB.DataBase;
+import java.util.ArrayList;
+
 /**
  *
  * @author orgershov
  */
 public class Admin extends User {
-
+DataBase dataBase = DataBase.GetInstance();
     public Admin(int ID, String firstName, String lastName, String email, String userName, String password, String buildingAddress, String phoneNumber, String userPermission, int apartmentId) {
         super(ID, firstName, lastName, email, userName, password, buildingAddress, phoneNumber, userPermission, apartmentId);
     }
@@ -24,109 +27,24 @@ public class Admin extends User {
     public void SendMessage(String content, String fromUser, String toUser) {
         super.SendMessage(content, fromUser, toUser);
     }
-
-    public void SeeAllPayments() {
-
+/*
+    public ArrayList<Payment> SeeAllPayments() {
+       return false;
+    }
+*/
+    public void addUser(){
+        
+    }
+    
+    
+    public String fromdb()
+    {
+        return dataBase.messgefromdb();
     }
 
     @Override
-    public void setApartmentId(int apartmentId) {
-        super.setApartmentId(apartmentId);
+    public String toString() {
+        return  super.toString();
     }
-
-    @Override
-    public int getApartmentId() {
-        return super.getApartmentId();
-    }
-
-    @Override
-    public void setUserPermission(String userPermission) {
-        super.setUserPermission(userPermission);
-    }
-
-    @Override
-    public String getUserPermission() {
-        return super.getUserPermission();
-    }
-
-    @Override
-    public void setPhoneNumber(String phoneNumber) {
-        super.setPhoneNumber(phoneNumber);
-    }
-
-    @Override
-    public String getPhoneNumber() {
-        return super.getPhoneNumber();
-    }
-
-    @Override
-    public void setBuildingAddress(String buildingAddress) {
-        super.setBuildingAddress(buildingAddress);
-    }
-
-    @Override
-    public String getBuildingAddress() {
-        return super.getBuildingAddress();
-    }
-
-    @Override
-    public void setPassword(String password) {
-        super.setPassword(password);
-    }
-
-    @Override
-    public String getPassword() {
-        return super.getPassword();
-    }
-
-    @Override
-    public void setUserName(String userName) {
-        super.setUserName(userName);
-    }
-
-    @Override
-    public String getUserName() {
-        return super.getUserName();
-    }
-
-    @Override
-    public void setEmail(String email) {
-        super.setEmail(email);
-    }
-
-    @Override
-    public String getEmail() {
-        return super.getEmail();
-    }
-
-    @Override
-    public void setLastName(String lastName) {
-        super.setLastName(lastName);
-    }
-
-    @Override
-    public String getLastName() {
-        return super.getLastName();
-    }
-
-    @Override
-    public void setFirstName(String firstName) {
-        super.setFirstName(firstName);
-    }
-
-    @Override
-    public String getFirstName() {
-        return super.getFirstName();
-    }
-
-    @Override
-    public void setID(int ID) {
-        super.setID(ID);
-    }
-
-    @Override
-    public int getID() {
-        return super.getID();
-    }
-
+  
 }

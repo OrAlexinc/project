@@ -5,6 +5,7 @@
  */
 package Gui;
 
+import DB.DataBase;
 import buldingmaintance.User;
 import java.awt.List;
 import java.util.ArrayList;
@@ -19,14 +20,19 @@ public class AdminForm extends javax.swing.JFrame {
     /**
      * Creates new form AdminForm
      */
-    public AdminForm() {
-        initComponents();
-        onOffPanel(false,false,false,false,false,false,false);
-        onOffComponents(false,false,false,false,false,false,false);
-     ArrayList<User> users = new ArrayList<User>(); 
+     Admin a=new Admin(1,"","","","","","","","",1);
+      ArrayList<User> users = new ArrayList<User>(); 
      ArrayList<Message> messages = new ArrayList<Message>(); 
      ArrayList<Payment> payments = new ArrayList<Payment>(); 
      ArrayList<Order> orders = new ArrayList<Order>(); 
+    public AdminForm() {
+         DataBase dataBase = DataBase.GetInstance();
+        
+        
+        initComponents();
+        onOffPanel(false,false,false,false,false,false,false);
+        onOffComponents(false,false,false,false,false,false,false);
+    
      
     }
 
@@ -47,10 +53,10 @@ public class AdminForm extends javax.swing.JFrame {
         btnViewPayments = new javax.swing.JButton();
         btnAddUser = new javax.swing.JButton();
         jpnSendMassege = new javax.swing.JPanel();
-        lblSentTo = new javax.swing.JLabel();
-        txtSendTo = new javax.swing.JTextField();
         txtWriteMassege = new javax.swing.JTextField();
         btnSend = new javax.swing.JButton();
+        txtSendTo = new javax.swing.JTextField();
+        lblSentTo = new javax.swing.JLabel();
         jpnReadMessages = new javax.swing.JPanel();
         txtShovMessage = new javax.swing.JTextField();
         btnShowMessages = new javax.swing.JButton();
@@ -150,19 +156,21 @@ public class AdminForm extends javax.swing.JFrame {
         jpnSendMassege.setOpaque(false);
         jpnSendMassege.setLayout(null);
 
-        lblSentTo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblSentTo.setText("send to");
-        jpnSendMassege.add(lblSentTo);
-        lblSentTo.setBounds(0, 0, 59, 22);
-        jpnSendMassege.add(txtSendTo);
-        txtSendTo.setBounds(0, 0, 6, 22);
+        txtWriteMassege.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jpnSendMassege.add(txtWriteMassege);
-        txtWriteMassege.setBounds(50, 50, 504, 183);
+        txtWriteMassege.setBounds(40, 80, 504, 183);
 
         btnSend.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnSend.setText("send");
         jpnSendMassege.add(btnSend);
         btnSend.setBounds(38, 261, 120, 50);
+        jpnSendMassege.add(txtSendTo);
+        txtSendTo.setBounds(120, 20, 100, 22);
+
+        lblSentTo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSentTo.setText("send to");
+        jpnSendMassege.add(lblSentTo);
+        lblSentTo.setBounds(50, 20, 59, 22);
 
         jpnReadMessages.setBackground(new java.awt.Color(255, 102, 51));
         jpnReadMessages.setOpaque(false);
@@ -379,6 +387,9 @@ public class AdminForm extends javax.swing.JFrame {
       
         onOffPanel(true,false,false,false,false,false,false);
         onOffComponents(true,false,false,false,false,false,false);
+      
+        String m= a.fromdb(); 
+        txtWriteMassege.setText(m);
     }//GEN-LAST:event_btnSendMassegeActionPerformed
 
     private void btnReadMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReadMessageActionPerformed
