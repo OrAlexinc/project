@@ -32,10 +32,21 @@ DataBase dataBase = DataBase.GetInstance();
        return false;
     }
 */
+    public void makePayment(){
+        
+    }
     public void addUser(){
         
     }
-    
+    public void deleteUser(){
+        
+    }
+    public void addService(){
+        
+    }
+    public void deleteServie(){
+        
+    }
     
     public String fromdb()
     {
