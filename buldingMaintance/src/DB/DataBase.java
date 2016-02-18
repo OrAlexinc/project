@@ -18,8 +18,8 @@ public class DataBase {
     protected static DataBase instance = new DataBase();
     
     String jdbcUrl = "jdbc:mysql://localhost:3306/building_maintainance?zeroDateTimeBehavior=convertToNull";
-    String jdbcUser = null;
-    String jdbcPassword = null;
+    String jdbcUser="root";
+    String jdbcPassword="2891987av";
     String jdbcDeiver = "com.mysql.jdbc.Driver";
     List<Message> messages = new ArrayList<Message>();
     List<Order> orders = new ArrayList<Order>();
