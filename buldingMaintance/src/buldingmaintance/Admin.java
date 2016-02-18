@@ -48,7 +48,6 @@ DataBase dataBase = DataBase.GetInstance();
         
     }
     
-   
     @Override
     public String toString() {
         return  super.toString();
