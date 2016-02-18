@@ -84,6 +84,7 @@ public class DataBase {
 
      */
     public void AddUser(User user) { //gets an object from type user and adds its fields to database
+        
         try {
             Class.forName(jdbcDeiver);
 

@@ -120,4 +120,13 @@ public class User {
         return message;
     }
 
+    @Override
+    public String toString() {
+        return   "ID:" + ID + " firstName:" + firstName + "lastName:" + lastName + ","
+                + " email:" + email + "userName:" + userName + "password:" + password + 
+                "buildingAddress:" + buildingAddress + "phoneNumber:" + phoneNumber + ""
+                + "userPermission:" + userPermission + "apartmentId:" + apartmentId +"" ;
+    }
+
+    
 }

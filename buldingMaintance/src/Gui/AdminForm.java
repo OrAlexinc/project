@@ -5,7 +5,8 @@
  */
 package Gui;
 
-import buldingmaintance.User;
+import DB.DataBase;
+import buldingmaintance.*;
 import java.awt.List;
 import java.util.ArrayList;
 import buldingmaintance.*;
@@ -19,14 +20,19 @@ public class AdminForm extends javax.swing.JFrame {
     /**
      * Creates new form AdminForm
      */
-    public AdminForm() {
-        initComponents();
-        onOffPanel(false,false,false,false,false,false,false);
-        onOffComponents(false,false,false,false,false,false,false);
-     ArrayList<User> users = new ArrayList<User>(); 
+     Admin a=new Admin(1,"","","","","","","","",1);
+      ArrayList<User> users = new ArrayList<User>(); 
      ArrayList<Message> messages = new ArrayList<Message>(); 
      ArrayList<Payment> payments = new ArrayList<Payment>(); 
      ArrayList<Order> orders = new ArrayList<Order>(); 
+    public AdminForm() {
+         DataBase dataBase = DataBase.GetInstance();
+        
+        
+        initComponents();
+        onOffPanel(false,false,false,false,false,false,false);
+        onOffComponents(false,false,false,false,false,false,false);
+    
      
     }
 
@@ -47,10 +53,10 @@ public class AdminForm extends javax.swing.JFrame {
         btnViewPayments = new javax.swing.JButton();
         btnAddUser = new javax.swing.JButton();
         jpnSendMassege = new javax.swing.JPanel();
-        lblSentTo = new javax.swing.JLabel();
-        txtSendTo = new javax.swing.JTextField();
         txtWriteMassege = new javax.swing.JTextField();
         btnSend = new javax.swing.JButton();
+        txtSendTo = new javax.swing.JTextField();
+        lblSentTo = new javax.swing.JLabel();
         jpnReadMessages = new javax.swing.JPanel();
         txtShovMessage = new javax.swing.JTextField();
         btnShowMessages = new javax.swing.JButton();
@@ -63,24 +69,28 @@ public class AdminForm extends javax.swing.JFrame {
         jpnService = new javax.swing.JPanel();
         jpnAddUser = new javax.swing.JPanel();
         lblEnterFirstName = new javax.swing.JLabel();
-        txtEnderName = new javax.swing.JTextField();
         lblEnterLastName = new javax.swing.JLabel();
-        txtEnterLastName = new javax.swing.JTextField();
         lblEnterEmail = new javax.swing.JLabel();
-        txtEnterEmail = new javax.swing.JTextField();
-        lblEnterUserName = new javax.swing.JLabel();
-        txtEnterUserName = new javax.swing.JTextField();
-        lblEnterPassword = new javax.swing.JLabel();
-        txtEnterPassword = new javax.swing.JTextField();
-        lblEnterID = new javax.swing.JLabel();
-        txtEnterID = new javax.swing.JTextField();
         btnAddNewUser = new javax.swing.JButton();
         lblEnteNewUserDetails = new javax.swing.JLabel();
         lblEnterUserToDelete = new javax.swing.JLabel();
         txtIdOfTheUserToDelete = new javax.swing.JTextField();
         btnDeleteTheUser = new javax.swing.JButton();
+        txtEnterUserName = new javax.swing.JTextField();
+        lblEnterUserName = new javax.swing.JLabel();
+        lblEnterPhoneNumber = new javax.swing.JLabel();
+        txtEnterEmail = new javax.swing.JTextField();
+        txtEnterPhoneNumber = new javax.swing.JTextField();
+        txtEnterLastName = new javax.swing.JTextField();
+        txtEnderName = new javax.swing.JTextField();
+        txtEnterID = new javax.swing.JTextField();
+        lblEnterID = new javax.swing.JLabel();
+        txtEnterPassword = new javax.swing.JTextField();
+        lblEnterPassword = new javax.swing.JLabel();
         jpnAddService = new javax.swing.JPanel();
         lblEddNewService = new javax.swing.JLabel();
+        lblApartmantId = new javax.swing.JLabel();
+        txtApartment = new javax.swing.JTextField();
         txtService = new javax.swing.JTextField();
         btnShowSerive = new javax.swing.JButton();
         lblEnterServieId = new javax.swing.JLabel();
@@ -133,6 +143,7 @@ public class AdminForm extends javax.swing.JFrame {
 
         btnViewPayments.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnViewPayments.setText("view payments");
+        btnViewPayments.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnViewPayments.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewPaymentsActionPerformed(evt);
@@ -140,7 +151,8 @@ public class AdminForm extends javax.swing.JFrame {
         });
 
         btnAddUser.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnAddUser.setText("add user");
+        btnAddUser.setText("add/delete user");
+        btnAddUser.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAddUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddUserActionPerformed(evt);
@@ -150,19 +162,26 @@ public class AdminForm extends javax.swing.JFrame {
         jpnSendMassege.setOpaque(false);
         jpnSendMassege.setLayout(null);
 
-        lblSentTo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblSentTo.setText("send to");
-        jpnSendMassege.add(lblSentTo);
-        lblSentTo.setBounds(0, 0, 59, 22);
-        jpnSendMassege.add(txtSendTo);
-        txtSendTo.setBounds(0, 0, 6, 22);
+        txtWriteMassege.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jpnSendMassege.add(txtWriteMassege);
-        txtWriteMassege.setBounds(50, 50, 504, 183);
+        txtWriteMassege.setBounds(40, 80, 504, 183);
 
         btnSend.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnSend.setText("send");
+        btnSend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendActionPerformed(evt);
+            }
+        });
         jpnSendMassege.add(btnSend);
         btnSend.setBounds(38, 261, 120, 50);
+        jpnSendMassege.add(txtSendTo);
+        txtSendTo.setBounds(120, 20, 100, 22);
+
+        lblSentTo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSentTo.setText("send to");
+        jpnSendMassege.add(lblSentTo);
+        lblSentTo.setBounds(50, 20, 59, 22);
 
         jpnReadMessages.setBackground(new java.awt.Color(255, 102, 51));
         jpnReadMessages.setOpaque(false);
@@ -172,6 +191,11 @@ public class AdminForm extends javax.swing.JFrame {
 
         btnShowMessages.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnShowMessages.setText("show messeges");
+        btnShowMessages.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowMessagesActionPerformed(evt);
+            }
+        });
         jpnReadMessages.add(btnShowMessages);
         btnShowMessages.setBounds(40, 260, 170, 50);
 
@@ -187,16 +211,31 @@ public class AdminForm extends javax.swing.JFrame {
 
         btnViewWhoPayd.setText("payd");
         btnViewWhoPayd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnViewWhoPayd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewWhoPaydActionPerformed(evt);
+            }
+        });
         jpnViewPayments.add(btnViewWhoPayd);
         btnViewWhoPayd.setBounds(474, 85, 98, 41);
 
         btnViewWhoNotPayed.setText("ramining");
         btnViewWhoNotPayed.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnViewWhoNotPayed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewWhoNotPayedActionPerformed(evt);
+            }
+        });
         jpnViewPayments.add(btnViewWhoNotPayed);
         btnViewWhoNotPayed.setBounds(474, 144, 98, 40);
 
         btnViewAllPayments.setText("All");
         btnViewAllPayments.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnViewAllPayments.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewAllPaymentsActionPerformed(evt);
+            }
+        });
         jpnViewPayments.add(btnViewAllPayments);
         btnViewAllPayments.setBounds(474, 211, 98, 40);
 
@@ -208,50 +247,31 @@ public class AdminForm extends javax.swing.JFrame {
 
         lblEnterFirstName.setText("firstname");
         jpnAddUser.add(lblEnterFirstName);
-        lblEnterFirstName.setBounds(50, 100, 70, 20);
-        jpnAddUser.add(txtEnderName);
-        txtEnderName.setBounds(130, 100, 130, 22);
+        lblEnterFirstName.setBounds(40, 110, 70, 20);
 
-        lblEnterLastName.setText("last name");
+        lblEnterLastName.setText("lastname");
         jpnAddUser.add(lblEnterLastName);
-        lblEnterLastName.setBounds(50, 140, 70, 16);
-        jpnAddUser.add(txtEnterLastName);
-        txtEnterLastName.setBounds(130, 140, 130, 22);
+        lblEnterLastName.setBounds(40, 150, 70, 16);
 
         lblEnterEmail.setText("email");
         jpnAddUser.add(lblEnterEmail);
-        lblEnterEmail.setBounds(50, 180, 70, 16);
-        jpnAddUser.add(txtEnterEmail);
-        txtEnterEmail.setBounds(130, 180, 130, 22);
-
-        lblEnterUserName.setText("username");
-        jpnAddUser.add(lblEnterUserName);
-        lblEnterUserName.setBounds(50, 230, 60, 16);
-        jpnAddUser.add(txtEnterUserName);
-        txtEnterUserName.setBounds(130, 230, 130, 22);
-
-        lblEnterPassword.setText("password");
-        jpnAddUser.add(lblEnterPassword);
-        lblEnterPassword.setBounds(50, 270, 70, 16);
-        jpnAddUser.add(txtEnterPassword);
-        txtEnterPassword.setBounds(130, 270, 130, 22);
-
-        lblEnterID.setText("ID");
-        jpnAddUser.add(lblEnterID);
-        lblEnterID.setBounds(50, 60, 70, 16);
-        jpnAddUser.add(txtEnterID);
-        txtEnterID.setBounds(130, 60, 130, 22);
+        lblEnterEmail.setBounds(40, 190, 70, 16);
 
         btnAddNewUser.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnAddNewUser.setText("add");
         btnAddNewUser.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAddNewUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddNewUserActionPerformed(evt);
+            }
+        });
         jpnAddUser.add(btnAddNewUser);
         btnAddNewUser.setBounds(80, 380, 130, 40);
 
         lblEnteNewUserDetails.setLabelFor(jpnAddUser);
         lblEnteNewUserDetails.setText("Ente new user details");
         jpnAddUser.add(lblEnteNewUserDetails);
-        lblEnteNewUserDetails.setBounds(70, 20, 190, 16);
+        lblEnteNewUserDetails.setBounds(140, 40, 190, 16);
 
         lblEnterUserToDelete.setText("enter the id of the user to delete");
         jpnAddUser.add(lblEnterUserToDelete);
@@ -262,18 +282,59 @@ public class AdminForm extends javax.swing.JFrame {
         btnDeleteTheUser.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnDeleteTheUser.setText("delete");
         btnDeleteTheUser.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDeleteTheUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteTheUserActionPerformed(evt);
+            }
+        });
         jpnAddUser.add(btnDeleteTheUser);
         btnDeleteTheUser.setBounds(360, 130, 110, 31);
+        jpnAddUser.add(txtEnterUserName);
+        txtEnterUserName.setBounds(140, 270, 130, 22);
+
+        lblEnterUserName.setText("username");
+        jpnAddUser.add(lblEnterUserName);
+        lblEnterUserName.setBounds(40, 270, 60, 16);
+
+        lblEnterPhoneNumber.setText("phone number");
+        jpnAddUser.add(lblEnterPhoneNumber);
+        lblEnterPhoneNumber.setBounds(40, 230, 100, 20);
+        jpnAddUser.add(txtEnterEmail);
+        txtEnterEmail.setBounds(140, 190, 130, 22);
+        jpnAddUser.add(txtEnterPhoneNumber);
+        txtEnterPhoneNumber.setBounds(140, 230, 130, 22);
+        jpnAddUser.add(txtEnterLastName);
+        txtEnterLastName.setBounds(140, 150, 130, 22);
+        jpnAddUser.add(txtEnderName);
+        txtEnderName.setBounds(140, 110, 130, 22);
+        jpnAddUser.add(txtEnterID);
+        txtEnterID.setBounds(140, 70, 130, 22);
+
+        lblEnterID.setText("ID");
+        jpnAddUser.add(lblEnterID);
+        lblEnterID.setBounds(40, 70, 70, 16);
+        jpnAddUser.add(txtEnterPassword);
+        txtEnterPassword.setBounds(140, 310, 130, 22);
+
+        lblEnterPassword.setText("password");
+        jpnAddUser.add(lblEnterPassword);
+        lblEnterPassword.setBounds(40, 310, 70, 16);
 
         jpnAddService.setOpaque(false);
         jpnAddService.setLayout(null);
 
         lblEddNewService.setText("edd a new service");
         jpnAddService.add(lblEddNewService);
-        lblEddNewService.setBounds(30, 20, 180, 16);
+        lblEddNewService.setBounds(40, 40, 180, 16);
 
         jpnAddUser.add(jpnAddService);
-        jpnAddService.setBounds(40, 40, 570, 440);
+        jpnAddService.setBounds(0, 0, 610, 480);
+
+        lblApartmantId.setText("apartment");
+        jpnAddUser.add(lblApartmantId);
+        lblApartmantId.setBounds(40, 350, 59, 16);
+        jpnAddUser.add(txtApartment);
+        txtApartment.setBounds(140, 350, 130, 22);
 
         jpnService.add(jpnAddUser);
         jpnAddUser.setBounds(0, 0, 610, 480);
@@ -282,6 +343,11 @@ public class AdminForm extends javax.swing.JFrame {
 
         btnShowSerive.setText("show list");
         btnShowSerive.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnShowSerive.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowSeriveActionPerformed(evt);
+            }
+        });
         jpnService.add(btnShowSerive);
         btnShowSerive.setBounds(490, 100, 90, 40);
 
@@ -293,6 +359,11 @@ public class AdminForm extends javax.swing.JFrame {
 
         btnMakeTheOrder.setText("order");
         btnMakeTheOrder.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMakeTheOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMakeTheOrderActionPerformed(evt);
+            }
+        });
         jpnService.add(btnMakeTheOrder);
         btnMakeTheOrder.setBounds(60, 380, 100, 30);
 
@@ -308,6 +379,11 @@ public class AdminForm extends javax.swing.JFrame {
 
         btnPay.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnPay.setText("pay");
+        btnPay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPayActionPerformed(evt);
+            }
+        });
         jpnMakePayment.add(btnPay);
         btnPay.setBounds(50, 257, 149, 40);
 
@@ -318,7 +394,8 @@ public class AdminForm extends javax.swing.JFrame {
         jpnReadMessages.setBounds(0, 0, 610, 480);
 
         btnAddService.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnAddService.setText("add service");
+        btnAddService.setText("add/delete service");
+        btnAddService.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAddService.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddServiceActionPerformed(evt);
@@ -379,38 +456,165 @@ public class AdminForm extends javax.swing.JFrame {
       
         onOffPanel(true,false,false,false,false,false,false);
         onOffComponents(true,false,false,false,false,false,false);
+      
     }//GEN-LAST:event_btnSendMassegeActionPerformed
-
+/**
+    *
+    */
     private void btnReadMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReadMessageActionPerformed
      onOffPanel(true,true,false,false,false,false,false);
      onOffComponents(false,true,false,false,false,false,false);
     }//GEN-LAST:event_btnReadMessageActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void btnMakePaymnetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakePaymnetActionPerformed
         onOffPanel(true,true,true,false,false,false,false);
         onOffComponents(false,false,true,false,false,false,false);
     }//GEN-LAST:event_btnMakePaymnetActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
-      onOffPanel(true,true,true,true,false,false,false);
-      onOffComponents(false,false,false,true,false,false,false);
+      onOffPanel(true,true,true,true,true,false,false);
+      onOffComponents(false,false,false,false,true,false,false);
     }//GEN-LAST:event_btnOrderActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void btnViewPaymentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewPaymentsActionPerformed
-        onOffPanel(true,true,true,true,true,false,false);
-        onOffComponents(false,false,false,false,true,false,false);
+        onOffPanel(true,true,true,true,false,false,false);
+        onOffComponents(false,false,false,true,false,false,false);
     }//GEN-LAST:event_btnViewPaymentsActionPerformed
-
+/**
+ * add/delete user button
+ * @param evt 
+ */
     private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUserActionPerformed
         onOffPanel(true,true,true,true,true,true,false);
         onOffComponents(false,false,false,false,false,true,false);
+ 
     }//GEN-LAST:event_btnAddUserActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void btnAddServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddServiceActionPerformed
        onOffPanel(true,true,true,true,true,true,true);
        onOffComponents(false,false,false,false,false,false,true);
     }//GEN-LAST:event_btnAddServiceActionPerformed
-    private void onOffPanel(boolean sendMessage,boolean readMessage,boolean makePayment,boolean viewPayment,boolean service,boolean addUser,boolean addService) {
+/**
+ * button add
+ * when pressed the user added to database
+ * @param evt 
+ */
+    private void btnAddNewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddNewUserActionPerformed
+        String firstName;
+        String lastName;
+        String password;
+        String userName;
+        String phoneNumber;
+        String email;
+        int apartmantId;
+        int id;
+        
+     lastName=txtEnterLastName.getText();
+     firstName=txtEnderName.getText();
+     email=txtEnterEmail.getText();
+     password=txtEnterPassword.getText();
+     userName= txtEnterUserName.getText();
+     id=Integer.parseInt(txtEnterID.getText());
+     apartmantId=Integer.parseInt(txtApartment.getText());
+     phoneNumber=txtEnterPhoneNumber.getText();
+     
+        User resident= new Resident(id,firstName,lastName,email,userName,password,"same as admin",phoneNumber,"resident",apartmantId);
+        
+    }//GEN-LAST:event_btnAddNewUserActionPerformed
+/**
+ * what heppenns when delete button in delete user prassed
+ * @param evt 
+ */
+    private void btnDeleteTheUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteTheUserActionPerformed
+        int id=Integer.parseInt(txtIdOfTheUserToDelete.getText());
+        
+    }//GEN-LAST:event_btnDeleteTheUserActionPerformed
+/**
+ * when send message button pressed
+ * sends the message
+ * @param evt 
+ */
+    private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
+      String username;
+      String text;
+      
+      username=txtSendTo.getText();
+      text=txtWriteMassege.getText();
+      Message message =new Message(text,a.getUserName(),username);
+    }//GEN-LAST:event_btnSendActionPerformed
+/**
+ * show your messages
+ * @param evt 
+ */
+    private void btnShowMessagesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowMessagesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnShowMessagesActionPerformed
+/**
+ * show the corrent payments
+ * @param evt 
+ */
+    private void btnViewWhoPaydActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewWhoPaydActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnViewWhoPaydActionPerformed
+/**
+ * show who not payed  yet
+ * @param evt 
+ */
+    private void btnViewWhoNotPayedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewWhoNotPayedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnViewWhoNotPayedActionPerformed
+/**
+ * show all paymnts who payed and who not
+ * @param evt 
+ */
+    private void btnViewAllPaymentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAllPaymentsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnViewAllPaymentsActionPerformed
+/**
+ * show all possibale serivece guys
+ * @param evt 
+ */
+    private void btnShowSeriveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowSeriveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnShowSeriveActionPerformed
+/**
+ * order the servie guy
+ * @param evt 
+ */
+    private void btnMakeTheOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakeTheOrderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMakeTheOrderActionPerformed
+/**
+ * make the payment
+ * @param evt 
+ */
+    private void btnPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPayActionPerformed
+/**
+ * 
+ * @param sendMessage
+ * @param readMessage
+ * @param makePayment
+ * @param viewPayment
+ * @param service
+ * @param addUser
+ * @param addService 
+ */
+    private void onOffPanel(boolean sendMessage,boolean readMessage,boolean makePayment,boolean viewPayment
+            ,boolean service,boolean addUser,boolean addService) {
         jpnSendMassege.setVisible(sendMessage);
         jpnReadMessages.setVisible(readMessage);
         jpnMakePayment.setVisible(makePayment);
@@ -420,7 +624,18 @@ public class AdminForm extends javax.swing.JFrame {
         jpnAddService.setVisible(addService);
                 
     }
-    private void onOffComponents(boolean sendMessage,boolean readMessage,boolean makePayment,boolean viewPayment,boolean service,boolean addUser,boolean addService){
+    /**
+     * 
+     * @param sendMessage
+     * @param readMessage
+     * @param makePayment
+     * @param viewPayment
+     * @param service
+     * @param addUser
+     * @param addService 
+     */
+    private void onOffComponents(boolean sendMessage,boolean readMessage,boolean makePayment,boolean viewPayment
+            ,boolean service,boolean addUser,boolean addService){
     
      lblSentTo.setVisible(sendMessage);
      txtSendTo.setVisible(sendMessage);
@@ -453,12 +668,16 @@ public class AdminForm extends javax.swing.JFrame {
      lblEnterID.setVisible(addUser);
      lblEnteNewUserDetails.setVisible(addUser);
      lblEnterUserToDelete.setVisible(addUser);
+     lblEnterPhoneNumber.setVisible(addUser);
+     lblApartmantId.setVisible(addUser);
+     txtEnterPhoneNumber.setVisible(addUser);
      txtEnterLastName.setVisible(addUser);
      txtEnderName.setVisible(addUser);
      txtEnterEmail.setVisible(addUser);
      txtEnterPassword.setVisible(addUser);
      txtEnterUserName.setVisible(addUser);
      txtEnterID.setVisible(addUser);
+     txtApartment.setVisible(addUser);
      txtIdOfTheUserToDelete.setVisible(addUser);
      btnAddNewUser.setVisible(addUser);
      btnDeleteTheUser.setVisible(addUser);
@@ -528,6 +747,7 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JPanel jpnSendMassege;
     private javax.swing.JPanel jpnService;
     private javax.swing.JPanel jpnViewPayments;
+    private javax.swing.JLabel lblApartmantId;
     private javax.swing.JLabel lblEddNewService;
     private javax.swing.JLabel lblEnteNewUserDetails;
     private javax.swing.JLabel lblEnterEmail;
@@ -535,16 +755,19 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblEnterID;
     private javax.swing.JLabel lblEnterLastName;
     private javax.swing.JLabel lblEnterPassword;
+    private javax.swing.JLabel lblEnterPhoneNumber;
     private javax.swing.JLabel lblEnterServieId;
     private javax.swing.JLabel lblEnterUserName;
     private javax.swing.JLabel lblEnterUserToDelete;
     private javax.swing.JLabel lblSentTo;
+    private javax.swing.JTextField txtApartment;
     private javax.swing.JTextField txtCommant;
     private javax.swing.JTextField txtEnderName;
     private javax.swing.JTextField txtEnterEmail;
     private javax.swing.JTextField txtEnterID;
     private javax.swing.JTextField txtEnterLastName;
     private javax.swing.JTextField txtEnterPassword;
+    private javax.swing.JTextField txtEnterPhoneNumber;
     private javax.swing.JTextField txtEnterUserName;
     private javax.swing.JTextField txtIdOfServiceToOrder;
     private javax.swing.JTextField txtIdOfTheUserToDelete;
