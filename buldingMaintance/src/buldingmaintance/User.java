@@ -1,4 +1,6 @@
 package buldingmaintance;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 
 public class User {
 
@@ -12,7 +14,8 @@ public class User {
     private String phoneNumber;
     private String userPermission;
     private int apartmentId;
-
+    private Image ProfilePhoto;
+    
     public User(int ID, String firstName, String lastName, String email, 
                 String userName,String password, String buildingAddress, 
                 String phoneNumber, String userPermission, int apartmentId) {
