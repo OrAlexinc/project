@@ -20,7 +20,7 @@ public class DataBase {
 
     String jdbcUrl = "jdbc:mysql://localhost:3306/building_maintainance?zeroDateTimeBehavior=convertToNull";
     String jdbcUser = "root";
-    String jdbcPassword = "root";
+    String jdbcPassword;
     String jdbcDeiver = "com.mysql.jdbc.Driver";
     List<Message> messages = new ArrayList<Message>();
     List<Order> orders = new ArrayList<Order>();
@@ -187,22 +187,29 @@ public class DataBase {
            
 
             Statement statement = connection.createStatement();
-      
-           String login = "SELECT * FROM USERS WHERE  UserName ='" + username + "' AND Password= '" + password + "'";
+
+            String login = "SELECT * FROM USERS WHERE  UserName ='" + username +"' AND Password= '" + password + "'";
+
             ResultSet resultSet = statement.executeQuery(login);
          
      
           if(resultSet.next()){
             int id = resultSet.getInt("ID");
             String firstName = resultSet.getString("FirstName");
+
             String lastName = resultSet.getString("LastName");
+
+        
             String email = resultSet.getString("Email");
             String userName = resultSet.getString("UserName");
             String Password = resultSet.getString("Password");
+
             String buildingAddress = resultSet.getString("BuildingAddress");
             int apartmentId = resultSet.getInt("Apartmentid");
             String phoneNumber = resultSet.getString("PhoneNumber");
-            String userPermission = resultSet.getString("User Permission");
+            String userPermission = resultSet.getString("User Permission");   
+               
+
             if (userPermission.equals("admin")) {
                 User admin = new User(id, firstName, lastName, email, userName, Password,
                         buildingAddress, phoneNumber,userPermission , apartmentId);
@@ -210,7 +217,7 @@ public class DataBase {
             }
            else if (userPermission.equals("resident")) {
                 User resident = new User(id, firstName, lastName, email, userName, Password,
-                        buildingAddress, userPermission, phoneNumber, apartmentId);
+                        buildingAddress, phoneNumber,userPermission, apartmentId);
                
                 return resident;
             }
