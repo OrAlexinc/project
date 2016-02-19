@@ -200,6 +200,7 @@ public class DataBase {
             String lastName = resultSet.getString("LastName");
 
         
+            String lastName = resultSet.getString("Last Name");
             String email = resultSet.getString("Email");
             String userName = resultSet.getString("UserName");
             String Password = resultSet.getString("Password");
