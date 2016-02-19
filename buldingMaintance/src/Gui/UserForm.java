@@ -16,9 +16,9 @@ public class UserForm extends javax.swing.JFrame {
 
     User resident;
      ArrayList<Message> messages = new ArrayList<Message>(); 
-    public UserForm(User user) {
+    public UserForm(Resident resident) {
         initComponents();
-      resident=user;
+     this.resident=resident;
       OnOffComponents(false, false, false, false);
         OnOffPanel(false, false, false, false);
      

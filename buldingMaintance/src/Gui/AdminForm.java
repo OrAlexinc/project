@@ -20,15 +20,15 @@ public class AdminForm extends javax.swing.JFrame {
     /**
      * Creates new form AdminForm
      */
-     User a;
+     Admin admin;
       ArrayList<User> users = new ArrayList<User>(); 
      ArrayList<Message> messages = new ArrayList<Message>(); 
      ArrayList<Payment> payments = new ArrayList<Payment>(); 
      ArrayList<Order> orders = new ArrayList<Order>(); 
-    public AdminForm(User user) {
+    public AdminForm(Admin admin) {
          DataBase dataBase = DataBase.GetInstance();
         
-        a=user;
+        this.admin=admin;
         initComponents();
         onOffPanel(false,false,false,false,false,false,false);
         onOffComponents(false,false,false,false,false,false,false);
@@ -538,7 +538,7 @@ public class AdminForm extends javax.swing.JFrame {
      apartmantId=Integer.parseInt(txtApartment.getText());
      phoneNumber=txtEnterPhoneNumber.getText();
      
-        User resident= new Resident(id,firstName,lastName,email,userName,password,a.getBuildingAddress(),phoneNumber,"resident",apartmantId);
+        User resident= new Resident(id,firstName,lastName,email,userName,password,admin.getBuildingAddress(),phoneNumber,"resident",apartmantId);
         
     }//GEN-LAST:event_btnAddNewUserActionPerformed
 /**
@@ -560,8 +560,8 @@ public class AdminForm extends javax.swing.JFrame {
       
       username=txtSendTo.getText();
       text=txtWriteMassege.getText();
-      Message message =new Message(text,a.getUserName(),username);
-      a.SendMessage(message);
+      Message message =new Message(text,admin.getUserName(),username);
+     admin.SendMessage(message);
     }//GEN-LAST:event_btnSendActionPerformed
 /**
  * show your messages
@@ -606,8 +606,8 @@ public class AdminForm extends javax.swing.JFrame {
       String id=txtIdOfServiceToOrder.getText();
       String type= txtServieType.getText();
       
-      Order order=new Order(a.getUserName(),id,type);
-       a.order(order);
+      Order order=new Order(admin.getUserName(),id,type);
+       admin.order(order);
     }//GEN-LAST:event_btnMakeTheOrderActionPerformed
 /**
  * make the payment
@@ -616,8 +616,8 @@ public class AdminForm extends javax.swing.JFrame {
     private void btnPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayActionPerformed
       int sum=Integer.parseInt(txtSum.getText());
     String commant= txtCommant.getText();
-        Payment pay=new Payment(a.getUserName(),a.getUserName(),commant,sum);
-        a.makePayment(pay);
+        Payment pay=new Payment(admin.getUserName(),admin.getUserName(),commant,sum);
+      admin.makePayment(pay);
     }//GEN-LAST:event_btnPayActionPerformed
 /**
  * 

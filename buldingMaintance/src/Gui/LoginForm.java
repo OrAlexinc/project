@@ -104,26 +104,27 @@ DataBase dataBase = DataBase.GetInstance();
    // String password=txtPassword.getText();
     String username="1";
     String password="2";
-    final User user=dataBase.logIn(username, password);
+     User user=dataBase.logIn(username, password);
        
   if(user==null){
          JOptionPane.showMessageDialog(null, "wrong user name or passsword", "InfoBox: " , JOptionPane.INFORMATION_MESSAGE);
     }
   else if((user.getUserPermission()).equals("resident")){
+    final Resident resident=(Resident)user;
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new UserForm(user).setVisible(true);
+                new UserForm(resident).setVisible(true);
             }
            
        });
        
     }
     else if((user.getUserPermission()).equals("admin")){
-         System.out.println("AdMiN");
+       final  Admin admin =(Admin)user;
          java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminForm(user).setVisible(true);
+                new AdminForm(admin).setVisible(true);
             }
         });
         
