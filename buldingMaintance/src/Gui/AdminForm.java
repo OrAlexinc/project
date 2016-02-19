@@ -20,7 +20,7 @@ public class AdminForm extends javax.swing.JFrame {
     /**
      * Creates new form AdminForm
      */
-     Admin a=new Admin(1,"","","","","","","","",1);
+     User a;
       ArrayList<User> users = new ArrayList<User>(); 
      ArrayList<Message> messages = new ArrayList<Message>(); 
      ArrayList<Payment> payments = new ArrayList<Payment>(); 
@@ -28,7 +28,7 @@ public class AdminForm extends javax.swing.JFrame {
     public AdminForm(User user) {
          DataBase dataBase = DataBase.GetInstance();
         
-        
+        a=user;
         initComponents();
         onOffPanel(false,false,false,false,false,false,false);
         onOffComponents(false,false,false,false,false,false,false);
@@ -67,6 +67,8 @@ public class AdminForm extends javax.swing.JFrame {
         btnViewWhoNotPayed = new javax.swing.JButton();
         btnViewAllPayments = new javax.swing.JButton();
         jpnService = new javax.swing.JPanel();
+        txtService = new javax.swing.JTextField();
+        btnShowSerive = new javax.swing.JButton();
         jpnAddUser = new javax.swing.JPanel();
         lblEnterFirstName = new javax.swing.JLabel();
         lblEnterLastName = new javax.swing.JLabel();
@@ -91,11 +93,11 @@ public class AdminForm extends javax.swing.JFrame {
         lblEddNewService = new javax.swing.JLabel();
         lblApartmantId = new javax.swing.JLabel();
         txtApartment = new javax.swing.JTextField();
-        txtService = new javax.swing.JTextField();
-        btnShowSerive = new javax.swing.JButton();
         lblEnterServieId = new javax.swing.JLabel();
         txtIdOfServiceToOrder = new javax.swing.JTextField();
         btnMakeTheOrder = new javax.swing.JButton();
+        lblServiceType = new javax.swing.JLabel();
+        txtServieType = new javax.swing.JTextField();
         txtSum = new javax.swing.JTextField();
         txtCommant = new javax.swing.JTextField();
         btnPay = new javax.swing.JButton();
@@ -241,6 +243,18 @@ public class AdminForm extends javax.swing.JFrame {
 
         jpnService.setOpaque(false);
         jpnService.setLayout(null);
+        jpnService.add(txtService);
+        txtService.setBounds(50, 90, 400, 190);
+
+        btnShowSerive.setText("show list");
+        btnShowSerive.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnShowSerive.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowSeriveActionPerformed(evt);
+            }
+        });
+        jpnService.add(btnShowSerive);
+        btnShowSerive.setBounds(490, 100, 90, 40);
 
         jpnAddUser.setOpaque(false);
         jpnAddUser.setLayout(null);
@@ -338,18 +352,6 @@ public class AdminForm extends javax.swing.JFrame {
 
         jpnService.add(jpnAddUser);
         jpnAddUser.setBounds(0, 0, 610, 480);
-        jpnService.add(txtService);
-        txtService.setBounds(50, 90, 400, 190);
-
-        btnShowSerive.setText("show list");
-        btnShowSerive.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnShowSerive.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnShowSeriveActionPerformed(evt);
-            }
-        });
-        jpnService.add(btnShowSerive);
-        btnShowSerive.setBounds(490, 100, 90, 40);
 
         lblEnterServieId.setText("enter the id of servie you want to order");
         jpnService.add(lblEnterServieId);
@@ -366,6 +368,12 @@ public class AdminForm extends javax.swing.JFrame {
         });
         jpnService.add(btnMakeTheOrder);
         btnMakeTheOrder.setBounds(60, 380, 100, 30);
+
+        lblServiceType.setText("Service type");
+        jpnService.add(lblServiceType);
+        lblServiceType.setBounds(330, 310, 80, 16);
+        jpnService.add(txtServieType);
+        txtServieType.setBounds(330, 340, 100, 22);
 
         jpnViewPayments.add(jpnService);
         jpnService.setBounds(-10, -30, 610, 480);
@@ -530,7 +538,7 @@ public class AdminForm extends javax.swing.JFrame {
      apartmantId=Integer.parseInt(txtApartment.getText());
      phoneNumber=txtEnterPhoneNumber.getText();
      
-        User resident= new Resident(id,firstName,lastName,email,userName,password,"same as admin",phoneNumber,"resident",apartmantId);
+        User resident= new Resident(id,firstName,lastName,email,userName,password,a.getBuildingAddress(),phoneNumber,"resident",apartmantId);
         
     }//GEN-LAST:event_btnAddNewUserActionPerformed
 /**
@@ -539,7 +547,7 @@ public class AdminForm extends javax.swing.JFrame {
  */
     private void btnDeleteTheUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteTheUserActionPerformed
         int id=Integer.parseInt(txtIdOfTheUserToDelete.getText());
-        
+       // a.addUser(id);
     }//GEN-LAST:event_btnDeleteTheUserActionPerformed
 /**
  * when send message button pressed
@@ -553,13 +561,14 @@ public class AdminForm extends javax.swing.JFrame {
       username=txtSendTo.getText();
       text=txtWriteMassege.getText();
       Message message =new Message(text,a.getUserName(),username);
+      a.SendMessage(message);
     }//GEN-LAST:event_btnSendActionPerformed
 /**
  * show your messages
  * @param evt 
  */
     private void btnShowMessagesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowMessagesActionPerformed
-        // TODO add your handling code here:
+      
     }//GEN-LAST:event_btnShowMessagesActionPerformed
 /**
  * show the corrent payments
@@ -594,14 +603,21 @@ public class AdminForm extends javax.swing.JFrame {
  * @param evt 
  */
     private void btnMakeTheOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakeTheOrderActionPerformed
-        // TODO add your handling code here:
+      String id=txtIdOfServiceToOrder.getText();
+      String type= txtServieType.getText();
+      
+      Order order=new Order(a.getUserName(),id,type);
+       a.order(order);
     }//GEN-LAST:event_btnMakeTheOrderActionPerformed
 /**
  * make the payment
  * @param evt 
  */
     private void btnPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayActionPerformed
-        // TODO add your handling code here:
+      int sum=Integer.parseInt(txtSum.getText());
+    String commant= txtCommant.getText();
+        Payment pay=new Payment(a.getUserName(),a.getUserName(),commant,sum);
+        a.makePayment(pay);
     }//GEN-LAST:event_btnPayActionPerformed
 /**
  * 
@@ -657,6 +673,8 @@ public class AdminForm extends javax.swing.JFrame {
      txtService.setVisible(service);
      btnShowSerive.setVisible(service);
      lblEnterServieId.setVisible(service);
+     lblServiceType.setVisible(service);
+     txtServieType.setVisible(service);
      txtIdOfServiceToOrder.setVisible(service);
      btnMakeTheOrder.setVisible(service);
      
@@ -756,6 +774,7 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblEnterUserName;
     private javax.swing.JLabel lblEnterUserToDelete;
     private javax.swing.JLabel lblSentTo;
+    private javax.swing.JLabel lblServiceType;
     private javax.swing.JTextField txtApartment;
     private javax.swing.JTextField txtCommant;
     private javax.swing.JTextField txtEnderName;
@@ -769,6 +788,7 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JTextField txtIdOfTheUserToDelete;
     private javax.swing.JTextField txtSendTo;
     private javax.swing.JTextField txtService;
+    private javax.swing.JTextField txtServieType;
     private javax.swing.JTextField txtShovMessage;
     private javax.swing.JTextField txtSum;
     private javax.swing.JTextField txtViewPayments;

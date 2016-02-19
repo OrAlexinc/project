@@ -123,10 +123,11 @@ public class DataBase {
             Class.forName(jdbcDeiver);
 
             Statement statement = connection.createStatement();
+           java.sql.Timestamp timestamp = new java.sql.Timestamp( message.getTimeCreated().getTimeInMillis());
             String insertUser = "insert into  messages values(" + message.getMessageID() + ",'"
                     + message.getFromUser() + "'" + ",'"
                     + message.getToUser() + "','"
-                    + message.getTimeCreated() + "','"
+                    + timestamp + "','"
                     + message.getContent() + "');";
 
             statement.executeUpdate(insertUser);
@@ -141,12 +142,12 @@ public class DataBase {
     public void makeOrder(Order order) {//adds an order to a database
         try {
             Class.forName(jdbcDeiver);
-
+            java.sql.Timestamp timestamp = new java.sql.Timestamp( order.getDateRecieved().getTimeInMillis());
             Statement statement = connection.createStatement();
-            String insertUser = "insert into  orders values(" + order.getOrder() + ",'"
+            String insertUser = "insert into  orders values(" + order.getOrderID() + ",'"
                     + order.getOrder() + "'" + ",'"
                     + order.getFrom() + "','"
-                    + order.getDateRecieved() + "','"
+                    + timestamp + "','"
                     + order.getTo() + "');";
 
             statement.executeUpdate(insertUser);
@@ -161,13 +162,13 @@ public class DataBase {
     public void makePayment(Payment payment) {//adds an payment to a database
         try {
             Class.forName(jdbcDeiver);
-
+          java.sql.Timestamp timestamp = new java.sql.Timestamp( payment.getDateRecieved().getTimeInMillis());
             Statement statement = connection.createStatement();
             String insertUser = "insert into  payments values(" + payment.getPaymentId() + ",'"
                     + payment.getFrom() + "'" + ",'"
                     + payment.getTo() + "','"
                     + payment.getSum() + "','"
-                    + payment.getDateRecieved() + "','"
+                    + timestamp + "','"
                     + payment.getComment() + "');";
 
             statement.executeUpdate(insertUser);
@@ -183,28 +184,28 @@ public class DataBase {
         try {
 
             Class.forName(jdbcDeiver);
-            Connection connection = DriverManager.getConnection(jdbcUrl, jdbcUser, jdbcPassword);
+           
 
             Statement statement = connection.createStatement();
-
-            String login = "SELECT * FROM USERS WHERE  'User Name' ='" + username + "' AND Password= '" + password + "'";
+      
+           String login = "SELECT * FROM USERS WHERE  UserName ='" + username + "' AND Password= '" + password + "'";
             ResultSet resultSet = statement.executeQuery(login);
-       
+         
+     
           if(resultSet.next()){
             int id = resultSet.getInt("ID");
-            String firstName = resultSet.getString("'First Name'");
-            String lastName = resultSet.getString("'Last Name'");
+            String firstName = resultSet.getString("FirstName");
+            String lastName = resultSet.getString("LastName");
             String email = resultSet.getString("Email");
-            String userName = resultSet.getString("'User Name'");
+            String userName = resultSet.getString("UserName");
             String Password = resultSet.getString("Password");
-            String buildingAddress = resultSet.getString("'Building Address'");
-            int apartmentId = resultSet.getInt("'Apartment id'");
-            String phoneNumber = resultSet.getString("'Phone Number'");
-            String userPermission = resultSet.getString("'User Permission'");
-                System.out.println(userPermission);
+            String buildingAddress = resultSet.getString("BuildingAddress");
+            int apartmentId = resultSet.getInt("Apartmentid");
+            String phoneNumber = resultSet.getString("PhoneNumber");
+            String userPermission = resultSet.getString("User Permission");
             if (userPermission.equals("admin")) {
                 User admin = new User(id, firstName, lastName, email, userName, Password,
-                        buildingAddress, userPermission, phoneNumber, apartmentId);
+                        buildingAddress, phoneNumber,userPermission , apartmentId);
                 return admin;
             }
            else if (userPermission.equals("resident")) {
@@ -214,7 +215,7 @@ public class DataBase {
                 return resident;
             }
             }
-       
+      
             
         } catch (SQLException sqle) {
             System.out.println("SQLException: " + sqle.getMessage());

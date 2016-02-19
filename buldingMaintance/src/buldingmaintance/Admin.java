@@ -24,22 +24,26 @@ DataBase dataBase = DataBase.GetInstance();
     }
 
     @Override
-    public void SendMessage(String content, String fromUser, String toUser) {
-        super.SendMessage(content, fromUser, toUser);
+    public void SendMessage(Message message) {
+       dataBase.sendMessage(message);
     }
 /*
     public ArrayList<Payment> SeeAllPayments() {
        return false;
     }
 */
-    public void makePayment(){
-        
+    public void makePayment(Payment paymant){
+        dataBase.makePayment(paymant);
     }
-    public void addUser(){
-        
+    public void addUser(User user){
+        dataBase.AddUser(user);
     }
-    public void deleteUser(){
-        
+    public void deleteUser(int id){
+        dataBase.RemoveUser(id);
+    }
+    public void order(Order order)
+    {
+        dataBase.makeOrder(order);
     }
     public void addService(){
         

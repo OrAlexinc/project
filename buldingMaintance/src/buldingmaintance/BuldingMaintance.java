@@ -5,6 +5,7 @@
 package buldingmaintance;
 
 import DB.DataBase;
+import Gui.LoginForm;
 
 
 /**
@@ -20,8 +21,14 @@ public class BuldingMaintance {
 
         DataBase dataBase = DataBase.GetInstance();
 
-        User user = new User(3, "ben", "gilad", "ben@gilad.com", "ben123", "gilad20", "ariel", "4", "user",5);
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new LoginForm().setVisible(true);
+            }
+        });
+        //User user = new User(3, "ben", "gilad", "ben@gilad.com", "ben123", "gilad20", "ariel", "4", "user",5);
 
-        dataBase.AddUser(user);
+        //dataBase.AddUser(user);
     }
 }

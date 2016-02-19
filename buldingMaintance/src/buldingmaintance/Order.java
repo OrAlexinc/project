@@ -12,7 +12,7 @@ import java.util.Calendar;
  * @author mishpuha
  */
 public class Order {
-    private int OrderID;
+    static private int OrderID;
     private String from;
     private String to;
     private String order;
@@ -23,6 +23,7 @@ public class Order {
         this.to = to;
         this.order = order;
         dateRecieved=Calendar.getInstance();
+        OrderID++;
     }
     
     

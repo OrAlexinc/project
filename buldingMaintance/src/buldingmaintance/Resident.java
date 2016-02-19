@@ -5,31 +5,34 @@
  */
 package buldingmaintance;
 
+import DB.DataBase;
+
 /**
  *
  * @author orgershov
  */
 public class Resident extends User{
-
+DataBase dataBase = DataBase.GetInstance();
     public Resident(int ID, String firstName, String lastName, String email, String userName,
             String password, String buildingAddress, String phoneNumber, String userPermission, int apartmentId) {
         super(ID, firstName, lastName, email, userName, password, buildingAddress, phoneNumber, userPermission, apartmentId);
     }
 
-    public void writeMessage(){
+    public void writeMessage(Message message){
+        dataBase.sendMessage(message);
         
     }
-        public void addPayment(){
-   
+   public void addPayment(Payment pay){
+   dataBase.makePayment(pay);
     
-        }
+       }
     
     public void readMessage(){
         
     } 
     
-    public void callService(){
-        
+    public void callService(Order order){
+        dataBase.makeOrder(order);
     }
     @Override
     public String toString() {

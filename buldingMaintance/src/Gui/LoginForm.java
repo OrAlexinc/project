@@ -100,28 +100,33 @@ DataBase dataBase = DataBase.GetInstance();
  * @param evt 
  */
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-    String username=txtUsername.getText();
-    String password=txtPassword.getText();
-    
+   // String username=txtUsername.getText();
+   // String password=txtPassword.getText();
+    String username="1";
+    String password="2";
     final User user=dataBase.logIn(username, password);
-  JOptionPane.showMessageDialog(null, user, "InfoBox: " , JOptionPane.INFORMATION_MESSAGE);
+       
   if(user==null){
-         JOptionPane.showMessageDialog(null, "not user like you", "InfoBox: " , JOptionPane.INFORMATION_MESSAGE);
+         JOptionPane.showMessageDialog(null, "wrong user name or passsword", "InfoBox: " , JOptionPane.INFORMATION_MESSAGE);
     }
-  else if(user.getUserPermission()=="resident"){
+  else if((user.getUserPermission()).equals("resident")){
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
                 new UserForm(user).setVisible(true);
             }
+           
        });
+       
     }
-    else if(user.getUserPermission()=="admin"){
+    else if((user.getUserPermission()).equals("admin")){
+         System.out.println("AdMiN");
          java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new AdminForm(user).setVisible(true);
             }
         });
+        
     }
   
  
@@ -155,12 +160,8 @@ DataBase dataBase = DataBase.GetInstance();
         }
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LoginForm().setVisible(true);
-            }
-        });
+       
+       
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

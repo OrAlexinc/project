@@ -111,8 +111,8 @@ public class User {
         this.apartmentId = apartmentId;
     }
 
-    public void SendMessage(String content, String fromUser, String toUser) {
-        Message message = new Message(content, fromUser, toUser);                   //connect to database
+    public void SendMessage(Message message) {
+                         //connect to database
     }
 
     public Message RecieveMessage(String selfUserName) {

@@ -12,7 +12,7 @@ import java.util.Calendar;
  */
 public class Payment {
       
-    static private  String paymentLd;
+    static private  int paymentLd;
     private String from;
     private String to;
     private int sum;
@@ -26,13 +26,14 @@ public class Payment {
         setComment(comment);
         setSum(sum);
         dateRecieved=Calendar.getInstance();
+        paymentLd++;
     }
 
-    public String getPaymentId() {
+    public int getPaymentId() {
         return paymentLd;
     }
 
-    public void setPaymentLd(String paymentLd) {
+    public void setPaymentLd(int paymentLd) {
         this.paymentLd = paymentLd;
     }
 
