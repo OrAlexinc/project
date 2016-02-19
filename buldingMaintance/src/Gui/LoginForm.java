@@ -5,12 +5,16 @@
  */
 package Gui;
 
+import DB.DataBase;
+import buldingmaintance.*;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Student
  */
 public class LoginForm extends javax.swing.JFrame {
-
+DataBase dataBase = DataBase.GetInstance();
     /**
      * Creates new form LoginForm
      */
@@ -29,7 +33,7 @@ public class LoginForm extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btnLogin = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txtUsername = new javax.swing.JTextField();
         txtPassword = new javax.swing.JTextField();
         lblUsername = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
@@ -41,6 +45,11 @@ public class LoginForm extends javax.swing.JFrame {
 
         btnLogin.setFont(new java.awt.Font("Aharoni", 0, 18)); // NOI18N
         btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
 
         lblUsername.setText(" username");
 
@@ -56,7 +65,7 @@ public class LoginForm extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34)
@@ -70,7 +79,7 @@ public class LoginForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(99, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -86,6 +95,38 @@ public class LoginForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+/**
+ * click on login botton
+ * @param evt 
+ */
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+    String username=txtUsername.getText();
+    String password=txtPassword.getText();
+    
+    final User user=dataBase.logIn(username, password);
+  JOptionPane.showMessageDialog(null, user, "InfoBox: " , JOptionPane.INFORMATION_MESSAGE);
+  if(user==null){
+         JOptionPane.showMessageDialog(null, "not user like you", "InfoBox: " , JOptionPane.INFORMATION_MESSAGE);
+    }
+  else if(user.getUserPermission()=="resident"){
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new UserForm(user).setVisible(true);
+            }
+       });
+    }
+    else if(user.getUserPermission()=="admin"){
+         java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new AdminForm(user).setVisible(true);
+            }
+        });
+    }
+  
+ 
+    
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,9 +166,9 @@ public class LoginForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblUsername;
     private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }

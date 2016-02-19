@@ -25,7 +25,7 @@ public class AdminForm extends javax.swing.JFrame {
      ArrayList<Message> messages = new ArrayList<Message>(); 
      ArrayList<Payment> payments = new ArrayList<Payment>(); 
      ArrayList<Order> orders = new ArrayList<Order>(); 
-    public AdminForm() {
+    public AdminForm(User user) {
          DataBase dataBase = DataBase.GetInstance();
         
         
@@ -714,11 +714,7 @@ public class AdminForm extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AdminForm().setVisible(true);
-            }
-        });
+       
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -20,7 +20,7 @@ public class DataBase {
 
     String jdbcUrl = "jdbc:mysql://localhost:3306/building_maintainance?zeroDateTimeBehavior=convertToNull";
     String jdbcUser = "root";
-    String jdbcPassword = "2891987av";
+    String jdbcPassword = "root";
     String jdbcDeiver = "com.mysql.jdbc.Driver";
     List<Message> messages = new ArrayList<Message>();
     List<Order> orders = new ArrayList<Order>();
@@ -187,37 +187,42 @@ public class DataBase {
 
             Statement statement = connection.createStatement();
 
-            String sql = "SELECT * FROM users WHERE User Name ='" + username + "' AND Password= '" + password + "'";
-            ResultSet resultSet = statement.executeQuery(sql);
-
+            String login = "SELECT * FROM USERS WHERE  'User Name' ='" + username + "' AND Password= '" + password + "'";
+            ResultSet resultSet = statement.executeQuery(login);
+       
+          if(resultSet.next()){
             int id = resultSet.getInt("ID");
-            String firstName = resultSet.getString("First Name");
-            String lastName = resultSet.getString("Last Name");
+            String firstName = resultSet.getString("'First Name'");
+            String lastName = resultSet.getString("'Last Name'");
             String email = resultSet.getString("Email");
-            String userName = resultSet.getString("User Name");
+            String userName = resultSet.getString("'User Name'");
             String Password = resultSet.getString("Password");
-            String buildingAddress = resultSet.getString("Building Address");
-            int apartmentId = resultSet.getInt("Apartment id");
-            String phoneNumber = resultSet.getString("Phone Number");
-            String userPermission = resultSet.getString("User Permission");
-
+            String buildingAddress = resultSet.getString("'Building Address'");
+            int apartmentId = resultSet.getInt("'Apartment id'");
+            String phoneNumber = resultSet.getString("'Phone Number'");
+            String userPermission = resultSet.getString("'User Permission'");
+                System.out.println(userPermission);
             if (userPermission.equals("admin")) {
                 User admin = new User(id, firstName, lastName, email, userName, Password,
                         buildingAddress, userPermission, phoneNumber, apartmentId);
                 return admin;
             }
-            if (userPermission.equals("resident")) {
+           else if (userPermission.equals("resident")) {
                 User resident = new User(id, firstName, lastName, email, userName, Password,
                         buildingAddress, userPermission, phoneNumber, apartmentId);
+               
                 return resident;
             }
-
+            }
+       
+            
         } catch (SQLException sqle) {
             System.out.println("SQLException: " + sqle.getMessage());
             System.out.println("Vendor Error: " + sqle.getErrorCode());
         } catch (ClassNotFoundException e) {
             System.out.println("Class not found exeption");
         }
-        return null;
+        
+        return null ;
     }
 }

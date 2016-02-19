@@ -5,6 +5,8 @@
  */
 package Gui;
 
+import buldingmaintance.*;
+
 /**
  *
  * @author orgershov
@@ -14,7 +16,7 @@ public class UserForm extends javax.swing.JFrame {
     /**
      * Creates new form UserForm
      */
-    public UserForm() {
+    public UserForm(User user) {
         initComponents();
         OnOff(false,false ,false,false,false,false); 
      
@@ -279,11 +281,7 @@ public class UserForm extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new UserForm().setVisible(true);
-            }
-        });
+        
       
     }
 
