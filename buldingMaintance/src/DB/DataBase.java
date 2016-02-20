@@ -110,7 +110,6 @@ public class DataBase {
      *
      * @param id
      */
-    
     public void RemoveUser(int id) {
         try {
             Class.forName(jdbcDriver);
@@ -130,7 +129,6 @@ public class DataBase {
      *
      * @return all users in database
      */
-   
     public List<User> viewAllUsers() {
         List<User> allUsers = new ArrayList<User>();
 
@@ -341,7 +339,6 @@ public class DataBase {
      * @param password
      * @return user if successfully added, null if not
      */
-   
     public User logIn(String username, String password) {
         try {
 
@@ -383,6 +380,7 @@ public class DataBase {
             System.out.println("Vendor Error: " + sqle.getErrorCode());
         } catch (ClassNotFoundException e) {
             System.out.println("Class not found exeption");
+        return null;
         }
 
         return null;
