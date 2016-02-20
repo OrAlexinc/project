@@ -4,6 +4,7 @@
  */
 package buldingmaintance;
 
+import java.sql.Date;
 import java.util.Calendar;
 
 /**
@@ -12,12 +13,12 @@ import java.util.Calendar;
  */
 public class Payment {
       
-    static private  int paymentLd;
+    static private  int paymentId;
     private String from;
     private String to;
-    private int sum;
+    private float sum;
     private String comment;
-    private Calendar dateRecieved;
+    private Date dateRecieved;
     
     public Payment( String from,String to,String comment,int sum  ){
       
@@ -25,16 +26,25 @@ public class Payment {
         setSum(sum);
         setComment(comment);
         setSum(sum);
-        dateRecieved=Calendar.getInstance();
-        paymentLd++;
+        dateRecieved.getDate();
+        paymentId++;
+    }
+    
+    public Payment( String from,String to,String comment,float sum , int sNumber, Date time ){
+      
+        setFrom(from);
+        setSum((int) sum);
+        setComment(comment);
+        dateRecieved=time;
+        paymentId=sNumber;
     }
 
     public int getPaymentId() {
-        return paymentLd;
+        return paymentId;
     }
 
-    public void setPaymentLd(int paymentLd) {
-        this.paymentLd = paymentLd;
+    public void setPaymentId(int paymentId) {
+        this.paymentId = paymentId;
     }
 
     public String getFrom() {
@@ -61,7 +71,7 @@ public class Payment {
         this.comment = note;
     }
 
-    public int getSum() {
+    public float getSum() {
         return sum;
     }
 
@@ -69,7 +79,7 @@ public class Payment {
         this.sum = sum;
     }
     
-    public Calendar getDateRecieved(){
+    public Date getDateRecieved(){
         return this.dateRecieved;
     }
 
