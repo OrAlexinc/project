@@ -341,19 +341,13 @@ public class DataBase {
      */
     public User logIn(String username, String password) {
         try {
-
             Class.forName(jdbcDriver);
-
             Statement statement = connection.createStatement();
-
             String login = "SELECT * FROM USERS WHERE  UserName ='" + username + "' AND Password= '" + password + "'";
-
             ResultSet resultSet = statement.executeQuery(login);
-
             if (resultSet.next()) {
                 int id = resultSet.getInt("ID");
                 String firstName = resultSet.getString("FirstName");
-
                 String lastName = resultSet.getString("LastName");
                 String email = resultSet.getString("Email");
                 String userName = resultSet.getString("UserName");
@@ -362,7 +356,7 @@ public class DataBase {
                 int apartmentId = resultSet.getInt("Apartmentid");
                 String phoneNumber = resultSet.getString("PhoneNumber");
                 String userPermission = resultSet.getString("UserPermission");
-
+               
                 if (userPermission.equals("admin")) {
                     User admin = new User(id, firstName, lastName, email, userName, Password,
                             buildingAddress, phoneNumber, userPermission, apartmentId);
@@ -370,7 +364,6 @@ public class DataBase {
                 } else if (userPermission.equals("resident")) {
                     User resident = new User(id, firstName, lastName, email, userName, Password,
                             buildingAddress, phoneNumber, userPermission, apartmentId);
-
                     return resident;
                 }
             }
@@ -380,7 +373,7 @@ public class DataBase {
             System.out.println("Vendor Error: " + sqle.getErrorCode());
         } catch (ClassNotFoundException e) {
             System.out.println("Class not found exeption");
-        return null;
+            return null;
         }
 
         return null;
