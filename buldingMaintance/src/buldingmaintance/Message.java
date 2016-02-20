@@ -8,7 +8,7 @@ public class Message {
     private String content;
     private String fromUser;
     private String toUser;
-    private Calendar timeCreated;
+    private Date timeCreated;
    
     public Message(){};
     
@@ -16,8 +16,15 @@ public class Message {
         setContent(content);
         setFromUser(fromUser);
         setToUser(toUser);
-        timeCreated=Calendar.getInstance();
+        timeCreated.getTime();
         messageID++;
+    };
+    public Message(String content,String fromUser,String toUser,int ID, Date time){
+        setContent(content);
+        setFromUser(fromUser);
+        setToUser(toUser);
+        timeCreated=time;
+        messageID=ID;
     };
 
     public String getContent() {
@@ -48,7 +55,7 @@ public class Message {
         return messageID;
     }
     
-    public Calendar getTimeCreated(){
+    public Date getTimeCreated(){
         return this.timeCreated;
     }
     

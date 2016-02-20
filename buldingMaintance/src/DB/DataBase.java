@@ -3,11 +3,13 @@ package DB;
 import buldingmaintance.*;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -21,7 +23,7 @@ public class DataBase {
     String jdbcUrl = "jdbc:mysql://localhost:3306/building_maintainance?zeroDateTimeBehavior=convertToNull";
     String jdbcUser = "root";
     String jdbcPassword;
-    String jdbcDeiver = "com.mysql.jdbc.Driver";
+    String jdbcDriver = "com.mysql.jdbc.Driver";
     List<Message> messages = new ArrayList<Message>();
     List<Order> orders = new ArrayList<Order>();
     List<Payment> payments = new ArrayList<Payment>();
@@ -31,7 +33,7 @@ public class DataBase {
     private DataBase() {
         try {
 
-            Class.forName(jdbcDeiver);
+            Class.forName(jdbcDriver);
             connection = DriverManager.getConnection(jdbcUrl, jdbcUser, jdbcPassword);
 
             Statement statement = connection.createStatement();
@@ -53,7 +55,7 @@ public class DataBase {
      public void connectToDataBase() {
      try {
 
-     Class.forName(jdbcDeiver);
+     Class.forName(jdbcDriver);
      Connection connection
      = DriverManager.getConnection(jdbcUrl, jdbcUser, jdbcPassword);
 
@@ -84,9 +86,9 @@ public class DataBase {
 
      */
     public void AddUser(User user) { //gets an object from type user and adds its fields to database
-        
+
         try {
-            Class.forName(jdbcDeiver);
+            Class.forName(jdbcDriver);
 
             Statement statement = connection.createStatement();
             String insertUser = "insert into  USERS values(" + user.getID() + ",'" + user.getFirstName() + "'"
@@ -103,9 +105,15 @@ public class DataBase {
         }
     }
 
-    public void RemoveUser(int id) {//deletes user by id
+    /**
+     * deletes user by id
+     *
+     * @param id
+     */
+    
+    public void RemoveUser(int id) {
         try {
-            Class.forName(jdbcDeiver);
+            Class.forName(jdbcDriver);
 
             Statement statement = connection.createStatement();
             String deleteUser = "delete from  USERS where ID = " + id + "";
@@ -118,12 +126,91 @@ public class DataBase {
         }
     }
 
-    public void sendMessage(Message message) {//adds message to a database
+    /**
+     *
+     * @return all users in database
+     */
+   
+    public List<User> viewAllUsers() {
+        List<User> allUsers = new ArrayList<User>();
+
         try {
-            Class.forName(jdbcDeiver);
+            Class.forName(jdbcDriver);
 
             Statement statement = connection.createStatement();
-           java.sql.Timestamp timestamp = new java.sql.Timestamp( message.getTimeCreated().getTimeInMillis());
+
+            String sqlUsers = "SELECT * FROM  users";
+
+            ResultSet resultSet = statement.executeQuery(sqlUsers);
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("ID");
+                String firstName = resultSet.getString("FirstName");
+                String lastName = resultSet.getString("LastName");
+                String email = resultSet.getString("Email");
+                String userName = resultSet.getString("UserName");
+                String password = resultSet.getString("Password");
+                String buildingAddress = resultSet.getString("BuildingAddress");
+                int apartmentId = resultSet.getInt("Apartmentid");
+                String phoneNumber = resultSet.getString("PhoneNumber");
+                String userPermission = resultSet.getString("UserPermission");
+
+                User user = new User(id, firstName, lastName, email, userName, password,
+                        buildingAddress, phoneNumber, userPermission, apartmentId);
+                allUsers.add(user);
+            }
+
+        } catch (SQLException sqle) {
+            System.out.println("SQLException: " + sqle.getMessage());
+            System.out.println("Vendor Error: " + sqle.getErrorCode());
+        } catch (ClassNotFoundException e) {
+            System.out.println("Class not found exeption");
+        }
+        return allUsers;
+    }
+
+    public User showUserById(int ID) {
+        User user = new User();
+        try {
+            Class.forName(jdbcDriver);
+
+            Statement statement = connection.createStatement();
+
+            String sqlUser = "SELECT * FROM  users where ID ='" + ID + "'";
+
+            ResultSet resultSet = statement.executeQuery(sqlUser);
+
+            if (resultSet.next()) {
+                int id = resultSet.getInt("ID");
+                String firstName = resultSet.getString("FirstName");
+                String lastName = resultSet.getString("LastName");
+                String email = resultSet.getString("Email");
+                String userName = resultSet.getString("UserName");
+                String password = resultSet.getString("Password");
+                String buildingAddress = resultSet.getString("BuildingAddress");
+                int apartmentId = resultSet.getInt("Apartmentid");
+                String phoneNumber = resultSet.getString("PhoneNumber");
+                String userPermission = resultSet.getString("User Permission");
+
+                user = new User(id, firstName, lastName, email, userName, password,
+                        buildingAddress, phoneNumber, userPermission, apartmentId);
+            }
+
+        } catch (SQLException sqle) {
+            System.out.println("SQLException: " + sqle.getMessage());
+            System.out.println("Vendor Error: " + sqle.getErrorCode());
+        } catch (ClassNotFoundException e) {
+            System.out.println("Class not found exeption");
+        }
+        return user;
+    }
+
+    public void sendMessage(Message message) {//adds message to a database
+        try {
+            Class.forName(jdbcDriver);
+
+            Statement statement = connection.createStatement();
+            java.sql.Timestamp timestamp = new java.sql.Timestamp(message.getTimeCreated().getTime());
             String insertUser = "insert into  messages values(" + message.getMessageID() + ",'"
                     + message.getFromUser() + "'" + ",'"
                     + message.getToUser() + "','"
@@ -139,10 +226,43 @@ public class DataBase {
         }
     }
 
+    public List<Message> recieveMessages(User user) {
+        List<Message> thisUserMessages = new ArrayList<Message>();
+
+        try {
+            Class.forName(jdbcDriver);
+
+            Statement statement = connection.createStatement();
+            String toUsername = user.getUserName();
+
+            String pullMessage = "SELECT * FROM MESSAGES WHERE  To ='" + toUsername + "'";
+
+            ResultSet resultSet = statement.executeQuery(pullMessage);
+
+            while (resultSet.next()) {
+                int sNumber = resultSet.getInt("Serial Number");
+                String from = resultSet.getString("From");
+                String to = resultSet.getString("To");
+                Date time = resultSet.getDate("Create_time");
+                String content = resultSet.getString("Message");
+
+                Message message = new Message(content, from, to, sNumber, time);
+                thisUserMessages.add(message);
+            }
+
+        } catch (SQLException sqle) {
+            System.out.println("SQLException: " + sqle.getMessage());
+            System.out.println("Vendor Error: " + sqle.getErrorCode());
+        } catch (ClassNotFoundException e) {
+            System.out.println("Class not found exeption");
+        }
+        return thisUserMessages;
+    }
+
     public void makeOrder(Order order) {//adds an order to a database
         try {
-            Class.forName(jdbcDeiver);
-            java.sql.Timestamp timestamp = new java.sql.Timestamp( order.getDateRecieved().getTimeInMillis());
+            Class.forName(jdbcDriver);
+            java.sql.Timestamp timestamp = new java.sql.Timestamp(order.getDateRecieved().getTimeInMillis());
             Statement statement = connection.createStatement();
             String insertUser = "insert into  orders values(" + order.getOrderID() + ",'"
                     + order.getOrder() + "'" + ",'"
@@ -161,8 +281,8 @@ public class DataBase {
 
     public void makePayment(Payment payment) {//adds an payment to a database
         try {
-            Class.forName(jdbcDeiver);
-          java.sql.Timestamp timestamp = new java.sql.Timestamp( payment.getDateRecieved().getTimeInMillis());
+            Class.forName(jdbcDriver);
+            java.sql.Timestamp timestamp = new java.sql.Timestamp(payment.getDateRecieved().getDate());
             Statement statement = connection.createStatement();
             String insertUser = "insert into  payments values(" + payment.getPaymentId() + ",'"
                     + payment.getFrom() + "'" + ",'"
@@ -180,58 +300,91 @@ public class DataBase {
         }
     }
 
-    public User logIn(String username, String password) {
-        try {
+    public List<Payment> recievePayments(User user) {
+        List<Payment> allPayments = new ArrayList<Payment>();
 
-            Class.forName(jdbcDeiver);
-           
+        try {
+            Class.forName(jdbcDriver);
 
             Statement statement = connection.createStatement();
+            String toUsername = user.getUserName();
 
-            String login = "SELECT * FROM USERS WHERE  UserName ='" + username +"' AND Password= '" + password + "'";
+            String pullPayments = "SELECT * FROM payments ";
 
-            ResultSet resultSet = statement.executeQuery(login);
-         
-     
-          if(resultSet.next()){
-            int id = resultSet.getInt("ID");
-            String firstName = resultSet.getString("FirstName");
+            ResultSet resultSet = statement.executeQuery(pullPayments);
 
-            String lastName = resultSet.getString("LastName");
+            while (resultSet.next()) {
+                int sNumber = resultSet.getInt("Serial Number");
+                String from = resultSet.getString("From");
+                String to = resultSet.getString("To");
+                float sum = resultSet.getFloat("Sum");
+                Date time = resultSet.getDate("Create_time");
+                String comment = resultSet.getString("Comment");
 
-        
-            String lastName = resultSet.getString("Last Name");
-            String email = resultSet.getString("Email");
-            String userName = resultSet.getString("UserName");
-            String Password = resultSet.getString("Password");
-
-            String buildingAddress = resultSet.getString("BuildingAddress");
-            int apartmentId = resultSet.getInt("Apartmentid");
-            String phoneNumber = resultSet.getString("PhoneNumber");
-            String userPermission = resultSet.getString("User Permission");   
-               
-
-            if (userPermission.equals("admin")) {
-                User admin = new User(id, firstName, lastName, email, userName, Password,
-                        buildingAddress, phoneNumber,userPermission , apartmentId);
-                return admin;
+                Payment payment = new Payment(from, to, comment, sum, sNumber, time);
+                allPayments.add(payment);
             }
-           else if (userPermission.equals("resident")) {
-                User resident = new User(id, firstName, lastName, email, userName, Password,
-                        buildingAddress, phoneNumber,userPermission, apartmentId);
-               
-                return resident;
-            }
-            }
-      
-            
+
         } catch (SQLException sqle) {
             System.out.println("SQLException: " + sqle.getMessage());
             System.out.println("Vendor Error: " + sqle.getErrorCode());
         } catch (ClassNotFoundException e) {
             System.out.println("Class not found exeption");
         }
-        
-        return null ;
+        return allPayments;
+    }
+
+    /**
+     * logIn
+     *
+     * @param username
+     * @param password
+     * @return user if successfully added, null if not
+     */
+   
+    public User logIn(String username, String password) {
+        try {
+
+            Class.forName(jdbcDriver);
+
+            Statement statement = connection.createStatement();
+
+            String login = "SELECT * FROM USERS WHERE  UserName ='" + username + "' AND Password= '" + password + "'";
+
+            ResultSet resultSet = statement.executeQuery(login);
+
+            if (resultSet.next()) {
+                int id = resultSet.getInt("ID");
+                String firstName = resultSet.getString("FirstName");
+
+                String lastName = resultSet.getString("LastName");
+                String email = resultSet.getString("Email");
+                String userName = resultSet.getString("UserName");
+                String Password = resultSet.getString("Password");
+                String buildingAddress = resultSet.getString("BuildingAddress");
+                int apartmentId = resultSet.getInt("Apartmentid");
+                String phoneNumber = resultSet.getString("PhoneNumber");
+                String userPermission = resultSet.getString("UserPermission");
+
+                if (userPermission.equals("admin")) {
+                    User admin = new User(id, firstName, lastName, email, userName, Password,
+                            buildingAddress, phoneNumber, userPermission, apartmentId);
+                    return admin;
+                } else if (userPermission.equals("resident")) {
+                    User resident = new User(id, firstName, lastName, email, userName, Password,
+                            buildingAddress, phoneNumber, userPermission, apartmentId);
+
+                    return resident;
+                }
+            }
+
+        } catch (SQLException sqle) {
+            System.out.println("SQLException: " + sqle.getMessage());
+            System.out.println("Vendor Error: " + sqle.getErrorCode());
+        } catch (ClassNotFoundException e) {
+            System.out.println("Class not found exeption");
+        }
+
+        return null;
     }
 }

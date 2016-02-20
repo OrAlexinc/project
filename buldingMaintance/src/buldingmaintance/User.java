@@ -16,6 +16,8 @@ public class User {
     private int apartmentId;
     private Image ProfilePhoto;
     
+     public User(){};
+    
     public User(int ID, String firstName, String lastName, String email, 
                 String userName,String password, String buildingAddress, 
                 String phoneNumber, String userPermission, int apartmentId) {
