@@ -72,4 +72,10 @@ public class Payment {
     public Calendar getDateRecieved(){
         return this.dateRecieved;
     }
+
+    @Override
+    public String toString() {
+        return "Payment#"+paymentLd + "from" + from + "to" + to + "sum" + sum + "comment" + comment + "datePayed" + dateRecieved ;
+    }
+    
 }

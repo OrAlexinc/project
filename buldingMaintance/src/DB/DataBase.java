@@ -20,7 +20,7 @@ public class DataBase {
 
     String jdbcUrl = "jdbc:mysql://localhost:3306/building_maintainance?zeroDateTimeBehavior=convertToNull";
     String jdbcUser = "root";
-    String jdbcPassword;
+    String jdbcPassword="root";
     String jdbcDeiver = "com.mysql.jdbc.Driver";
     List<Message> messages = new ArrayList<Message>();
     List<Order> orders = new ArrayList<Order>();
@@ -196,15 +196,10 @@ public class DataBase {
           if(resultSet.next()){
             int id = resultSet.getInt("ID");
             String firstName = resultSet.getString("FirstName");
-
-            String lastName = resultSet.getString("LastName");
-
-        
-            String lastName = resultSet.getString("Last Name");
+            String lastName = resultSet.getString("LastName");                 
             String email = resultSet.getString("Email");
             String userName = resultSet.getString("UserName");
             String Password = resultSet.getString("Password");
-
             String buildingAddress = resultSet.getString("BuildingAddress");
             int apartmentId = resultSet.getInt("Apartmentid");
             String phoneNumber = resultSet.getString("PhoneNumber");

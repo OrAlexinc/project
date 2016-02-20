@@ -64,4 +64,10 @@ public class Order {
         public Calendar getDateRecieved(){
         return this.dateRecieved;
     }
+
+    @Override
+    public String toString() {
+        return "Order#"+OrderID+  "from:" + from + ", to" + to + "order:" + order + " dateOrderd" + dateRecieved  ;
+    }
+        
 }

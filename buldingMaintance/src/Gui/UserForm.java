@@ -304,14 +304,17 @@ public class UserForm extends javax.swing.JFrame {
  * @param evt 
  */
     private void btnPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayActionPerformed
-        // TODO add your handling code here:
+       int sum=Integer.parseInt(txtSum.getText());
+        String commant=txtPaymentComannt.getText();
+        Payment pay =new Payment(resident.getUserName(),"Admin",commant,sum);
     }//GEN-LAST:event_btnPayActionPerformed
 /**
  * order a servie
  * @param evt 
  */
     private void btnOrderServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderServiceActionPerformed
-        // TODO add your handling code here:
+       
+       
     }//GEN-LAST:event_btnOrderServiceActionPerformed
 
     /**

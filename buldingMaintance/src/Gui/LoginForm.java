@@ -121,7 +121,12 @@ DataBase dataBase = DataBase.GetInstance();
        
     }
     else if((user.getUserPermission()).equals("admin")){
-       final  Admin admin =(Admin)user;
+       final  Admin admin =new Admin(user.getID(),
+       user.getFirstName(),user.getLastName(),
+       user.getEmail(),user.getUserName(),user.getPassword(),
+               user.getBuildingAddress(),
+       user.getPhoneNumber(),user.getUserPermission(),
+       user.getApartmentId());
          java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new AdminForm(admin).setVisible(true);
