@@ -478,12 +478,6 @@ public class DataBase {
                    + "'" + worker.getFirstName() + "',"
                    + "'" + worker.getLastName() + "',"
                    + "'" + worker.getPhoto() +  "');";
-           
-            String insertWorker = "insert into  external_workers values(" + worker.getWorkerId() + ","
-                    + "'" + worker.getServiceName() + "',"
-                    + "'" + worker.getFirstName() + "',"
-                    + "'" + worker.getLastName() + "',"
-                    + "'" + worker.getPhoto() + "');";
 
             statement.executeUpdate(insertWorker);
         } catch (SQLException sqle) {
