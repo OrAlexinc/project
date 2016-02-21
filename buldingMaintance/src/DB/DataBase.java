@@ -429,6 +429,7 @@ public class DataBase {
      * @param password
      * @return user if successfully added, null if not
      */
+    
     public User logIn(String username, String password) {
         try {
             Class.forName(jdbcDriver);
@@ -467,5 +468,26 @@ public class DataBase {
         }
 
         return null;
+    }
+    
+    public void AddExternalWorkers(ExternalWorker worker) { //gets an object from type ExternalWorker and adds its fields to database
+        
+        try {
+            Class.forName(jdbcDriver);
+
+            Statement statement = connection.createStatement();
+           String insertWorker = "insert into  USERS values("+ worker.getWorkerId() +","
+                   + "'" + worker.getServiceName() + "',"
+                   + "'" + worker.getFirstName() + "',"
+                   + "'" + worker.getLastName() + "',"
+                   + "'" + worker.getPhoto() +  "');";
+           
+            statement.executeUpdate(insertWorker);
+        } catch (SQLException sqle) {
+            System.out.println("SQLException: " + sqle.getMessage());
+            System.out.println("Vendor Error: " + sqle.getErrorCode());
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }
