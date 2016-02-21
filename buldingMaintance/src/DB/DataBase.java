@@ -27,6 +27,8 @@ public class DataBase {
     List<Order> orders = new ArrayList<Order>();
     List<Payment> payments = new ArrayList<Payment>();
     List<User> users = new ArrayList<User>();
+    List<ExternalWorker> workers = new ArrayList<ExternalWorker>();
+    
     Connection connection;
 
     private DataBase() {
@@ -427,6 +429,8 @@ public class DataBase {
      * @param password
      * @return user if successfully added, null if not
      */
+    
+    
     public User logIn(String username, String password) {
         try {
             Class.forName(jdbcDriver);
@@ -488,18 +492,18 @@ public class DataBase {
         }
     }
 
-    public ExternalWorker showWorkerById(int ID) {
+    public ExternalWorker showAllWorkers() {
         ExternalWorker worker =new ExternalWorker();
         try {
             Class.forName(jdbcDriver);
 
             Statement statement = connection.createStatement();
 
-            String sqlWorker = "SELECT * FROM  external_workers where ID ='" + ID + "'";
+            String sqlWorker = "SELECT * FROM  external_workers";
 
             ResultSet resultSet = statement.executeQuery(sqlWorker);
 
-            if (resultSet.next()) {
+           while (resultSet.next()) {
                 int id = resultSet.getInt("workerID");
                 String serviceName = resultSet.getString("serviceName");
                 String firstName = resultSet.getString("firstName");
@@ -507,6 +511,7 @@ public class DataBase {
                 
 
                  worker=new ExternalWorker(id, serviceName, firstName, lastName );
+                 workers.add(worker);
             }
 
         } catch (SQLException sqle) {
