@@ -667,6 +667,7 @@ public class AdminForm extends javax.swing.JFrame {
      phoneNumber=txtEnterPhoneNumber.getText();
      
         User resident= new Resident(id,firstName,lastName,email,userName,password,admin.getBuildingAddress(),phoneNumber,"resident",apartmantId);
+        admin.addUser(resident);
         
     }//GEN-LAST:event_btnAddNewUserActionPerformed
 /**
@@ -675,7 +676,7 @@ public class AdminForm extends javax.swing.JFrame {
  */
     private void btnDeleteTheUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteTheUserActionPerformed
         int id=Integer.parseInt(txtIdOfTheUserToDelete.getText());
-       // a.addUser(id);
+       admin.deleteUser(id);
     }//GEN-LAST:event_btnDeleteTheUserActionPerformed
 /**
  * when send message button pressed

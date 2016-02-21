@@ -91,11 +91,20 @@ public class DataBase {
             Class.forName(jdbcDriver);
 
             Statement statement = connection.createStatement();
-            String insertUser = "insert into  USERS values(" + user.getID() + ",'" + user.getFirstName() + "'"
+           /* String insertUser = "insert into  USERS values(" + user.getID() + ",'" + user.getFirstName() + "'"
                     + ",'" + user.getLastName() + "','" + user.getEmail() + "','" + user.getUserName() + "','"
                     + user.getPassword() + "','" + user.getBuildingAddress() + "'," + "," + user.getApartmentId()
-                    + ",'" + user.getPhoneNumber() + "','" + user.getUserPermission() + "');";
-
+                    + ",'" + user.getPhoneNumber() + "','" + user.getUserPermission() + "');";*/
+           String insertUser = "insert into  USERS values("+ user.getID() +","
+                   + "'" + user.getFirstName() + "',"
+                   + "'" + user.getLastName() + "',"
+                   + "'" + user.getEmail() + "',"
+                   + "'" + user.getUserName() + "',"
+                   + "'" + user.getPassword() + "',"
+                   + "'" + user.getBuildingAddress() + "',"
+                   + "" + user.getApartmentId()+","
+                   + "'" + user.getPhoneNumber() + "'"
+                   + ",'" + user.getUserPermission() + "');";
             statement.executeUpdate(insertUser);
         } catch (SQLException sqle) {
             System.out.println("SQLException: " + sqle.getMessage());
@@ -116,7 +125,7 @@ public class DataBase {
 
             Statement statement = connection.createStatement();
             String deleteUser = "delete from  USERS where ID = " + id + "";
-            statement.executeUpdate(deleteUser);
+            statement.executeUpdate(deleteUser);          
         } catch (SQLException sqle) {
             System.out.println("SQLException: " + sqle.getMessage());
             System.out.println("Vendor Error: " + sqle.getErrorCode());
