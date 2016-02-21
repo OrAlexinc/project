@@ -86,7 +86,7 @@ public class Payment {
 
     @Override
     public String toString() {
-        return "Payment#"+paymentId + "from" + from + "to" + to + "sum" + sum + "comment" + comment + "datePayed" + dateRecieved ;
+        return "Payment#"+paymentId + "    from" + from + "     to" + to + "    sum" + sum + "\ncomment" + comment + "\ndatePayed" + dateRecieved +"\n";
     }
     
 }

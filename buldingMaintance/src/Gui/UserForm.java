@@ -5,6 +5,7 @@
  */
 package Gui;
 
+import DB.DataBase;
 import buldingmaintance.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ public class UserForm extends javax.swing.JFrame {
     Resident resident;
      List<Message> messages = new ArrayList<Message>();
      List<ExternalWorker> workers =new ArrayList<ExternalWorker>();
-     
+    DataBase dataBase = DataBase.GetInstance();
     public UserForm(Resident resident) {
         initComponents();
      this.resident=resident;
@@ -286,10 +287,12 @@ public class UserForm extends javax.swing.JFrame {
      * @param evt 
      */
     private void btnShowMessegesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowMessegesActionPerformed
-    for ( Message message:messages)
+    String allMessages="";
+        for ( Message message:messages)
               {
-                 txtShowMessage.setText(message.toString());
+                allMessages+= message.toString();
               }
+        txtShowMessage.setText(allMessages);
     }//GEN-LAST:event_btnShowMessegesActionPerformed
 /**
  * send my message
@@ -310,7 +313,14 @@ public class UserForm extends javax.swing.JFrame {
     private void btnMakeOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakeOrderActionPerformed
          OnOffComponents(false, false, false, true);
         OnOffPanel(true, true, true, true);
-        //workers=dataBase.showworkers
+        String allWorkers="";
+        workers=dataBase.showAllWorkers();
+                 for ( ExternalWorker worker:workers)
+              {
+                allWorkers+=worker.toString();
+              }
+                 txtListOfServices.setText(allWorkers);
+                 
     }//GEN-LAST:event_btnMakeOrderActionPerformed
 /**
  * make my payment
@@ -329,10 +339,7 @@ public class UserForm extends javax.swing.JFrame {
  */
     private void btnOrderServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderServiceActionPerformed
        
-        for ( ExternalWorker worker:workers)
-              {
-                 txtListOfServices.setText(worker.toString());
-              }
+       
         String id=txtEnterIdOfService.getText();
         String type=txtEnterTypeOfService.getText();
         Order order= new Order(resident.getUserName(),id,type);

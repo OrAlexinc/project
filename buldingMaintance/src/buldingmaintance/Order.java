@@ -69,7 +69,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order#"+OrderID+  "from:" + from + ", to" + to + "order:" + order + " dateOrderd" + dateRecieved  ;
+        return "Order#"+OrderID+  "   from:" + from + "  to" + to + "\norder:" + order + " \ndateOrderd" + dateRecieved +"\n" ;
     }
         
 }

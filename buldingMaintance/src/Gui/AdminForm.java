@@ -26,8 +26,10 @@ public class AdminForm extends javax.swing.JFrame {
    java.util.List<Message> messages = new ArrayList<Message>(); 
     java.util.List<Payment> payments = new ArrayList<Payment>(); 
     java.util.List<Order> orders = new ArrayList<Order>(); 
+    java.util.List<ExternalWorker> workers = new ArrayList<ExternalWorker>();
+     DataBase dataBase = DataBase.GetInstance();
     public AdminForm(Admin admin) {
-         DataBase dataBase = DataBase.GetInstance();
+        
         
         this.admin=admin;
         initComponents();
@@ -648,6 +650,7 @@ public class AdminForm extends javax.swing.JFrame {
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
       onOffPanel(true,true,true,true,true,false,false,false);
       onOffComponents(false,false,false,false,true,false,false,false);
+      
     }//GEN-LAST:event_btnOrderActionPerformed
 /**
  * show payments managment
@@ -728,10 +731,13 @@ public class AdminForm extends javax.swing.JFrame {
  * @param evt 
  */
     private void btnShowMessagesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowMessagesActionPerformed
-       for ( Message m:messages)
+       String allmesssages="";
+   
+        for ( Message m:messages)
               {
-                 txtShowMessage.setText(m.toString());
+               allmesssages+=m.toString();
               }
+        txtShowMessage.setText(allmesssages);
     }//GEN-LAST:event_btnShowMessagesActionPerformed
 /**
  * show the corrent payments
@@ -764,14 +770,21 @@ public class AdminForm extends javax.swing.JFrame {
  * @param evt 
  */
     private void btnShowSeriveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowSeriveActionPerformed
-        // TODO add your handling code here:
+       workers=dataBase.showAllWorkers();
+      for ( ExternalWorker worker:workers)
+              {
+                 txtShowServices.setText(worker.toString());
+              }
     }//GEN-LAST:event_btnShowSeriveActionPerformed
 /**
  * order the servie guy
  * @param evt 
  */
     private void btnMakeTheOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakeTheOrderActionPerformed
-      String id=txtIdOfServiceToOrder.getText();
+    
+        
+              
+       String id=txtIdOfServiceToOrder.getText();
       String type= txtServieType.getText();
       
       Order order=new Order(admin.getUserName(),id,type);
