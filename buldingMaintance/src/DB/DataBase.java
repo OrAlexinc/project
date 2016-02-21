@@ -91,10 +91,7 @@ public class DataBase {
             Class.forName(jdbcDriver);
 
             Statement statement = connection.createStatement();
-           /* String insertUser = "insert into  USERS values(" + user.getID() + ",'" + user.getFirstName() + "'"
-                    + ",'" + user.getLastName() + "','" + user.getEmail() + "','" + user.getUserName() + "','"
-                    + user.getPassword() + "','" + user.getBuildingAddress() + "'," + "," + user.getApartmentId()
-                    + ",'" + user.getPhoneNumber() + "','" + user.getUserPermission() + "');";*/
+       
            String insertUser = "insert into  USERS values("+ user.getID() +","
                    + "'" + user.getFirstName() + "',"
                    + "'" + user.getLastName() + "',"
