@@ -557,6 +557,6 @@ public class DataBase {
             System.out.println("Vendor Error: " + sqle.getErrorCode());
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        }
+        }        
     }
 }

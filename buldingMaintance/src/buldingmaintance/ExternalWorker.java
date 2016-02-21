@@ -70,6 +70,10 @@ public class ExternalWorker {
         this.photo = photo;
     }
 
-    
+    @Override
+     public String toString() {
+        return   "ID:" + workerId + " firstName:" + firstName + " lastName: " 
+                + lastName + ""+ " \n service name:" + serviceName  ;
 
+}
 }
