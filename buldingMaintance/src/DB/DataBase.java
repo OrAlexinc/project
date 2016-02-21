@@ -343,7 +343,7 @@ public class DataBase {
      * making sure that will be no duplicates in payment table
      * @return 
      */
- public int getPaymentId(){
+      public int getPaymentId(){
         int paymentId=0;
         try {
             Class.forName(jdbcDriver);
@@ -366,7 +366,8 @@ public class DataBase {
         }
     return paymentId;    
 }
-    public void makePayment(Payment payment) {//adds an payment to a database
+   
+ public void makePayment(Payment payment) {//adds an payment to a database
         try {
             Class.forName(jdbcDriver);
             java.sql.Timestamp timestamp = new java.sql.Timestamp(payment.getDateRecieved().getDate());
