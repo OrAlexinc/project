@@ -6,6 +6,7 @@
 package buldingmaintance;
 
 import DB.DataBase;
+import java.util.List;
 
 /**
  *
@@ -27,8 +28,8 @@ DataBase dataBase = DataBase.GetInstance();
     
        }
     
-    public void readMessage(){
-        
+    public List<Message> readMessage(String userName){
+      return dataBase.recieveMessages(userName);
     } 
     
     public void callService(Order order){

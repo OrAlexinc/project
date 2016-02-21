@@ -188,7 +188,7 @@ public class DataBase {
                 String buildingAddress = resultSet.getString("BuildingAddress");
                 int apartmentId = resultSet.getInt("Apartmentid");
                 String phoneNumber = resultSet.getString("PhoneNumber");
-                String userPermission = resultSet.getString("User Permission");
+                String userPermission = resultSet.getString("UserPermission");
 
                 user = new User(id, firstName, lastName, email, userName, password,
                         buildingAddress, phoneNumber, userPermission, apartmentId);
@@ -224,23 +224,23 @@ public class DataBase {
         }
     }
 
-    public List<Message> recieveMessages(User user) {
+    public List<Message> recieveMessages(String userName) {
         List<Message> thisUserMessages = new ArrayList<Message>();
 
         try {
             Class.forName(jdbcDriver);
 
             Statement statement = connection.createStatement();
-            String toUsername = user.getUserName();
+            String toUsername = userName;
 
-            String pullMessage = "SELECT * FROM MESSAGES WHERE  To ='" + toUsername + "'";
+            String pullMessage = "SELECT * FROM MESSAGES WHERE  ToUser ='" + toUsername + "'";
 
             ResultSet resultSet = statement.executeQuery(pullMessage);
 
             while (resultSet.next()) {
-                int sNumber = resultSet.getInt("Serial Number");
-                String from = resultSet.getString("From");
-                String to = resultSet.getString("To");
+                int sNumber = resultSet.getInt("SerialNumber");
+                String from = resultSet.getString("FromUser");
+                String to = resultSet.getString("ToUser");
                 Date time = resultSet.getDate("Create_time");
                 String content = resultSet.getString("Message");
 
@@ -307,16 +307,16 @@ public class DataBase {
             Statement statement = connection.createStatement();
             String toUsername = user.getUserName();
 
-            String pullPayments = "SELECT * FROM payments ";
+            String pullPayments = "SELECT * FROM payments";
 
             ResultSet resultSet = statement.executeQuery(pullPayments);
 
             while (resultSet.next()) {
-                int sNumber = resultSet.getInt("Serial Number");
-                String from = resultSet.getString("From");
-                String to = resultSet.getString("To");
+                int sNumber = resultSet.getInt("SerialNumber");
+                String from = resultSet.getString("FromUser");
+                String to = resultSet.getString("ToUser");
                 float sum = resultSet.getFloat("Sum");
-                Date time = resultSet.getDate("Create_time");
+                Date time = resultSet.getDate("Time");
                 String comment = resultSet.getString("Comment");
 
                 Payment payment = new Payment(from, to, comment, sum, sNumber, time);

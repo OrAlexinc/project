@@ -20,6 +20,14 @@ public class ExternalWorker {
     private Image photo;
     private Feedback feedback;
 
+    public ExternalWorker(int workerId, String serviceName, String firstName, String lastName) {
+        this.workerId = workerId;
+        this.serviceName = serviceName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    
     public int getWorkerId() {
         return workerId;
     }
