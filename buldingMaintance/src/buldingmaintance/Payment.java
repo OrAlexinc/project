@@ -19,7 +19,7 @@ public class Payment {
     private String to;
     private float sum;
     private String comment;
-    private Date dateRecieved=new Date(2, 12, 2016);
+    private Date dateRecieved=new Date(12/23/3);
     DataBase dataBase = DataBase.GetInstance();
     public Payment( String from,String to,String comment,int sum  ){
       
