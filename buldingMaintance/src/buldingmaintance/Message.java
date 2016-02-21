@@ -9,14 +9,15 @@ public class Message {
     private String content;
     private String fromUser;
     private String toUser;
-    private Date timeCreated= new Date(2000);
+    private Date timeCreated;
    DataBase dataBase = DataBase.GetInstance();
     public Message(){};
     
     public Message(String content,String fromUser,String toUser){
         setContent(content);
         setFromUser(fromUser);
-        setToUser(toUser);       
+        setToUser(toUser); 
+        timeCreated= new Date(70,0,0);
        messageID=dataBase.getMessageId();
     };
     public Message(String content,String fromUser,String toUser,int ID, Date time){
@@ -48,7 +49,7 @@ public class Message {
     }
      
     public void setToUser(String ToUser){
-      this.toUser=toUser;   
+      this.toUser=ToUser;   
       }
  
     public int getMessageID() {

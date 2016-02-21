@@ -250,7 +250,7 @@ public class DataBase {
                     + message.getToUser() + "','"
                     + message.getTimeCreated() + "','"
                     + message.getContent() + "');";
-
+            
             statement.executeUpdate(insertUser);
         } catch (SQLException sqle) {
             System.out.println("SQLException: " + sqle.getMessage());

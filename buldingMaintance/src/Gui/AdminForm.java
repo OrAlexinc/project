@@ -55,7 +55,7 @@ public class AdminForm extends javax.swing.JFrame {
         btnAddUser = new javax.swing.JButton();
         jpnSendMassege = new javax.swing.JPanel();
         btnSend = new javax.swing.JButton();
-        txtSendTo = new javax.swing.JTextField();
+        txtSendMessageTo = new javax.swing.JTextField();
         lblSentTo = new javax.swing.JLabel();
         jpnReadMessages = new javax.swing.JPanel();
         btnShowMessages = new javax.swing.JButton();
@@ -215,8 +215,8 @@ public class AdminForm extends javax.swing.JFrame {
         });
         jpnSendMassege.add(btnSend);
         btnSend.setBounds(38, 261, 120, 50);
-        jpnSendMassege.add(txtSendTo);
-        txtSendTo.setBounds(120, 20, 100, 22);
+        jpnSendMassege.add(txtSendMessageTo);
+        txtSendMessageTo.setBounds(120, 20, 100, 22);
 
         lblSentTo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblSentTo.setText("send to");
@@ -684,12 +684,10 @@ public class AdminForm extends javax.swing.JFrame {
  * @param evt 
  */
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
-      String username;
-      String text;
-      
-      username=txtSendTo.getText();
-      text=txtWriteMessage.getText();
+      String username=txtSendMessageTo.getText();
+      String text=txtWriteMessage.getText();             
       Message message =new Message(text,admin.getUserName(),username);
+        System.out.println(message.getToUser());
      admin.SendMessage(message);
     }//GEN-LAST:event_btnSendActionPerformed
 /**
@@ -833,7 +831,7 @@ public class AdminForm extends javax.swing.JFrame {
             ,boolean service,boolean addUser,boolean addService,boolean userManagemant){
     
      lblSentTo.setVisible(sendMessage);
-     txtSendTo.setVisible(sendMessage);
+     txtSendMessageTo.setVisible(sendMessage);
      txtWriteMessage.setVisible(sendMessage);
      scrollWriteMessage.setVisible(sendMessage);
      btnSend.setVisible(sendMessage);
@@ -1014,7 +1012,7 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JTextField txtIdOfServiceToOrder;
     private javax.swing.JTextField txtIdOfTheUserToDelete;
     private javax.swing.JTextArea txtPaymentCommant;
-    private javax.swing.JTextField txtSendTo;
+    private javax.swing.JTextField txtSendMessageTo;
     private javax.swing.JTextField txtServieType;
     private javax.swing.JTextArea txtShowMessage;
     private javax.swing.JTextArea txtShowServices;
