@@ -878,12 +878,13 @@ public class AdminForm extends javax.swing.JFrame {
      btnAddNewUser.setVisible(addUser);
      btnDeleteTheUser.setVisible(addUser);
      
+     btnAddService.setVisible(addService);
      lblEddNewService.setVisible(addService);
      lblEnterServiceType.setVisible(addService);
      lblEnterServiceGuyFirstName.setVisible(addService);
      lblEnterServiceGuyLastName.setVisible(addService);
      lblEnterServiceGuyId.setVisible(addService);
-     btnAddService.setVisible(addService);
+     btnAddTheServiceGuy.setVisible(addService);
      txtEnterServiceName.setVisible(addService);
      txtEnterServiceGuyFirsttName.setVisible(addService);
      txtEnterServiceGuyLastName.setVisible(addService);
