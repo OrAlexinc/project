@@ -56,8 +56,8 @@ DataBase dataBase = DataBase.GetInstance();
     {
         dataBase.makeOrder(order);
     }
-    public void addService(){
-        
+    public void addService(ExternalWorker externalWorker){
+        dataBase.AddExternalWorkers(externalWorker);
     }
     public void deleteServie(){
         

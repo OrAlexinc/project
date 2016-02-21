@@ -105,6 +105,10 @@ public class AdminForm extends javax.swing.JFrame {
         txtEnterServiceGuyLastName = new javax.swing.JTextField();
         txtEnterServiceGuyId = new javax.swing.JTextField();
         btnAddTheServiceGuy = new javax.swing.JButton();
+        lblDeleteService = new javax.swing.JLabel();
+        lblEnterIdOfServiceToDelete = new javax.swing.JLabel();
+        txtEnterIdOfServiceToDelete = new javax.swing.JTextField();
+        btnDeleteService = new javax.swing.JButton();
         lblApartmantId = new javax.swing.JLabel();
         txtApartment = new javax.swing.JTextField();
         lblEnterServieId = new javax.swing.JLabel();
@@ -421,7 +425,7 @@ public class AdminForm extends javax.swing.JFrame {
         btnShowAllUsers.setBounds(450, 380, 150, 40);
 
         jpnAddService.add(jpnUserManagment);
-        jpnUserManagment.setBounds(0, 0, 630, 480);
+        jpnUserManagment.setBounds(480, 360, 150, 120);
 
         lblEnterServiceType.setText("enter service name");
         jpnAddService.add(lblEnterServiceType);
@@ -449,8 +453,32 @@ public class AdminForm extends javax.swing.JFrame {
 
         btnAddTheServiceGuy.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnAddTheServiceGuy.setText("add");
+        btnAddTheServiceGuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddTheServiceGuyActionPerformed(evt);
+            }
+        });
         jpnAddService.add(btnAddTheServiceGuy);
         btnAddTheServiceGuy.setBounds(30, 375, 130, 40);
+
+        lblDeleteService.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblDeleteService.setText("delete a service");
+        jpnAddService.add(lblDeleteService);
+        lblDeleteService.setBounds(380, 46, 160, 20);
+
+        lblEnterIdOfServiceToDelete.setText("ender id of servic to delete");
+        jpnAddService.add(lblEnterIdOfServiceToDelete);
+        lblEnterIdOfServiceToDelete.setBounds(380, 90, 180, 16);
+
+        txtEnterIdOfServiceToDelete.setToolTipText("");
+        jpnAddService.add(txtEnterIdOfServiceToDelete);
+        txtEnterIdOfServiceToDelete.setBounds(380, 120, 160, 22);
+
+        btnDeleteService.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnDeleteService.setText("delete");
+        btnDeleteService.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jpnAddService.add(btnDeleteService);
+        btnDeleteService.setBounds(380, 160, 120, 40);
 
         jpnAddUser.add(jpnAddService);
         jpnAddService.setBounds(0, 0, 630, 480);
@@ -796,6 +824,19 @@ public class AdminForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApartmentActionPerformed
 /**
+ * add a new service guy
+ * @param evt 
+ */
+    private void btnAddTheServiceGuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTheServiceGuyActionPerformed
+     String serviceName=txtEnterServiceName.getText();      
+     String firstName=txtEnterServiceGuyFirsttName.getText();
+    String lastName= txtEnterServiceGuyLastName.getText();
+     int id= Integer.parseInt(txtEnterServiceGuyId.getText());
+     
+     ExternalWorker externalWorker =new ExternalWorker(id,serviceName,firstName,lastName);
+     admin.addService(externalWorker);
+    }//GEN-LAST:event_btnAddTheServiceGuyActionPerformed
+/**
  * 
  * @param sendMessage
  * @param readMessage
@@ -885,7 +926,7 @@ public class AdminForm extends javax.swing.JFrame {
      btnAddNewUser.setVisible(addUser);
      btnDeleteTheUser.setVisible(addUser);
      
-     btnAddService.setVisible(addService);
+    
      lblEddNewService.setVisible(addService);
      lblEnterServiceType.setVisible(addService);
      lblEnterServiceGuyFirstName.setVisible(addService);
@@ -896,6 +937,10 @@ public class AdminForm extends javax.swing.JFrame {
      txtEnterServiceGuyFirsttName.setVisible(addService);
      txtEnterServiceGuyLastName.setVisible(addService);
      txtEnterServiceGuyId.setVisible(addService);
+     lblDeleteService.setVisible(addService);
+     lblEnterIdOfServiceToDelete.setVisible(addService);
+     txtEnterIdOfServiceToDelete.setVisible(addService);
+     btnDeleteService.setVisible(addService);
      
      scrollUserManagment.setVisible(userManagemant);
      txtShowUserById.setVisible(userManagemant);
@@ -944,6 +989,7 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JButton btnAddService;
     private javax.swing.JButton btnAddTheServiceGuy;
     private javax.swing.JButton btnAddUser;
+    private javax.swing.JButton btnDeleteService;
     private javax.swing.JButton btnDeleteTheUser;
     private javax.swing.JButton btnMakePaymnet;
     private javax.swing.JButton btnMakeTheOrder;
@@ -972,11 +1018,13 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JPanel jpnViewPayments;
     private javax.swing.JLabel lblApartmantId;
     private javax.swing.JLabel lblCommant;
+    private javax.swing.JLabel lblDeleteService;
     private javax.swing.JLabel lblEddNewService;
     private javax.swing.JLabel lblEnteNewUserDetails;
     private javax.swing.JLabel lblEnterEmail;
     private javax.swing.JLabel lblEnterFirstName;
     private javax.swing.JLabel lblEnterID;
+    private javax.swing.JLabel lblEnterIdOfServiceToDelete;
     private javax.swing.JLabel lblEnterLastName;
     private javax.swing.JLabel lblEnterPassword;
     private javax.swing.JLabel lblEnterPhoneNumber;
@@ -1001,6 +1049,7 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JTextField txtEnderName;
     private javax.swing.JTextField txtEnterEmail;
     private javax.swing.JTextField txtEnterID;
+    private javax.swing.JTextField txtEnterIdOfServiceToDelete;
     private javax.swing.JTextField txtEnterLastName;
     private javax.swing.JTextField txtEnterPassword;
     private javax.swing.JTextField txtEnterPhoneNumber;
