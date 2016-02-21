@@ -1,6 +1,8 @@
 package buldingmaintance;
+import DB.DataBase;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.util.List;
 
 public class User {
 
@@ -15,7 +17,7 @@ public class User {
     private String userPermission;
     private int apartmentId;
     private Image ProfilePhoto;
-    
+    DataBase dataBase = DataBase.GetInstance();
      public User(){};
     
     public User(int ID, String firstName, String lastName, String email, 
@@ -117,17 +119,21 @@ public class User {
                          //connect to database
     }
 
-    public Message RecieveMessage(String selfUserName) {
-        Message message = new Message();
-        return message;
+    public List<Message> RecieveMessage(String selfUserName) {
+
+        return dataBase.recieveMessages(userName);
     }
 
     @Override
     public String toString() {
-        return   "ID:" + ID + " firstName:" + firstName + "lastName:" + lastName + ","
-                + " email:" + email + "userName:" + userName + "password:" + password + 
-                "buildingAddress:" + buildingAddress + "phoneNumber:" + phoneNumber + ""
-                + "userPermission:" + userPermission + "apartmentId:" + apartmentId +"" ;
+        return   "ID:" + ID + " firstName:" + firstName + " lastName: " 
+                + lastName + ""+ " \n email:" + email + " userName:" + 
+                userName + " password:" + password + 
+                " \n buildingAddress:" + buildingAddress + 
+                 " apartmentId:" + apartmentId +"" +
+                " phoneNumber:" + phoneNumber + ""
+                + " \nuserPermission:" + userPermission ;
+                
     }
 
     

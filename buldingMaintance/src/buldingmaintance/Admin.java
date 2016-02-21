@@ -7,6 +7,7 @@ package buldingmaintance;
 
 import DB.DataBase;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -19,8 +20,8 @@ DataBase dataBase = DataBase.GetInstance();
     }
 
     @Override
-    public Message RecieveMessage(String selfUserName) {
-        return super.RecieveMessage(selfUserName);
+    public List<Message> RecieveMessage(String selfUserName) {
+        return dataBase.recieveMessages(selfUserName);
     }
 
     @Override
@@ -35,11 +36,21 @@ DataBase dataBase = DataBase.GetInstance();
     public void makePayment(Payment paymant){
         dataBase.makePayment(paymant);
     }
+    public  List<Payment> recievePayments(User user){
+        return dataBase.recievePayments(user);
+    }
     public void addUser(User user){
         dataBase.AddUser(user);
     }
     public void deleteUser(int id){
         dataBase.RemoveUser(id);
+    }
+    public List<User> showAllUser (){
+        return dataBase.viewAllUsers();
+    }
+    public User showUserById(int id){
+        
+       return dataBase.showUserById(id);
     }
     public void order(Order order)
     {

@@ -5,6 +5,8 @@
  */
 package buldingmaintance;
 
+import DB.DataBase;
+import java.sql.Date;
 import java.util.Calendar;
 
 /**
@@ -16,14 +18,14 @@ public class Order {
     private String from;
     private String to;
     private String order;
-    private Calendar dateRecieved;
-
+    private Date dateRecieved=new Date(2000);
+  DataBase dataBase = DataBase.GetInstance();
     public Order(String from, String to, String order) {
         this.from = from;
         this.to = to;
         this.order = order;
-        dateRecieved=Calendar.getInstance();
-        OrderID++;
+
+        OrderID=dataBase.getOrderId();
     }
     
     
@@ -61,7 +63,7 @@ public class Order {
         this.order = order;
     }
     
-        public Calendar getDateRecieved(){
+        public Date getDateRecieved(){
         return this.dateRecieved;
     }
 

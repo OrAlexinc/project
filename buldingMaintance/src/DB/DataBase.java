@@ -91,11 +91,20 @@ public class DataBase {
             Class.forName(jdbcDriver);
 
             Statement statement = connection.createStatement();
-            String insertUser = "insert into  USERS values(" + user.getID() + ",'" + user.getFirstName() + "'"
+           /* String insertUser = "insert into  USERS values(" + user.getID() + ",'" + user.getFirstName() + "'"
                     + ",'" + user.getLastName() + "','" + user.getEmail() + "','" + user.getUserName() + "','"
                     + user.getPassword() + "','" + user.getBuildingAddress() + "'," + "," + user.getApartmentId()
-                    + ",'" + user.getPhoneNumber() + "','" + user.getUserPermission() + "');";
-
+                    + ",'" + user.getPhoneNumber() + "','" + user.getUserPermission() + "');";*/
+           String insertUser = "insert into  USERS values("+ user.getID() +","
+                   + "'" + user.getFirstName() + "',"
+                   + "'" + user.getLastName() + "',"
+                   + "'" + user.getEmail() + "',"
+                   + "'" + user.getUserName() + "',"
+                   + "'" + user.getPassword() + "',"
+                   + "'" + user.getBuildingAddress() + "',"
+                   + "" + user.getApartmentId()+","
+                   + "'" + user.getPhoneNumber() + "'"
+                   + ",'" + user.getUserPermission() + "');";
             statement.executeUpdate(insertUser);
         } catch (SQLException sqle) {
             System.out.println("SQLException: " + sqle.getMessage());
@@ -116,7 +125,7 @@ public class DataBase {
 
             Statement statement = connection.createStatement();
             String deleteUser = "delete from  USERS where ID = " + id + "";
-            statement.executeUpdate(deleteUser);
+            statement.executeUpdate(deleteUser);          
         } catch (SQLException sqle) {
             System.out.println("SQLException: " + sqle.getMessage());
             System.out.println("Vendor Error: " + sqle.getErrorCode());
@@ -188,7 +197,7 @@ public class DataBase {
                 String buildingAddress = resultSet.getString("BuildingAddress");
                 int apartmentId = resultSet.getInt("Apartmentid");
                 String phoneNumber = resultSet.getString("PhoneNumber");
-                String userPermission = resultSet.getString("User Permission");
+                String userPermission = resultSet.getString("UserPermission");
 
                 user = new User(id, firstName, lastName, email, userName, password,
                         buildingAddress, phoneNumber, userPermission, apartmentId);
@@ -202,7 +211,34 @@ public class DataBase {
         }
         return user;
     }
+    /**
+     * make sure that there will be no duplicates in messages table
+     * @return 
+     */
+    public int getMessageId(){
+        int messageId=0;
+        try {
+            Class.forName(jdbcDriver);
 
+            Statement statement = connection.createStatement();
+         
+            String getNewId = "SELECT * FROM messages WHERE  SerialNumber = (SELECT MAX(SerialNumber)  FROM messages)";
+               ResultSet resultSet=statement.executeQuery(getNewId);
+             if (resultSet.next()) {
+               messageId = resultSet.getInt("SerialNumber");
+               messageId++;
+             }       
+
+            
+        } catch (SQLException sqle) {
+            System.out.println("SQLException: " + sqle.getMessage());
+            System.out.println("Vendor Error: " + sqle.getErrorCode());
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    return messageId;    
+}
+    
     public void sendMessage(Message message) {//adds message to a database
         try {
             Class.forName(jdbcDriver);
@@ -212,9 +248,9 @@ public class DataBase {
             String insertUser = "insert into  messages values(" + message.getMessageID() + ",'"
                     + message.getFromUser() + "'" + ",'"
                     + message.getToUser() + "','"
-                    + timestamp + "','"
+                    + message.getTimeCreated() + "','"
                     + message.getContent() + "');";
-
+            
             statement.executeUpdate(insertUser);
         } catch (SQLException sqle) {
             System.out.println("SQLException: " + sqle.getMessage());
@@ -224,23 +260,23 @@ public class DataBase {
         }
     }
 
-    public List<Message> recieveMessages(User user) {
+    public List<Message> recieveMessages(String userName) {
         List<Message> thisUserMessages = new ArrayList<Message>();
 
         try {
             Class.forName(jdbcDriver);
 
             Statement statement = connection.createStatement();
-            String toUsername = user.getUserName();
+            String toUsername = userName;
 
-            String pullMessage = "SELECT * FROM MESSAGES WHERE  To ='" + toUsername + "'";
+            String pullMessage = "SELECT * FROM MESSAGES WHERE  ToUser ='" + toUsername + "'";
 
             ResultSet resultSet = statement.executeQuery(pullMessage);
 
             while (resultSet.next()) {
-                int sNumber = resultSet.getInt("Serial Number");
-                String from = resultSet.getString("From");
-                String to = resultSet.getString("To");
+                int sNumber = resultSet.getInt("SerialNumber");
+                String from = resultSet.getString("FromUser");
+                String to = resultSet.getString("ToUser");
                 Date time = resultSet.getDate("Create_time");
                 String content = resultSet.getString("Message");
 
@@ -257,15 +293,42 @@ public class DataBase {
         return thisUserMessages;
     }
 
+    /**
+     * make sure that will not be duplicates in order table
+     * @return 
+     */
+    public int getOrderId(){
+        int orderId=0;
+        try {
+            Class.forName(jdbcDriver);
+
+            Statement statement = connection.createStatement();
+         
+            String getNewId = "SELECT * FROM orders WHERE  SerialNumber = (SELECT MAX(SerialNumber)  FROM orders)";
+               ResultSet resultSet=statement.executeQuery(getNewId);
+             if (resultSet.next()) {
+               orderId = resultSet.getInt("SerialNumber");
+               orderId++;
+             }       
+
+            
+        } catch (SQLException sqle) {
+            System.out.println("SQLException: " + sqle.getMessage());
+            System.out.println("Vendor Error: " + sqle.getErrorCode());
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    return orderId;    
+}
     public void makeOrder(Order order) {//adds an order to a database
         try {
             Class.forName(jdbcDriver);
-            java.sql.Timestamp timestamp = new java.sql.Timestamp(order.getDateRecieved().getTimeInMillis());
+           /* java.sql.Timestamp timestamp = new java.sql.Timestamp(order.getDateRecieved().getTimeInMillis());*/
             Statement statement = connection.createStatement();
             String insertUser = "insert into  orders values(" + order.getOrderID() + ",'"
                     + order.getOrder() + "'" + ",'"
                     + order.getFrom() + "','"
-                    + timestamp + "','"
+                    + order.getDateRecieved() + "','"
                     + order.getTo() + "');";
 
             statement.executeUpdate(insertUser);
@@ -276,7 +339,33 @@ public class DataBase {
             e.printStackTrace();
         }
     }
+    /**
+     * making sure that will be no duplicates in payment table
+     * @return 
+     */
+ public int getPaymentId(){
+        int paymentId=0;
+        try {
+            Class.forName(jdbcDriver);
 
+            Statement statement = connection.createStatement();
+         
+            String getNewId = "SELECT * FROM payments WHERE  SerialNumber = (SELECT MAX(SerialNumber)  FROM payments)";
+               ResultSet resultSet=statement.executeQuery(getNewId);
+             if (resultSet.next()) {
+               paymentId = resultSet.getInt("SerialNumber");
+               paymentId++;
+             }       
+
+            
+        } catch (SQLException sqle) {
+            System.out.println("SQLException: " + sqle.getMessage());
+            System.out.println("Vendor Error: " + sqle.getErrorCode());
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    return paymentId;    
+}
     public void makePayment(Payment payment) {//adds an payment to a database
         try {
             Class.forName(jdbcDriver);
@@ -286,7 +375,7 @@ public class DataBase {
                     + payment.getFrom() + "'" + ",'"
                     + payment.getTo() + "','"
                     + payment.getSum() + "','"
-                    + timestamp + "','"
+                    + payment.getDateRecieved() + "','"
                     + payment.getComment() + "');";
 
             statement.executeUpdate(insertUser);
@@ -307,16 +396,16 @@ public class DataBase {
             Statement statement = connection.createStatement();
             String toUsername = user.getUserName();
 
-            String pullPayments = "SELECT * FROM payments ";
+            String pullPayments = "SELECT * FROM payments";
 
             ResultSet resultSet = statement.executeQuery(pullPayments);
 
             while (resultSet.next()) {
-                int sNumber = resultSet.getInt("Serial Number");
-                String from = resultSet.getString("From");
-                String to = resultSet.getString("To");
+                int sNumber = resultSet.getInt("SerialNumber");
+                String from = resultSet.getString("FromUser");
+                String to = resultSet.getString("ToUser");
                 float sum = resultSet.getFloat("Sum");
-                Date time = resultSet.getDate("Create_time");
+                Date time = resultSet.getDate("Time");
                 String comment = resultSet.getString("Comment");
 
                 Payment payment = new Payment(from, to, comment, sum, sNumber, time);

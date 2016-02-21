@@ -1,4 +1,5 @@
 package buldingmaintance;
+import DB.DataBase;
 import java.sql.Date;
 import java.util.Calendar;
 
@@ -9,15 +10,15 @@ public class Message {
     private String fromUser;
     private String toUser;
     private Date timeCreated;
-   
+   DataBase dataBase = DataBase.GetInstance();
     public Message(){};
     
     public Message(String content,String fromUser,String toUser){
         setContent(content);
         setFromUser(fromUser);
-        setToUser(toUser);
-        timeCreated.getTime();
-        messageID++;
+        setToUser(toUser); 
+        timeCreated= new Date(70,0,0);
+       messageID=dataBase.getMessageId();
     };
     public Message(String content,String fromUser,String toUser,int ID, Date time){
         setContent(content);
@@ -48,12 +49,14 @@ public class Message {
     }
      
     public void setToUser(String ToUser){
-      this.toUser=toUser;   
+      this.toUser=ToUser;   
       }
  
     public int getMessageID() {
         return messageID;
     }
+
+  
     
     public Date getTimeCreated(){
         return this.timeCreated;
