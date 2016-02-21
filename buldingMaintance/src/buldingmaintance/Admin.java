@@ -59,8 +59,8 @@ DataBase dataBase = DataBase.GetInstance();
     public void addService(ExternalWorker externalWorker){
         dataBase.AddExternalWorkers(externalWorker);
     }
-    public void deleteServie(){
-        
+    public void deleteServie(int id){
+        dataBase.RemoveExternalWorker(id);
     }
     
     @Override

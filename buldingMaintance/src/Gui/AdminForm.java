@@ -425,7 +425,7 @@ public class AdminForm extends javax.swing.JFrame {
         btnShowAllUsers.setBounds(450, 380, 150, 40);
 
         jpnAddService.add(jpnUserManagment);
-        jpnUserManagment.setBounds(480, 360, 150, 120);
+        jpnUserManagment.setBounds(0, 0, 630, 480);
 
         lblEnterServiceType.setText("enter service name");
         jpnAddService.add(lblEnterServiceType);
@@ -477,6 +477,11 @@ public class AdminForm extends javax.swing.JFrame {
         btnDeleteService.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnDeleteService.setText("delete");
         btnDeleteService.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDeleteService.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteServiceActionPerformed(evt);
+            }
+        });
         jpnAddService.add(btnDeleteService);
         btnDeleteService.setBounds(380, 160, 120, 40);
 
@@ -836,6 +841,11 @@ public class AdminForm extends javax.swing.JFrame {
      ExternalWorker externalWorker =new ExternalWorker(id,serviceName,firstName,lastName);
      admin.addService(externalWorker);
     }//GEN-LAST:event_btnAddTheServiceGuyActionPerformed
+
+    private void btnDeleteServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteServiceActionPerformed
+         int id=Integer.parseInt(txtEnterIdOfServiceToDelete.getText());
+         admin.deleteServie(id);
+    }//GEN-LAST:event_btnDeleteServiceActionPerformed
 /**
  * 
  * @param sendMessage
