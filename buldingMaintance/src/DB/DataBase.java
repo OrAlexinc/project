@@ -492,7 +492,7 @@ public class DataBase {
         }
     }
 
-    public ExternalWorker showAllWorkers() {
+    public List<ExternalWorker> showAllWorkers() {
         ExternalWorker worker =new ExternalWorker();
         try {
             Class.forName(jdbcDriver);
@@ -520,7 +520,7 @@ public class DataBase {
         } catch (ClassNotFoundException e) {
             System.out.println("Class not found exeption");
         }
-        return worker;
+        return workers;
     }
     
     
@@ -557,6 +557,6 @@ public class DataBase {
             System.out.println("Vendor Error: " + sqle.getErrorCode());
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        }
+        }        
     }
 }
