@@ -4,6 +4,7 @@
  */
 package buldingmaintance;
 
+import DB.DataBase;
 import java.sql.Date;
 import java.util.Calendar;
 
@@ -18,16 +19,15 @@ public class Payment {
     private String to;
     private float sum;
     private String comment;
-    private Date dateRecieved;
-    
+    private Date dateRecieved=new Date(2, 12, 2016);
+    DataBase dataBase = DataBase.GetInstance();
     public Payment( String from,String to,String comment,int sum  ){
       
         setFrom(from);
         setSum(sum);
         setComment(comment);
-        setSum(sum);
-        dateRecieved.getDate();
-        paymentId++;
+        setSum(sum);      
+       paymentId=dataBase.getPaymentId();
     }
     
     public Payment( String from,String to,String comment,float sum , int sNumber, Date time ){

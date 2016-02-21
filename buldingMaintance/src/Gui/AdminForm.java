@@ -410,7 +410,7 @@ public class AdminForm extends javax.swing.JFrame {
         btnShowAllUsers.setBounds(450, 380, 150, 40);
 
         jpnAddService.add(jpnUserManagment);
-        jpnUserManagment.setBounds(460, 310, 170, 170);
+        jpnUserManagment.setBounds(0, 0, 630, 480);
 
         lblEnterServiceType.setText("enter service name");
         jpnAddService.add(lblEnterServiceType);
@@ -770,10 +770,18 @@ public class AdminForm extends javax.swing.JFrame {
  * @param evt 
  */
     private void btnShowAllUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowAllUsersActionPerformed
+       String allUsers="";
         for ( User user:users)
               {
-                 txtUserManagment.setText(user.toString());
+                  allUsers+=user.toString();
+                  allUsers+="                       "
+                          + "                       "
+                          + "                       "
+                          + "                       "
+                          + "                       ";
+                // txtUserManagment.setText(user.toString());
               }
+         txtUserManagment.setText(allUsers);
     }//GEN-LAST:event_btnShowAllUsersActionPerformed
 /**
  * show specipic user

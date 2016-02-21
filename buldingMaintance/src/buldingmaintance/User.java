@@ -126,10 +126,14 @@ public class User {
 
     @Override
     public String toString() {
-        return   "ID:" + ID + " firstName:" + firstName + "lastName:" + lastName + ","
-                + " email:" + email + "userName:" + userName + "password:" + password + 
-                "buildingAddress:" + buildingAddress + "phoneNumber:" + phoneNumber + ""
-                + "userPermission:" + userPermission + "apartmentId:" + apartmentId +"" ;
+        return   "ID:" + ID + " firstName:" + firstName + " lastName: " 
+                + lastName + ""+ " \n email:" + email + " userName:" + 
+                userName + " password:" + password + 
+                " \n buildingAddress:" + buildingAddress + 
+                 " apartmentId:" + apartmentId +"" +
+                " phoneNumber:" + phoneNumber + ""
+                + " \nuserPermission:" + userPermission ;
+                
     }
 
     
