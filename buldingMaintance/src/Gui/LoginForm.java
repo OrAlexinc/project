@@ -104,10 +104,12 @@ DataBase dataBase = DataBase.GetInstance();
    // String password=txtPassword.getText();
     String username="1";
     String password="2";
+    String connctionEror="wrong user name or passsword";
+    String ErorType="Wrong Input";
      User user=dataBase.logIn(username, password);
        
   if(user==null){
-         JOptionPane.showMessageDialog(null, "wrong user name or passsword", "InfoBox: " , JOptionPane.INFORMATION_MESSAGE);
+         JOptionPane.showMessageDialog(null, connctionEror, ErorType , JOptionPane.INFORMATION_MESSAGE);
     }
   else if((user.getUserPermission()).equals("resident")){
     final Resident resident=(Resident)user;
