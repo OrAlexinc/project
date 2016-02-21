@@ -24,7 +24,7 @@ public class Payment {
     public Payment( String from,String to,String comment,int sum  ){
       
         setFrom(from);
-        setSum(sum);
+         setTo(to);
         setComment(comment);
         setSum(sum);      
        paymentId=dataBase.getPaymentId();
@@ -33,6 +33,7 @@ public class Payment {
     public Payment( String from,String to,String comment,float sum , int sNumber, Date time ){
       
         setFrom(from);
+        setTo(to);
         setSum((int) sum);
         setComment(comment);
         dateRecieved=time;
