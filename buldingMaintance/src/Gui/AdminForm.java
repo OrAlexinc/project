@@ -53,6 +53,7 @@ public class AdminForm extends javax.swing.JFrame {
         btnOrder = new javax.swing.JButton();
         btnViewPayments = new javax.swing.JButton();
         btnAddUser = new javax.swing.JButton();
+        btnAddService = new javax.swing.JButton();
         jpnSendMassege = new javax.swing.JPanel();
         btnSend = new javax.swing.JButton();
         txtSendMessageTo = new javax.swing.JTextField();
@@ -125,7 +126,6 @@ public class AdminForm extends javax.swing.JFrame {
         txtShowMessage = new javax.swing.JTextArea();
         scrollWriteMessage = new javax.swing.JScrollPane();
         txtWriteMessage = new javax.swing.JTextArea();
-        btnAddService = new javax.swing.JButton();
         btnUserManagemant = new javax.swing.JButton();
         javax.swing.JLabel BackgrundImage = new javax.swing.JLabel();
 
@@ -202,6 +202,17 @@ public class AdminForm extends javax.swing.JFrame {
         });
         jplMainPannel.add(btnAddUser);
         btnAddUser.setBounds(47, 358, 179, 41);
+
+        btnAddService.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnAddService.setText("add/delete service");
+        btnAddService.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAddService.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddServiceActionPerformed(evt);
+            }
+        });
+        jplMainPannel.add(btnAddService);
+        btnAddService.setBounds(47, 417, 179, 39);
 
         jpnSendMassege.setOpaque(false);
         jpnSendMassege.setLayout(null);
@@ -553,17 +564,6 @@ public class AdminForm extends javax.swing.JFrame {
 
         jplMainPannel.add(jpnSendMassege);
         jpnSendMassege.setBounds(320, 0, 630, 480);
-
-        btnAddService.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnAddService.setText("add/delete service");
-        btnAddService.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAddService.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddServiceActionPerformed(evt);
-            }
-        });
-        jplMainPannel.add(btnAddService);
-        btnAddService.setBounds(47, 417, 179, 39);
 
         btnUserManagemant.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnUserManagemant.setText("user managment");

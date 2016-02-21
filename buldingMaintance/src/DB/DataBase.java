@@ -22,7 +22,7 @@ public class DataBase {
 
     String jdbcUrl = "jdbc:mysql://localhost:3306/building_maintainance?zeroDateTimeBehavior=convertToNull";
     String jdbcUser = "root";
-    String jdbcPassword;
+    String jdbcPassword="root";
     String jdbcDriver = "com.mysql.jdbc.Driver";
     List<Message> messages = new ArrayList<Message>();
     List<Order> orders = new ArrayList<Order>();
@@ -474,7 +474,7 @@ public class DataBase {
             Class.forName(jdbcDriver);
 
             Statement statement = connection.createStatement();
-           String insertWorker = "insert into  USERS values("+ worker.getWorkerId() +","
+           String insertWorker = "insert into  external_workers values("+ worker.getWorkerId() +","
                    + "'" + worker.getServiceName() + "',"
                    + "'" + worker.getFirstName() + "',"
                    + "'" + worker.getLastName() + "',"
