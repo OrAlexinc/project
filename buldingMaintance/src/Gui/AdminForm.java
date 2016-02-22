@@ -10,6 +10,7 @@ import buldingmaintance.*;
 import java.awt.List;
 import java.util.*;
 import buldingmaintance.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -40,6 +41,7 @@ public class AdminForm extends javax.swing.JFrame {
      
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -909,7 +911,13 @@ public class AdminForm extends javax.swing.JFrame {
  * @param evt 
  */
     private void btnPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayActionPerformed
-      int sum=Integer.parseInt(txtSum.getText());
+      int sum=0;
+        String erorMessage="you need enter only digits";
+        String erorTitle="wrong input";
+        if (txtSum.getText().matches("[0-9]+") )
+         sum=Integer.parseInt(txtSum.getText());
+        else 
+              JOptionPane.showMessageDialog(null, erorMessage, erorTitle , JOptionPane.INFORMATION_MESSAGE);
     String commant= txtPaymentCommant.getText();
         Payment pay=new Payment(admin.getUserName(),admin.getUserName(),commant,sum);
       admin.makePayment(pay);
@@ -941,7 +949,14 @@ public class AdminForm extends javax.swing.JFrame {
  * @param evt 
  */
     private void btnShowUserByIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowUserByIdActionPerformed
-       int id=Integer.parseInt(txtShowUserById.getText());
+       int id=0;
+        String erorMessage="you need enter only digits";
+        String erorTitle="wrong input";
+        if (txtSum.getText().matches("[0-9]+") )
+         id=Integer.parseInt(txtShowUserById.getText());
+        else 
+              JOptionPane.showMessageDialog(null, erorMessage, erorTitle , JOptionPane.INFORMATION_MESSAGE);
+       
        User user;
        user=admin.showUserById(id);
        txtUserManagment.setText(user.toString());
@@ -958,7 +973,14 @@ public class AdminForm extends javax.swing.JFrame {
      String serviceName=txtEnterServiceName.getText();      
      String firstName=txtEnterServiceGuyFirsttName.getText();
     String lastName= txtEnterServiceGuyLastName.getText();
-     int id= Integer.parseInt(txtEnterServiceGuyId.getText());
+    String erorMessage="you need enter only digits";
+        String erorTitle="wrong input";
+        int id=0;
+        if (txtSum.getText().matches("[0-9]+") )
+           id= Integer.parseInt(txtEnterServiceGuyId.getText());
+        else 
+              JOptionPane.showMessageDialog(null, erorMessage, erorTitle , JOptionPane.INFORMATION_MESSAGE);
+   
      
      ExternalWorker externalWorker =new ExternalWorker(id,serviceName,firstName,lastName);
      admin.addService(externalWorker);
