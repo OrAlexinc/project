@@ -409,6 +409,7 @@ public class UserForm extends javax.swing.JFrame {
                 allMessages+= message.toString();
               }
         txtShowMessage.setText(allMessages);
+        
     }//GEN-LAST:event_btnShowMessegesActionPerformed
 /**
  * send my message

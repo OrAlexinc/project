@@ -832,14 +832,17 @@ public class AdminForm extends javax.swing.JFrame {
       Message message =new Message(text,admin.getUserName(),username);
         System.out.println(message.getToUser());
      admin.SendMessage(message);
+     txtSendMessageTo.setText(null);
+     txtWriteMessage.setText(null);
     }//GEN-LAST:event_btnSendActionPerformed
 /**
  * show your messages
  * @param evt 
  */
     private void btnShowMessagesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowMessagesActionPerformed
-       String allmesssages="";
-   
+       txtShowMessage.setText(null);
+        String allmesssages="";
+ 
         for ( Message m:messages)
               {
                allmesssages+=m.toString();
@@ -851,12 +854,12 @@ public class AdminForm extends javax.swing.JFrame {
  * @param evt 
  */
     private void btnViewWhoPaydActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewWhoPaydActionPerformed
-      
+      String paymentList="";
               for ( Payment p:payments)
               {
-                 txtViewPayments.setText(p.toString());
+                paymentList+=p.toString();
               }
-	
+	txtViewPayments.setText(paymentList);
     }//GEN-LAST:event_btnViewWhoPaydActionPerformed
 /**
  * show who not payed  yet
@@ -877,11 +880,15 @@ public class AdminForm extends javax.swing.JFrame {
  * @param evt 
  */
     private void btnShowSeriveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowSeriveActionPerformed
-       workers=dataBase.showAllWorkers();
+       txtShowServices.setText(null);
+        workers=dataBase.showAllWorkers();
+       String workerList="";
       for ( ExternalWorker worker:workers)
               {
-                 txtShowServices.setText(worker.toString());
+                 workerList+=worker.toString();
               }
+       txtShowServices.setText(workerList);
+      
     }//GEN-LAST:event_btnShowSeriveActionPerformed
 /**
  * order the servie guy
@@ -889,7 +896,7 @@ public class AdminForm extends javax.swing.JFrame {
  */
     private void btnMakeTheOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakeTheOrderActionPerformed
     
-        
+         txtShowServices.setText(null);
               
        String id=txtIdOfServiceToOrder.getText();
       String type= txtServieType.getText();
@@ -925,8 +932,7 @@ public class AdminForm extends javax.swing.JFrame {
         for ( User user:users)
               {
                   allUsers+=user.toString();
-                
-                // txtUserManagment.setText(user.toString());
+                            
               }
          txtUserManagment.setText(allUsers);
     }//GEN-LAST:event_btnShowAllUsersActionPerformed
