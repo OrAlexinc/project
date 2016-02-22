@@ -6,6 +6,7 @@
 package Gui;
 
 import DB.DataBase;
+import Languages.LocalizationUtil;
 import buldingmaintance.*;
 import javax.swing.JOptionPane;
 
@@ -95,7 +96,8 @@ DataBase dataBase = DataBase.GetInstance();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-/**
+
+    /**
  * click on login botton
  * @param evt 
  */
