@@ -21,13 +21,15 @@ public class DataBase {
 
     String jdbcUrl = "jdbc:mysql://localhost:3306/building_maintainance?zeroDateTimeBehavior=convertToNull";
     String jdbcUser = "root";
-    String jdbcPassword="root";
+    String jdbcPassword;
     String jdbcDriver = "com.mysql.jdbc.Driver";
     List<Message> messages = new ArrayList<Message>();
     List<Order> orders = new ArrayList<Order>();
     List<Payment> payments = new ArrayList<Payment>();
     List<User> users = new ArrayList<User>();
     List<ExternalWorker> workers = new ArrayList<ExternalWorker>();
+    List<Feedback> feedbacks=new ArrayList<Feedback>(); 
+
     
     Connection connection;
 
@@ -558,5 +560,37 @@ public class DataBase {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }        
+    }
+    
+    public List<Feedback> showWorkersFeedbackById(int id) {
+        Feedback feedback=new Feedback();
+        try {
+            Class.forName(jdbcDriver);
+
+            Statement statement = connection.createStatement();
+
+            String sqlFeedback = "SELECT * FROM  worker_feedback where workerID = " + id + "";
+
+            ResultSet resultSet = statement.executeQuery(sqlFeedback);
+
+           while (resultSet.next()) {
+                int Id = resultSet.getInt("workerID");
+                String feedBack = resultSet.getString("feedback");
+                int rating = resultSet.getInt("rating");
+                String workDone = resultSet.getString("workDone");
+                float priceTaken=resultSet.getFloat("priceTaken");
+                
+
+                 feedback = new Feedback(Id, feedBack,rating ,workDone,priceTaken);
+                 feedbacks.add(feedback);
+            }
+
+        } catch (SQLException sqle) {
+            System.out.println("SQLException: " + sqle.getMessage());
+            System.out.println("Vendor Error: " + sqle.getErrorCode());
+        } catch (ClassNotFoundException e) {
+            System.out.println("Class not found exeption");
+        }
+        return feedbacks;
     }
 }

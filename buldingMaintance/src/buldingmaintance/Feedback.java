@@ -16,6 +16,8 @@ public class Feedback {
         private String workDone;
         private float priceTaken;
 
+        public Feedback(){};
+        
         public Feedback(int workerId, String feedback, int rating, String workDone, float priceTaken) {
             this.workerId = workerId;
             this.feedback = feedback;
