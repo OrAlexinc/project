@@ -447,6 +447,7 @@ public class UserForm extends javax.swing.JFrame {
  */
     private void btnOrderServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderServiceActionPerformed
        
+       txtListOfServices.
        
         String id=txtEnterIdOfService.getText();
         String type=txtEnterTypeOfService.getText();
@@ -492,7 +493,7 @@ public class UserForm extends javax.swing.JFrame {
                 allWorkers+=worker.toString();
               }
                  txtListOfServices.setText(allWorkers);
-                 
+                 allWorkers=null;
     }//GEN-LAST:event_btnShowServiceListActionPerformed
 
     /**
