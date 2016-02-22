@@ -153,8 +153,8 @@ public class AdminForm extends javax.swing.JFrame {
         scrollWriteMessage = new javax.swing.JScrollPane();
         txtWriteMessage = new javax.swing.JTextArea();
         btnUserManagemant = new javax.swing.JButton();
-        javax.swing.JLabel BackgrundImage = new javax.swing.JLabel();
         btnAddFeedback = new javax.swing.JButton();
+        javax.swing.JLabel BackgrundImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(950, 600));
@@ -247,6 +247,7 @@ public class AdminForm extends javax.swing.JFrame {
 
         btnSend.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnSend.setText("send");
+        btnSend.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSendActionPerformed(evt);
@@ -268,6 +269,7 @@ public class AdminForm extends javax.swing.JFrame {
 
         btnShowMessages.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnShowMessages.setText("show messeges");
+        btnShowMessages.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnShowMessages.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShowMessagesActionPerformed(evt);
@@ -312,7 +314,7 @@ public class AdminForm extends javax.swing.JFrame {
         jpnViewPayments.add(btnViewAllPayments);
         btnViewAllPayments.setBounds(474, 211, 98, 40);
 
-        jpnService.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jpnService.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jpnService.setOpaque(false);
         jpnService.setLayout(null);
 
@@ -416,6 +418,7 @@ public class AdminForm extends javax.swing.JFrame {
         jpnUserManagment.setOpaque(false);
         jpnUserManagment.setLayout(null);
 
+        txtUserManagment.setEditable(false);
         scrollUserManagment.setViewportView(txtUserManagment);
 
         jpnUserManagment.add(scrollUserManagment);
@@ -423,6 +426,7 @@ public class AdminForm extends javax.swing.JFrame {
 
         btnShowUserById.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnShowUserById.setText("show");
+        btnShowUserById.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnShowUserById.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShowUserByIdActionPerformed(evt);
@@ -442,6 +446,7 @@ public class AdminForm extends javax.swing.JFrame {
 
         btnShowAllUsers.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnShowAllUsers.setText("show all users");
+        btnShowAllUsers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnShowAllUsers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShowAllUsersActionPerformed(evt);
@@ -536,6 +541,7 @@ public class AdminForm extends javax.swing.JFrame {
 
         btnAddTheServiceGuy.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnAddTheServiceGuy.setText("add");
+        btnAddTheServiceGuy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAddTheServiceGuy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddTheServiceGuyActionPerformed(evt);
@@ -609,6 +615,7 @@ public class AdminForm extends javax.swing.JFrame {
         jpnService.add(txtServieType);
         txtServieType.setBounds(330, 340, 100, 22);
 
+        txtShowServices.setEditable(false);
         txtShowServices.setColumns(20);
         txtShowServices.setRows(5);
         scrollShowSerivices.setViewportView(txtShowServices);
@@ -636,6 +643,7 @@ public class AdminForm extends javax.swing.JFrame {
         jpnViewPayments.add(jpnService);
         jpnService.setBounds(0, 0, 630, 460);
 
+        txtViewPayments.setEditable(false);
         txtViewPayments.setColumns(20);
         txtViewPayments.setRows(5);
         scrollViewPaymenys.setViewportView(txtViewPayments);
@@ -650,6 +658,7 @@ public class AdminForm extends javax.swing.JFrame {
 
         btnPay.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnPay.setText("pay");
+        btnPay.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPayActionPerformed(evt);
@@ -678,6 +687,7 @@ public class AdminForm extends javax.swing.JFrame {
         jpnReadMessages.add(jpnMakePayment);
         jpnMakePayment.setBounds(0, 0, 630, 470);
 
+        txtShowMessage.setEditable(false);
         txtShowMessage.setColumns(20);
         txtShowMessage.setRows(5);
         scrollShowMessage.setViewportView(txtShowMessage);
@@ -709,10 +719,6 @@ public class AdminForm extends javax.swing.JFrame {
         jplMainPannel.add(btnUserManagemant);
         btnUserManagemant.setBounds(50, 470, 180, 40);
 
-        BackgrundImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gui/adminBackgrund.png"))); // NOI18N
-        jplMainPannel.add(BackgrundImage);
-        BackgrundImage.setBounds(0, 0, 960, 570);
-
         btnAddFeedback.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnAddFeedback.setText("add feedback");
         btnAddFeedback.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -723,6 +729,10 @@ public class AdminForm extends javax.swing.JFrame {
         });
         jplMainPannel.add(btnAddFeedback);
         btnAddFeedback.setBounds(50, 520, 180, 40);
+
+        BackgrundImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gui/adminBackgrund.png"))); // NOI18N
+        jplMainPannel.add(BackgrundImage);
+        BackgrundImage.setBounds(0, 0, 960, 570);
 
         getContentPane().add(jplMainPannel);
         jplMainPannel.setBounds(0, 0, 950, 570);
@@ -800,14 +810,20 @@ public class AdminForm extends javax.swing.JFrame {
         String phoneNumber;
         String email;
         int apartmantId;
-        int id;
+        int id=0;
         
      lastName=txtEnterLastName.getText();
      firstName=txtEnderName.getText();
      email=txtEnterEmail.getText();
      password=txtEnterPassword.getText();
      userName= txtEnterUserName.getText();
-     id=Integer.parseInt(txtEnterID.getText());
+     String errorMessage="you need enter only digits in the id";
+     String errorTitle="wrong input";
+        if (txtSum.getText().matches("[0-9]+"))
+        id=Integer.parseInt(txtEnterID.getText());
+        else 
+              JOptionPane.showMessageDialog(null, errorMessage, errorTitle , JOptionPane.ERROR_MESSAGE);
+     
      apartmantId=Integer.parseInt(txtApartment.getText());
      phoneNumber=txtEnterPhoneNumber.getText();
      
@@ -820,7 +836,15 @@ public class AdminForm extends javax.swing.JFrame {
  * @param evt 
  */
     private void btnDeleteTheUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteTheUserActionPerformed
-        int id=Integer.parseInt(txtIdOfTheUserToDelete.getText());
+        int id=0;
+        String errorMessage="you need enter only digits in the id fild";
+        String errorTitle="wrong input";
+        if (txtSum.getText().matches("[0-9]+"))
+         id=Integer.parseInt(txtIdOfTheUserToDelete.getText());
+        else 
+              JOptionPane.showMessageDialog(null, errorMessage, errorTitle , JOptionPane.ERROR_MESSAGE);
+        
+        
        admin.deleteUser(id);
     }//GEN-LAST:event_btnDeleteTheUserActionPerformed
 /**
@@ -900,7 +924,7 @@ public class AdminForm extends javax.swing.JFrame {
     
          txtShowServices.setText(null);
               
-       String id=txtIdOfServiceToOrder.getText();
+      String id=txtIdOfServiceToOrder.getText();
       String type= txtServieType.getText();
       
       Order order=new Order(admin.getUserName(),id,type);
@@ -912,12 +936,12 @@ public class AdminForm extends javax.swing.JFrame {
  */
     private void btnPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayActionPerformed
       int sum=0;
-        String erorMessage="you need enter only digits";
-        String erorTitle="wrong input";
-        if (txtSum.getText().matches("[0-9]+") )
+        String sumErrorMessage="you need enter only digits in the sum feild";
+        String sumErrorTitle="wrong input";
+        if (txtSum.getText().matches("[0-9]+"))
          sum=Integer.parseInt(txtSum.getText());
         else 
-              JOptionPane.showMessageDialog(null, erorMessage, erorTitle , JOptionPane.INFORMATION_MESSAGE);
+              JOptionPane.showMessageDialog(null, sumErrorMessage, sumErrorTitle , JOptionPane.ERROR_MESSAGE);
     String commant= txtPaymentCommant.getText();
         Payment pay=new Payment(admin.getUserName(),admin.getUserName(),commant,sum);
       admin.makePayment(pay);
@@ -950,12 +974,12 @@ public class AdminForm extends javax.swing.JFrame {
  */
     private void btnShowUserByIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowUserByIdActionPerformed
        int id=0;
-        String erorMessage="you need enter only digits";
-        String erorTitle="wrong input";
+        String idErrorMessage="you need enter only digits in he id fild";
+        String idErrorTitle="wrong input";
         if (txtSum.getText().matches("[0-9]+") )
          id=Integer.parseInt(txtShowUserById.getText());
         else 
-              JOptionPane.showMessageDialog(null, erorMessage, erorTitle , JOptionPane.INFORMATION_MESSAGE);
+              JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle , JOptionPane.ERROR_MESSAGE);
        
        User user;
        user=admin.showUserById(id);
@@ -973,13 +997,13 @@ public class AdminForm extends javax.swing.JFrame {
      String serviceName=txtEnterServiceName.getText();      
      String firstName=txtEnterServiceGuyFirsttName.getText();
     String lastName= txtEnterServiceGuyLastName.getText();
-    String erorMessage="you need enter only digits";
-        String erorTitle="wrong input";
+    String idErorMessage="you need enter only digits in the id feild";
+        String idErorTitle="wrong input";
         int id=0;
         if (txtSum.getText().matches("[0-9]+") )
            id= Integer.parseInt(txtEnterServiceGuyId.getText());
         else 
-              JOptionPane.showMessageDialog(null, erorMessage, erorTitle , JOptionPane.INFORMATION_MESSAGE);
+              JOptionPane.showMessageDialog(null, idErorMessage, idErorTitle , JOptionPane.INFORMATION_MESSAGE);
    
      
      ExternalWorker externalWorker =new ExternalWorker(id,serviceName,firstName,lastName);
@@ -987,14 +1011,27 @@ public class AdminForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddTheServiceGuyActionPerformed
 
     private void btnDeleteServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteServiceActionPerformed
-         int id=Integer.parseInt(txtEnterIdOfServiceToDelete.getText());
+        
+        int id=0;
+        String idErrorMessage="you need enter only digits in the  id feild";
+        String idErrorTitle="wrong input";
+        if (txtSum.getText().matches("[0-9]+") )
+         id=Integer.parseInt(txtEnterIdOfServiceToDelete.getText());
+        else 
+              JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle , JOptionPane.ERROR_MESSAGE);
          admin.deleteServie(id);
     }//GEN-LAST:event_btnDeleteServiceActionPerformed
 
     private void btnShowTheFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowTheFeedbackActionPerformed
       int id=0;
       String workerFeedback="";
-     id=Integer.parseInt(txtEnterIdOfServiceToShowFeeedback.getText());  
+       String idErrorMessage="you need enter only digits in the id feild";
+        String IderrorTitle="wrong input";
+        if (txtSum.getText().matches("[0-9]+") )
+           id=Integer.parseInt(txtEnterIdOfServiceToShowFeeedback.getText());  
+        else 
+              JOptionPane.showMessageDialog(null, idErrorMessage, IderrorTitle , JOptionPane.ERROR_MESSAGE);
+     
         feedbacks=admin.seeFeedback(id);
         for(Feedback feedback:feedbacks)
         {
@@ -1012,7 +1049,14 @@ public class AdminForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddFeedbackActionPerformed
 
     private void btnSendFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendFeedbackActionPerformed
-        int id=Integer.parseInt(txtEnterServiceId.getText());
+        int id=0;
+        String idErrorMessage="you need enter only digits in the id feild";
+        String idErrorTitle="wrong input";
+        if (txtSum.getText().matches("[0-9]+") )
+          id=Integer.parseInt(txtEnterServiceId.getText());
+        else 
+              JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle , JOptionPane.ERROR_MESSAGE);
+        
         int rating =Integer.parseInt(txtRatingOfService.getText());
         float price =Integer.parseInt(txtEnterPriceTaken.getText());
         String feedbackText=txtEnterFeedback.getText();
