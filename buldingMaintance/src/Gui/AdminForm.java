@@ -959,7 +959,7 @@ public class AdminForm extends javax.swing.JFrame {
 
         if (txtSum.getText().matches("[0-9]+") == false) {
             JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else if (txtSum.getText().length() < 100000000 && txtSum.getText().length() > 999999999) {
+        } else if ((txtSum.getText().length() < 100000000 )&& (txtSum.getText().length() > 999999999)) {
             JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
         } else {
             sum = Integer.parseInt(txtSum.getText());
