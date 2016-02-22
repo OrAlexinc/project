@@ -9,6 +9,7 @@ import DB.DataBase;
 import buldingmaintance.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,16 +18,21 @@ import java.util.List;
 public class UserForm extends javax.swing.JFrame {
 
     Resident resident;
-     List<Message> messages = new ArrayList<Message>();
-     List<ExternalWorker> workers =new ArrayList<ExternalWorker>();
-      List<Feedback> feedbacks=new ArrayList<Feedback>(); 
+    List<Message> messages = new ArrayList<Message>();
+    List<ExternalWorker> workers = new ArrayList<ExternalWorker>();
+    List<Feedback> feedbacks = new ArrayList<Feedback>();
     DataBase dataBase = DataBase.GetInstance();
+    String idLenghtError = "id must contin 9 digits";
+    String idErrorMessage = "you need enter only digits in the id";
+    String idErrorTitle = "wrong input";
+    String feedbackErrorMessage = "you need enter only digits to the id/rating/sum";
+    String feedbackLenghtError = "you neeed to enter numbers no longer than 9 digits";
     public UserForm(Resident resident) {
         initComponents();
-     this.resident=resident;
-      OnOffComponents(false, false, false, false,false);
-        OnOffPanel(false, false, false, false,false);
-     
+        this.resident = resident;
+        OnOffComponents(false, false, false, false, false);
+        OnOffPanel(false, false, false, false, false);
+
     }
 
     /**
@@ -118,6 +124,7 @@ public class UserForm extends javax.swing.JFrame {
         jpnViewMassege.setOpaque(false);
         jpnViewMassege.setLayout(null);
 
+        txtShowMessage.setEditable(false);
         txtShowMessage.setColumns(20);
         txtShowMessage.setRows(5);
         txtShowMessage.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -144,6 +151,7 @@ public class UserForm extends javax.swing.JFrame {
 
         btnPay.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnPay.setText("pay");
+        btnPay.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPayActionPerformed(evt);
@@ -196,6 +204,7 @@ public class UserForm extends javax.swing.JFrame {
         jpnOrderMaintinace.add(lblServieList);
         lblServieList.setBounds(40, 40, 130, 22);
 
+        txtListOfServices.setEditable(false);
         txtListOfServices.setColumns(20);
         txtListOfServices.setRows(5);
         scrollListOfServices.setViewportView(txtListOfServices);
@@ -357,6 +366,7 @@ public class UserForm extends javax.swing.JFrame {
 
         btnMakeOrder.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnMakeOrder.setText("order maintainace");
+        btnMakeOrder.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMakeOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMakeOrderActionPerformed(evt);
@@ -387,183 +397,227 @@ public class UserForm extends javax.swing.JFrame {
 
     private void btnSendMassegeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendMassegeActionPerformed
 
-        OnOffComponents(true, false, false, false,false);
-        OnOffPanel(true, false, false, false,false);
+        OnOffComponents(true, false, false, false, false);
+        OnOffPanel(true, false, false, false, false);
     }//GEN-LAST:event_btnSendMassegeActionPerformed
 
     private void btnViewMassegeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewMassegeActionPerformed
-       
-       OnOffComponents(false, true, false, false,false);
-        OnOffPanel(true, true, false, false,false);
-       messages=resident.RecieveMessage(resident.getUserName());
+
+        OnOffComponents(false, true, false, false, false);
+        OnOffPanel(true, true, false, false, false);
+        messages = resident.RecieveMessage(resident.getUserName());
     }//GEN-LAST:event_btnViewMassegeActionPerformed
 
     /**
      * show my messages
-     * @param evt 
+     *
+     * @param evt
      */
     private void btnShowMessegesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowMessegesActionPerformed
-    String allMessages="";
-        for ( Message message:messages)
-              {
-                allMessages+= message.toString();
-              }
+        String allMessages = "";
+        for (Message message : messages) {
+            allMessages += message.toString();
+        }
         txtShowMessage.setText(allMessages);
-        
+
     }//GEN-LAST:event_btnShowMessegesActionPerformed
-/**
- * send my message
- * @param evt 
- */
+    /**
+     * send my message
+     *
+     * @param evt
+     */
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
-    String content=txtWriteMessage.getText();
-    String to=txtSendTo.getText();
-    Message message=new Message(content,resident.getUserName(),to);
-    resident.SendMessage(message);
+        String content = txtWriteMessage.getText();
+        String to = txtSendTo.getText();
+        Message message = new Message(content, resident.getUserName(), to);
+        resident.SendMessage(message);
     }//GEN-LAST:event_btnSendActionPerformed
 
     private void btnMakepaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakepaymentActionPerformed
-        OnOffComponents(false, false, true, false,false);
-        OnOffPanel(true, true, true, false,false);
+        OnOffComponents(false, false, true, false, false);
+        OnOffPanel(true, true, true, false, false);
     }//GEN-LAST:event_btnMakepaymentActionPerformed
 
     private void btnMakeOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakeOrderActionPerformed
-         OnOffComponents(false, false, false, true,false);
-        OnOffPanel(true, true, true, true,false);
-       
+        OnOffComponents(false, false, false, true, false);
+        OnOffPanel(true, true, true, true, false);
+
     }//GEN-LAST:event_btnMakeOrderActionPerformed
-/**
- * make my payment
- * @param evt 
- */
+    /**
+     * make my payment
+     *
+     * @param evt
+     */
     private void btnPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayActionPerformed
-       int sum=Integer.parseInt(txtSum.getText());
-        String commant=txtPaymentCommant.getText();
-        Payment pay =new Payment(resident.getUserName(),"Admin",commant,sum);
+        int sum = 0;
+        String workerFeedback = "";
+         if (txtSum.getText().matches("[0-9]+") == false) {
+            JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        } else if (txtSum.getText().length() < 0 && txtSum.getText().length() > 999999999) {
+            JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        } else {
+            sum = Integer.parseInt(txtSum.getText());
+        } 
+        String commant = txtPaymentCommant.getText();
+        Payment pay = new Payment(resident.getUserName(), "Admin", commant, sum);
         //resident.addPayment
-          resident.addPayment(pay);
+        resident.addPayment(pay);
     }//GEN-LAST:event_btnPayActionPerformed
-/**
- * order a servie
- * @param evt 
- */
+    /**
+     * order a servie
+     *
+     * @param evt
+     */
     private void btnOrderServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderServiceActionPerformed
-       
-     //  txtListOfServices.
-       
-        String id=txtEnterIdOfService.getText();
-        String type=txtEnterTypeOfService.getText();
-        Order order= new Order(resident.getUserName(),id,type);
+        String id = "";
+         if (txtEnterIdOfService.getText().matches("[0-9]+") == false) {
+            JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        } else if (txtEnterIdOfService.getText().length() < 100000000 && txtEnterIdOfService.getText().length() > 999999999) {
+            JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        } else {
+            id = txtEnterIdOfService.getText();
+        } 
+
+        String type = txtEnterTypeOfService.getText();
+        Order order = new Order(resident.getUserName(), id, type);
         resident.callService(order);
-        
+
     }//GEN-LAST:event_btnOrderServiceActionPerformed
-/**
- * add a feedback abut a service
- * @param evt 
- */
+    /**
+     * add a feedback abut a service
+     *
+     * @param evt
+     */
     private void btnAddAFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddAFeedbackActionPerformed
-         OnOffComponents(false, false, false, false,true);
-        OnOffPanel(true, true, true, true,true);
+        OnOffComponents(false, false, false, false, true);
+        OnOffPanel(true, true, true, true, true);
     }//GEN-LAST:event_btnAddAFeedbackActionPerformed
 
     /**
      * add the feedback to database
-     * @param evt 
+     *
+     * @param evt
      */
     private void btnSendFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendFeedbackActionPerformed
-        int id=Integer.parseInt(txtEnterServiceId.getText());
-        int rating =Integer.parseInt(txtRatingOfService.getText());
-        float price =Integer.parseInt(txtEnterPriceTaken.getText());
-        String feedbackText=txtEnterFeedback.getText();
-        String workDone=txtEnterWorkTypeDone.getText();
-        Feedback  feedback= new Feedback(id,feedbackText,rating,workDone,price);
+        int id = 0;
+        int rating = 0;
+        float price = 0;
+        String workerFeedback = "";
+       
+        if (txtEnterServiceId.getText().matches("[0-9]+")||txtRatingOfService.getText().matches("[0-9]+") ||
+                txtEnterPriceTaken.getText().matches("[0-9]+")) {
+              JOptionPane.showMessageDialog(null, feedbackErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+           
+        } 
+        else if( ((txtEnterServiceId.getText().length() > 999999999&&
+                txtEnterServiceId.getText().length() < 100000000)||
+                ( txtRatingOfService.getText().length() > 10&&
+               
+               txtRatingOfService.getText().length()<0 )|| txtEnterPriceTaken.getText().length() <0)){
+             JOptionPane.showMessageDialog(null, feedbackLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        }
+        else {
+           id = Integer.parseInt(txtEnterServiceId.getText());
+           rating = Integer.parseInt(txtRatingOfService.getText());
+           price = Integer.parseInt(txtEnterPriceTaken.getText());
+        }
+        String feedbackText = txtEnterFeedback.getText();
+        String workDone = txtEnterWorkTypeDone.getText();
+        Feedback feedback = new Feedback(id, feedbackText, rating, workDone, price);
         resident.addFeedback(feedback);
     }//GEN-LAST:event_btnSendFeedbackActionPerformed
 
     private void btnShowTheFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowTheFeedbackActionPerformed
-        int id=0;
-      String workerFeedback="";
-     id=Integer.parseInt(txtEnterIdOfServiceToSeeFeedback.getText());  
-        feedbacks=resident.seeFeedback(id);
-        for(Feedback feedback:feedbacks)
-        {
-            workerFeedback+=feedback.toString();
+        int id = 0;
+        String workerFeedback = "";
+         if (txtEnterIdOfServiceToSeeFeedback.getText().matches("[0-9]+") == false) {
+            JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        } else if (txtEnterIdOfServiceToSeeFeedback.getText().length() < 100000000 && txtEnterIdOfServiceToSeeFeedback.getText().length() > 999999999) {
+            JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        } else {
+            id = Integer.parseInt(txtEnterIdOfServiceToSeeFeedback.getText());
+        } 
+
+        feedbacks = resident.seeFeedback(id);
+        for (Feedback feedback : feedbacks) {
+            workerFeedback += feedback.toString();
         }
         txtListOfServices.setText(workerFeedback);
     }//GEN-LAST:event_btnShowTheFeedbackActionPerformed
-/**
- * show the list if the services
- * @param evt 
- */
+    /**
+     * show the list if the services
+     *
+     * @param evt
+     */
     private void btnShowServiceListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowServiceListActionPerformed
-         String allWorkers="";
-        workers=dataBase.showAllWorkers();
-                 for ( ExternalWorker worker:workers)
-              {
-                allWorkers+=worker.toString();
-              }
-                 txtListOfServices.setText(allWorkers);
-                 allWorkers=null;
+        String allWorkers = "";
+        workers = dataBase.showAllWorkers();
+        for (ExternalWorker worker : workers) {
+            allWorkers += worker.toString();
+        }
+        txtListOfServices.setText(allWorkers);
+        allWorkers = null;
     }//GEN-LAST:event_btnShowServiceListActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public void OnOffPanel(boolean sendMessage,boolean viewMessage ,
-            boolean payment,boolean order,boolean feedback) {
-        jpnSendMassege.setVisible(sendMessage); 
-        jpnViewMassege.setVisible(viewMessage);    
+    public void OnOffPanel(boolean sendMessage, boolean viewMessage,
+            boolean payment, boolean order, boolean feedback) {
+        jpnSendMassege.setVisible(sendMessage);
+        jpnViewMassege.setVisible(viewMessage);
         jpnPayment.setVisible(payment);
         jpnOrderMaintinace.setVisible(order);
         jpnAddFeedback.setVisible(feedback);
-              
+
     }
-    public void OnOffComponents(boolean sendMessage,boolean viewMessage ,
-            boolean payment,boolean order,boolean feedback) {
-       btnSend.setVisible(sendMessage);
-       scrollWriteMassege.setVisible(sendMessage);
-       txtWriteMessage.setVisible(sendMessage);
-       txtSendTo.setVisible(sendMessage);
-       lblSendTo.setVisible(sendMessage);        
-       
-       btnShowMesseges.setVisible(viewMessage);
-       scrollShowMessage.setVisible(viewMessage);
-       
-       btnPay.setVisible(payment);
-       txtSum.setVisible(payment);
-       lblSum.setVisible(payment);
-       lblPaymentCommant.setVisible(payment);
-       txtPaymentCommant.setVisible(payment);
-       scrollPaymentCommant.setVisible(payment);
-       
-       txtListOfServices.setVisible(order);
-       scrollListOfServices.setVisible(order);
-       lblServieList.setVisible(order);
-       lblTypeOfService.setVisible(order);
-       txtEnterIdOfService.setVisible(order);
-       txtEnterTypeOfService.setVisible(order);
-       btnOrderService.setVisible(order);
-       lblEnterIdOfServiceToSeeFeeedback.setVisible(order);
-       txtEnterIdOfServiceToSeeFeedback.setVisible(order);
-       btnShowTheFeedback.setVisible(order);
-       lblIdOfService.setVisible(order);
-       btnShowServiceList.setVisible(order);
-       
-       lblEddFeedbackAbutAService.setVisible(feedback);
-       txtEnterServiceId.setVisible(feedback);
-       lblEnterFeddbackId.setVisible(feedback);
-       txtRatingOfService.setVisible(feedback);
-       lblEnterRatingOfService.setVisible(feedback);
-       lblEnterPriveTaken.setVisible(feedback);
-       txtEnterPriceTaken.setVisible(feedback);
-       lblEnterFeedback.setVisible(feedback);
-       scrollEnterFeedback.setVisible(feedback);
-       txtEnterFeedback.setVisible(feedback);   
-       lblEnterWorkDone.setVisible(feedback);
-       txtEnterWorkTypeDone.setVisible(feedback);
-       
-              
+
+    public void OnOffComponents(boolean sendMessage, boolean viewMessage,
+            boolean payment, boolean order, boolean feedback) {
+        btnSend.setVisible(sendMessage);
+        scrollWriteMassege.setVisible(sendMessage);
+        txtWriteMessage.setVisible(sendMessage);
+        txtSendTo.setVisible(sendMessage);
+        lblSendTo.setVisible(sendMessage);
+
+        btnShowMesseges.setVisible(viewMessage);
+        scrollShowMessage.setVisible(viewMessage);
+
+        btnPay.setVisible(payment);
+        txtSum.setVisible(payment);
+        lblSum.setVisible(payment);
+        lblPaymentCommant.setVisible(payment);
+        txtPaymentCommant.setVisible(payment);
+        scrollPaymentCommant.setVisible(payment);
+
+        txtListOfServices.setVisible(order);
+        scrollListOfServices.setVisible(order);
+        lblServieList.setVisible(order);
+        lblTypeOfService.setVisible(order);
+        txtEnterIdOfService.setVisible(order);
+        txtEnterTypeOfService.setVisible(order);
+        btnOrderService.setVisible(order);
+        lblEnterIdOfServiceToSeeFeeedback.setVisible(order);
+        txtEnterIdOfServiceToSeeFeedback.setVisible(order);
+        btnShowTheFeedback.setVisible(order);
+        lblIdOfService.setVisible(order);
+        btnShowServiceList.setVisible(order);
+
+        lblEddFeedbackAbutAService.setVisible(feedback);
+        txtEnterServiceId.setVisible(feedback);
+        lblEnterFeddbackId.setVisible(feedback);
+        txtRatingOfService.setVisible(feedback);
+        lblEnterRatingOfService.setVisible(feedback);
+        lblEnterPriveTaken.setVisible(feedback);
+        txtEnterPriceTaken.setVisible(feedback);
+        lblEnterFeedback.setVisible(feedback);
+        scrollEnterFeedback.setVisible(feedback);
+        txtEnterFeedback.setVisible(feedback);
+        lblEnterWorkDone.setVisible(feedback);
+        txtEnterWorkTypeDone.setVisible(feedback);
+
     }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -589,8 +643,6 @@ public class UserForm extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        
-      
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
