@@ -19,6 +19,7 @@ public class UserForm extends javax.swing.JFrame {
     Resident resident;
      List<Message> messages = new ArrayList<Message>();
      List<ExternalWorker> workers =new ArrayList<ExternalWorker>();
+      List<Feedback> feedbacks=new ArrayList<Feedback>(); 
     DataBase dataBase = DataBase.GetInstance();
     public UserForm(Resident resident) {
         initComponents();
@@ -257,7 +258,7 @@ public class UserForm extends javax.swing.JFrame {
         txtEnterWorkTypeDone.setBounds(40, 180, 190, 22);
 
         jpnOrderMaintinace.add(jpnAddFeedback);
-        jpnAddFeedback.setBounds(480, 330, 170, 160);
+        jpnAddFeedback.setBounds(0, 0, 650, 490);
 
         lblEnterIdOfServiceToSeeFeeedback.setText("Enter id of service to see feedback");
         jpnOrderMaintinace.add(lblEnterIdOfServiceToSeeFeeedback);
@@ -479,7 +480,15 @@ public class UserForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSendFeedbackActionPerformed
 
     private void btnShowTheFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowTheFeedbackActionPerformed
-        
+        int id=0;
+      String workerFeedback="";
+     id=Integer.parseInt(txtEnterIdOfServiceToSeeFeedback.getText());  
+        feedbacks=resident.seeFeedback(id);
+        for(Feedback feedback:feedbacks)
+        {
+            workerFeedback+=feedback.toString();
+        }
+        txtListOfServices.setText(workerFeedback);
     }//GEN-LAST:event_btnShowTheFeedbackActionPerformed
 /**
  * show the list if the services
@@ -548,8 +557,7 @@ public class UserForm extends javax.swing.JFrame {
        txtEnterPriceTaken.setVisible(feedback);
        lblEnterFeedback.setVisible(feedback);
        scrollEnterFeedback.setVisible(feedback);
-       txtEnterFeedback.setVisible(feedback);
-      
+       txtEnterFeedback.setVisible(feedback);   
        lblEnterWorkDone.setVisible(feedback);
        txtEnterWorkTypeDone.setVisible(feedback);
        

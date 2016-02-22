@@ -38,10 +38,10 @@ DataBase dataBase = DataBase.GetInstance();
     public void addFeedback(Feedback feedbak){
         dataBase.AddFeedbackForWorker(feedbak);
     }
-    /*public  List<Feedback> seeFeedback(int id){
+    public  List<Feedback> seeFeedback(int id){
        
-        
-    }*/
+        return dataBase.showWorkersFeedbackById(id);
+    }
     @Override
     public String toString() {
         return super.toString();
