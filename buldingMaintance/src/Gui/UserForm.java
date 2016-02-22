@@ -447,7 +447,7 @@ public class UserForm extends javax.swing.JFrame {
  */
     private void btnOrderServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderServiceActionPerformed
        
-       txtListOfServices.
+     //  txtListOfServices.
        
         String id=txtEnterIdOfService.getText();
         String type=txtEnterTypeOfService.getText();
