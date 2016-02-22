@@ -21,27 +21,30 @@ public class AdminForm extends javax.swing.JFrame {
     /**
      * Creates new form AdminForm
      */
-     Admin admin;
-    
+    Admin admin;
+
     java.util.List<User> users = new ArrayList<User>();
-   java.util.List<Message> messages = new ArrayList<Message>(); 
-    java.util.List<Payment> payments = new ArrayList<Payment>(); 
-    java.util.List<Order> orders = new ArrayList<Order>(); 
+    java.util.List<Message> messages = new ArrayList<Message>();
+    java.util.List<Payment> payments = new ArrayList<Payment>();
+    java.util.List<Order> orders = new ArrayList<Order>();
     java.util.List<ExternalWorker> workers = new ArrayList<ExternalWorker>();
-     java.util.List<Feedback> feedbacks=new ArrayList<Feedback>(); 
-     DataBase dataBase = DataBase.GetInstance();
+    java.util.List<Feedback> feedbacks = new ArrayList<Feedback>();
+    DataBase dataBase = DataBase.GetInstance();
+    String idLenghtError = "id must contin 9 digits";
+    String idErrorMessage = "you need enter only digits in the id";
+    String idErrorTitle = "wrong input";
+    String feedbackErrorMessage = "you need enter only digits to the id/rating/sum";
+    String feedbackLenghtError = "you neeed to enter numbers no longer than 9 digits";
+
     public AdminForm(Admin admin) {
-        
-        
-        this.admin=admin;
+
+        this.admin = admin;
         initComponents();
-        onOffPanel(false,false,false,false,false,false,false,false,false);
-        onOffComponents(false,false,false,false,false,false,false,false,false);
-    
-     
+        onOffPanel(false, false, false, false, false, false, false, false, false);
+        onOffComponents(false, false, false, false, false, false, false, false, false);
+
     }
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -741,67 +744,69 @@ public class AdminForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSendMassegeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendMassegeActionPerformed
-      
-        onOffPanel(true,false,false,false,false,false,false,false,false);
-        onOffComponents(true,false,false,false,false,false,false,false,false);
-      
+
+        onOffPanel(true, false, false, false, false, false, false, false, false);
+        onOffComponents(true, false, false, false, false, false, false, false, false);
+
     }//GEN-LAST:event_btnSendMassegeActionPerformed
-/**
-    *
-    */
+    /**
+     *
+     */
     private void btnReadMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReadMessageActionPerformed
-     onOffPanel(true,true,false,false,false,false,false,false,false);
-     onOffComponents(false,true,false,false,false,false,false,false,false);
-     messages=admin.RecieveMessage(admin.getUserName());
+        onOffPanel(true, true, false, false, false, false, false, false, false);
+        onOffComponents(false, true, false, false, false, false, false, false, false);
+        messages = admin.RecieveMessage(admin.getUserName());
     }//GEN-LAST:event_btnReadMessageActionPerformed
-/**
- * 
- * @param evt 
- */
+    /**
+     *
+     * @param evt
+     */
     private void btnMakePaymnetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakePaymnetActionPerformed
-        onOffPanel(true,true,true,false,false,false,false,false,false);
-        onOffComponents(false,false,true,false,false,false,false,false,false);
+        onOffPanel(true, true, true, false, false, false, false, false, false);
+        onOffComponents(false, false, true, false, false, false, false, false, false);
     }//GEN-LAST:event_btnMakePaymnetActionPerformed
-/**
- * 
- * @param evt 
- */
+    /**
+     *
+     * @param evt
+     */
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
-      onOffPanel(true,true,true,true,true,false,false,false,false);
-      onOffComponents(false,false,false,false,true,false,false,false,false);
-      
+        onOffPanel(true, true, true, true, true, false, false, false, false);
+        onOffComponents(false, false, false, false, true, false, false, false, false);
+
     }//GEN-LAST:event_btnOrderActionPerformed
-/**
- * show payments managment
- * @param evt 
- */
+    /**
+     * show payments managment
+     *
+     * @param evt
+     */
     private void btnViewPaymentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewPaymentsActionPerformed
-        onOffPanel(true,true,true,true,false,false,false,false,false);
-        onOffComponents(false,false,false,true,false,false,false,false,false);
-        payments=admin.recievePayments(admin);
+        onOffPanel(true, true, true, true, false, false, false, false, false);
+        onOffComponents(false, false, false, true, false, false, false, false, false);
+        payments = admin.recievePayments(admin);
     }//GEN-LAST:event_btnViewPaymentsActionPerformed
-/**
- * add/delete user button
- * @param evt 
- */
+    /**
+     * add/delete user button
+     *
+     * @param evt
+     */
     private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUserActionPerformed
-        onOffPanel(true,true,true,true,true,true,false,false,false);
-        onOffComponents(false,false,false,false,false,true,false,false,false);
- 
+        onOffPanel(true, true, true, true, true, true, false, false, false);
+        onOffComponents(false, false, false, false, false, true, false, false, false);
+
     }//GEN-LAST:event_btnAddUserActionPerformed
-/**
- * 
- * @param evt 
- */
+    /**
+     *
+     * @param evt
+     */
     private void btnAddServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddServiceActionPerformed
-       onOffPanel(true,true,true,true,true,true,true,false,false);
-       onOffComponents(false,false,false,false,false,false,true,false,false);
+        onOffPanel(true, true, true, true, true, true, true, false, false);
+        onOffComponents(false, false, false, false, false, false, true, false, false);
     }//GEN-LAST:event_btnAddServiceActionPerformed
-/**
- * button add
- * when pressed the user added to database
- * @param evt 
- */
+    /**
+     * button add when pressed the user added to database
+     *
+     * @param evt
+     */
     private void btnAddNewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddNewUserActionPerformed
         String firstName;
         String lastName;
@@ -810,274 +815,307 @@ public class AdminForm extends javax.swing.JFrame {
         String phoneNumber;
         String email;
         int apartmantId;
-        int id=0;
-        
-     lastName=txtEnterLastName.getText();
-     firstName=txtEnderName.getText();
-     email=txtEnterEmail.getText();
-     password=txtEnterPassword.getText();
-     userName= txtEnterUserName.getText();
-     String errorMessage="you need enter only digits in the id";
-     String errorTitle="wrong input";
-        if (txtSum.getText().matches("[0-9]+"))
-        id=Integer.parseInt(txtEnterID.getText());
-        else 
-              JOptionPane.showMessageDialog(null, errorMessage, errorTitle , JOptionPane.ERROR_MESSAGE);
-     
-     apartmantId=Integer.parseInt(txtApartment.getText());
-     phoneNumber=txtEnterPhoneNumber.getText();
-     
-        User resident= new Resident(id,firstName,lastName,email,userName,password,admin.getBuildingAddress(),phoneNumber,"resident",apartmantId);
+        int id = 0;
+
+        lastName = txtEnterLastName.getText();
+        firstName = txtEnderName.getText();
+        email = txtEnterEmail.getText();
+        password = txtEnterPassword.getText();
+        userName = txtEnterUserName.getText();
+
+        if (txtEnterID.getText().matches("[0-9]+") == false) {
+            JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        } else if (txtEnterID.getText().length() < 100000000 && txtEnterID.getText().length() > 999999999) {
+            JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        } else {
+            id = Integer.parseInt(txtEnterID.getText());
+        }
+        apartmantId = Integer.parseInt(txtApartment.getText());
+        phoneNumber = txtEnterPhoneNumber.getText();
+
+        User resident = new Resident(id, firstName, lastName, email, userName, password, admin.getBuildingAddress(), phoneNumber, "resident", apartmantId);
         admin.addUser(resident);
-        
+
     }//GEN-LAST:event_btnAddNewUserActionPerformed
-/**
- * what heppenns when delete button in delete user prassed
- * @param evt 
- */
+    /**
+     * what heppenns when delete button in delete user prassed
+     *
+     * @param evt
+     */
     private void btnDeleteTheUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteTheUserActionPerformed
-        int id=0;
-        String errorMessage="you need enter only digits in the id fild";
-        String errorTitle="wrong input";
-        if (txtSum.getText().matches("[0-9]+"))
-         id=Integer.parseInt(txtIdOfTheUserToDelete.getText());
-        else 
-              JOptionPane.showMessageDialog(null, errorMessage, errorTitle , JOptionPane.ERROR_MESSAGE);
-        
-        
-       admin.deleteUser(id);
+        int id = 0;
+
+        if (txtIdOfTheUserToDelete.getText().matches("[0-9]+") == false) {
+            JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        } else if (txtIdOfTheUserToDelete.getText().length() < 100000000 && txtIdOfTheUserToDelete.getText().length() > 999999999) {
+            JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        } else {
+            id = Integer.parseInt(txtIdOfTheUserToDelete.getText());
+        }
+
+        admin.deleteUser(id);
     }//GEN-LAST:event_btnDeleteTheUserActionPerformed
-/**
- * when send message button pressed
- * sends the message
- * @param evt 
- */
+    /**
+     * when send message button pressed sends the message
+     *
+     * @param evt
+     */
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
-      String username=txtSendMessageTo.getText();
-      String text=txtWriteMessage.getText();             
-      Message message =new Message(text,admin.getUserName(),username);
+        String username = txtSendMessageTo.getText();
+        String text = txtWriteMessage.getText();
+        Message message = new Message(text, admin.getUserName(), username);
         System.out.println(message.getToUser());
-     admin.SendMessage(message);
-     txtSendMessageTo.setText(null);
-     txtWriteMessage.setText(null);
+        admin.SendMessage(message);
+        txtSendMessageTo.setText(null);
+        txtWriteMessage.setText(null);
     }//GEN-LAST:event_btnSendActionPerformed
-/**
- * show your messages
- * @param evt 
- */
+    /**
+     * show your messages
+     *
+     * @param evt
+     */
     private void btnShowMessagesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowMessagesActionPerformed
-       txtShowMessage.setText(null);
-        String allmesssages="";
- 
-        for ( Message m:messages)
-              {
-               allmesssages+=m.toString();
-              }
+        txtShowMessage.setText(null);
+        String allmesssages = "";
+
+        for (Message m : messages) {
+            allmesssages += m.toString();
+        }
         txtShowMessage.setText(allmesssages);
     }//GEN-LAST:event_btnShowMessagesActionPerformed
-/**
- * show the corrent payments
- * @param evt 
- */
+    /**
+     * show the corrent payments
+     *
+     * @param evt
+     */
     private void btnViewWhoPaydActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewWhoPaydActionPerformed
-      String paymentList="";
-              for ( Payment p:payments)
-              {
-                paymentList+=p.toString();
-              }
-	txtViewPayments.setText(paymentList);
+        String paymentList = "";
+        for (Payment p : payments) {
+            paymentList += p.toString();
+        }
+        txtViewPayments.setText(paymentList);
     }//GEN-LAST:event_btnViewWhoPaydActionPerformed
-/**
- * show who not payed  yet
- * @param evt 
- */
+    /**
+     * show who not payed yet
+     *
+     * @param evt
+     */
     private void btnViewWhoNotPayedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewWhoNotPayedActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnViewWhoNotPayedActionPerformed
-/**
- * show all paymnts who payed and who not
- * @param evt 
- */
+    /**
+     * show all paymnts who payed and who not
+     *
+     * @param evt
+     */
     private void btnViewAllPaymentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAllPaymentsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnViewAllPaymentsActionPerformed
-/**
- * show all possibale serivece guys
- * @param evt 
- */
+    /**
+     * show all possibale serivece guys
+     *
+     * @param evt
+     */
     private void btnShowSeriveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowSeriveActionPerformed
-       txtShowServices.setText(null);
-        workers=dataBase.showAllWorkers();
-       String workerList="";
-      for ( ExternalWorker worker:workers)
-              {
-                 workerList+=worker.toString();
-              }
-       txtShowServices.setText(workerList);
-      
+        txtShowServices.setText(null);
+        workers = dataBase.showAllWorkers();
+        String workerList = "";
+        for (ExternalWorker worker : workers) {
+            workerList += worker.toString();
+        }
+        txtShowServices.setText(workerList);
+
     }//GEN-LAST:event_btnShowSeriveActionPerformed
-/**
- * order the servie guy
- * @param evt 
- */
+    /**
+     * order the servie guy
+     *
+     * @param evt
+     */
     private void btnMakeTheOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakeTheOrderActionPerformed
-    
-         txtShowServices.setText(null);
-              
-      String id=txtIdOfServiceToOrder.getText();
-      String type= txtServieType.getText();
-      
-      Order order=new Order(admin.getUserName(),id,type);
-       admin.order(order);
+
+        txtShowServices.setText(null);
+        String id = "";
+
+        if (txtIdOfServiceToOrder.getText().matches("[0-9]+") == false) {
+            JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        } else if (txtIdOfServiceToOrder.getText().length() < 100000000 && txtIdOfServiceToOrder.getText().length() > 999999999) {
+            JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        } else {
+            id = txtIdOfServiceToOrder.getText();
+        }
+
+        String type = txtServieType.getText();
+
+        Order order = new Order(admin.getUserName(), id, type);
+        admin.order(order);
     }//GEN-LAST:event_btnMakeTheOrderActionPerformed
-/**
- * make the payment
- * @param evt 
- */
+    /**
+     * make the payment
+     *
+     * @param evt
+     */
     private void btnPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayActionPerformed
-      int sum=0;
-        String sumErrorMessage="you need enter only digits in the sum feild";
-        String sumErrorTitle="wrong input";
-        if (txtSum.getText().matches("[0-9]+"))
-         sum=Integer.parseInt(txtSum.getText());
-        else 
-              JOptionPane.showMessageDialog(null, sumErrorMessage, sumErrorTitle , JOptionPane.ERROR_MESSAGE);
-    String commant= txtPaymentCommant.getText();
-        Payment pay=new Payment(admin.getUserName(),admin.getUserName(),commant,sum);
-      admin.makePayment(pay);
+        int sum = 0;
+
+        if (txtSum.getText().matches("[0-9]+") == false) {
+            JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        } else if (txtSum.getText().length() < 100000000 && txtSum.getText().length() > 999999999) {
+            JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        } else {
+            sum = Integer.parseInt(txtSum.getText());
+        }
+
+        String commant = txtPaymentCommant.getText();
+        Payment pay = new Payment(admin.getUserName(), admin.getUserName(), commant, sum);
+        admin.makePayment(pay);
     }//GEN-LAST:event_btnPayActionPerformed
-/**
- * view your all users
- * @param evt 
- */
+    /**
+     * view your all users
+     *
+     * @param evt
+     */
     private void btnUserManagemantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserManagemantActionPerformed
-       onOffPanel(true,true,true,true,true,true,true,true,false);
-       onOffComponents(false,false,false,false,false,false,false,true,false);
-       users=admin.showAllUser();
+        onOffPanel(true, true, true, true, true, true, true, true, false);
+        onOffComponents(false, false, false, false, false, false, false, true, false);
+        users = admin.showAllUser();
     }//GEN-LAST:event_btnUserManagemantActionPerformed
-/**
- * show your all users
- * @param evt 
- */
+    /**
+     * show your all users
+     *
+     * @param evt
+     */
     private void btnShowAllUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowAllUsersActionPerformed
-       String allUsers="";
-        for ( User user:users)
-              {
-                  allUsers+=user.toString();
-                            
-              }
-         txtUserManagment.setText(allUsers);
+        String allUsers = "";
+        for (User user : users) {
+            allUsers += user.toString();
+
+        }
+        txtUserManagment.setText(allUsers);
     }//GEN-LAST:event_btnShowAllUsersActionPerformed
-/**
- * show specipic user
- * @param evt 
- */
+    /**
+     * show specipic user
+     *
+     * @param evt
+     */
     private void btnShowUserByIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowUserByIdActionPerformed
-       int id=0;
-        String idErrorMessage="you need enter only digits in he id fild";
-        String idErrorTitle="wrong input";
-        if (txtSum.getText().matches("[0-9]+") )
-         id=Integer.parseInt(txtShowUserById.getText());
-        else 
-              JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle , JOptionPane.ERROR_MESSAGE);
-       
-       User user;
-       user=admin.showUserById(id);
-       txtUserManagment.setText(user.toString());
+        int id = 0;
+        if (txtShowUserById.getText().matches("[0-9]+") == false) {
+            JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        } else if (txtShowUserById.getText().length() < 100000000 && txtShowUserById.getText().length() > 999999999) {
+            JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        } else {
+            id = Integer.parseInt(txtShowUserById.getText());
+        }
+
+        User user;
+        user = admin.showUserById(id);
+        txtUserManagment.setText(user.toString());
     }//GEN-LAST:event_btnShowUserByIdActionPerformed
 
     private void txtApartmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApartmentActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApartmentActionPerformed
-/**
- * add a new service guy
- * @param evt 
- */
+    /**
+     * add a new service guy
+     *
+     * @param evt
+     */
     private void btnAddTheServiceGuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTheServiceGuyActionPerformed
-     String serviceName=txtEnterServiceName.getText();      
-     String firstName=txtEnterServiceGuyFirsttName.getText();
-    String lastName= txtEnterServiceGuyLastName.getText();
-    String idErorMessage="you need enter only digits in the id feild";
-        String idErorTitle="wrong input";
-        int id=0;
-        if (txtSum.getText().matches("[0-9]+") )
-           id= Integer.parseInt(txtEnterServiceGuyId.getText());
-        else 
-              JOptionPane.showMessageDialog(null, idErorMessage, idErorTitle , JOptionPane.INFORMATION_MESSAGE);
-   
-     
-     ExternalWorker externalWorker =new ExternalWorker(id,serviceName,firstName,lastName);
-     admin.addService(externalWorker);
+        String serviceName = txtEnterServiceName.getText();
+        String firstName = txtEnterServiceGuyFirsttName.getText();
+        String lastName = txtEnterServiceGuyLastName.getText();
+
+        int id = 0;
+        if (txtEnterServiceGuyId.getText().matches("[0-9]+") == false) {
+            JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        } else if (txtEnterServiceGuyId.getText().length() < 100000000 && txtEnterServiceGuyId.getText().length() > 999999999) {
+            JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        } else {
+            id = Integer.parseInt(txtEnterServiceGuyId.getText());
+        }
+
+        ExternalWorker externalWorker = new ExternalWorker(id, serviceName, firstName, lastName);
+        admin.addService(externalWorker);
     }//GEN-LAST:event_btnAddTheServiceGuyActionPerformed
 
     private void btnDeleteServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteServiceActionPerformed
-        
-        int id=0;
-        String idErrorMessage="you need enter only digits in the  id feild";
-        String idErrorTitle="wrong input";
-        if (txtSum.getText().matches("[0-9]+") )
-         id=Integer.parseInt(txtEnterIdOfServiceToDelete.getText());
-        else 
-              JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle , JOptionPane.ERROR_MESSAGE);
-         admin.deleteServie(id);
+
+        int id = 0;
+        if (txtSum.getText().matches("[0-9]+") == false) {
+            JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        } else if (txtEnterIdOfServiceToDelete.getText().length() < 100000000 && txtEnterIdOfServiceToDelete.getText().length() > 999999999) {
+            JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        } else {
+            id = Integer.parseInt(txtEnterIdOfServiceToDelete.getText());
+        }
+
+        admin.deleteServie(id);
     }//GEN-LAST:event_btnDeleteServiceActionPerformed
 
     private void btnShowTheFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowTheFeedbackActionPerformed
-      int id=0;
-      String workerFeedback="";
-       String idErrorMessage="you need enter only digits in the id feild";
-        String IderrorTitle="wrong input";
-        if (txtSum.getText().matches("[0-9]+") )
-           id=Integer.parseInt(txtEnterIdOfServiceToShowFeeedback.getText());  
-        else 
-              JOptionPane.showMessageDialog(null, idErrorMessage, IderrorTitle , JOptionPane.ERROR_MESSAGE);
-     
-        feedbacks=admin.seeFeedback(id);
-        for(Feedback feedback:feedbacks)
-        {
-            workerFeedback+=feedback.toString();
+        int id = 0;
+        String workerFeedback = "";
+        if (txtEnterIdOfServiceToShowFeeedback.getText().matches("[0-9]+") == false) {
+            JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        } else if (txtEnterIdOfServiceToShowFeeedback.getText().length() < 100000000 && txtEnterIdOfServiceToShowFeeedback.getText().length() > 999999999) {
+            JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        } else {
+            id = Integer.parseInt(txtEnterIdOfServiceToShowFeeedback.getText());
+        }
+
+        feedbacks = admin.seeFeedback(id);
+        for (Feedback feedback : feedbacks) {
+            workerFeedback += feedback.toString();
         }
         txtServieType.setText(workerFeedback);
     }//GEN-LAST:event_btnShowTheFeedbackActionPerformed
-/**
- * add a feedback
- * @param evt 
- */
+    /**
+     * add a feedback
+     *
+     * @param evt
+     */
     private void btnAddFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFeedbackActionPerformed
-       onOffPanel(true,true,true,true,true,true,true,true,true);
-       onOffComponents(false,false,false,false,false,false,false,false,true);
+        onOffPanel(true, true, true, true, true, true, true, true, true);
+        onOffComponents(false, false, false, false, false, false, false, false, true);
     }//GEN-LAST:event_btnAddFeedbackActionPerformed
 
     private void btnSendFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendFeedbackActionPerformed
-        int id=0;
-        String idErrorMessage="you need enter only digits in the id feild";
-        String idErrorTitle="wrong input";
-        if (txtSum.getText().matches("[0-9]+") )
-          id=Integer.parseInt(txtEnterServiceId.getText());
-        else 
-              JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle , JOptionPane.ERROR_MESSAGE);
-        
-        int rating =Integer.parseInt(txtRatingOfService.getText());
-        float price =Integer.parseInt(txtEnterPriceTaken.getText());
-        String feedbackText=txtEnterFeedback.getText();
-        String workDone=txtEnterWorkTypeDone.getText();
-        Feedback  feedback= new Feedback(id,feedbackText,rating,workDone,price);
+        int id = 0;
+        int rating = 0;
+        float price = 0;
+        if (txtEnterServiceId.getText().matches("[0-9]+") == false
+                || txtRatingOfService.getText().matches("[0-9]+") == false
+                || txtEnterPriceTaken.getText().matches("[0-9]+") == false) {
+            JOptionPane.showMessageDialog(null, feedbackErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        } else if (((txtEnterServiceId.getText().length() > 999999999
+                && txtEnterServiceId.getText().length() < 100000000)
+                || (txtRatingOfService.getText().length() > 10
+                && txtRatingOfService.getText().length() < 0) || txtEnterPriceTaken.getText().length() < 0)) {
+            JOptionPane.showMessageDialog(null, feedbackLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        } else {
+            id = Integer.parseInt(txtEnterServiceId.getText());
+            rating = Integer.parseInt(txtRatingOfService.getText());
+            price = Integer.parseInt(txtEnterPriceTaken.getText());
+        }
+
+        String feedbackText = txtEnterFeedback.getText();
+        String workDone = txtEnterWorkTypeDone.getText();
+        Feedback feedback = new Feedback(id, feedbackText, rating, workDone, price);
         admin.addFeedback(feedback);
     }//GEN-LAST:event_btnSendFeedbackActionPerformed
-/**
- * 
- * @param sendMessage
- * @param readMessage
- * @param makePayment
- * @param viewPayment
- * @param service
- * @param addUser
- * @param addService 
- */
-    private void onOffPanel(boolean sendMessage,boolean readMessage,
-            boolean makePayment,boolean viewPayment
-            ,boolean service,boolean addUser,boolean addService,
-            boolean userManagemant,boolean feedback) {
+    /**
+     *
+     * @param sendMessage
+     * @param readMessage
+     * @param makePayment
+     * @param viewPayment
+     * @param service
+     * @param addUser
+     * @param addService
+     */
+    private void onOffPanel(boolean sendMessage, boolean readMessage,
+            boolean makePayment, boolean viewPayment, boolean service, boolean addUser, boolean addService,
+            boolean userManagemant, boolean feedback) {
         jpnSendMassege.setVisible(sendMessage);
         jpnReadMessages.setVisible(readMessage);
         jpnMakePayment.setVisible(makePayment);
@@ -1087,123 +1125,122 @@ public class AdminForm extends javax.swing.JFrame {
         jpnAddService.setVisible(addService);
         jpnUserManagment.setVisible(userManagemant);
         jpnAddFeedback.setVisible(feedback);
-                
+
     }
+
     /**
-     * 
+     *
      * @param sendMessage
      * @param readMessage
      * @param makePayment
      * @param viewPayment
      * @param service
      * @param addUser
-     * @param addService 
+     * @param addService
      */
-    private void onOffComponents(boolean sendMessage,boolean readMessage,
-            boolean makePayment,boolean viewPayment
-            ,boolean service,boolean addUser,boolean addService,
-            boolean userManagemant,boolean feedback){
-    
-     lblSentTo.setVisible(sendMessage);
-     txtSendMessageTo.setVisible(sendMessage);
-     txtWriteMessage.setVisible(sendMessage);
-     scrollWriteMessage.setVisible(sendMessage);
-     btnSend.setVisible(sendMessage);
-     
-     scrollShowMessage.setVisible(readMessage);
-     txtShowMessage.setVisible(readMessage);
-     btnShowMessages.setVisible(readMessage);
-     
-     txtSum.setVisible(makePayment);
-     scrollPaymentCommant.setVisible(makePayment);
-     txtPaymentCommant.setVisible(makePayment);
-    lblSum.setVisible(makePayment);
-    lblCommant.setVisible(makePayment);
-     btnPay.setVisible(makePayment);
-     
-     txtViewPayments.setVisible(viewPayment);
-     txtShowServices.setVisible(viewPayment);
-     scrollViewPaymenys.setVisible(viewPayment);
-     btnViewWhoPayd.setVisible(viewPayment);
-     btnViewWhoNotPayed.setVisible(viewPayment);
-     btnViewAllPayments.setVisible(viewPayment);
-     
-     txtShowServices.setVisible(service);
-     scrollShowSerivices.setVisible(service);
-     btnShowSerive.setVisible(service);
-     lblEnterServieId.setVisible(service);
-     lblServiceType.setVisible(service);
-     txtServieType.setVisible(service);
-     txtIdOfServiceToOrder.setVisible(service);
-     btnMakeTheOrder.setVisible(service);
-     lblEnterIdOfServieToShowFeeedback.setVisible(service);
-     txtEnterIdOfServiceToShowFeeedback.setVisible(service);
-     btnShowTheFeedback.setVisible(service);
-     
-     lblEnterFirstName.setVisible(addUser);
-     lblEnterLastName.setVisible(addUser);
-     lblEnterEmail.setVisible(addUser);
-     lblEnterUserName.setVisible(addUser);
-     lblEnterPassword.setVisible(addUser);
-     lblEnterID.setVisible(addUser);
-     lblEnteNewUserDetails.setVisible(addUser);
-     lblEnterUserToDelete.setVisible(addUser);
-     lblEnterPhoneNumber.setVisible(addUser);
-     lblApartmantId.setVisible(addUser);
-     txtEnterPhoneNumber.setVisible(addUser);
-     txtEnterLastName.setVisible(addUser);
-     txtEnderName.setVisible(addUser);
-     txtEnterEmail.setVisible(addUser);
-     txtEnterPassword.setVisible(addUser);
-     txtEnterUserName.setVisible(addUser);
-     txtEnterID.setVisible(addUser);
-     txtApartment.setVisible(addUser);
-     txtIdOfTheUserToDelete.setVisible(addUser);
-     btnAddNewUser.setVisible(addUser);
-     btnDeleteTheUser.setVisible(addUser);
-     
-    
-     lblEddNewService.setVisible(addService);
-     lblEnterServiceType.setVisible(addService);
-     lblEnterServiceGuyFirstName.setVisible(addService);
-     lblEnterServiceGuyLastName.setVisible(addService);
-     lblEnterServiceGuyId.setVisible(addService);
-     btnAddTheServiceGuy.setVisible(addService);
-     txtEnterServiceName.setVisible(addService);
-     txtEnterServiceGuyFirsttName.setVisible(addService);
-     txtEnterServiceGuyLastName.setVisible(addService);
-     txtEnterServiceGuyId.setVisible(addService);
-     lblDeleteService.setVisible(addService);
-     lblEnterIdOfServiceToDelete.setVisible(addService);
-     txtEnterIdOfServiceToDelete.setVisible(addService);
-     btnDeleteService.setVisible(addService);
-     
-     scrollUserManagment.setVisible(userManagemant);
-     txtShowUserById.setVisible(userManagemant);
-     lblUserById.setVisible(userManagemant);
-     btnShowUserById.setVisible(userManagemant);
-     btnShowAllUsers.setVisible(userManagemant);
-     txtUserManagment.setVisible(userManagemant);
-     
-     lblEddFeedbackAbutAService.setVisible(feedback);
-       txtEnterServiceId.setVisible(feedback);
-       lblEnterFeddbackId.setVisible(feedback);
-       txtRatingOfService.setVisible(feedback);
-       lblEnterRatingOfService.setVisible(feedback);
-       lblEnterPriveTaken.setVisible(feedback);
-       txtEnterPriceTaken.setVisible(feedback);
-       lblEnterFeedback.setVisible(feedback);
-       scrollEnterFeedback.setVisible(feedback);
-       txtEnterFeedback.setVisible(feedback);   
-       lblEnterWorkDone.setVisible(feedback);
-       txtEnterWorkTypeDone.setVisible(feedback);
-     
-    
+    private void onOffComponents(boolean sendMessage, boolean readMessage,
+            boolean makePayment, boolean viewPayment, boolean service, boolean addUser, boolean addService,
+            boolean userManagemant, boolean feedback) {
+
+        lblSentTo.setVisible(sendMessage);
+        txtSendMessageTo.setVisible(sendMessage);
+        txtWriteMessage.setVisible(sendMessage);
+        scrollWriteMessage.setVisible(sendMessage);
+        btnSend.setVisible(sendMessage);
+
+        scrollShowMessage.setVisible(readMessage);
+        txtShowMessage.setVisible(readMessage);
+        btnShowMessages.setVisible(readMessage);
+
+        txtSum.setVisible(makePayment);
+        scrollPaymentCommant.setVisible(makePayment);
+        txtPaymentCommant.setVisible(makePayment);
+        lblSum.setVisible(makePayment);
+        lblCommant.setVisible(makePayment);
+        btnPay.setVisible(makePayment);
+
+        txtViewPayments.setVisible(viewPayment);
+        txtShowServices.setVisible(viewPayment);
+        scrollViewPaymenys.setVisible(viewPayment);
+        btnViewWhoPayd.setVisible(viewPayment);
+        btnViewWhoNotPayed.setVisible(viewPayment);
+        btnViewAllPayments.setVisible(viewPayment);
+
+        txtShowServices.setVisible(service);
+        scrollShowSerivices.setVisible(service);
+        btnShowSerive.setVisible(service);
+        lblEnterServieId.setVisible(service);
+        lblServiceType.setVisible(service);
+        txtServieType.setVisible(service);
+        txtIdOfServiceToOrder.setVisible(service);
+        btnMakeTheOrder.setVisible(service);
+        lblEnterIdOfServieToShowFeeedback.setVisible(service);
+        txtEnterIdOfServiceToShowFeeedback.setVisible(service);
+        btnShowTheFeedback.setVisible(service);
+
+        lblEnterFirstName.setVisible(addUser);
+        lblEnterLastName.setVisible(addUser);
+        lblEnterEmail.setVisible(addUser);
+        lblEnterUserName.setVisible(addUser);
+        lblEnterPassword.setVisible(addUser);
+        lblEnterID.setVisible(addUser);
+        lblEnteNewUserDetails.setVisible(addUser);
+        lblEnterUserToDelete.setVisible(addUser);
+        lblEnterPhoneNumber.setVisible(addUser);
+        lblApartmantId.setVisible(addUser);
+        txtEnterPhoneNumber.setVisible(addUser);
+        txtEnterLastName.setVisible(addUser);
+        txtEnderName.setVisible(addUser);
+        txtEnterEmail.setVisible(addUser);
+        txtEnterPassword.setVisible(addUser);
+        txtEnterUserName.setVisible(addUser);
+        txtEnterID.setVisible(addUser);
+        txtApartment.setVisible(addUser);
+        txtIdOfTheUserToDelete.setVisible(addUser);
+        btnAddNewUser.setVisible(addUser);
+        btnDeleteTheUser.setVisible(addUser);
+
+        lblEddNewService.setVisible(addService);
+        lblEnterServiceType.setVisible(addService);
+        lblEnterServiceGuyFirstName.setVisible(addService);
+        lblEnterServiceGuyLastName.setVisible(addService);
+        lblEnterServiceGuyId.setVisible(addService);
+        btnAddTheServiceGuy.setVisible(addService);
+        txtEnterServiceName.setVisible(addService);
+        txtEnterServiceGuyFirsttName.setVisible(addService);
+        txtEnterServiceGuyLastName.setVisible(addService);
+        txtEnterServiceGuyId.setVisible(addService);
+        lblDeleteService.setVisible(addService);
+        lblEnterIdOfServiceToDelete.setVisible(addService);
+        txtEnterIdOfServiceToDelete.setVisible(addService);
+        btnDeleteService.setVisible(addService);
+
+        scrollUserManagment.setVisible(userManagemant);
+        txtShowUserById.setVisible(userManagemant);
+        lblUserById.setVisible(userManagemant);
+        btnShowUserById.setVisible(userManagemant);
+        btnShowAllUsers.setVisible(userManagemant);
+        txtUserManagment.setVisible(userManagemant);
+
+        lblEddFeedbackAbutAService.setVisible(feedback);
+        txtEnterServiceId.setVisible(feedback);
+        lblEnterFeddbackId.setVisible(feedback);
+        txtRatingOfService.setVisible(feedback);
+        lblEnterRatingOfService.setVisible(feedback);
+        lblEnterPriveTaken.setVisible(feedback);
+        txtEnterPriceTaken.setVisible(feedback);
+        lblEnterFeedback.setVisible(feedback);
+        scrollEnterFeedback.setVisible(feedback);
+        txtEnterFeedback.setVisible(feedback);
+        lblEnterWorkDone.setVisible(feedback);
+        txtEnterWorkTypeDone.setVisible(feedback);
+
     }
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[])  {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -1228,7 +1265,6 @@ public class AdminForm extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-       
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

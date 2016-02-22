@@ -22,7 +22,11 @@ public class UserForm extends javax.swing.JFrame {
     List<ExternalWorker> workers = new ArrayList<ExternalWorker>();
     List<Feedback> feedbacks = new ArrayList<Feedback>();
     DataBase dataBase = DataBase.GetInstance();
-
+    String idLenghtError = "id must contin 9 digits";
+    String idErrorMessage = "you need enter only digits in the id";
+    String idErrorTitle = "wrong input";
+    String feedbackErrorMessage = "you need enter only digits to the id/rating/sum";
+    String feedbackLenghtError = "you neeed to enter numbers no longer than 9 digits";
     public UserForm(Resident resident) {
         initComponents();
         this.resident = resident;
@@ -447,13 +451,13 @@ public class UserForm extends javax.swing.JFrame {
     private void btnPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayActionPerformed
         int sum = 0;
         String workerFeedback = "";
-        String errorMessage = "you need enter only digits to the id";
-        String errorTitle = "wrong input";
-        if (txtSum.getText().matches("[0-9]+")) {
-            sum = Integer.parseInt(txtSum.getText());
+         if (txtSum.getText().matches("[0-9]+") == false) {
+            JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        } else if (txtSum.getText().length() < 0 && txtSum.getText().length() > 999999999) {
+            JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(null, errorMessage, errorTitle, JOptionPane.ERROR_MESSAGE);
-        }
+            sum = Integer.parseInt(txtSum.getText());
+        } 
         String commant = txtPaymentCommant.getText();
         Payment pay = new Payment(resident.getUserName(), "Admin", commant, sum);
         //resident.addPayment
@@ -466,13 +470,13 @@ public class UserForm extends javax.swing.JFrame {
      */
     private void btnOrderServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderServiceActionPerformed
         String id = "";
-        String errorMessage = "you need enter only digits to the id";
-        String errorTitle = "wrong input";
-        if (txtSum.getText().matches("[0-9]+")) {
-            id = txtEnterIdOfService.getText();
+         if (txtEnterIdOfService.getText().matches("[0-9]+") == false) {
+            JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        } else if (txtEnterIdOfService.getText().length() < 100000000 && txtEnterIdOfService.getText().length() > 999999999) {
+            JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(null, errorMessage, errorTitle, JOptionPane.ERROR_MESSAGE);
-        }
+            id = txtEnterIdOfService.getText();
+        } 
 
         String type = txtEnterTypeOfService.getText();
         Order order = new Order(resident.getUserName(), id, type);
@@ -499,14 +503,23 @@ public class UserForm extends javax.swing.JFrame {
         int rating = 0;
         float price = 0;
         String workerFeedback = "";
-        String errorMessage = "you need enter only digits to the id/rating/sum";
-        String errorTitle = "wrong input";
-        if (txtSum.getText().matches("[0-9]+")) {
-            id = Integer.parseInt(txtEnterServiceId.getText());
-            rating = Integer.parseInt(txtRatingOfService.getText());
-            price = Integer.parseInt(txtEnterPriceTaken.getText());
-        } else {
-            JOptionPane.showMessageDialog(null, errorMessage, errorTitle, JOptionPane.ERROR_MESSAGE);
+       
+        if (txtEnterServiceId.getText().matches("[0-9]+")||txtRatingOfService.getText().matches("[0-9]+") ||
+                txtEnterPriceTaken.getText().matches("[0-9]+")) {
+              JOptionPane.showMessageDialog(null, feedbackErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+           
+        } 
+        else if( ((txtEnterServiceId.getText().length() > 999999999&&
+                txtEnterServiceId.getText().length() < 100000000)||
+                ( txtRatingOfService.getText().length() > 10&&
+               
+               txtRatingOfService.getText().length()<0 )|| txtEnterPriceTaken.getText().length() <0)){
+             JOptionPane.showMessageDialog(null, feedbackLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        }
+        else {
+           id = Integer.parseInt(txtEnterServiceId.getText());
+           rating = Integer.parseInt(txtRatingOfService.getText());
+           price = Integer.parseInt(txtEnterPriceTaken.getText());
         }
         String feedbackText = txtEnterFeedback.getText();
         String workDone = txtEnterWorkTypeDone.getText();
@@ -517,13 +530,13 @@ public class UserForm extends javax.swing.JFrame {
     private void btnShowTheFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowTheFeedbackActionPerformed
         int id = 0;
         String workerFeedback = "";
-        String errorMessage = "you need enter only digits to the id";
-        String errorTitle = "wrong input";
-        if (txtSum.getText().matches("[0-9]+")) {
-            id = Integer.parseInt(txtEnterIdOfServiceToSeeFeedback.getText());
+         if (txtEnterIdOfServiceToSeeFeedback.getText().matches("[0-9]+") == false) {
+            JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        } else if (txtEnterIdOfServiceToSeeFeedback.getText().length() < 100000000 && txtEnterIdOfServiceToSeeFeedback.getText().length() > 999999999) {
+            JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(null, errorMessage, errorTitle, JOptionPane.ERROR_MESSAGE);
-        }
+            id = Integer.parseInt(txtEnterIdOfServiceToSeeFeedback.getText());
+        } 
 
         feedbacks = resident.seeFeedback(id);
         for (Feedback feedback : feedbacks) {
