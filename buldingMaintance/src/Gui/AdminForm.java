@@ -120,6 +120,9 @@ public class AdminForm extends javax.swing.JFrame {
         txtServieType = new javax.swing.JTextField();
         scrollShowSerivices = new javax.swing.JScrollPane();
         txtShowServices = new javax.swing.JTextArea();
+        lblEnterIdOfServieToShowFeeedback = new javax.swing.JLabel();
+        txtEnterIdOfServiceToShowFeeedback = new javax.swing.JTextField();
+        btnShowTheFeedback = new javax.swing.JButton();
         scrollViewPaymenys = new javax.swing.JScrollPane();
         txtViewPayments = new javax.swing.JTextArea();
         txtSum = new javax.swing.JTextField();
@@ -290,9 +293,11 @@ public class AdminForm extends javax.swing.JFrame {
         jpnViewPayments.add(btnViewAllPayments);
         btnViewAllPayments.setBounds(474, 211, 98, 40);
 
+        jpnService.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jpnService.setOpaque(false);
         jpnService.setLayout(null);
 
+        btnShowSerive.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnShowSerive.setText("show list");
         btnShowSerive.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnShowSerive.addActionListener(new java.awt.event.ActionListener() {
@@ -301,7 +306,7 @@ public class AdminForm extends javax.swing.JFrame {
             }
         });
         jpnService.add(btnShowSerive);
-        btnShowSerive.setBounds(490, 100, 90, 40);
+        btnShowSerive.setBounds(330, 270, 110, 40);
 
         jpnAddUser.setOpaque(false);
         jpnAddUser.setLayout(null);
@@ -427,7 +432,7 @@ public class AdminForm extends javax.swing.JFrame {
         btnShowAllUsers.setBounds(450, 380, 150, 40);
 
         jpnAddService.add(jpnUserManagment);
-        jpnUserManagment.setBounds(0, 0, 630, 480);
+        jpnUserManagment.setBounds(-10, 0, 640, 480);
 
         lblEnterServiceType.setText("enter service name");
         jpnAddService.add(lblEnterServiceType);
@@ -488,7 +493,7 @@ public class AdminForm extends javax.swing.JFrame {
         btnDeleteService.setBounds(380, 160, 120, 40);
 
         jpnAddUser.add(jpnAddService);
-        jpnAddService.setBounds(0, 0, 630, 480);
+        jpnAddService.setBounds(10, 0, 620, 480);
 
         lblApartmantId.setText("apartment");
         jpnAddUser.add(lblApartmantId);
@@ -533,7 +538,24 @@ public class AdminForm extends javax.swing.JFrame {
         scrollShowSerivices.setViewportView(txtShowServices);
 
         jpnService.add(scrollShowSerivices);
-        scrollShowSerivices.setBounds(30, 50, 440, 260);
+        scrollShowSerivices.setBounds(30, 50, 300, 260);
+
+        lblEnterIdOfServieToShowFeeedback.setText("enter id of service to view feedback");
+        jpnService.add(lblEnterIdOfServieToShowFeeedback);
+        lblEnterIdOfServieToShowFeeedback.setBounds(340, 50, 220, 16);
+        jpnService.add(txtEnterIdOfServiceToShowFeeedback);
+        txtEnterIdOfServiceToShowFeeedback.setBounds(340, 80, 200, 22);
+
+        btnShowTheFeedback.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnShowTheFeedback.setText("show feedback");
+        btnShowTheFeedback.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnShowTheFeedback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowTheFeedbackActionPerformed(evt);
+            }
+        });
+        jpnService.add(btnShowTheFeedback);
+        btnShowTheFeedback.setBounds(340, 120, 200, 30);
 
         jpnViewPayments.add(jpnService);
         jpnService.setBounds(0, 0, 630, 460);
@@ -859,6 +881,10 @@ public class AdminForm extends javax.swing.JFrame {
          int id=Integer.parseInt(txtEnterIdOfServiceToDelete.getText());
          admin.deleteServie(id);
     }//GEN-LAST:event_btnDeleteServiceActionPerformed
+
+    private void btnShowTheFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowTheFeedbackActionPerformed
+       
+    }//GEN-LAST:event_btnShowTheFeedbackActionPerformed
 /**
  * 
  * @param sendMessage
@@ -926,6 +952,9 @@ public class AdminForm extends javax.swing.JFrame {
      txtServieType.setVisible(service);
      txtIdOfServiceToOrder.setVisible(service);
      btnMakeTheOrder.setVisible(service);
+     lblEnterIdOfServieToShowFeeedback.setVisible(service);
+     txtEnterIdOfServiceToShowFeeedback.setVisible(service);
+     btnShowTheFeedback.setVisible(service);
      
      lblEnterFirstName.setVisible(addUser);
      lblEnterLastName.setVisible(addUser);
@@ -1024,6 +1053,7 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JButton btnShowAllUsers;
     private javax.swing.JButton btnShowMessages;
     private javax.swing.JButton btnShowSerive;
+    private javax.swing.JButton btnShowTheFeedback;
     private javax.swing.JButton btnShowUserById;
     private javax.swing.JButton btnUserManagemant;
     private javax.swing.JButton btnViewAllPayments;
@@ -1048,6 +1078,7 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblEnterFirstName;
     private javax.swing.JLabel lblEnterID;
     private javax.swing.JLabel lblEnterIdOfServiceToDelete;
+    private javax.swing.JLabel lblEnterIdOfServieToShowFeeedback;
     private javax.swing.JLabel lblEnterLastName;
     private javax.swing.JLabel lblEnterPassword;
     private javax.swing.JLabel lblEnterPhoneNumber;
@@ -1073,6 +1104,7 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JTextField txtEnterEmail;
     private javax.swing.JTextField txtEnterID;
     private javax.swing.JTextField txtEnterIdOfServiceToDelete;
+    private javax.swing.JTextField txtEnterIdOfServiceToShowFeeedback;
     private javax.swing.JTextField txtEnterLastName;
     private javax.swing.JTextField txtEnterPassword;
     private javax.swing.JTextField txtEnterPhoneNumber;

@@ -23,8 +23,8 @@ public class UserForm extends javax.swing.JFrame {
     public UserForm(Resident resident) {
         initComponents();
      this.resident=resident;
-      OnOffComponents(false, false, false, false);
-        OnOffPanel(false, false, false, false);
+      OnOffComponents(false, false, false, false,false);
+        OnOffPanel(false, false, false, false,false);
      
     }
 
@@ -48,24 +48,43 @@ public class UserForm extends javax.swing.JFrame {
         lblSum = new javax.swing.JLabel();
         lblPaymentCommant = new javax.swing.JLabel();
         jpnOrderMaintinace = new javax.swing.JPanel();
-        lblServieList = new javax.swing.JLabel();
         lblIdOfService = new javax.swing.JLabel();
         txtEnterIdOfService = new javax.swing.JTextField();
         lblTypeOfService = new javax.swing.JLabel();
         txtEnterTypeOfService = new javax.swing.JTextField();
         btnOrderService = new javax.swing.JButton();
+        lblServieList = new javax.swing.JLabel();
         scrollListOfServices = new javax.swing.JScrollPane();
         txtListOfServices = new javax.swing.JTextArea();
+        jpnAddFeedback = new javax.swing.JPanel();
+        lblEddFeedbackAbutAService = new javax.swing.JLabel();
+        txtEnterServiceId = new javax.swing.JTextField();
+        lblEnterFeddbackId = new javax.swing.JLabel();
+        txtRatingOfService = new javax.swing.JTextField();
+        lblEnterRatingOfService = new javax.swing.JLabel();
+        lblEnterPriveTaken = new javax.swing.JLabel();
+        txtEnterPriceTaken = new javax.swing.JTextField();
+        lblEnterFeedback = new javax.swing.JLabel();
+        scrollEnterFeedback = new javax.swing.JScrollPane();
+        txtEnterFeedback = new javax.swing.JTextArea();
+        btnSendFeedback = new javax.swing.JButton();
+        lblEnterWorkDone = new javax.swing.JLabel();
+        txtEnterWorkTypeDone = new javax.swing.JTextField();
+        lblEnterIdOfServiceToSeeFeeedback = new javax.swing.JLabel();
+        txtEnterIdOfServiceToSeeFeedback = new javax.swing.JTextField();
+        btnShowTheFeedback = new javax.swing.JButton();
+        btnShowServiceList = new javax.swing.JButton();
         scrollPaymentCommant = new javax.swing.JScrollPane();
         txtPaymentCommant = new javax.swing.JTextArea();
+        lblSendTo = new javax.swing.JLabel();
         scrollWriteMassege = new javax.swing.JScrollPane();
         txtWriteMessage = new javax.swing.JTextArea();
-        lblSendTo = new javax.swing.JLabel();
         txtSendTo = new javax.swing.JTextField();
         btnSendMassege = new javax.swing.JButton();
         btnViewMassege = new javax.swing.JButton();
         btnMakepayment = new javax.swing.JButton();
         btnMakeOrder = new javax.swing.JButton();
+        btnAddAFeedback = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -148,11 +167,6 @@ public class UserForm extends javax.swing.JFrame {
         jpnOrderMaintinace.setOpaque(false);
         jpnOrderMaintinace.setLayout(null);
 
-        lblServieList.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblServieList.setText("list of services");
-        jpnOrderMaintinace.add(lblServieList);
-        lblServieList.setBounds(40, 40, 130, 22);
-
         lblIdOfService.setText("chosen service id");
         jpnOrderMaintinace.add(lblIdOfService);
         lblIdOfService.setBounds(30, 360, 110, 30);
@@ -176,12 +190,102 @@ public class UserForm extends javax.swing.JFrame {
         jpnOrderMaintinace.add(btnOrderService);
         btnOrderService.setBounds(360, 375, 120, 40);
 
+        lblServieList.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblServieList.setText("list of services");
+        jpnOrderMaintinace.add(lblServieList);
+        lblServieList.setBounds(40, 40, 130, 22);
+
         txtListOfServices.setColumns(20);
         txtListOfServices.setRows(5);
         scrollListOfServices.setViewportView(txtListOfServices);
 
         jpnOrderMaintinace.add(scrollListOfServices);
-        scrollListOfServices.setBounds(40, 80, 410, 250);
+        scrollListOfServices.setBounds(40, 80, 350, 250);
+
+        jpnAddFeedback.setOpaque(false);
+        jpnAddFeedback.setLayout(null);
+
+        lblEddFeedbackAbutAService.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblEddFeedbackAbutAService.setText("add a feedback abut a service");
+        jpnAddFeedback.add(lblEddFeedbackAbutAService);
+        lblEddFeedbackAbutAService.setBounds(50, 40, 240, 20);
+        jpnAddFeedback.add(txtEnterServiceId);
+        txtEnterServiceId.setBounds(50, 110, 130, 22);
+
+        lblEnterFeddbackId.setText("id fo service");
+        jpnAddFeedback.add(lblEnterFeddbackId);
+        lblEnterFeddbackId.setBounds(50, 80, 130, 16);
+        jpnAddFeedback.add(txtRatingOfService);
+        txtRatingOfService.setBounds(230, 110, 130, 22);
+
+        lblEnterRatingOfService.setText("reating(0-10)");
+        jpnAddFeedback.add(lblEnterRatingOfService);
+        lblEnterRatingOfService.setBounds(230, 80, 90, 16);
+
+        lblEnterPriveTaken.setText("price taken");
+        jpnAddFeedback.add(lblEnterPriveTaken);
+        lblEnterPriveTaken.setBounds(400, 80, 130, 16);
+        jpnAddFeedback.add(txtEnterPriceTaken);
+        txtEnterPriceTaken.setBounds(400, 110, 130, 22);
+
+        lblEnterFeedback.setText("enter feedback");
+        jpnAddFeedback.add(lblEnterFeedback);
+        lblEnterFeedback.setBounds(50, 210, 120, 16);
+
+        txtEnterFeedback.setColumns(20);
+        txtEnterFeedback.setRows(5);
+        scrollEnterFeedback.setViewportView(txtEnterFeedback);
+
+        jpnAddFeedback.add(scrollEnterFeedback);
+        scrollEnterFeedback.setBounds(50, 240, 430, 120);
+
+        btnSendFeedback.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnSendFeedback.setText("send feedback");
+        btnSendFeedback.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSendFeedback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendFeedbackActionPerformed(evt);
+            }
+        });
+        jpnAddFeedback.add(btnSendFeedback);
+        btnSendFeedback.setBounds(50, 380, 150, 40);
+
+        lblEnterWorkDone.setText("enter the work type");
+        jpnAddFeedback.add(lblEnterWorkDone);
+        lblEnterWorkDone.setBounds(50, 150, 130, 16);
+        jpnAddFeedback.add(txtEnterWorkTypeDone);
+        txtEnterWorkTypeDone.setBounds(40, 180, 190, 22);
+
+        jpnOrderMaintinace.add(jpnAddFeedback);
+        jpnAddFeedback.setBounds(480, 330, 170, 160);
+
+        lblEnterIdOfServiceToSeeFeeedback.setText("Enter id of service to see feedback");
+        jpnOrderMaintinace.add(lblEnterIdOfServiceToSeeFeeedback);
+        lblEnterIdOfServiceToSeeFeeedback.setBounds(420, 80, 210, 16);
+        jpnOrderMaintinace.add(txtEnterIdOfServiceToSeeFeedback);
+        txtEnterIdOfServiceToSeeFeedback.setBounds(420, 110, 200, 22);
+
+        btnShowTheFeedback.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnShowTheFeedback.setText("show feedback");
+        btnShowTheFeedback.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnShowTheFeedback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowTheFeedbackActionPerformed(evt);
+            }
+        });
+        jpnOrderMaintinace.add(btnShowTheFeedback);
+        btnShowTheFeedback.setBounds(420, 150, 200, 30);
+
+        btnShowServiceList.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnShowServiceList.setText("show list");
+        btnShowServiceList.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnShowServiceList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowServiceListActionPerformed(evt);
+            }
+        });
+        jpnOrderMaintinace.add(btnShowServiceList);
+        btnShowServiceList.setBounds(390, 290, 140, 40);
 
         jpnPayment.add(jpnOrderMaintinace);
         jpnOrderMaintinace.setBounds(0, 0, 650, 490);
@@ -196,13 +300,6 @@ public class UserForm extends javax.swing.JFrame {
         jpnViewMassege.add(jpnPayment);
         jpnPayment.setBounds(0, 0, 640, 480);
 
-        txtWriteMessage.setColumns(20);
-        txtWriteMessage.setRows(5);
-        scrollWriteMassege.setViewportView(txtWriteMessage);
-
-        jpnViewMassege.add(scrollWriteMassege);
-        scrollWriteMassege.setBounds(70, 80, 510, 250);
-
         jpnSendMassege.add(jpnViewMassege);
         jpnViewMassege.setBounds(0, 0, 660, 470);
         jpnViewMassege.getAccessibleContext().setAccessibleParent(jpnMain);
@@ -210,6 +307,13 @@ public class UserForm extends javax.swing.JFrame {
         lblSendTo.setText("send to");
         jpnSendMassege.add(lblSendTo);
         lblSendTo.setBounds(80, 56, 70, 20);
+
+        txtWriteMessage.setColumns(20);
+        txtWriteMessage.setRows(5);
+        scrollWriteMassege.setViewportView(txtWriteMessage);
+
+        jpnSendMassege.add(scrollWriteMassege);
+        scrollWriteMassege.setBounds(70, 80, 510, 250);
         jpnSendMassege.add(txtSendTo);
         txtSendTo.setBounds(130, 60, 80, 20);
 
@@ -260,6 +364,17 @@ public class UserForm extends javax.swing.JFrame {
         jpnMain.add(btnMakeOrder);
         btnMakeOrder.setBounds(50, 300, 190, 50);
 
+        btnAddAFeedback.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnAddAFeedback.setText("add feedback");
+        btnAddAFeedback.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAddAFeedback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddAFeedbackActionPerformed(evt);
+            }
+        });
+        jpnMain.add(btnAddAFeedback);
+        btnAddAFeedback.setBounds(50, 380, 190, 50);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gui/UFBackgrund.png"))); // NOI18N
         jpnMain.add(jLabel1);
         jLabel1.setBounds(0, 0, 960, 630);
@@ -271,14 +386,14 @@ public class UserForm extends javax.swing.JFrame {
 
     private void btnSendMassegeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendMassegeActionPerformed
 
-        OnOffComponents(true, false, false, false);
-        OnOffPanel(true, false, false, false);
+        OnOffComponents(true, false, false, false,false);
+        OnOffPanel(true, false, false, false,false);
     }//GEN-LAST:event_btnSendMassegeActionPerformed
 
     private void btnViewMassegeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewMassegeActionPerformed
        
-       OnOffComponents(false, true, false, false);
-        OnOffPanel(true, true, false, false);
+       OnOffComponents(false, true, false, false,false);
+        OnOffPanel(true, true, false, false,false);
        messages=resident.RecieveMessage(resident.getUserName());
     }//GEN-LAST:event_btnViewMassegeActionPerformed
 
@@ -306,21 +421,14 @@ public class UserForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSendActionPerformed
 
     private void btnMakepaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakepaymentActionPerformed
-        OnOffComponents(false, false, true, false);
-        OnOffPanel(true, true, true, false);
+        OnOffComponents(false, false, true, false,false);
+        OnOffPanel(true, true, true, false,false);
     }//GEN-LAST:event_btnMakepaymentActionPerformed
 
     private void btnMakeOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakeOrderActionPerformed
-         OnOffComponents(false, false, false, true);
-        OnOffPanel(true, true, true, true);
-        String allWorkers="";
-        workers=dataBase.showAllWorkers();
-                 for ( ExternalWorker worker:workers)
-              {
-                allWorkers+=worker.toString();
-              }
-                 txtListOfServices.setText(allWorkers);
-                 
+         OnOffComponents(false, false, false, true,false);
+        OnOffPanel(true, true, true, true,false);
+       
     }//GEN-LAST:event_btnMakeOrderActionPerformed
 /**
  * make my payment
@@ -344,19 +452,63 @@ public class UserForm extends javax.swing.JFrame {
         String type=txtEnterTypeOfService.getText();
         Order order= new Order(resident.getUserName(),id,type);
         resident.callService(order);
+        
     }//GEN-LAST:event_btnOrderServiceActionPerformed
+/**
+ * add a feedback abut a service
+ * @param evt 
+ */
+    private void btnAddAFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddAFeedbackActionPerformed
+         OnOffComponents(false, false, false, false,true);
+        OnOffPanel(true, true, true, true,true);
+    }//GEN-LAST:event_btnAddAFeedbackActionPerformed
+
+    /**
+     * add the feedback to database
+     * @param evt 
+     */
+    private void btnSendFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendFeedbackActionPerformed
+        int id=Integer.parseInt(txtEnterServiceId.getText());
+        int rating =Integer.parseInt(txtRatingOfService.getText());
+        float price =Integer.parseInt(txtEnterPriceTaken.getText());
+        String feedbackText=txtEnterFeedback.getText();
+        String workDone=txtEnterWorkTypeDone.getText();
+        Feedback  feedback= new Feedback(id,feedbackText,rating,workDone,price);
+        resident.addFeedback(feedback);
+    }//GEN-LAST:event_btnSendFeedbackActionPerformed
+
+    private void btnShowTheFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowTheFeedbackActionPerformed
+        
+    }//GEN-LAST:event_btnShowTheFeedbackActionPerformed
+/**
+ * show the list if the services
+ * @param evt 
+ */
+    private void btnShowServiceListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowServiceListActionPerformed
+         String allWorkers="";
+        workers=dataBase.showAllWorkers();
+                 for ( ExternalWorker worker:workers)
+              {
+                allWorkers+=worker.toString();
+              }
+                 txtListOfServices.setText(allWorkers);
+                 
+    }//GEN-LAST:event_btnShowServiceListActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public void OnOffPanel(boolean sendMessage,boolean viewMessage ,boolean payment,boolean order) {
+    public void OnOffPanel(boolean sendMessage,boolean viewMessage ,
+            boolean payment,boolean order,boolean feedback) {
         jpnSendMassege.setVisible(sendMessage); 
         jpnViewMassege.setVisible(viewMessage);    
         jpnPayment.setVisible(payment);
         jpnOrderMaintinace.setVisible(order);
+        jpnAddFeedback.setVisible(feedback);
               
     }
-    public void OnOffComponents(boolean sendMessage,boolean viewMessage ,boolean payment,boolean order) {
+    public void OnOffComponents(boolean sendMessage,boolean viewMessage ,
+            boolean payment,boolean order,boolean feedback) {
        btnSend.setVisible(sendMessage);
        scrollWriteMassege.setVisible(sendMessage);
        txtWriteMessage.setVisible(sendMessage);
@@ -380,6 +532,25 @@ public class UserForm extends javax.swing.JFrame {
        txtEnterIdOfService.setVisible(order);
        txtEnterTypeOfService.setVisible(order);
        btnOrderService.setVisible(order);
+       lblEnterIdOfServiceToSeeFeeedback.setVisible(order);
+       txtEnterIdOfServiceToSeeFeedback.setVisible(order);
+       btnShowTheFeedback.setVisible(order);
+       lblIdOfService.setVisible(order);
+       btnShowServiceList.setVisible(order);
+       
+       lblEddFeedbackAbutAService.setVisible(feedback);
+       txtEnterServiceId.setVisible(feedback);
+       lblEnterFeddbackId.setVisible(feedback);
+       txtRatingOfService.setVisible(feedback);
+       lblEnterRatingOfService.setVisible(feedback);
+       lblEnterPriveTaken.setVisible(feedback);
+       txtEnterPriceTaken.setVisible(feedback);
+       lblEnterFeedback.setVisible(feedback);
+       scrollEnterFeedback.setVisible(feedback);
+       txtEnterFeedback.setVisible(feedback);
+      
+       lblEnterWorkDone.setVisible(feedback);
+       txtEnterWorkTypeDone.setVisible(feedback);
        
               
     }
@@ -413,34 +584,53 @@ public class UserForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddAFeedback;
     private javax.swing.JButton btnMakeOrder;
     private javax.swing.JButton btnMakepayment;
     private javax.swing.JButton btnOrderService;
     private javax.swing.JButton btnPay;
     private javax.swing.JButton btnSend;
+    private javax.swing.JButton btnSendFeedback;
     private javax.swing.JButton btnSendMassege;
     private final javax.swing.JButton btnShowMesseges = new javax.swing.JButton();
+    private javax.swing.JButton btnShowServiceList;
+    private javax.swing.JButton btnShowTheFeedback;
     private javax.swing.JButton btnViewMassege;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jpnAddFeedback;
     private javax.swing.JPanel jpnMain;
     private javax.swing.JPanel jpnOrderMaintinace;
     private javax.swing.JPanel jpnPayment;
     private final javax.swing.JPanel jpnSendMassege = new javax.swing.JPanel();
     private javax.swing.JPanel jpnViewMassege;
+    private javax.swing.JLabel lblEddFeedbackAbutAService;
+    private javax.swing.JLabel lblEnterFeddbackId;
+    private javax.swing.JLabel lblEnterFeedback;
+    private javax.swing.JLabel lblEnterIdOfServiceToSeeFeeedback;
+    private javax.swing.JLabel lblEnterPriveTaken;
+    private javax.swing.JLabel lblEnterRatingOfService;
+    private javax.swing.JLabel lblEnterWorkDone;
     private javax.swing.JLabel lblIdOfService;
     private javax.swing.JLabel lblPaymentCommant;
     private javax.swing.JLabel lblSendTo;
     private javax.swing.JLabel lblServieList;
     private javax.swing.JLabel lblSum;
     private javax.swing.JLabel lblTypeOfService;
+    private javax.swing.JScrollPane scrollEnterFeedback;
     private javax.swing.JScrollPane scrollListOfServices;
     private javax.swing.JScrollPane scrollPaymentCommant;
     private javax.swing.JScrollPane scrollShowMessage;
     private javax.swing.JScrollPane scrollWriteMassege;
+    private javax.swing.JTextArea txtEnterFeedback;
     private javax.swing.JTextField txtEnterIdOfService;
+    private javax.swing.JTextField txtEnterIdOfServiceToSeeFeedback;
+    private javax.swing.JTextField txtEnterPriceTaken;
+    private javax.swing.JTextField txtEnterServiceId;
     private javax.swing.JTextField txtEnterTypeOfService;
+    private javax.swing.JTextField txtEnterWorkTypeDone;
     private javax.swing.JTextArea txtListOfServices;
     private javax.swing.JTextArea txtPaymentCommant;
+    private javax.swing.JTextField txtRatingOfService;
     private javax.swing.JTextField txtSendTo;
     private javax.swing.JTextArea txtShowMessage;
     private javax.swing.JTextField txtSum;

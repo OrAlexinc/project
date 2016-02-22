@@ -100,10 +100,10 @@ DataBase dataBase = DataBase.GetInstance();
  * @param evt 
  */
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-   // String username=txtUsername.getText();
-   // String password=txtPassword.getText();
-    String username="1";
-    String password="2";
+    String username=txtUsername.getText();
+    String password=txtPassword.getText();
+    //String username="1";
+    //String password="2";
     String connctionEror="wrong user name or passsword";
     String ErorType="Wrong Input";
      User user=dataBase.logIn(username, password);
@@ -112,7 +112,12 @@ DataBase dataBase = DataBase.GetInstance();
          JOptionPane.showMessageDialog(null, connctionEror, ErorType , JOptionPane.INFORMATION_MESSAGE);
     }
   else if((user.getUserPermission()).equals("resident")){
-    final Resident resident=(Resident)user;
+    final Resident resident=new Resident(user.getID(),
+       user.getFirstName(),user.getLastName(),
+       user.getEmail(),user.getUserName(),user.getPassword(),
+               user.getBuildingAddress(),
+       user.getPhoneNumber(),user.getUserPermission(),
+       user.getApartmentId());
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {

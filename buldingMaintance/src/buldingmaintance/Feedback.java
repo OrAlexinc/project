@@ -64,4 +64,11 @@ public class Feedback {
             this.priceTaken = priceTaken;
         }
 
+    @Override
+    public String toString() {
+        return  "workerId:" + workerId + "  feedback" + feedback + "\n"
+                + " rating" + rating + "  workDone=" + workDone + "  priceTaken=" + priceTaken + "\n";
+    }
+
+        
 }

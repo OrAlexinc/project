@@ -35,6 +35,13 @@ DataBase dataBase = DataBase.GetInstance();
     public void callService(Order order){
         dataBase.makeOrder(order);
     }
+    public void addFeedback(Feedback feedbak){
+        dataBase.AddFeedbackForWorker(feedbak);
+    }
+    /*public  List<Feedback> seeFeedback(int id){
+       
+        
+    }*/
     @Override
     public String toString() {
         return super.toString();
