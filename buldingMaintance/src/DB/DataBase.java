@@ -17,7 +17,7 @@ public class DataBase {
 
     String jdbcUrl = "jdbc:mysql://localhost:3306/building_maintainance?zeroDateTimeBehavior=convertToNull";
     String jdbcUser = "root";
-    String jdbcPassword;
+    String jdbcPassword="root";
     String jdbcDriver = "com.mysql.jdbc.Driver";
     List<Message> messages = new ArrayList<Message>();
     List<Order> orders = new ArrayList<Order>();
@@ -172,6 +172,10 @@ public class DataBase {
         }
         return user;
     }
+    /**
+     * to display all usernmaes in combobox
+     * @return 
+     */
  public ArrayList<String> listOfUsers() {
         ArrayList<String> usernames= new ArrayList<String>();
         String userName="";
@@ -511,8 +515,43 @@ public class DataBase {
         }
         return workers;
     }
-    
-    
+     /**
+     * to shov all workers id in combobox
+     * @param id 
+     */
+    public ArrayList<String> showWorkersId() {
+        String ids="";
+       
+        ArrayList<String> listOfId=new ArrayList<String>();
+        
+        try {
+            Class.forName(jdbcDriver);
+
+            Statement statement = connection.createStatement();
+
+            String sqlWorker = "SELECT * FROM  external_workers workerID";
+
+            ResultSet resultSet = statement.executeQuery(sqlWorker);
+
+           while (resultSet.next()) {
+                int id = resultSet.getInt("workerID");
+                ids= Integer.toString(id);
+                
+               listOfId.add(ids);
+                
+
+              
+            }
+
+        } catch (SQLException sqle) {
+            System.out.println("SQLException: " + sqle.getMessage());
+            System.out.println("Vendor Error: " + sqle.getErrorCode());
+        } catch (ClassNotFoundException e) {
+            System.out.println("Class not found exeption");
+        }
+        return listOfId;
+    }
+   
     public void RemoveExternalWorker(int id) {
         try {
             Class.forName(jdbcDriver);

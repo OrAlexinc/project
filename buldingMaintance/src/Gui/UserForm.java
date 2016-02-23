@@ -89,7 +89,6 @@ public class UserForm extends javax.swing.JFrame {
         lblPaymentCommant = new javax.swing.JLabel();
         jpnOrderMaintinace = new javax.swing.JPanel();
         lblIdOfService = new javax.swing.JLabel();
-        txtEnterIdOfService = new javax.swing.JTextField();
         lblTypeOfService = new javax.swing.JLabel();
         txtEnterTypeOfService = new javax.swing.JTextField();
         btnOrderService = new javax.swing.JButton();
@@ -98,9 +97,7 @@ public class UserForm extends javax.swing.JFrame {
         txtListOfServices = new javax.swing.JTextArea();
         jpnAddFeedback = new javax.swing.JPanel();
         lblEddFeedbackAbutAService = new javax.swing.JLabel();
-        txtEnterServiceId = new javax.swing.JTextField();
         lblEnterFeddbackId = new javax.swing.JLabel();
-        txtRatingOfService = new javax.swing.JTextField();
         lblEnterRatingOfService = new javax.swing.JLabel();
         lblEnterPriveTaken = new javax.swing.JLabel();
         txtEnterPriceTaken = new javax.swing.JTextField();
@@ -110,10 +107,13 @@ public class UserForm extends javax.swing.JFrame {
         btnSendFeedback = new javax.swing.JButton();
         lblEnterWorkDone = new javax.swing.JLabel();
         txtEnterWorkTypeDone = new javax.swing.JTextField();
+        compAddRating = new javax.swing.JComboBox();
+        compIdOfTheServicToAddFeedBack = new javax.swing.JComboBox();
         lblEnterIdOfServiceToSeeFeeedback = new javax.swing.JLabel();
-        txtEnterIdOfServiceToSeeFeedback = new javax.swing.JTextField();
         btnShowTheFeedback = new javax.swing.JButton();
         btnShowServiceList = new javax.swing.JButton();
+        combIdOfServiceToSeeFeedback = new javax.swing.JComboBox();
+        compIdOfTheServicToOrder = new javax.swing.JComboBox();
         scrollPaymentCommant = new javax.swing.JScrollPane();
         txtPaymentCommant = new javax.swing.JTextArea();
         lblSendTo = new javax.swing.JLabel();
@@ -212,14 +212,12 @@ public class UserForm extends javax.swing.JFrame {
         lblIdOfService.setText("chosen service id");
         jpnOrderMaintinace.add(lblIdOfService);
         lblIdOfService.setBounds(30, 360, 110, 30);
-        jpnOrderMaintinace.add(txtEnterIdOfService);
-        txtEnterIdOfService.setBounds(30, 400, 110, 22);
 
         lblTypeOfService.setText("type of service");
         jpnOrderMaintinace.add(lblTypeOfService);
         lblTypeOfService.setBounds(190, 370, 90, 16);
         jpnOrderMaintinace.add(txtEnterTypeOfService);
-        txtEnterTypeOfService.setBounds(180, 400, 100, 22);
+        txtEnterTypeOfService.setBounds(170, 400, 130, 22);
 
         btnOrderService.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnOrderService.setText("order");
@@ -252,14 +250,10 @@ public class UserForm extends javax.swing.JFrame {
         lblEddFeedbackAbutAService.setText("add a feedback abut a service");
         jpnAddFeedback.add(lblEddFeedbackAbutAService);
         lblEddFeedbackAbutAService.setBounds(50, 40, 240, 20);
-        jpnAddFeedback.add(txtEnterServiceId);
-        txtEnterServiceId.setBounds(50, 110, 130, 22);
 
         lblEnterFeddbackId.setText("id fo service");
         jpnAddFeedback.add(lblEnterFeddbackId);
         lblEnterFeddbackId.setBounds(50, 80, 130, 16);
-        jpnAddFeedback.add(txtRatingOfService);
-        txtRatingOfService.setBounds(230, 110, 130, 22);
 
         lblEnterRatingOfService.setText("reating(0-10)");
         jpnAddFeedback.add(lblEnterRatingOfService);
@@ -291,7 +285,7 @@ public class UserForm extends javax.swing.JFrame {
             }
         });
         jpnAddFeedback.add(btnSendFeedback);
-        btnSendFeedback.setBounds(50, 380, 150, 40);
+        btnSendFeedback.setBounds(40, 370, 150, 40);
 
         lblEnterWorkDone.setText("enter the work type");
         jpnAddFeedback.add(lblEnterWorkDone);
@@ -299,14 +293,19 @@ public class UserForm extends javax.swing.JFrame {
         jpnAddFeedback.add(txtEnterWorkTypeDone);
         txtEnterWorkTypeDone.setBounds(40, 180, 190, 22);
 
+        compAddRating.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        jpnAddFeedback.add(compAddRating);
+        compAddRating.setBounds(210, 110, 120, 20);
+
+        jpnAddFeedback.add(compIdOfTheServicToAddFeedBack);
+        compIdOfTheServicToAddFeedBack.setBounds(50, 110, 120, 20);
+
         jpnOrderMaintinace.add(jpnAddFeedback);
         jpnAddFeedback.setBounds(0, 0, 650, 490);
 
         lblEnterIdOfServiceToSeeFeeedback.setText("Enter id of service to see feedback");
         jpnOrderMaintinace.add(lblEnterIdOfServiceToSeeFeeedback);
         lblEnterIdOfServiceToSeeFeeedback.setBounds(420, 80, 210, 16);
-        jpnOrderMaintinace.add(txtEnterIdOfServiceToSeeFeedback);
-        txtEnterIdOfServiceToSeeFeedback.setBounds(420, 110, 200, 22);
 
         btnShowTheFeedback.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnShowTheFeedback.setText("show feedback");
@@ -329,6 +328,12 @@ public class UserForm extends javax.swing.JFrame {
         });
         jpnOrderMaintinace.add(btnShowServiceList);
         btnShowServiceList.setBounds(390, 290, 140, 40);
+
+        jpnOrderMaintinace.add(combIdOfServiceToSeeFeedback);
+        combIdOfServiceToSeeFeedback.setBounds(420, 110, 200, 22);
+
+        jpnOrderMaintinace.add(compIdOfTheServicToOrder);
+        compIdOfTheServicToOrder.setBounds(30, 402, 120, 20);
 
         jpnPayment.add(jpnOrderMaintinace);
         jpnOrderMaintinace.setBounds(0, 0, 650, 490);
@@ -498,6 +503,12 @@ public class UserForm extends javax.swing.JFrame {
         OnOffComponents(false, false, false, true, false);
         OnOffPanel(true, true, true, true, false);
 
+        ArrayList<String> listOfId = new ArrayList<String>();
+        listOfId=dataBase.showWorkersId();
+         for(String id:listOfId){           
+        combIdOfServiceToSeeFeedback.addItem(id);
+        compIdOfTheServicToOrder.addItem(id);
+                }
     }//GEN-LAST:event_btnMakeOrderActionPerformed
     /**
      * make my payment
@@ -538,20 +549,19 @@ public class UserForm extends javax.swing.JFrame {
     private void btnOrderServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderServiceActionPerformed
         String id = "";
         boolean flag = true;
-        if (txtEnterTypeOfService.getText().equals("") || txtEnterIdOfService.getText().equals("")) {
+        if (txtEnterTypeOfService.getText().equals("")) {
             flag = false;
             JOptionPane.showMessageDialog(null, "cant leave null text filds", idErrorTitle, JOptionPane.ERROR_MESSAGE);
 
-        } else if (flag) {
-
-            if (isValidId(txtEnterIdOfService.getText())) {
-                id = txtEnterIdOfService.getText();
-            }
-
+        } 
+                   
+          id=(String) compIdOfTheServicToOrder.getSelectedItem();
+       if(flag){
             String type = txtEnterTypeOfService.getText();
             Order order = new Order(resident.getUserName(), id, type);
             resident.callService(order);
-        }
+       }
+        
     }//GEN-LAST:event_btnOrderServiceActionPerformed
     /**
      * add a feedback abut a service
@@ -561,6 +571,10 @@ public class UserForm extends javax.swing.JFrame {
     private void btnAddAFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddAFeedbackActionPerformed
         OnOffComponents(false, false, false, false, true);
         OnOffPanel(true, true, true, true, true);
+        ArrayList<String> listOfId = new ArrayList<String>();
+        listOfId= dataBase.showWorkersId();
+        for(String id:listOfId)
+        compIdOfTheServicToAddFeedBack.addItem(id);
     }//GEN-LAST:event_btnAddAFeedbackActionPerformed
 
     /**
@@ -570,8 +584,7 @@ public class UserForm extends javax.swing.JFrame {
      */
     private void btnSendFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendFeedbackActionPerformed
        boolean flag0 = true;
-        if (txtEnterServiceId.getText().equals("")||
-               txtRatingOfService.getText().equals("") ||
+        if (
                 txtEnterPriceTaken.getText().equals("")||
                 txtEnterFeedback.getText().equals("") ||
                 txtEnterWorkTypeDone.getText().equals("")) {
@@ -586,21 +599,11 @@ public class UserForm extends javax.swing.JFrame {
         boolean flag = true;
         Feedback feedback = new Feedback();
         String workerFeedback = "";
-        if (isValidId(txtEnterServiceId.getText())) {
-            id = Integer.parseInt(txtEnterServiceId.getText());
-        } else {
-            flag = false;
-        }
-        if (isInteger(txtRatingOfService.getText())) {
-            rating = Integer.parseInt(txtRatingOfService.getText());
-            if (!(feedback.setRating(rating))) {
-                flag = false;
-                JOptionPane.showMessageDialog(null, " rating only 1-10", idErrorTitle, JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-            flag = false;
-        }
+         String iD=(String) compIdOfTheServicToAddFeedBack.getSelectedItem();
+         id=Integer.parseInt(iD);
+          String sRating=(String) compAddRating.getSelectedItem();
 
+          rating=Integer.parseInt(sRating);
         if (isInteger(txtEnterPriceTaken.getText())) {
             price = Integer.parseInt(txtEnterPriceTaken.getText());
         } else {
@@ -618,25 +621,18 @@ public class UserForm extends javax.swing.JFrame {
 
     private void btnShowTheFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowTheFeedbackActionPerformed
         boolean flag = true;
-        if (txtEnterIdOfServiceToSeeFeedback.getText().equals("")) {
-            flag = false;
-            JOptionPane.showMessageDialog(null, "cant leave null text filds", idErrorTitle, JOptionPane.ERROR_MESSAGE);
-
-        } else if (!flag) {
-
+       
             int id = 0;
             String workerFeedback = "";
 
-            if (isValidId(txtEnterIdOfServiceToSeeFeedback.getText())) {
-                id = Integer.parseInt(txtEnterIdOfServiceToSeeFeedback.getText());
-            }
-
+           String iD=(String) compIdOfTheServicToOrder.getSelectedItem();
+              id=Integer.parseInt(iD);
             feedbacks = resident.seeFeedback(id);
             for (Feedback feedback : feedbacks) {
                 workerFeedback += feedback.toString();
             }
             txtListOfServices.setText(workerFeedback);
-        }
+        
     }//GEN-LAST:event_btnShowTheFeedbackActionPerformed
     /**
      * show the list if the services
@@ -689,19 +685,21 @@ public class UserForm extends javax.swing.JFrame {
         scrollListOfServices.setVisible(order);
         lblServieList.setVisible(order);
         lblTypeOfService.setVisible(order);
-        txtEnterIdOfService.setVisible(order);
+       
         txtEnterTypeOfService.setVisible(order);
         btnOrderService.setVisible(order);
         lblEnterIdOfServiceToSeeFeeedback.setVisible(order);
-        txtEnterIdOfServiceToSeeFeedback.setVisible(order);
+       
         btnShowTheFeedback.setVisible(order);
         lblIdOfService.setVisible(order);
         btnShowServiceList.setVisible(order);
+        combIdOfServiceToSeeFeedback.setVisible(order);
+        compIdOfTheServicToOrder.setVisible(order);
 
         lblEddFeedbackAbutAService.setVisible(feedback);
-        txtEnterServiceId.setVisible(feedback);
+       compAddRating.setVisible(feedback);
         lblEnterFeddbackId.setVisible(feedback);
-        txtRatingOfService.setVisible(feedback);
+       compIdOfTheServicToAddFeedBack.setVisible(feedback);
         lblEnterRatingOfService.setVisible(feedback);
         lblEnterPriveTaken.setVisible(feedback);
         txtEnterPriceTaken.setVisible(feedback);
@@ -753,7 +751,11 @@ public class UserForm extends javax.swing.JFrame {
     private javax.swing.JButton btnShowServiceList;
     private javax.swing.JButton btnShowTheFeedback;
     private javax.swing.JButton btnViewMassege;
+    private javax.swing.JComboBox combIdOfServiceToSeeFeedback;
     private javax.swing.JComboBox combSendTo;
+    private javax.swing.JComboBox compAddRating;
+    private javax.swing.JComboBox compIdOfTheServicToAddFeedBack;
+    private javax.swing.JComboBox compIdOfTheServicToOrder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jpnAddFeedback;
     private javax.swing.JPanel jpnMain;
@@ -780,15 +782,11 @@ public class UserForm extends javax.swing.JFrame {
     private javax.swing.JScrollPane scrollShowMessage;
     private javax.swing.JScrollPane scrollWriteMassege;
     private javax.swing.JTextArea txtEnterFeedback;
-    private javax.swing.JTextField txtEnterIdOfService;
-    private javax.swing.JTextField txtEnterIdOfServiceToSeeFeedback;
     private javax.swing.JTextField txtEnterPriceTaken;
-    private javax.swing.JTextField txtEnterServiceId;
     private javax.swing.JTextField txtEnterTypeOfService;
     private javax.swing.JTextField txtEnterWorkTypeDone;
     private javax.swing.JTextArea txtListOfServices;
     private javax.swing.JTextArea txtPaymentCommant;
-    private javax.swing.JTextField txtRatingOfService;
     private javax.swing.JTextArea txtShowMessage;
     private javax.swing.JTextField txtSum;
     private javax.swing.JTextArea txtWriteMessage;
