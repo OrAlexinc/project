@@ -35,8 +35,8 @@ public class AdminForm extends javax.swing.JFrame {
     String idErrorTitle = "wrong input";
     String feedbackErrorMessage = "you need enter only digits to the id/rating/sum";
     String feedbackLenghtError = "you neeed to enter numbers no longer than 9 digits";
-    String sumError="you need enter numbers only";
-    String sumLenghtError="you cant enter negative numbers";
+    String sumError = "you need enter numbers only";
+    String sumLenghtError = "you cant enter negative numbers";
 
     public AdminForm(Admin admin) {
 
@@ -45,6 +45,32 @@ public class AdminForm extends javax.swing.JFrame {
         onOffPanel(false, false, false, false, false, false, false, false, false);
         onOffComponents(false, false, false, false, false, false, false, false, false);
 
+    }
+
+    private boolean isInteger(String number) {
+        if (number.matches("[0-9]+") == false || number.length() > 9) {
+            JOptionPane.showMessageDialog(null, "Ente only numbers", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * cheaks if the id is valid
+     *
+     * @param id
+     * @return
+     */
+    private boolean isValidId(String id) {
+        if (isInteger(id)) {
+            if (id.length() == 9) {
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Enter valid 9 digits id", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            }
+
+        }
+        return false;
     }
 
     /**
@@ -66,7 +92,6 @@ public class AdminForm extends javax.swing.JFrame {
         btnAddService = new javax.swing.JButton();
         jpnSendMassege = new javax.swing.JPanel();
         btnSend = new javax.swing.JButton();
-        txtSendMessageTo = new javax.swing.JTextField();
         lblSentTo = new javax.swing.JLabel();
         jpnReadMessages = new javax.swing.JPanel();
         btnShowMessages = new javax.swing.JButton();
@@ -157,6 +182,7 @@ public class AdminForm extends javax.swing.JFrame {
         txtShowMessage = new javax.swing.JTextArea();
         scrollWriteMessage = new javax.swing.JScrollPane();
         txtWriteMessage = new javax.swing.JTextArea();
+        combSendTo = new javax.swing.JComboBox();
         btnUserManagemant = new javax.swing.JButton();
         btnAddFeedback = new javax.swing.JButton();
         javax.swing.JLabel BackgrundImage = new javax.swing.JLabel();
@@ -260,8 +286,6 @@ public class AdminForm extends javax.swing.JFrame {
         });
         jpnSendMassege.add(btnSend);
         btnSend.setBounds(38, 261, 120, 50);
-        jpnSendMassege.add(txtSendMessageTo);
-        txtSendMessageTo.setBounds(120, 20, 100, 22);
 
         lblSentTo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblSentTo.setText("send to");
@@ -515,10 +539,10 @@ public class AdminForm extends javax.swing.JFrame {
         btnSendFeedback.setBounds(50, 380, 150, 40);
 
         jpnUserManagment.add(jpnAddFeedback);
-        jpnAddFeedback.setBounds(0, 0, 640, 480);
+        jpnAddFeedback.setBounds(0, 0, 630, 480);
 
         jpnAddService.add(jpnUserManagment);
-        jpnUserManagment.setBounds(-10, 0, 640, 480);
+        jpnUserManagment.setBounds(0, 0, 630, 480);
 
         lblEnterServiceType.setText("enter service name");
         jpnAddService.add(lblEnterServiceType);
@@ -580,7 +604,7 @@ public class AdminForm extends javax.swing.JFrame {
         btnDeleteService.setBounds(380, 160, 120, 40);
 
         jpnAddUser.add(jpnAddService);
-        jpnAddService.setBounds(10, 0, 620, 480);
+        jpnAddService.setBounds(0, 0, 630, 480);
 
         lblApartmantId.setText("apartment");
         jpnAddUser.add(lblApartmantId);
@@ -698,7 +722,7 @@ public class AdminForm extends javax.swing.JFrame {
         scrollShowMessage.setViewportView(txtShowMessage);
 
         jpnReadMessages.add(scrollShowMessage);
-        scrollShowMessage.setBounds(50, 70, 420, 180);
+        scrollShowMessage.setBounds(80, 70, 390, 180);
 
         jpnSendMassege.add(jpnReadMessages);
         jpnReadMessages.setBounds(0, 0, 630, 480);
@@ -709,6 +733,9 @@ public class AdminForm extends javax.swing.JFrame {
 
         jpnSendMassege.add(scrollWriteMessage);
         scrollWriteMessage.setBounds(50, 70, 410, 170);
+
+        jpnSendMassege.add(combSendTo);
+        combSendTo.setBounds(120, 20, 110, 22);
 
         jplMainPannel.add(jpnSendMassege);
         jpnSendMassege.setBounds(320, 0, 630, 480);
@@ -749,7 +776,13 @@ public class AdminForm extends javax.swing.JFrame {
 
         onOffPanel(true, false, false, false, false, false, false, false, false);
         onOffComponents(true, false, false, false, false, false, false, false, false);
-
+        txtWriteMessage.setText(null);
+        ArrayList<String> usernames=new ArrayList<String>();
+        usernames=dataBase.listOfUsers();
+        for(String user:usernames){
+             combSendTo.addItem(user);
+        }
+       
     }//GEN-LAST:event_btnSendMassegeActionPerformed
     /**
      *
@@ -758,6 +791,7 @@ public class AdminForm extends javax.swing.JFrame {
         onOffPanel(true, true, false, false, false, false, false, false, false);
         onOffComponents(false, true, false, false, false, false, false, false, false);
         messages = admin.RecieveMessage(admin.getUserName());
+         txtShowMessage.setText(null);
     }//GEN-LAST:event_btnReadMessageActionPerformed
     /**
      *
@@ -766,6 +800,8 @@ public class AdminForm extends javax.swing.JFrame {
     private void btnMakePaymnetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakePaymnetActionPerformed
         onOffPanel(true, true, true, false, false, false, false, false, false);
         onOffComponents(false, false, true, false, false, false, false, false, false);
+        txtSum.setText(null);    
+        txtPaymentCommant.setText(null);
     }//GEN-LAST:event_btnMakePaymnetActionPerformed
     /**
      *
@@ -774,7 +810,12 @@ public class AdminForm extends javax.swing.JFrame {
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
         onOffPanel(true, true, true, true, true, false, false, false, false);
         onOffComponents(false, false, false, false, true, false, false, false, false);
-
+        txtShowServices.setText(null);
+       
+        txtServieType.setText(null);
+        txtIdOfServiceToOrder.setText(null);   
+       txtEnterIdOfServiceToShowFeeedback.setText(null);
+        workers = dataBase.showAllWorkers();
     }//GEN-LAST:event_btnOrderActionPerformed
     /**
      * show payments managment
@@ -785,6 +826,8 @@ public class AdminForm extends javax.swing.JFrame {
         onOffPanel(true, true, true, true, false, false, false, false, false);
         onOffComponents(false, false, false, true, false, false, false, false, false);
         payments = admin.recievePayments(admin);
+        txtViewPayments.setText(null);
+        txtShowServices.setText(null);
     }//GEN-LAST:event_btnViewPaymentsActionPerformed
     /**
      * add/delete user button
@@ -794,7 +837,15 @@ public class AdminForm extends javax.swing.JFrame {
     private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUserActionPerformed
         onOffPanel(true, true, true, true, true, true, false, false, false);
         onOffComponents(false, false, false, false, false, true, false, false, false);
-
+        txtEnterPhoneNumber.setText(null);
+        txtEnterLastName.setText(null);
+        txtEnderName.setText(null);
+        txtEnterEmail.setText(null);
+        txtEnterPassword.setText(null);
+        txtEnterUserName.setText(null);
+        txtEnterID.setText(null);
+        txtApartment.setText(null);
+        txtIdOfTheUserToDelete.setText(null);
     }//GEN-LAST:event_btnAddUserActionPerformed
     /**
      *
@@ -803,6 +854,11 @@ public class AdminForm extends javax.swing.JFrame {
     private void btnAddServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddServiceActionPerformed
         onOffPanel(true, true, true, true, true, true, true, false, false);
         onOffComponents(false, false, false, false, false, false, true, false, false);
+        txtEnterServiceName.setText(null);
+        txtEnterServiceGuyFirsttName.setText(null);
+        txtEnterServiceGuyLastName.setText(null);
+        txtEnterServiceGuyId.setText(null);       
+        txtEnterIdOfServiceToDelete.setText(null);
     }//GEN-LAST:event_btnAddServiceActionPerformed
     /**
      * button add when pressed the user added to database
@@ -810,33 +866,50 @@ public class AdminForm extends javax.swing.JFrame {
      * @param evt
      */
     private void btnAddNewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddNewUserActionPerformed
-        String firstName;
-        String lastName;
-        String password;
-        String userName;
-        String phoneNumber;
-        String email;
-        int apartmantId;
+        String firstName = txtEnterLastName.getText();
+        String lastName = txtEnderName.getText();
+        String password = txtEnterPassword.getText();
+        String userName = txtEnterUserName.getText();
+        String phoneNumber = "";
+        String email = txtEnterEmail.getText();
+        int apartmantId = 1;
         int id = 0;
+        boolean flag = false;
 
-        lastName = txtEnterLastName.getText();
-        firstName = txtEnderName.getText();
-        email = txtEnterEmail.getText();
-        password = txtEnterPassword.getText();
-        userName = txtEnterUserName.getText();
-
-        if (txtEnterID.getText().matches("[0-9]+") == false) {
-            JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else if (txtEnterID.getText().length() !=9) {
-            JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else {
-            id = Integer.parseInt(txtEnterID.getText());
+        User resident = new Resident();
+        if (!resident.setLastName(lastName)) {
+            JOptionPane.showMessageDialog(null, "only letters in lastname\first name and no longer than 20 letters", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            flag = false;
         }
-        apartmantId = Integer.parseInt(txtApartment.getText());
-        phoneNumber = txtEnterPhoneNumber.getText();
+        if (!resident.setFirstName(firstName)) {
+            JOptionPane.showMessageDialog(null, "only letters in lastname\first name and no longer than 20 letters", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            flag = false;
+        }
 
-        User resident = new Resident(id, firstName, lastName, email, userName, password, admin.getBuildingAddress(), phoneNumber, "resident", apartmantId);
-        admin.addUser(resident);
+        if (isValidId(txtEnterID.getText())) {
+            id = Integer.parseInt(txtEnterID.getText());
+        } else {
+               JOptionPane.showMessageDialog(null, "only letters in lastname\first name and no longer than 20 letters", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            flag = false;
+        }
+
+        if (!isInteger(txtApartment.getText())) {
+           
+            flag = false;
+        } else {
+            
+            apartmantId = Integer.parseInt(txtApartment.getText());
+        }
+        if (!isInteger(txtEnterPhoneNumber.getText())) {
+         
+            flag = false;
+        } else {
+            phoneNumber = txtEnterPhoneNumber.getText();
+        }
+        if (flag) {
+            resident = new Resident(id, firstName, lastName, email, userName, password, admin.getBuildingAddress(), phoneNumber, "resident", apartmantId);
+            admin.addUser(resident);
+        }
 
     }//GEN-LAST:event_btnAddNewUserActionPerformed
     /**
@@ -847,15 +920,12 @@ public class AdminForm extends javax.swing.JFrame {
     private void btnDeleteTheUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteTheUserActionPerformed
         int id = 0;
 
-        if (txtIdOfTheUserToDelete.getText().matches("[0-9]+") == false) {
-            JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else if (txtIdOfTheUserToDelete.getText().length() !=9) {
-            JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else {
+        if (isValidId(txtIdOfTheUserToDelete.getText())){
             id = Integer.parseInt(txtIdOfTheUserToDelete.getText());
-        }
+            admin.deleteUser(id);
+       }
 
-        admin.deleteUser(id);
+        
     }//GEN-LAST:event_btnDeleteTheUserActionPerformed
     /**
      * when send message button pressed sends the message
@@ -863,12 +933,12 @@ public class AdminForm extends javax.swing.JFrame {
      * @param evt
      */
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
-        String username = txtSendMessageTo.getText();
+
         String text = txtWriteMessage.getText();
+        String username =(String) combSendTo.getSelectedItem();
         Message message = new Message(text, admin.getUserName(), username);
         System.out.println(message.getToUser());
         admin.SendMessage(message);
-        txtSendMessageTo.setText(null);
         txtWriteMessage.setText(null);
     }//GEN-LAST:event_btnSendActionPerformed
     /**
@@ -877,6 +947,8 @@ public class AdminForm extends javax.swing.JFrame {
      * @param evt
      */
     private void btnShowMessagesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowMessagesActionPerformed
+       boolean flag=true;
+       if(flag){
         txtShowMessage.setText(null);
         String allmesssages = "";
 
@@ -884,6 +956,11 @@ public class AdminForm extends javax.swing.JFrame {
             allmesssages += m.toString();
         }
         txtShowMessage.setText(allmesssages);
+        flag =false;
+       }
+       else if(!flag){
+            JOptionPane.showMessageDialog(null, "you dont have any more messages!!!!", idErrorTitle, JOptionPane.ERROR_MESSAGE); 
+       }
     }//GEN-LAST:event_btnShowMessagesActionPerformed
     /**
      * show the corrent payments
@@ -919,8 +996,8 @@ public class AdminForm extends javax.swing.JFrame {
      * @param evt
      */
     private void btnShowSeriveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowSeriveActionPerformed
-        txtShowServices.setText(null);
-        workers = dataBase.showAllWorkers();
+     
+       
         String workerList = "";
         for (ExternalWorker worker : workers) {
             workerList += worker.toString();
@@ -937,19 +1014,20 @@ public class AdminForm extends javax.swing.JFrame {
 
         txtShowServices.setText(null);
         String id = "";
-
-        if (txtIdOfServiceToOrder.getText().matches("[0-9]+") == false) {
-            JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else if (txtIdOfServiceToOrder.getText().length() !=9) {
-            JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else {
+        boolean flag=false;
+       if(isValidId(txtIdOfServiceToOrder.getText())){
             id = txtIdOfServiceToOrder.getText();
+            flag=false;
         }
 
         String type = txtServieType.getText();
-
+      if(flag){
         Order order = new Order(admin.getUserName(), id, type);
         admin.order(order);
+      }
+       txtServieType.setText(null);
+        txtIdOfServiceToOrder.setText(null);   
+       txtEnterIdOfServiceToShowFeeedback.setText(null);
     }//GEN-LAST:event_btnMakeTheOrderActionPerformed
     /**
      * make the payment
@@ -959,20 +1037,13 @@ public class AdminForm extends javax.swing.JFrame {
     private void btnPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayActionPerformed
         int sum = 0;
 
-        if (txtSum.getText().matches("[0-9]+") == false) {
-            JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else if ((txtSum.getText().length() < 100000000 )&& (txtSum.getText().length() > 999999999)) {
-            JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-            JOptionPane.showMessageDialog(null,sumError , idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else if ((txtSum.getText()).length() < 0 ||(txtSum.getText()).length() > 9) {
-            JOptionPane.showMessageDialog(null, sumLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else {
-            sum = Integer.parseInt(txtSum.getText());
-        }
-
+         if (isInteger(txtSum.getText())){
+            sum = Integer.parseInt(txtSum.getText()); 
         String commant = txtPaymentCommant.getText();
         Payment pay = new Payment(admin.getUserName(), admin.getUserName(), commant, sum);
         admin.makePayment(pay);
+         }
+          txtPaymentCommant.setText(null);
     }//GEN-LAST:event_btnPayActionPerformed
     /**
      * view your all users
@@ -983,6 +1054,8 @@ public class AdminForm extends javax.swing.JFrame {
         onOffPanel(true, true, true, true, true, true, true, true, false);
         onOffComponents(false, false, false, false, false, false, false, true, false);
         users = admin.showAllUser();
+        txtShowUserById.setText(null);
+        txtUserManagment.setText(null);
     }//GEN-LAST:event_btnUserManagemantActionPerformed
     /**
      * show your all users
@@ -990,12 +1063,20 @@ public class AdminForm extends javax.swing.JFrame {
      * @param evt
      */
     private void btnShowAllUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowAllUsersActionPerformed
+        
         String allUsers = "";
+        boolean flag =true;
+       if(flag) {
         for (User user : users) {
             allUsers += user.toString();
 
         }
         txtUserManagment.setText(allUsers);
+        }
+       else if(!flag)
+       {
+           JOptionPane.showMessageDialog(null,"NO more users to diplay", idErrorTitle, JOptionPane.ERROR_MESSAGE);  
+       }
     }//GEN-LAST:event_btnShowAllUsersActionPerformed
     /**
      * show specipic user
@@ -1004,21 +1085,17 @@ public class AdminForm extends javax.swing.JFrame {
      */
     private void btnShowUserByIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowUserByIdActionPerformed
         int id = 0;
-        if (txtShowUserById.getText().matches("[0-9]+") == false) {
-            JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else if (txtShowUserById.getText().length() !=9) {
-            JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else {
+       if(isValidId(txtShowUserById.getText())){
             id = Integer.parseInt(txtShowUserById.getText());
-        }
-
+        
         User user;
         user = admin.showUserById(id);
         txtUserManagment.setText(user.toString());
+    }
     }//GEN-LAST:event_btnShowUserByIdActionPerformed
 
     private void txtApartmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApartmentActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtApartmentActionPerformed
     /**
      * add a new service guy
@@ -1029,50 +1106,56 @@ public class AdminForm extends javax.swing.JFrame {
         String serviceName = txtEnterServiceName.getText();
         String firstName = txtEnterServiceGuyFirsttName.getText();
         String lastName = txtEnterServiceGuyLastName.getText();
-
+         ExternalWorker externalWorker = new ExternalWorker();
         int id = 0;
-        if (txtEnterServiceGuyId.getText().matches("[0-9]+") == false) {
-            JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else if (txtEnterServiceGuyId.getText().length()!=9) {
-            JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else {
-            id = Integer.parseInt(txtEnterServiceGuyId.getText());
+        boolean flag=true;
+       if (isValidId(txtEnterServiceGuyId.getText())) {
+           id = Integer.parseInt(txtEnterServiceGuyId.getText());
         }
-
-        ExternalWorker externalWorker = new ExternalWorker(id, serviceName, firstName, lastName);
+       else{
+           flag=false;
+       }
+       if (!externalWorker.setLastName(lastName)){
+              JOptionPane.showMessageDialog(null, "only letters in lastname\first name and no longer than 20 letters", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+               flag=false;
+       }
+          if (!externalWorker.setFirstName(firstName)){
+              JOptionPane.showMessageDialog(null, "only letters in lastname\first name and no longer than 20 letters", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+              flag=false;
+       }
+                          
+     if(flag){
+         externalWorker = new ExternalWorker(id, serviceName, firstName, lastName);
         admin.addService(externalWorker);
+     }
     }//GEN-LAST:event_btnAddTheServiceGuyActionPerformed
-
+/**
+ * delete a user from database
+ * @param evt 
+ */
     private void btnDeleteServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteServiceActionPerformed
 
         int id = 0;
-        if (txtSum.getText().matches("[0-9]+") == false) {
-            JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else if (txtEnterIdOfServiceToDelete.getText().length() !=9) {
-            JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else {
+        if(isValidId(txtEnterIdOfServiceToDelete.getText())){     
             id = Integer.parseInt(txtEnterIdOfServiceToDelete.getText());
-        }
-
+       
         admin.deleteServie(id);
+    }
     }//GEN-LAST:event_btnDeleteServiceActionPerformed
 
     private void btnShowTheFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowTheFeedbackActionPerformed
         int id = 0;
         String workerFeedback = "";
-        if (txtEnterIdOfServiceToShowFeeedback.getText().matches("[0-9]+") == false) {
-            JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else if (txtEnterIdOfServiceToShowFeeedback.getText().length() !=9) {
-            JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else {
+        if(isValidId(txtEnterIdOfServiceToShowFeeedback.getText())){
             id = Integer.parseInt(txtEnterIdOfServiceToShowFeeedback.getText());
-        }
+        
 
         feedbacks = admin.seeFeedback(id);
         for (Feedback feedback : feedbacks) {
             workerFeedback += feedback.toString();
         }
         txtServieType.setText(workerFeedback);
+    }
     }//GEN-LAST:event_btnShowTheFeedbackActionPerformed
     /**
      * add a feedback
@@ -1082,29 +1165,43 @@ public class AdminForm extends javax.swing.JFrame {
     private void btnAddFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFeedbackActionPerformed
         onOffPanel(true, true, true, true, true, true, true, true, true);
         onOffComponents(false, false, false, false, false, false, false, false, true);
+         
     }//GEN-LAST:event_btnAddFeedbackActionPerformed
 
     private void btnSendFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendFeedbackActionPerformed
         int id = 0;
         int rating = 0;
         float price = 0;
-        if (txtEnterServiceId.getText().matches("[0-9]+") == false
-                || txtRatingOfService.getText().matches("[0-9]+") == false
-                || txtEnterPriceTaken.getText().matches("[0-9]+") == false) {
-            JOptionPane.showMessageDialog(null, feedbackErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else if (((txtEnterServiceId.getText().length() !=9)
-                || (txtRatingOfService.getText().length() > 9) 
-                || txtEnterPriceTaken.getText().length() < 0)) {
-            JOptionPane.showMessageDialog(null, feedbackLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else {
-            id = Integer.parseInt(txtEnterServiceId.getText());
-            rating = Integer.parseInt(txtRatingOfService.getText());
+         Feedback feedback = new Feedback();
+         boolean flag=true;
+        if (isValidId(txtEnterServiceId.getText())){
+               id = Integer.parseInt(txtEnterServiceId.getText());
+            } 
+        else
+        {
+            flag=false;
+        }
+        if(isInteger(txtRatingOfService.getText()))
+        {  rating = Integer.parseInt(txtRatingOfService.getText());
+            if(!(feedback.setRating(rating)))
+            {  flag=false;
+               JOptionPane.showMessageDialog(null," rating only 1-10", idErrorTitle, JOptionPane.ERROR_MESSAGE); 
+            }
+        }
+        else{
+             flag=false;
+        }
+        
+        if( isInteger(txtEnterPriceTaken.getText())){
             price = Integer.parseInt(txtEnterPriceTaken.getText());
+        }
+        else{         
+             flag=false;
         }
 
         String feedbackText = txtEnterFeedback.getText();
         String workDone = txtEnterWorkTypeDone.getText();
-        Feedback feedback = new Feedback(id, feedbackText, rating, workDone, price);
+     feedback = new Feedback(id, feedbackText, rating, workDone, price);
         admin.addFeedback(feedback);
     }//GEN-LAST:event_btnSendFeedbackActionPerformed
     /**
@@ -1147,10 +1244,10 @@ public class AdminForm extends javax.swing.JFrame {
             boolean userManagemant, boolean feedback) {
 
         lblSentTo.setVisible(sendMessage);
-        txtSendMessageTo.setVisible(sendMessage);
         txtWriteMessage.setVisible(sendMessage);
         scrollWriteMessage.setVisible(sendMessage);
         btnSend.setVisible(sendMessage);
+        combSendTo.setVisible(sendMessage);
 
         scrollShowMessage.setVisible(readMessage);
         txtShowMessage.setVisible(readMessage);
@@ -1238,6 +1335,7 @@ public class AdminForm extends javax.swing.JFrame {
         txtEnterFeedback.setVisible(feedback);
         lblEnterWorkDone.setVisible(feedback);
         txtEnterWorkTypeDone.setVisible(feedback);
+      
 
     }
 
@@ -1297,6 +1395,7 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JButton btnViewPayments;
     private javax.swing.JButton btnViewWhoNotPayed;
     private javax.swing.JButton btnViewWhoPayd;
+    private javax.swing.JComboBox combSendTo;
     private javax.swing.JPanel jplMainPannel;
     private javax.swing.JPanel jpnAddFeedback;
     private javax.swing.JPanel jpnAddService;
@@ -1366,7 +1465,6 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JTextField txtIdOfTheUserToDelete;
     private javax.swing.JTextArea txtPaymentCommant;
     private javax.swing.JTextField txtRatingOfService;
-    private javax.swing.JTextField txtSendMessageTo;
     private javax.swing.JTextField txtServieType;
     private javax.swing.JTextArea txtShowMessage;
     private javax.swing.JTextArea txtShowServices;

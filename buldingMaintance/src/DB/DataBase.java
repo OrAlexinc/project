@@ -172,7 +172,31 @@ public class DataBase {
         }
         return user;
     }
+ public ArrayList<String> listOfUsers() {
+        ArrayList<String> usernames= new ArrayList<String>();
+        String userName="";
+        try {
+            Class.forName(jdbcDriver);
 
+            Statement statement = connection.createStatement();
+
+            String sqlUser = "SELECT * FROM  users username";
+
+            ResultSet resultSet = statement.executeQuery(sqlUser);
+
+           while (resultSet.next()) {
+                 userName = resultSet.getString("UserName");
+                usernames.add(userName);
+            }
+
+        } catch (SQLException sqle) {
+            System.out.println("SQLException: " + sqle.getMessage());
+            System.out.println("Vendor Error: " + sqle.getErrorCode());
+        } catch (ClassNotFoundException e) {
+            System.out.println("Class not found exeption");
+        }
+        return usernames;
+    }
     /**
      * make sure that there will be no duplicates in messages table
      *

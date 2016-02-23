@@ -21,6 +21,12 @@ public class Payment {
     private String comment;
     private Date dateRecieved=new Date(12/23/3);
     DataBase dataBase = DataBase.GetInstance();
+
+    public Payment() {
+    }
+    
+    public Payment( String from,String to,String comment,int sum  ){
+      
     
     public Payment( String from,String to,String comment,int sum  ){   
         setFrom(from);
@@ -76,10 +82,11 @@ public class Payment {
         return sum;
     }
 
-    public void setSum(int sum) {
-        
-       
+    public boolean setSum(int sum) {
+        if(sum<0)
+            return false;
         this.sum = sum;
+        return true;
     }
     
     public Date getDateRecieved(){

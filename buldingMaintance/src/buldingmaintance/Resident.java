@@ -14,6 +14,10 @@ import java.util.List;
  */
 public class Resident extends User{
 DataBase dataBase = DataBase.GetInstance();
+
+    public Resident() {
+    }
+
     public Resident(int ID, String firstName, String lastName, String email, String userName,
             String password, String buildingAddress, String phoneNumber, String userPermission, int apartmentId) {
         super(ID, firstName, lastName, email, userName, password, buildingAddress, phoneNumber, userPermission, apartmentId);
@@ -25,7 +29,7 @@ DataBase dataBase = DataBase.GetInstance();
     }
    public void addPayment(Payment pay){
    dataBase.makePayment(pay);
-    
+          
        }
     
     public List<Message> readMessage(String userName){

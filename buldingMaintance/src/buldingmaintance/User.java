@@ -47,16 +47,25 @@ public class User {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public boolean setFirstName(String firstName) {
+       
+      if((firstName.matches("[a-zA-Z]+")==false)||firstName.length()>20)
+        return false;
         this.firstName = firstName;
+        return true;
     }
 
     public String getLastName() {
+        
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public boolean setLastName(String lastName) {
+          if((lastName.matches("[a-zA-Z]+")==false)||lastName.length()>20)
+          return false;
+
         this.lastName = lastName;
+           return true;
     }
 
     public String getEmail() {
@@ -95,8 +104,11 @@ public class User {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public boolean setPhoneNumber(String phoneNumber) {
+       if (phoneNumber.matches("[0-9]+") == false)
+           return false;
         this.phoneNumber = phoneNumber;
+        return true;
     }
 
     public String getUserPermission() {
@@ -111,8 +123,11 @@ public class User {
         return apartmentId;
     }
 
-    public void setApartmentId(int apartmentId) {
+    public boolean setApartmentId(int apartmentId) {
+       if (apartmentId<0||apartmentId>999)
+           return false;
         this.apartmentId = apartmentId;
+        return true;
     }
 
     public void SendMessage(Message message) {
