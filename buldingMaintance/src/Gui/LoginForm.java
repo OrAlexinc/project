@@ -42,7 +42,7 @@ DataBase dataBase = DataBase.GetInstance();
         lblEnglish = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
         lblHebrew = new javax.swing.JLabel();
-        lblUsername2 = new javax.swing.JLabel();
+        lblUsername = new javax.swing.JLabel();
         lblRussian = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -61,11 +61,11 @@ DataBase dataBase = DataBase.GetInstance();
 
         lblPassword.setText("password");
 
-        lblHebrew.setText("Hebrew");
+        lblHebrew.setText("עיברית");
 
-        lblUsername2.setText(" username");
+        lblUsername.setText(" username");
 
-        lblRussian.setText("Russian");
+        lblRussian.setText("Pусский");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -74,7 +74,10 @@ DataBase dataBase = DataBase.GetInstance();
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(74, 74, 74)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34)
@@ -89,11 +92,6 @@ DataBase dataBase = DataBase.GetInstance();
                     .addComponent(lblHebrew, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblEnglish, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(150, 150, 150))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(88, 88, 88)
-                    .addComponent(lblUsername2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(251, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,20 +101,17 @@ DataBase dataBase = DataBase.GetInstance();
                 .addComponent(lblHebrew, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblRussian, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPassword)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(121, 121, 121)
-                    .addComponent(lblUsername2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(157, Short.MAX_VALUE)))
         );
 
         getContentPane().add(jPanel1);
@@ -172,11 +167,24 @@ DataBase dataBase = DataBase.GetInstance();
         });
         
     }
-  
- 
-    
     }//GEN-LAST:event_btnLoginActionPerformed
 
+    private void lblHebrewMouseClicked(java.awt.event.MouseEvent evt) {                                        
+        
+    } 
+    
+    
+    private void lblRussianMouseClicked(java.awt.event.MouseEvent evt) {                                        
+        
+    } 
+    
+    
+    
+    private void lblEnglishMouseClicked(java.awt.event.MouseEvent evt) {                                        
+        
+    } 
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -215,7 +223,7 @@ DataBase dataBase = DataBase.GetInstance();
     private javax.swing.JLabel lblHebrew;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblRussian;
-    private javax.swing.JLabel lblUsername2;
+    private javax.swing.JLabel lblUsername;
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables

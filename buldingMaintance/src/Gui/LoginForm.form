@@ -41,7 +41,11 @@
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="txtUsername" alignment="1" min="-2" pref="128" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="lblUsername" min="-2" pref="81" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="txtUsername" min="-2" pref="128" max="-2" attributes="0"/>
+                      </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="lblPassword" min="-2" pref="59" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
@@ -62,13 +66,6 @@
                   </Group>
                   <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
               </Group>
-              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
-                      <Component id="lblUsername2" min="-2" pref="81" max="-2" attributes="0"/>
-                      <EmptySpace pref="251" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -79,9 +76,12 @@
                   <Component id="lblHebrew" min="-2" pref="22" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblRussian" min="-2" pref="22" max="-2" attributes="0"/>
-                  <EmptySpace pref="24" max="32767" attributes="0"/>
-                  <Component id="txtUsername" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <EmptySpace pref="23" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtUsername" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblUsername" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblPassword" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtPassword" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -89,13 +89,6 @@
                   <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="btnLogin" min="-2" pref="43" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-              </Group>
-              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
-                      <Component id="lblUsername2" min="-2" pref="22" max="-2" attributes="0"/>
-                      <EmptySpace pref="157" max="32767" attributes="0"/>
-                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -128,17 +121,17 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblHebrew">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Hebrew"/>
+            <Property name="text" type="java.lang.String" value="&#x5e2;&#x5d9;&#x5d1;&#x5e8;&#x5d9;&#x5ea;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblUsername2">
+        <Component class="javax.swing.JLabel" name="lblUsername">
           <Properties>
             <Property name="text" type="java.lang.String" value=" username"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblRussian">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Russian"/>
+            <Property name="text" type="java.lang.String" value="P&#x443;&#x441;&#x441;&#x43a;&#x438;&#x439;"/>
           </Properties>
         </Component>
       </SubComponents>
