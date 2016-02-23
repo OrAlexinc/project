@@ -141,13 +141,14 @@ public class User {
 
     @Override
     public String toString() {
-        return   "ID:" + ID + " firstName:" + firstName + " lastName: " 
-                + lastName + ""+ " \n email:" + email + " userName:" + 
-                userName + " password:" + password + 
-                " \n buildingAddress:" + buildingAddress + 
-                 " apartmentId:" + apartmentId +"" +
-                " phoneNumber:" + phoneNumber + ""
-                + " \nuserPermission:" + userPermission ;
+        return   "ID:  " + ID + "\tfirstName:  " + firstName + "\tlastName:  " 
+                + lastName + ""+ "\n email:  " + email + "\tuserName:  " + 
+                userName + "\tpassword:  " + password + 
+                " \n buildingAddress:  " + buildingAddress + 
+                 "\tapartmentId:  " + apartmentId +"" +
+                "\tphoneNumber:  " + phoneNumber + ""
+                + " \nuserPermission:  " + userPermission
+                +"\n************************************************************\n" ;
                 
     }
 

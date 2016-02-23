@@ -27,6 +27,8 @@ public class Payment {
     
     public Payment( String from,String to,String comment,int sum  ){
       
+    
+    public Payment( String from,String to,String comment,int sum  ){   
         setFrom(from);
          setTo(to);
         setComment(comment);
@@ -93,7 +95,10 @@ public class Payment {
 
     @Override
     public String toString() {
-        return "Payment#"+paymentId + "    from" + from + "     to" + to + "    sum" + sum + "\ncomment" + comment + "\ndatePayed" + dateRecieved +"\n";
+        return "Payment#  "+paymentId + "\tFrom:  " + from + "\tTo:  " + to + 
+                "\nSum:  " + sum + "\tComment:  " + comment + 
+                "\nDate Payed:  " + dateRecieved +
+                "\n*******************************************************\n";
     }
     
 }

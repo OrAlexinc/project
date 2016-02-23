@@ -11,17 +11,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-/**
- *
- * @author orgershov
- */
 public class DataBase {
 
     protected static DataBase instance = new DataBase();
 
     String jdbcUrl = "jdbc:mysql://localhost:3306/building_maintainance?zeroDateTimeBehavior=convertToNull";
     String jdbcUser = "root";
-    String jdbcPassword="root";
+    String jdbcPassword;
     String jdbcDriver = "com.mysql.jdbc.Driver";
     List<Message> messages = new ArrayList<Message>();
     List<Order> orders = new ArrayList<Order>();
@@ -52,40 +48,7 @@ public class DataBase {
         return instance;
     }
 
-    /*
-     public void connectToDataBase() {
-     try {
-
-     Class.forName(jdbcDriver);
-     Connection connection
-     = DriverManager.getConnection(jdbcUrl, jdbcUser, jdbcPassword);
-
-     Statement statement = connection.createStatement();
-     //הוצאת ערכים	
-     String allCustomersQuery = "SELECT * FROM USERS;";
-     ResultSet resultSet = statement.executeQuery(allCustomersQuery);
-
-     while (resultSet.next()) {
-     String name = resultSet.getString("First Name");
-     System.out.println(name);
-     }
-
-            
-     //הכנסת ערכים
-     String insertYser = "insert into  USERS values(2,'or','gershov','orgershov@gmail.com','or','gershov','ramat hagolan',2,3,'user');";
-     statement.executeUpdate(insertYser);
-
-            
-     } catch (SQLException sqle) {
-     System.out.println("SQLException: " + sqle.getMessage());
-     System.out.println("Vendor Error: " + sqle.getErrorCode());
-     } catch (ClassNotFoundException e) {
-     e.printStackTrace();
-     }
-
-     }
-
-     */
+    
     public void AddUser(User user) { //gets an object from type user and adds its fields to database
 
         try {
