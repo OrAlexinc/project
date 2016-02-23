@@ -35,6 +35,8 @@ public class AdminForm extends javax.swing.JFrame {
     String idErrorTitle = "wrong input";
     String feedbackErrorMessage = "you need enter only digits to the id/rating/sum";
     String feedbackLenghtError = "you neeed to enter numbers no longer than 9 digits";
+    String sumError="you need enter numbers only";
+    String sumLenghtError="you cant enter negative numbers";
 
     public AdminForm(Admin admin) {
 
@@ -825,7 +827,7 @@ public class AdminForm extends javax.swing.JFrame {
 
         if (txtEnterID.getText().matches("[0-9]+") == false) {
             JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else if (txtEnterID.getText().length() < 100000000 && txtEnterID.getText().length() > 999999999) {
+        } else if (txtEnterID.getText().length() !=9) {
             JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
         } else {
             id = Integer.parseInt(txtEnterID.getText());
@@ -847,7 +849,7 @@ public class AdminForm extends javax.swing.JFrame {
 
         if (txtIdOfTheUserToDelete.getText().matches("[0-9]+") == false) {
             JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else if (txtIdOfTheUserToDelete.getText().length() < 100000000 && txtIdOfTheUserToDelete.getText().length() > 999999999) {
+        } else if (txtIdOfTheUserToDelete.getText().length() !=9) {
             JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
         } else {
             id = Integer.parseInt(txtIdOfTheUserToDelete.getText());
@@ -938,7 +940,7 @@ public class AdminForm extends javax.swing.JFrame {
 
         if (txtIdOfServiceToOrder.getText().matches("[0-9]+") == false) {
             JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else if (txtIdOfServiceToOrder.getText().length() < 100000000 && txtIdOfServiceToOrder.getText().length() > 999999999) {
+        } else if (txtIdOfServiceToOrder.getText().length() !=9) {
             JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
         } else {
             id = txtIdOfServiceToOrder.getText();
@@ -961,6 +963,9 @@ public class AdminForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
         } else if ((txtSum.getText().length() < 100000000 )&& (txtSum.getText().length() > 999999999)) {
             JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,sumError , idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        } else if ((txtSum.getText()).length() < 0 ||(txtSum.getText()).length() > 9) {
+            JOptionPane.showMessageDialog(null, sumLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
         } else {
             sum = Integer.parseInt(txtSum.getText());
         }
@@ -1001,7 +1006,7 @@ public class AdminForm extends javax.swing.JFrame {
         int id = 0;
         if (txtShowUserById.getText().matches("[0-9]+") == false) {
             JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else if (txtShowUserById.getText().length() < 100000000 && txtShowUserById.getText().length() > 999999999) {
+        } else if (txtShowUserById.getText().length() !=9) {
             JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
         } else {
             id = Integer.parseInt(txtShowUserById.getText());
@@ -1028,7 +1033,7 @@ public class AdminForm extends javax.swing.JFrame {
         int id = 0;
         if (txtEnterServiceGuyId.getText().matches("[0-9]+") == false) {
             JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else if (txtEnterServiceGuyId.getText().length() < 100000000 && txtEnterServiceGuyId.getText().length() > 999999999) {
+        } else if (txtEnterServiceGuyId.getText().length()!=9) {
             JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
         } else {
             id = Integer.parseInt(txtEnterServiceGuyId.getText());
@@ -1043,7 +1048,7 @@ public class AdminForm extends javax.swing.JFrame {
         int id = 0;
         if (txtSum.getText().matches("[0-9]+") == false) {
             JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else if (txtEnterIdOfServiceToDelete.getText().length() < 100000000 && txtEnterIdOfServiceToDelete.getText().length() > 999999999) {
+        } else if (txtEnterIdOfServiceToDelete.getText().length() !=9) {
             JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
         } else {
             id = Integer.parseInt(txtEnterIdOfServiceToDelete.getText());
@@ -1057,7 +1062,7 @@ public class AdminForm extends javax.swing.JFrame {
         String workerFeedback = "";
         if (txtEnterIdOfServiceToShowFeeedback.getText().matches("[0-9]+") == false) {
             JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else if (txtEnterIdOfServiceToShowFeeedback.getText().length() < 100000000 && txtEnterIdOfServiceToShowFeeedback.getText().length() > 999999999) {
+        } else if (txtEnterIdOfServiceToShowFeeedback.getText().length() !=9) {
             JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
         } else {
             id = Integer.parseInt(txtEnterIdOfServiceToShowFeeedback.getText());
@@ -1087,10 +1092,9 @@ public class AdminForm extends javax.swing.JFrame {
                 || txtRatingOfService.getText().matches("[0-9]+") == false
                 || txtEnterPriceTaken.getText().matches("[0-9]+") == false) {
             JOptionPane.showMessageDialog(null, feedbackErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else if (((txtEnterServiceId.getText().length() > 999999999
-                && txtEnterServiceId.getText().length() < 100000000)
-                || (txtRatingOfService.getText().length() > 10
-                && txtRatingOfService.getText().length() < 0) || txtEnterPriceTaken.getText().length() < 0)) {
+        } else if (((txtEnterServiceId.getText().length() !=9)
+                || (txtRatingOfService.getText().length() > 9) 
+                || txtEnterPriceTaken.getText().length() < 0)) {
             JOptionPane.showMessageDialog(null, feedbackLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
         } else {
             id = Integer.parseInt(txtEnterServiceId.getText());

@@ -77,6 +77,8 @@ public class Payment {
     }
 
     public void setSum(int sum) {
+        
+       
         this.sum = sum;
     }
     
