@@ -10,12 +10,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
-
-
-
-
-
 /**
  *
  * @author orgershov
@@ -26,7 +20,7 @@ public class DataBase {
 
     String jdbcUrl = "jdbc:mysql://localhost:3306/building_maintainance?zeroDateTimeBehavior=convertToNull";
     String jdbcUser = "root";
-    String jdbcPassword="root";
+    String jdbcPassword;
     String jdbcDriver = "com.mysql.jdbc.Driver";
     List<Message> messages = new ArrayList<Message>();
     List<Order> orders = new ArrayList<Order>();
