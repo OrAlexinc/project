@@ -27,12 +27,45 @@ public class UserForm extends javax.swing.JFrame {
     String idErrorTitle = "wrong input";
     String feedbackErrorMessage = "you need enter only digits to the id/rating/sum";
     String feedbackLenghtError = "you neeed to enter numbers no longer than 9 digits";
+
     public UserForm(Resident resident) {
         initComponents();
         this.resident = resident;
         OnOffComponents(false, false, false, false, false);
         OnOffPanel(false, false, false, false, false);
 
+    }
+
+    /**
+     * cheaking if sring can safly converted to integer
+     *
+     * @param number
+     * @return
+     */
+    private boolean isInteger(String number) {
+        if (number.matches("[0-9]+") == false || number.length() > 9) {
+            JOptionPane.showMessageDialog(null, "Ente only numbers", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * cheaks if the id is valid
+     *
+     * @param id
+     * @return
+     */
+    private boolean isValidId(String id) {
+        if (isInteger(id)) {
+            if (id.length() == 9) {
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Enter valid 9 digits id", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            }
+
+        }
+        return false;
     }
 
     /**
@@ -86,7 +119,7 @@ public class UserForm extends javax.swing.JFrame {
         lblSendTo = new javax.swing.JLabel();
         scrollWriteMassege = new javax.swing.JScrollPane();
         txtWriteMessage = new javax.swing.JTextArea();
-        txtSendTo = new javax.swing.JTextField();
+        combSendTo = new javax.swing.JComboBox();
         btnSendMassege = new javax.swing.JButton();
         btnViewMassege = new javax.swing.JButton();
         btnMakepayment = new javax.swing.JButton();
@@ -314,9 +347,10 @@ public class UserForm extends javax.swing.JFrame {
         jpnViewMassege.setBounds(0, 0, 660, 470);
         jpnViewMassege.getAccessibleContext().setAccessibleParent(jpnMain);
 
+        lblSendTo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblSendTo.setText("send to");
         jpnSendMassege.add(lblSendTo);
-        lblSendTo.setBounds(80, 56, 70, 20);
+        lblSendTo.setBounds(80, 50, 70, 20);
 
         txtWriteMessage.setColumns(20);
         txtWriteMessage.setRows(5);
@@ -324,8 +358,9 @@ public class UserForm extends javax.swing.JFrame {
 
         jpnSendMassege.add(scrollWriteMassege);
         scrollWriteMassege.setBounds(70, 80, 510, 250);
-        jpnSendMassege.add(txtSendTo);
-        txtSendTo.setBounds(130, 60, 80, 20);
+
+        jpnSendMassege.add(combSendTo);
+        combSendTo.setBounds(150, 50, 110, 22);
 
         jpnMain.add(jpnSendMassege);
         jpnSendMassege.setBounds(290, 0, 670, 460);
@@ -399,6 +434,11 @@ public class UserForm extends javax.swing.JFrame {
 
         OnOffComponents(true, false, false, false, false);
         OnOffPanel(true, false, false, false, false);
+         ArrayList<String> usernames=new ArrayList<String>();
+        usernames=dataBase.listOfUsers();
+        for(String user:usernames){
+             combSendTo.addItem(user);
+        }
     }//GEN-LAST:event_btnSendMassegeActionPerformed
 
     private void btnViewMassegeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewMassegeActionPerformed
@@ -406,6 +446,8 @@ public class UserForm extends javax.swing.JFrame {
         OnOffComponents(false, true, false, false, false);
         OnOffPanel(true, true, false, false, false);
         messages = resident.RecieveMessage(resident.getUserName());
+        txtShowMessage.setText("");
+      
     }//GEN-LAST:event_btnViewMassegeActionPerformed
 
     /**
@@ -414,12 +456,17 @@ public class UserForm extends javax.swing.JFrame {
      * @param evt
      */
     private void btnShowMessegesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowMessegesActionPerformed
-        String allMessages = "";
-        for (Message message : messages) {
-            allMessages += message.toString();
+        boolean flag = true;
+        if (flag) {
+            String allMessages = "";
+            for (Message message : messages) {
+                allMessages += message.toString();
+            }
+            txtShowMessage.setText(allMessages);
+            flag = false;
+        } else if (!flag) {
+            JOptionPane.showMessageDialog(null, "you dont have any more messages!!!!", idErrorTitle, JOptionPane.ERROR_MESSAGE);
         }
-        txtShowMessage.setText(allMessages);
-
     }//GEN-LAST:event_btnShowMessegesActionPerformed
     /**
      * send my message
@@ -427,10 +474,19 @@ public class UserForm extends javax.swing.JFrame {
      * @param evt
      */
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
-        String content = txtWriteMessage.getText();
-        String to = txtSendTo.getText();
-        Message message = new Message(content, resident.getUserName(), to);
-        resident.SendMessage(message);
+        boolean flag = true;
+        if (txtWriteMessage.getText().equals("")) {
+            flag = false;
+            JOptionPane.showMessageDialog(null, "cant leave null text filds", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+
+        } else if (flag) {
+            String content = txtWriteMessage.getText();
+             String username =(String) combSendTo.getSelectedItem();
+            Message message = new Message(content, resident.getUserName(), username);
+            resident.SendMessage(message);
+            txtWriteMessage.setText("");
+         
+        }
     }//GEN-LAST:event_btnSendActionPerformed
 
     private void btnMakepaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakepaymentActionPerformed
@@ -449,19 +505,30 @@ public class UserForm extends javax.swing.JFrame {
      * @param evt
      */
     private void btnPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayActionPerformed
-        int sum = 0;
-        String workerFeedback = "";
-         if (txtSum.getText().matches("[0-9]+") == false) {
-            JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else if (txtSum.getText().length() < 0 && txtSum.getText().length() > 999999999) {
-            JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else {
-            sum = Integer.parseInt(txtSum.getText());
-        } 
-        String commant = txtPaymentCommant.getText();
-        Payment pay = new Payment(resident.getUserName(), "Admin", commant, sum);
-        //resident.addPayment
-        resident.addPayment(pay);
+        boolean flag = true;
+        if (txtSum.getText().equals("") || txtPaymentCommant.getText().equals("")) {
+            flag = false;
+            JOptionPane.showMessageDialog(null, "cant leave null text filds", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+
+        } else if (flag) {
+            int sum = 0;
+            String workerFeedback = "";
+            Payment pay = new Payment();
+
+            if (isInteger(txtSum.getText())) {
+                sum = Integer.parseInt(txtSum.getText());
+                if (pay.setSum(sum)) {
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "neggative number not allowed", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+                }
+            }
+
+            String commant = txtPaymentCommant.getText();
+            pay = new Payment(resident.getUserName(), "Admin", commant, sum);
+
+            resident.addPayment(pay);
+        }
     }//GEN-LAST:event_btnPayActionPerformed
     /**
      * order a servie
@@ -470,18 +537,21 @@ public class UserForm extends javax.swing.JFrame {
      */
     private void btnOrderServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderServiceActionPerformed
         String id = "";
-         if (txtEnterIdOfService.getText().matches("[0-9]+") == false) {
-            JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else if (txtEnterIdOfService.getText().length() < 100000000 && txtEnterIdOfService.getText().length() > 999999999) {
-            JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else {
-            id = txtEnterIdOfService.getText();
-        } 
+        boolean flag = true;
+        if (txtEnterTypeOfService.getText().equals("") || txtEnterIdOfService.getText().equals("")) {
+            flag = false;
+            JOptionPane.showMessageDialog(null, "cant leave null text filds", idErrorTitle, JOptionPane.ERROR_MESSAGE);
 
-        String type = txtEnterTypeOfService.getText();
-        Order order = new Order(resident.getUserName(), id, type);
-        resident.callService(order);
+        } else if (flag) {
 
+            if (isValidId(txtEnterIdOfService.getText())) {
+                id = txtEnterIdOfService.getText();
+            }
+
+            String type = txtEnterTypeOfService.getText();
+            Order order = new Order(resident.getUserName(), id, type);
+            resident.callService(order);
+        }
     }//GEN-LAST:event_btnOrderServiceActionPerformed
     /**
      * add a feedback abut a service
@@ -499,50 +569,74 @@ public class UserForm extends javax.swing.JFrame {
      * @param evt
      */
     private void btnSendFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendFeedbackActionPerformed
+       boolean flag0 = true;
+        if (txtEnterServiceId.getText().equals("")||
+               txtRatingOfService.getText().equals("") ||
+                txtEnterPriceTaken.getText().equals("")||
+                txtEnterFeedback.getText().equals("") ||
+                txtEnterWorkTypeDone.getText().equals("")) {
+            flag0 = false;
+            JOptionPane.showMessageDialog(null, "cant leave null text filds", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+
+        } else if (flag0) {
+
         int id = 0;
         int rating = 0;
         float price = 0;
+        boolean flag = true;
+        Feedback feedback = new Feedback();
         String workerFeedback = "";
-       
-        if (txtEnterServiceId.getText().matches("[0-9]+")||txtRatingOfService.getText().matches("[0-9]+") ||
-                txtEnterPriceTaken.getText().matches("[0-9]+")) {
-              JOptionPane.showMessageDialog(null, feedbackErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-           
-        } 
-        else if( ((txtEnterServiceId.getText().length() > 999999999&&
-                txtEnterServiceId.getText().length() < 100000000)||
-                ( txtRatingOfService.getText().length() > 10&&
-               
-               txtRatingOfService.getText().length()<0 )|| txtEnterPriceTaken.getText().length() <0)){
-             JOptionPane.showMessageDialog(null, feedbackLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+        if (isValidId(txtEnterServiceId.getText())) {
+            id = Integer.parseInt(txtEnterServiceId.getText());
+        } else {
+            flag = false;
         }
-        else {
-           id = Integer.parseInt(txtEnterServiceId.getText());
-           rating = Integer.parseInt(txtRatingOfService.getText());
-           price = Integer.parseInt(txtEnterPriceTaken.getText());
+        if (isInteger(txtRatingOfService.getText())) {
+            rating = Integer.parseInt(txtRatingOfService.getText());
+            if (!(feedback.setRating(rating))) {
+                flag = false;
+                JOptionPane.showMessageDialog(null, " rating only 1-10", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            flag = false;
         }
+
+        if (isInteger(txtEnterPriceTaken.getText())) {
+            price = Integer.parseInt(txtEnterPriceTaken.getText());
+        } else {
+            flag = false;
+        }
+
         String feedbackText = txtEnterFeedback.getText();
         String workDone = txtEnterWorkTypeDone.getText();
-        Feedback feedback = new Feedback(id, feedbackText, rating, workDone, price);
-        resident.addFeedback(feedback);
+        if (flag) {
+            feedback = new Feedback(id, feedbackText, rating, workDone, price);
+            resident.addFeedback(feedback);
+        }
+        }
     }//GEN-LAST:event_btnSendFeedbackActionPerformed
 
     private void btnShowTheFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowTheFeedbackActionPerformed
-        int id = 0;
-        String workerFeedback = "";
-         if (txtEnterIdOfServiceToSeeFeedback.getText().matches("[0-9]+") == false) {
-            JOptionPane.showMessageDialog(null, idErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else if (txtEnterIdOfServiceToSeeFeedback.getText().length() < 100000000 && txtEnterIdOfServiceToSeeFeedback.getText().length() > 999999999) {
-            JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
-        } else {
-            id = Integer.parseInt(txtEnterIdOfServiceToSeeFeedback.getText());
-        } 
+        boolean flag = true;
+        if (txtEnterIdOfServiceToSeeFeedback.getText().equals("")) {
+            flag = false;
+            JOptionPane.showMessageDialog(null, "cant leave null text filds", idErrorTitle, JOptionPane.ERROR_MESSAGE);
 
-        feedbacks = resident.seeFeedback(id);
-        for (Feedback feedback : feedbacks) {
-            workerFeedback += feedback.toString();
+        } else if (!flag) {
+
+            int id = 0;
+            String workerFeedback = "";
+
+            if (isValidId(txtEnterIdOfServiceToSeeFeedback.getText())) {
+                id = Integer.parseInt(txtEnterIdOfServiceToSeeFeedback.getText());
+            }
+
+            feedbacks = resident.seeFeedback(id);
+            for (Feedback feedback : feedbacks) {
+                workerFeedback += feedback.toString();
+            }
+            txtListOfServices.setText(workerFeedback);
         }
-        txtListOfServices.setText(workerFeedback);
     }//GEN-LAST:event_btnShowTheFeedbackActionPerformed
     /**
      * show the list if the services
@@ -577,11 +671,12 @@ public class UserForm extends javax.swing.JFrame {
         btnSend.setVisible(sendMessage);
         scrollWriteMassege.setVisible(sendMessage);
         txtWriteMessage.setVisible(sendMessage);
-        txtSendTo.setVisible(sendMessage);
+        combSendTo.setVisible(sendMessage);
         lblSendTo.setVisible(sendMessage);
 
         btnShowMesseges.setVisible(viewMessage);
         scrollShowMessage.setVisible(viewMessage);
+        txtShowMessage.setVisible(viewMessage);
 
         btnPay.setVisible(payment);
         txtSum.setVisible(payment);
@@ -658,6 +753,7 @@ public class UserForm extends javax.swing.JFrame {
     private javax.swing.JButton btnShowServiceList;
     private javax.swing.JButton btnShowTheFeedback;
     private javax.swing.JButton btnViewMassege;
+    private javax.swing.JComboBox combSendTo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jpnAddFeedback;
     private javax.swing.JPanel jpnMain;
@@ -693,7 +789,6 @@ public class UserForm extends javax.swing.JFrame {
     private javax.swing.JTextArea txtListOfServices;
     private javax.swing.JTextArea txtPaymentCommant;
     private javax.swing.JTextField txtRatingOfService;
-    private javax.swing.JTextField txtSendTo;
     private javax.swing.JTextArea txtShowMessage;
     private javax.swing.JTextField txtSum;
     private javax.swing.JTextArea txtWriteMessage;

@@ -20,6 +20,10 @@ public class Order {
     private String order;
     private Date dateRecieved=new Date(2000);
   DataBase dataBase = DataBase.GetInstance();
+
+    public Order() {
+    }
+  
     public Order(String from, String to, String order) {
         this.from = from;
         this.to = to;

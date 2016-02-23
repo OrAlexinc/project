@@ -46,8 +46,11 @@ public class Feedback {
             return rating;
         }
 
-        public void setRating(int rating) {
+        public boolean setRating(int rating) {
+            if(rating<0||rating>10)
+                return false;
             this.rating = rating;
+            return true;
         }
 
         public String getWorkDone() {
@@ -62,8 +65,12 @@ public class Feedback {
             return priceTaken;
         }
 
-        public void setPriceTaken(float priceTaken) {
+        public boolean setPriceTaken(float priceTaken) {
+           if(priceTaken<0)
+               return false;
+           
             this.priceTaken = priceTaken;
+            return true;
         }
 
     @Override

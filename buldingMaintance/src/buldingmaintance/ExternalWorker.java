@@ -50,16 +50,24 @@ public class ExternalWorker {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public boolean setFirstName(String firstName) {
+        if((firstName.matches("[a-zA-Z]+")==false)||firstName.length()>20)
+        return false;
         this.firstName = firstName;
+   
+         return true;
     }
 
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public boolean setLastName(String lastName) {
+       if((lastName.matches("[a-zA-Z]+")==false)||lastName.length()>20)
+          return false;
+
         this.lastName = lastName;
+           return true;
     }
 
     public Image getPhoto() {
