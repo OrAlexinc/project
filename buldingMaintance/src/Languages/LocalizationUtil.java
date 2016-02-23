@@ -19,5 +19,7 @@ public class LocalizationUtil {
     {
         // gets the bundle for the default locale used
         localizedResourceBundle = ResourceBundle.getBundle("language_eng", new Locale("en"));
+        localizedResourceBundle = ResourceBundle.getBundle("language_hebrew", new Locale("he"));
+        localizedResourceBundle = ResourceBundle.getBundle("language_russian", new Locale("ru"));
     }
 }
