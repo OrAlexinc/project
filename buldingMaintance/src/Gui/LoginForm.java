@@ -21,6 +21,9 @@ DataBase dataBase = DataBase.GetInstance();
      */
     public LoginForm() {
         initComponents();
+       // btnLogin.setText(LocalizationUtil.localizedResourceBundle.getString("LoginKey"));
+       //txtUsername.setText(LocalizationUtil.localizedResourceBundle.getString("UserNameKey"));
+       // txtPassword.setText(LocalizationUtil.localizedResourceBundle.getString("PasswordKey"));
     }
 
     /**
