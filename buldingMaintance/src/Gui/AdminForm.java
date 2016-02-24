@@ -53,17 +53,53 @@ public class AdminForm extends javax.swing.JFrame {
      * changes the languages of the text
      */
     private void SetSelectedLenguge() {
-        btnAddUser.setText(LocalizationUtil.localizedResourceBundle.getString("btnAddUser"));
-        btnMakePaymnet.setText(LocalizationUtil.localizedResourceBundle.getString("btnMakePaymnet"));
-        btnAddFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnAddFeedback"));
-        btnReadMessage.setText(LocalizationUtil.localizedResourceBundle.getString("btnReadMessage"));
+       btnAddFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnAddFeedback"));
         btnAddNewUser.setText(LocalizationUtil.localizedResourceBundle.getString("btnAddNewUser"));
         btnAddService.setText(LocalizationUtil.localizedResourceBundle.getString("btnAddService"));
+        btnAddTheServiceGuy.setText(LocalizationUtil.localizedResourceBundle.getString("btnAddTheServiceGuy"));
+        btnAddUser.setText(LocalizationUtil.localizedResourceBundle.getString("btnAddUser"));
+       btnDeleteService.setText(LocalizationUtil.localizedResourceBundle.getString("btnDeleteService"));
+       btnDeleteTheUser.setText(LocalizationUtil.localizedResourceBundle.getString("btnDeleteTheUser"));
+        btnMakePaymnet.setText(LocalizationUtil.localizedResourceBundle.getString("btnMakePaymnet"));
+        btnMakeTheOrder.setText(LocalizationUtil.localizedResourceBundle.getString("btnMakeTheOrder"));
         btnOrder.setText(LocalizationUtil.localizedResourceBundle.getString("btnOrder"));
         btnPay.setText(LocalizationUtil.localizedResourceBundle.getString("btnPay"));
+        btnReadMessage.setText(LocalizationUtil.localizedResourceBundle.getString("btnReadMessage"));
         btnSendMassege.setText(LocalizationUtil.localizedResourceBundle.getString("btnSendMassege"));
+        btnShowAllUsers.setText(LocalizationUtil.localizedResourceBundle.getString("btnShowAllUsers"));
+        btnShowMessages.setText(LocalizationUtil.localizedResourceBundle.getString("btnShowMessages"));
+        btnShowSerive.setText(LocalizationUtil.localizedResourceBundle.getString("btnShowSerive"));
+        btnShowUserById.setText(LocalizationUtil.localizedResourceBundle.getString("btnShowUserById"));
         btnUserManagemant.setText(LocalizationUtil.localizedResourceBundle.getString("btnUserManagemant"));
+        btnViewAllPayments.setText(LocalizationUtil.localizedResourceBundle.getString("btnViewAllPayments"));
         btnViewPayments.setText(LocalizationUtil.localizedResourceBundle.getString("btnViewPayments"));
+        btnViewWhoNotPayed.setText(LocalizationUtil.localizedResourceBundle.getString("btnViewWhoNotPayed"));
+        btnViewWhoPayd.setText(LocalizationUtil.localizedResourceBundle.getString("btnViewWhoPayd"));
+        lblApartmantId.setText(LocalizationUtil.localizedResourceBundle.getString("lblApartmantId"));
+        lblCommant.setText(LocalizationUtil.localizedResourceBundle.getString("lblCommant"));
+        lblDeleteService.setText(LocalizationUtil.localizedResourceBundle.getString("lblDeleteService"));
+        lblEddNewService.setText(LocalizationUtil.localizedResourceBundle.getString("lblEddNewService"));
+        lblEnteNewUserDetails.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnteNewUserDetails"));
+        lblEnterEmail.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterEmail"));
+        lblEnterFirstName.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterFirstName"));
+        lblEnterID.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterID"));
+        lblEnterIdOfServiceToDelete.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterIdOfServiceToDelete"));
+        lblEnterIdOfServieToShowFeeedback.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterIdOfServieToShowFeeedback"));
+        lblEnterLastName.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterLastName"));
+        lblEnterPassword.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterPassword"));
+        lblEnterPhoneNumber.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterPhoneNumber"));
+        lblEnterServiceGuyFirstName.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterServiceGuyFirstName"));
+        lblEnterServiceGuyId.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterServiceGuyId"));
+        lblEnterServiceGuyLastName.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterServiceGuyLastName"));
+        lblEnterServiceType.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterServiceType"));
+        lblEnterServieId.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterServieId"));
+        lblEnterUserName.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterUserName"));
+        lblEnterUserToDelete.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterUserToDelete"));
+        lblEnterWorkDone.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterWorkDone"));
+        lblSentTo.setText(LocalizationUtil.localizedResourceBundle.getString("lblSentTo"));
+        lblServiceType.setText(LocalizationUtil.localizedResourceBundle.getString("lblServiceType"));
+        lblSum.setText(LocalizationUtil.localizedResourceBundle.getString("lblSum"));
+        lblUserById.setText(LocalizationUtil.localizedResourceBundle.getString("lblUserById"));
 
     }
 

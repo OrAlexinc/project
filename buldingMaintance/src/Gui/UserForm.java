@@ -47,7 +47,6 @@ public class UserForm extends javax.swing.JFrame {
         btnMakeOrder.setText(LocalizationUtil.localizedResourceBundle.getString("btnMakeOrder"));
         btnMakepayment.setText(LocalizationUtil.localizedResourceBundle.getString("btnMakepayment"));
         btnOrderService.setText(LocalizationUtil.localizedResourceBundle.getString("btnOrderService"));
-
         btnSend.setText(LocalizationUtil.localizedResourceBundle.getString("btnSend"));
         btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnSendFeedback"));
         btnShowServiceList.setText(LocalizationUtil.localizedResourceBundle.getString("btnShowServiceList"));
