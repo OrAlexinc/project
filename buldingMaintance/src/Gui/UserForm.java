@@ -23,11 +23,12 @@ public class UserForm extends javax.swing.JFrame {
     List<Feedback> feedbacks = new ArrayList<Feedback>();
     DataBase dataBase = DataBase.GetInstance();
     String idLenghtError = "id must contin 9 digits";
-    String idErrorMessage = "you need enter only digits in the id";
-    String idErrorTitle = "wrong input";
-    String feedbackErrorMessage = "you need enter only digits to the id/rating/sum";
-    String feedbackLenghtError = "you neeed to enter numbers no longer than 9 digits";
-
+    String intErrorMessage = "you need enter only numbers to id/sum feild";
+    String numErrorTitle = "wrong input";   
+    String nullValueError="cant afford null value";
+    String nullValueTitle="NULL FILD!!";
+    String noMoreMessages = "you dont have any more messages!!!!";
+     String mTitle = "no more messeges";
     public UserForm(Resident resident) {
         initComponents();
         this.resident = resident;
@@ -44,7 +45,7 @@ public class UserForm extends javax.swing.JFrame {
      */
     private boolean isInteger(String number) {
         if (number.matches("[0-9]+") == false || number.length() > 9) {
-            JOptionPane.showMessageDialog(null, "Ente only numbers", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, intErrorMessage, numErrorTitle, JOptionPane.ERROR_MESSAGE);
             return false;
         }
         return true;
@@ -61,7 +62,7 @@ public class UserForm extends javax.swing.JFrame {
             if (id.length() == 9) {
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "Enter valid 9 digits id", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, idLenghtError, numErrorTitle, JOptionPane.ERROR_MESSAGE);
             }
 
         }
@@ -439,11 +440,13 @@ public class UserForm extends javax.swing.JFrame {
 
         OnOffComponents(true, false, false, false, false);
         OnOffPanel(true, false, false, false, false);
-         ArrayList<String> usernames=new ArrayList<String>();
-        usernames=dataBase.listOfUsers();
-        for(String user:usernames){
-             combSendTo.addItem(user);
+
+        ArrayList<String> usernames = dataBase.listOfUsers();
+
+        for (String user : usernames) {
+            combSendTo.addItem(user);
         }
+        txtWriteMessage.setText(null);
     }//GEN-LAST:event_btnSendMassegeActionPerformed
 
     private void btnViewMassegeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewMassegeActionPerformed
@@ -451,8 +454,8 @@ public class UserForm extends javax.swing.JFrame {
         OnOffComponents(false, true, false, false, false);
         OnOffPanel(true, true, false, false, false);
         messages = resident.RecieveMessage(resident.getUserName());
-        txtShowMessage.setText("");
-      
+        txtShowMessage.setText(null);
+
     }//GEN-LAST:event_btnViewMassegeActionPerformed
 
     /**
@@ -462,6 +465,7 @@ public class UserForm extends javax.swing.JFrame {
      */
     private void btnShowMessegesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowMessegesActionPerformed
         boolean flag = true;
+        
         if (flag) {
             String allMessages = "";
             for (Message message : messages) {
@@ -470,7 +474,7 @@ public class UserForm extends javax.swing.JFrame {
             txtShowMessage.setText(allMessages);
             flag = false;
         } else if (!flag) {
-            JOptionPane.showMessageDialog(null, "you dont have any more messages!!!!", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, noMoreMessages, mTitle, JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnShowMessegesActionPerformed
     /**
@@ -482,21 +486,25 @@ public class UserForm extends javax.swing.JFrame {
         boolean flag = true;
         if (txtWriteMessage.getText().equals("")) {
             flag = false;
-            JOptionPane.showMessageDialog(null, "cant leave null text filds", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, nullValueError, nullValueTitle
+                    , JOptionPane.ERROR_MESSAGE);
 
         } else if (flag) {
             String content = txtWriteMessage.getText();
-             String username =(String) combSendTo.getSelectedItem();
+            String username = (String) combSendTo.getSelectedItem();
             Message message = new Message(content, resident.getUserName(), username);
             resident.SendMessage(message);
             txtWriteMessage.setText("");
-         
+
         }
+        txtWriteMessage.setText(null);
     }//GEN-LAST:event_btnSendActionPerformed
 
     private void btnMakepaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakepaymentActionPerformed
         OnOffComponents(false, false, true, false, false);
         OnOffPanel(true, true, true, false, false);
+
+        txtEnterTypeOfService.setText(null);
     }//GEN-LAST:event_btnMakepaymentActionPerformed
 
     private void btnMakeOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakeOrderActionPerformed
@@ -504,11 +512,15 @@ public class UserForm extends javax.swing.JFrame {
         OnOffPanel(true, true, true, true, false);
 
         ArrayList<String> listOfId = new ArrayList<String>();
-        listOfId=dataBase.showWorkersId();
-         for(String id:listOfId){           
-        combIdOfServiceToSeeFeedback.addItem(id);
-        compIdOfTheServicToOrder.addItem(id);
-                }
+        listOfId = dataBase.showWorkersId();
+        
+        for (String id : listOfId) {
+            combIdOfServiceToSeeFeedback.addItem(id);
+            compIdOfTheServicToOrder.addItem(id);
+        }
+        
+        txtEnterPriceTaken.setText(null);      
+        txtEnterFeedback.setText(null);
     }//GEN-LAST:event_btnMakeOrderActionPerformed
     /**
      * make my payment
@@ -519,27 +531,26 @@ public class UserForm extends javax.swing.JFrame {
         boolean flag = true;
         if (txtSum.getText().equals("") || txtPaymentCommant.getText().equals("")) {
             flag = false;
-            JOptionPane.showMessageDialog(null, "cant leave null text filds", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,nullValueError, nullValueTitle, JOptionPane.ERROR_MESSAGE);
 
-        } else if (flag) {
+        
             int sum = 0;
             String workerFeedback = "";
             Payment pay = new Payment();
 
             if (isInteger(txtSum.getText())) {
-                sum = Integer.parseInt(txtSum.getText());
-                if (pay.setSum(sum)) {
-
-                } else {
-                    JOptionPane.showMessageDialog(null, "neggative number not allowed", idErrorTitle, JOptionPane.ERROR_MESSAGE);
-                }
+                sum = Integer.parseInt(txtSum.getText());              
             }
-
+            else
+                flag=false;
+        if(flag){
             String commant = txtPaymentCommant.getText();
             pay = new Payment(resident.getUserName(), "Admin", commant, sum);
-
+        }
             resident.addPayment(pay);
         }
+        txtSum.setText(null);
+        txtPaymentCommant.setText(null);
     }//GEN-LAST:event_btnPayActionPerformed
     /**
      * order a servie
@@ -551,17 +562,17 @@ public class UserForm extends javax.swing.JFrame {
         boolean flag = true;
         if (txtEnterTypeOfService.getText().equals("")) {
             flag = false;
-            JOptionPane.showMessageDialog(null, "cant leave null text filds", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, nullValueError, nullValueTitle, JOptionPane.ERROR_MESSAGE);
 
-        } 
-                   
-          id=(String) compIdOfTheServicToOrder.getSelectedItem();
-       if(flag){
+        }
+
+        id = (String) compIdOfTheServicToOrder.getSelectedItem();
+        if (flag) {
             String type = txtEnterTypeOfService.getText();
             Order order = new Order(resident.getUserName(), id, type);
             resident.callService(order);
-       }
-        
+        }
+      txtEnterTypeOfService.setText(null);
     }//GEN-LAST:event_btnOrderServiceActionPerformed
     /**
      * add a feedback abut a service
@@ -572,9 +583,13 @@ public class UserForm extends javax.swing.JFrame {
         OnOffComponents(false, false, false, false, true);
         OnOffPanel(true, true, true, true, true);
         ArrayList<String> listOfId = new ArrayList<String>();
-        listOfId= dataBase.showWorkersId();
-        for(String id:listOfId)
-        compIdOfTheServicToAddFeedBack.addItem(id);
+        listOfId = dataBase.showWorkersId();
+        for (String id : listOfId) {
+            compIdOfTheServicToAddFeedBack.addItem(id);
+        }
+        txtEnterPriceTaken.setText(null);
+        txtEnterFeedback.setText(null);
+        txtEnterWorkTypeDone.setText(null);
     }//GEN-LAST:event_btnAddAFeedbackActionPerformed
 
     /**
@@ -583,56 +598,58 @@ public class UserForm extends javax.swing.JFrame {
      * @param evt
      */
     private void btnSendFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendFeedbackActionPerformed
-       boolean flag0 = true;
-        if (
-                txtEnterPriceTaken.getText().equals("")||
-                txtEnterFeedback.getText().equals("") ||
-                txtEnterWorkTypeDone.getText().equals("")) {
+        boolean flag0 = true;
+        
+        if (txtEnterPriceTaken.getText().equals("")
+                || txtEnterFeedback.getText().equals("")
+                || txtEnterWorkTypeDone.getText().equals("")) {
             flag0 = false;
-            JOptionPane.showMessageDialog(null, "cant leave null text filds", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,nullValueError, nullValueTitle, JOptionPane.ERROR_MESSAGE);
 
         } else if (flag0) {
 
-        int id = 0;
-        int rating = 0;
-        float price = 0;
-        boolean flag = true;
-        Feedback feedback = new Feedback();
-        String workerFeedback = "";
-         String iD=(String) compIdOfTheServicToAddFeedBack.getSelectedItem();
-         id=Integer.parseInt(iD);
-          String sRating=(String) compAddRating.getSelectedItem();
+            int id = 0;
+            int rating = 0;
+            float price = 0;
+            boolean flag = true;
+            Feedback feedback = new Feedback();        
+           String workerFeedback = "";
+                  
+            id = Integer.parseInt((String) compIdOfTheServicToAddFeedBack.getSelectedItem());
+            rating = Integer.parseInt((String) compAddRating.getSelectedItem());
+           
+            if (isInteger(txtEnterPriceTaken.getText())) {
+                price = Integer.parseInt(txtEnterPriceTaken.getText());
+            } else {
+                flag = false;
+            }
 
-          rating=Integer.parseInt(sRating);
-        if (isInteger(txtEnterPriceTaken.getText())) {
-            price = Integer.parseInt(txtEnterPriceTaken.getText());
-        } else {
-            flag = false;
+            String feedbackText = txtEnterFeedback.getText();
+            String workDone = txtEnterWorkTypeDone.getText();
+            if (flag) {
+                feedback = new Feedback(id, feedbackText, rating, workDone, price);
+                resident.addFeedback(feedback);
+            }
         }
-
-        String feedbackText = txtEnterFeedback.getText();
-        String workDone = txtEnterWorkTypeDone.getText();
-        if (flag) {
-            feedback = new Feedback(id, feedbackText, rating, workDone, price);
-            resident.addFeedback(feedback);
-        }
-        }
+        txtEnterPriceTaken.setText(null);
+        txtEnterFeedback.setText(null);
+        txtEnterWorkTypeDone.setText(null);
     }//GEN-LAST:event_btnSendFeedbackActionPerformed
 
     private void btnShowTheFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowTheFeedbackActionPerformed
         boolean flag = true;
-       
-            int id = 0;
-            String workerFeedback = "";
 
-           String iD=(String) compIdOfTheServicToOrder.getSelectedItem();
-              id=Integer.parseInt(iD);
-            feedbacks = resident.seeFeedback(id);
-            for (Feedback feedback : feedbacks) {
-                workerFeedback += feedback.toString();
-            }
-            txtListOfServices.setText(workerFeedback);
-        
+        int id = 0;
+        String workerFeedback = "";
+
+        String iD = (String) compIdOfTheServicToOrder.getSelectedItem();
+        id = Integer.parseInt(iD);
+        feedbacks = resident.seeFeedback(id);
+        for (Feedback feedback : feedbacks) {
+            workerFeedback += feedback.toString();
+        }
+        txtListOfServices.setText(workerFeedback);
+       
     }//GEN-LAST:event_btnShowTheFeedbackActionPerformed
     /**
      * show the list if the services
@@ -642,11 +659,11 @@ public class UserForm extends javax.swing.JFrame {
     private void btnShowServiceListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowServiceListActionPerformed
         String allWorkers = "";
         workers = dataBase.showAllWorkers();
+        
         for (ExternalWorker worker : workers) {
             allWorkers += worker.toString();
         }
         txtListOfServices.setText(allWorkers);
-        allWorkers = null;
     }//GEN-LAST:event_btnShowServiceListActionPerformed
 
     /**
@@ -661,7 +678,14 @@ public class UserForm extends javax.swing.JFrame {
         jpnAddFeedback.setVisible(feedback);
 
     }
-
+/**
+ * set the needed comopnents on and off
+ * @param sendMessage
+ * @param viewMessage
+ * @param payment
+ * @param order
+ * @param feedback 
+ */
     public void OnOffComponents(boolean sendMessage, boolean viewMessage,
             boolean payment, boolean order, boolean feedback) {
         btnSend.setVisible(sendMessage);
@@ -685,11 +709,10 @@ public class UserForm extends javax.swing.JFrame {
         scrollListOfServices.setVisible(order);
         lblServieList.setVisible(order);
         lblTypeOfService.setVisible(order);
-       
+
         txtEnterTypeOfService.setVisible(order);
         btnOrderService.setVisible(order);
         lblEnterIdOfServiceToSeeFeeedback.setVisible(order);
-       
         btnShowTheFeedback.setVisible(order);
         lblIdOfService.setVisible(order);
         btnShowServiceList.setVisible(order);
@@ -697,9 +720,9 @@ public class UserForm extends javax.swing.JFrame {
         compIdOfTheServicToOrder.setVisible(order);
 
         lblEddFeedbackAbutAService.setVisible(feedback);
-       compAddRating.setVisible(feedback);
+        compAddRating.setVisible(feedback);
         lblEnterFeddbackId.setVisible(feedback);
-       compIdOfTheServicToAddFeedBack.setVisible(feedback);
+        compIdOfTheServicToAddFeedBack.setVisible(feedback);
         lblEnterRatingOfService.setVisible(feedback);
         lblEnterPriveTaken.setVisible(feedback);
         txtEnterPriceTaken.setVisible(feedback);
