@@ -358,11 +358,13 @@ public class DataBase {
         }
         return orderId;
     }
-
-    public void makeOrder(Order order) {//adds an order to a database
+/**
+ * adds an order to a database
+ * @param order 
+ */
+    public void makeOrder(Order order) {
         try {
             Class.forName(jdbcDriver);
-            /* java.sql.Timestamp timestamp = new java.sql.Timestamp(order.getDateRecieved().getTimeInMillis());*/
             Statement statement = connection.createStatement();
             String insertUser = "insert into  orders values(" + order.getOrderID() + ",'"
                     + order.getOrder() + "'" + ",'"
@@ -380,7 +382,7 @@ public class DataBase {
     }
 
     /**
-     * making sure that will be no duplicates in payment table
+     * makes sure that will be no duplicates in payment table
      *
      * @return
      */
@@ -406,8 +408,11 @@ public class DataBase {
         }
         return paymentId;
     }
-
-    public void makePayment(Payment payment) {//adds an payment to a database
+/**
+ * adds an payment to a database
+ * @param payment 
+ */
+    public void makePayment(Payment payment) {
         try {
             Class.forName(jdbcDriver);
             java.sql.Timestamp timestamp = new java.sql.Timestamp(payment.getDateRecieved().getDate());
@@ -427,16 +432,18 @@ public class DataBase {
             e.printStackTrace();
         }
     }
-
-    public List<Payment> recievePayments(User user) {
+/**
+ * returns list of all payments done
+ * @param user
+ * @return 
+ */
+    public List<Payment> recievePayments() {
         List<Payment> allPayments = new ArrayList<Payment>();
 
         try {
             Class.forName(jdbcDriver);
 
             Statement statement = connection.createStatement();
-            String toUsername = user.getUserName();
-
             String pullPayments = "SELECT * FROM payments";
 
             ResultSet resultSet = statement.executeQuery(pullPayments);
@@ -468,7 +475,7 @@ public class DataBase {
      *
      * @param username
      * @param password
-     * @return user if successfully added, null if not
+     * @return user if successfully logged in, null if not
      */
     public User logIn(String username, String password) {
         try {

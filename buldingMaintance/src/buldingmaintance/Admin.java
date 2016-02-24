@@ -37,7 +37,7 @@ DataBase dataBase = DataBase.GetInstance();
         dataBase.makePayment(paymant);
     }
     public  List<Payment> recievePayments(User user){
-        return dataBase.recievePayments(user);
+        return dataBase.recievePayments();
     }
     public void addUser(User user){
         dataBase.AddUser(user);

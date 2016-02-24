@@ -68,8 +68,8 @@ public class AdminForm extends javax.swing.JFrame {
     }
 
     /**
-     * cheaking if the valuse is number and in the size of integer if yes
-     * rerurns true
+     * checking if the values from input is number and in the size of integer if yes
+     * returns true
      *
      * @param number
      * @return
@@ -83,7 +83,7 @@ public class AdminForm extends javax.swing.JFrame {
     }
 
     /**
-     * cheaks if the id is valid if yes return true
+     * checks if the id is valid if yes return true
      *
      * @param id
      * @return
@@ -803,7 +803,7 @@ public class AdminForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 /**
-     * when bottun send message clicked
+     * when button send message clicked
      *
      * @param evt
      */
@@ -851,7 +851,7 @@ public class AdminForm extends javax.swing.JFrame {
         txtPaymentCommant.setText(null);
     }//GEN-LAST:event_btnMakePaymnetActionPerformed
     /**
-     * what happens when order maintinece button clicked
+     * what happens when order maintenance button clicked
      *
      * @param evt
      */
@@ -1335,7 +1335,7 @@ public class AdminForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSendFeedbackActionPerformed
     /**
-     * set visable the needed panels
+     * set visible the needed panels
      * @param sendMessage
      * @param readMessage
      * @param makePayment
@@ -1359,7 +1359,7 @@ public class AdminForm extends javax.swing.JFrame {
 
     }
 
-    /** set visable the needed Components 
+    /** set visible the needed Components 
      *
      * @param sendMessage
      * @param readMessage
