@@ -24,6 +24,8 @@ DataBase dataBase = DataBase.GetInstance();
      */
     public LoginForm() {
         initComponents();
+       
+        //radio buttons to select lenuge
         rBtnEnglish.setActionCommand("en");
         rBtnHebrow.setActionCommand("iw");
         rBtnRussian.setActionCommand("ru");
@@ -151,21 +153,22 @@ DataBase dataBase = DataBase.GetInstance();
     }// </editor-fold>//GEN-END:initComponents
 
     /**
- * click on login botton
+ * click on login button
  * @param evt 
  */
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
     String username=txtUsername.getText();
     String password=txtPassword.getText();
-    //String username="1";
-    //String password="2";
+ 
     String connctionEror="wrong user name or passsword";
     String ErorType="Wrong Input";
      User user=dataBase.logIn(username, password);
-       
+     
+     //if user not exist in database alering the user
   if(user==null){
          JOptionPane.showMessageDialog(null, connctionEror, ErorType , JOptionPane.INFORMATION_MESSAGE);
     }
+  //if user is a resident romission creating resident object and creating userform 
   else if((user.getUserPermission()).equals("resident")){
     final Resident resident=new Resident(user.getID(),
        user.getFirstName(),user.getLastName(),
@@ -182,6 +185,7 @@ DataBase dataBase = DataBase.GetInstance();
        });
        
     }
+  //if user permission is admin creating admin object and admin form
     else if((user.getUserPermission()).equals("admin")){
        final  Admin admin =new Admin(user.getID(),
        user.getFirstName(),user.getLastName(),
@@ -200,7 +204,10 @@ DataBase dataBase = DataBase.GetInstance();
  
     
     }//GEN-LAST:event_btnLoginActionPerformed
-
+ /**
+  * when select langue button pressed
+  * @param evt 
+  */
     private void btnSelectLangugeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectLangugeActionPerformed
   // take the action command that was defined on the radio button
                 String selectedLanguage = grupLanguage.getSelection().getActionCommand();             

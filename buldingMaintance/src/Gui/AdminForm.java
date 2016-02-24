@@ -1060,7 +1060,7 @@ public class AdminForm extends javax.swing.JFrame {
      
             flag = false;
             
-            //whwn the is no moe messages dispaly MessageDialog
+            //when the is no moe messages alerting the user
         } else if (!flag) {
             JOptionPane.showMessageDialog(null, "you dont have any more messages!!!!", idErrorTitle, JOptionPane.ERROR_MESSAGE);
         }
