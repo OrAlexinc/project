@@ -38,9 +38,6 @@ public class AdminForm extends javax.swing.JFrame {
     String feedbackLenghtError = "you neeed to enter numbers no longer than 9 digits";
     String sumError = "you need enter numbers only";
     String sumLenghtError = "you cant enter negative numbers";
-    String nameError = "only letters in lastname\first name and no longer than 20 letters";
-    String noMessagesError = "you dont have any more messages!!!!";
-    String nullServiceError = "You must fill the Servie Type feild!!!!";
 
     public AdminForm(Admin admin) {
 
@@ -56,54 +53,17 @@ public class AdminForm extends javax.swing.JFrame {
      * changes the languages of the text
      */
     private void SetSelectedLenguge() {
-
+        btnAddUser.setText(LocalizationUtil.localizedResourceBundle.getString("btnAddUser"));
+        btnMakePaymnet.setText(LocalizationUtil.localizedResourceBundle.getString("btnMakePaymnet"));
         btnAddFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnAddFeedback"));
+        btnReadMessage.setText(LocalizationUtil.localizedResourceBundle.getString("btnReadMessage"));
         btnAddNewUser.setText(LocalizationUtil.localizedResourceBundle.getString("btnAddNewUser"));
         btnAddService.setText(LocalizationUtil.localizedResourceBundle.getString("btnAddService"));
-        btnAddTheServiceGuy.setText(LocalizationUtil.localizedResourceBundle.getString("btnAddTheServiceGuy"));
-        btnAddUser.setText(LocalizationUtil.localizedResourceBundle.getString("btnAddUser"));
-       btnDeleteService.setText(LocalizationUtil.localizedResourceBundle.getString("btnDeleteService"));
-       btnDeleteTheUser.setText(LocalizationUtil.localizedResourceBundle.getString("btnDeleteTheUser"));
-        btnMakePaymnet.setText(LocalizationUtil.localizedResourceBundle.getString("btnMakePaymnet"));
-        btnMakeTheOrder.setText(LocalizationUtil.localizedResourceBundle.getString("btnMakeTheOrder"));
         btnOrder.setText(LocalizationUtil.localizedResourceBundle.getString("btnOrder"));
         btnPay.setText(LocalizationUtil.localizedResourceBundle.getString("btnPay"));
-        btnReadMessage.setText(LocalizationUtil.localizedResourceBundle.getString("btnReadMessage"));
         btnSendMassege.setText(LocalizationUtil.localizedResourceBundle.getString("btnSendMassege"));
-        btnShowAllUsers.setText(LocalizationUtil.localizedResourceBundle.getString("btnShowAllUsers"));
-        btnShowMessages.setText(LocalizationUtil.localizedResourceBundle.getString("btnShowMessages"));
-        btnShowSerive.setText(LocalizationUtil.localizedResourceBundle.getString("btnShowSerive"));
-        btnShowUserById.setText(LocalizationUtil.localizedResourceBundle.getString("btnShowUserById"));
         btnUserManagemant.setText(LocalizationUtil.localizedResourceBundle.getString("btnUserManagemant"));
-        btnViewAllPayments.setText(LocalizationUtil.localizedResourceBundle.getString("btnViewAllPayments"));
         btnViewPayments.setText(LocalizationUtil.localizedResourceBundle.getString("btnViewPayments"));
-        btnViewWhoNotPayed.setText(LocalizationUtil.localizedResourceBundle.getString("btnViewWhoNotPayed"));
-        btnViewWhoPayd.setText(LocalizationUtil.localizedResourceBundle.getString("btnViewWhoPayd"));
-        lblApartmantId.setText(LocalizationUtil.localizedResourceBundle.getString("lblApartmantId"));
-        lblCommant.setText(LocalizationUtil.localizedResourceBundle.getString("lblCommant"));
-        lblDeleteService.setText(LocalizationUtil.localizedResourceBundle.getString("lblDeleteService"));
-        lblEddNewService.setText(LocalizationUtil.localizedResourceBundle.getString("lblEddNewService"));
-        lblEnteNewUserDetails.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnteNewUserDetails"));
-        lblEnterEmail.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterEmail"));
-        lblEnterFirstName.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterFirstName"));
-        lblEnterID.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterID"));
-        lblEnterIdOfServiceToDelete.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterIdOfServiceToDelete"));
-        lblEnterIdOfServieToShowFeeedback.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterIdOfServieToShowFeeedback"));
-        lblEnterLastName.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterLastName"));
-        lblEnterPassword.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterPassword"));
-        lblEnterPhoneNumber.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterPhoneNumber"));
-        lblEnterServiceGuyFirstName.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterServiceGuyFirstName"));
-        lblEnterServiceGuyId.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterServiceGuyId"));
-        lblEnterServiceGuyLastName.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterServiceGuyLastName"));
-        lblEnterServiceType.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterServiceType"));
-        lblEnterServieId.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterServieId"));
-        lblEnterUserName.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterUserName"));
-        lblEnterUserToDelete.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterUserToDelete"));
-        lblEnterWorkDone.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterWorkDone"));
-        lblSentTo.setText(LocalizationUtil.localizedResourceBundle.getString("lblSentTo"));
-        lblServiceType.setText(LocalizationUtil.localizedResourceBundle.getString("lblServiceType"));
-        lblSum.setText(LocalizationUtil.localizedResourceBundle.getString("lblSum"));
-        lblUserById.setText(LocalizationUtil.localizedResourceBundle.getString("lblUserById"));
 
     }
 
@@ -936,15 +896,15 @@ public class AdminForm extends javax.swing.JFrame {
         txtShowServices.setText(null);
     }//GEN-LAST:event_btnViewPaymentsActionPerformed
     /**
-     * when add/delete user button clicked
+     *when add/delete user button clicked
      *
      * @param evt
      */
     private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUserActionPerformed
-        //set the needed components to disply.true
-        onOffPanel(true, true, true, true, true, true, false, false, false);
+         //set the needed components to disply.true
+        onOffPanel(true, true, true, true, true, true, false, false, false);        
         onOffComponents(false, false, false, false, false, true, false, false, false);
-
+       
         //clear text from all fildes
         txtEnterPhoneNumber.setText(null);
         txtEnterLastName.setText(null);
@@ -954,7 +914,7 @@ public class AdminForm extends javax.swing.JFrame {
         txtEnterUserName.setText(null);
         txtEnterID.setText(null);
         txtApartment.setText(null);
-
+       
         //fill arraylist listOfId whith id from database
         ArrayList<String> listOfId = dataBase.setUsersId();
 
@@ -966,30 +926,29 @@ public class AdminForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddUserActionPerformed
     /**
      * when button add service clicked
-     *
      * @param evt
      */
     private void btnAddServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddServiceActionPerformed
-        //set the needed components to disply.true
+           //set the needed components to disply.true
         onOffPanel(true, true, true, true, true, true, true, false, false);
         onOffComponents(false, false, false, false, false, false, true, false, false);
-
+     
         //clear text from all fildes
         txtEnterServiceName.setText(null);
         txtEnterServiceGuyFirsttName.setText(null);
         txtEnterServiceGuyLastName.setText(null);
         txtEnterServiceGuyId.setText(null);
-
+       
         // listOfId getting the id fo workers from db
-        ArrayList<String> listOfId = dataBase.showWorkersId();
-
+        ArrayList<String> listOfId =dataBase.showWorkersId();
+    
         //fiil combobox whith id from listOfId
         for (String id : listOfId) {
             combIdOfServieToDelete.addItem(id);
         }
     }//GEN-LAST:event_btnAddServiceActionPerformed
     /**
-     * when button add new user pressed the user added to database
+     *when button add new user  pressed the user added to database
      *
      * @param evt
      */
@@ -1003,27 +962,28 @@ public class AdminForm extends javax.swing.JFrame {
         String email = txtEnterEmail.getText();
         int apartmantId = 1;
         int id = 0;
-
+       
         //flag in order to know if all valus that inserted are valid
         boolean flag = false;
 
-        //create new resident object
+            //create new resident object
         User resident = new Resident();
-
+        
+        
         //chking if valuse that inserted are valid if no than sen message to user to insert valid value
         if (!resident.setLastName(lastName)) {
-            JOptionPane.showMessageDialog(null, nameError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "only letters in lastname\first name and no longer than 20 letters", idErrorTitle, JOptionPane.ERROR_MESSAGE);
             flag = false;
         }
         if (!resident.setFirstName(firstName)) {
-            JOptionPane.showMessageDialog(null, nameError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "only letters in lastname\first name and no longer than 20 letters", idErrorTitle, JOptionPane.ERROR_MESSAGE);
             flag = false;
         }
 
         if (isValidId(txtEnterID.getText())) {
             id = Integer.parseInt(txtEnterID.getText());
         } else {
-
+           
             flag = false;
         }
         if (!isInteger(txtApartment.getText())) {
@@ -1039,23 +999,23 @@ public class AdminForm extends javax.swing.JFrame {
         } else {
             phoneNumber = txtEnterPhoneNumber.getText();
         }
-
+        
         //if all valus that inserted are valid addes user to database
-        if (flag) {
+        if (flag) {  
             resident = new Resident(id, firstName, lastName, email, userName, password, admin.getBuildingAddress(), phoneNumber, "resident", apartmantId);
             admin.addUser(resident);
         }
 
     }//GEN-LAST:event_btnAddNewUserActionPerformed
     /**
-     * what happens when delete button clicked
+     * what happens when delete button  clicked
      *
      * @param evt
      */
     private void btnDeleteTheUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteTheUserActionPerformed
         int id = 0;
         id = Integer.parseInt((String) combIdOfUserToDelete.getSelectedItem());
-
+       
         //send the chosen id to delete the user from database
         admin.deleteUser(id);
     }//GEN-LAST:event_btnDeleteTheUserActionPerformed
@@ -1066,13 +1026,14 @@ public class AdminForm extends javax.swing.JFrame {
      */
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
 
+        
         String text = txtWriteMessage.getText();
         String username = (String) combSendTo.getSelectedItem();
         Message message = new Message(text, admin.getUserName(), username);
-
+            
         //adding the message to the database
         admin.SendMessage(message);
-
+        
         //clear all textfilds
         txtWriteMessage.setText(null);
     }//GEN-LAST:event_btnSendActionPerformed
@@ -1082,36 +1043,36 @@ public class AdminForm extends javax.swing.JFrame {
      * @param evt
      */
     private void btnShowMessagesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowMessagesActionPerformed
-        //flag that indicates if thers is no more messages      
+       //flag that indicates if thers is no more messages      
         boolean flag = true;
-
+       
         //if flag true
-        if (flag) {
-
+        if (flag) {          
+          
             String allmesssages = "";
 
             //adding all messages from messages list lt a string to display on textbox
             for (Message m : messages) {
                 allmesssages += m.toString();
-
-            }
+           
+            }        
             txtShowMessage.setText(allmesssages);
-
+     
             flag = false;
-
+            
             //when the is no moe messages alerting the user
         } else if (!flag) {
-            JOptionPane.showMessageDialog(null, noMessagesError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "you dont have any more messages!!!!", idErrorTitle, JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnShowMessagesActionPerformed
     /**
-     * show the payments that payed
+     * show the  payments that payed
      *
      * @param evt
      */
     private void btnViewWhoPaydActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewWhoPaydActionPerformed
         String paymentList = "";
-        //adding payments from list payments to string  in order to dislay on textbox
+       //adding payments from list payments to string  in order to dislay on textbox
         for (Payment p : payments) {
             paymentList += p.toString();
         }
@@ -1123,15 +1084,15 @@ public class AdminForm extends javax.swing.JFrame {
      * @param evt
      */
     private void btnViewWhoNotPayedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewWhoNotPayedActionPerformed
-
+      
     }//GEN-LAST:event_btnViewWhoNotPayedActionPerformed
     /**
-     * show all total payments
+     * show all total payments 
      *
      * @param evt
      */
     private void btnViewAllPaymentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAllPaymentsActionPerformed
-        txtViewPayments.setText(Integer.toString((int) dataBase.showPaymentsAverage()));
+      txtViewPayments.setText(Integer.toString((int)dataBase.showPaymentsAverage()));
     }//GEN-LAST:event_btnViewAllPaymentsActionPerformed
     /**
      * show all workers from the database
@@ -1140,6 +1101,7 @@ public class AdminForm extends javax.swing.JFrame {
      */
     private void btnShowSeriveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowSeriveActionPerformed
 
+        
         String workerList = "";
         //adding all workers to the string workerList to display on textbox
         for (ExternalWorker worker : workers) {
@@ -1157,21 +1119,22 @@ public class AdminForm extends javax.swing.JFrame {
 
         txtShowServices.setText(null);
         String id = "";
-
+        
         //flag that indecates iv vles insertert are valid
         boolean flag = false;
 
         id = (String) compIdOfTheServicToOrder.getSelectedItem();
 
+       
         String type = txtServieType.getText();
-
-        //if text fild is null alerting the user to try again
+      
+        //if text fild is null alerting the user to rty again
         if (txtServieType.getText() == null) {
-            JOptionPane.showMessageDialog(null, nullServiceError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "You must fill the Servie Type feild!!!!", idErrorTitle, JOptionPane.ERROR_MESSAGE);
             flag = false;
         }
-
-        //if evering is inserted propably add the order to the database
+        
+        //if evering is inserter propably add the order to the database
         if (flag) {
             Order order = new Order(admin.getUserName(), id, type);
             admin.order(order);
@@ -1194,10 +1157,9 @@ public class AdminForm extends javax.swing.JFrame {
             Payment pay = new Payment(admin.getUserName(), admin.getUserName(), commant, sum);
             admin.makePayment(pay);
         }
-
+       
         //clear the text fild
         txtPaymentCommant.setText(null);
-        txtSum.setText(null);
     }//GEN-LAST:event_btnPayActionPerformed
     /**
      * view your all users
@@ -1205,38 +1167,38 @@ public class AdminForm extends javax.swing.JFrame {
      * @param evt
      */
     private void btnUserManagemantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserManagemantActionPerformed
-        //set the needed components to disply.true
+       //set the needed components to disply.true
         onOffPanel(true, true, true, true, true, true, true, true, false);
         onOffComponents(false, false, false, false, false, false, false, true, false);
-
+        
         //add to list users all users from the database
         users = admin.showAllUser();
-
+   
         //add to listOfId id off all user from the database ann adding it to combobox
         ArrayList<String> listOfId = dataBase.setUsersId();
         for (String id : listOfId) {
             combIdOfUserToDisplay.addItem(id);
         }
-
+       
         //clear the textfild
         txtUserManagment.setText(null);
     }//GEN-LAST:event_btnUserManagemantActionPerformed
     /**
-     * show all users
+     * show  all  users
      *
      * @param evt
      */
     private void btnShowAllUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowAllUsersActionPerformed
 
         String allUsers = "";
-
+       
         //add all users from list users to the string allUsers and displays them
-        for (User user : users) {
-            allUsers += user.toString();
+            for (User user : users) {
+                allUsers += user.toString();
 
-        }
-        txtUserManagment.setText(allUsers);
-
+            }
+            txtUserManagment.setText(allUsers);
+        
     }//GEN-LAST:event_btnShowAllUsersActionPerformed
     /**
      * show specipic user
@@ -1245,9 +1207,9 @@ public class AdminForm extends javax.swing.JFrame {
      */
     private void btnShowUserByIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowUserByIdActionPerformed
         int id = 0;
-        id = Integer.parseInt((String) combIdOfUserToDelete.getSelectedItem());
-        User user;
-
+        id = Integer.parseInt((String) combIdOfUserToDelete.getSelectedItem());            
+        User user;      
+    
         //send the selected id from combobox and display the user that chosen
         user = admin.showUserById(id);
         txtUserManagment.setText(user.toString());
@@ -1269,10 +1231,10 @@ public class AdminForm extends javax.swing.JFrame {
         String lastName = txtEnterServiceGuyLastName.getText();
         ExternalWorker externalWorker = new ExternalWorker();
         int id = 0;
-
+       
         //flag that indecates if all values inserted properly
         boolean flag = true;
-
+        
         //if vlue inserted wrong notifaying the user to try agiain
         if (isValidId(txtEnterServiceGuyId.getText())) {
             id = Integer.parseInt(txtEnterServiceGuyId.getText());
@@ -1280,11 +1242,11 @@ public class AdminForm extends javax.swing.JFrame {
             flag = false;
         }
         if (!externalWorker.setLastName(lastName)) {
-            JOptionPane.showMessageDialog(null, nameError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "only letters in lastname\first name and no longer than 20 letters", idErrorTitle, JOptionPane.ERROR_MESSAGE);
             flag = false;
         }
         if (!externalWorker.setFirstName(firstName)) {
-            JOptionPane.showMessageDialog(null, nameError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "only letters in lastname\first name and no longer than 20 letters", idErrorTitle, JOptionPane.ERROR_MESSAGE);
             flag = false;
         }
 
@@ -1301,21 +1263,20 @@ public class AdminForm extends javax.swing.JFrame {
      */
     private void btnDeleteServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteServiceActionPerformed
 
-        int id = 0;
+        int id = 0;        
         id = Integer.parseInt((String) combIdOfServieToDelete.getSelectedItem());
         //sending the id that chosen to databse to delete the user
         admin.deleteServie(id);
 
     }//GEN-LAST:event_btnDeleteServiceActionPerformed
-    /**
-     * show feedback abut a user from database
-     *
-     * @param evt
-     */
+/**
+ * show feedback abut a user from database
+ * @param evt 
+ */
     private void btnShowTheFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowTheFeedbackActionPerformed
         int id = 0;
         String workerFeedback = "";
-
+      
         //get the id of worker to show feedback abut him
         id = Integer.parseInt((String) combIdOfServiceToSeeFeedback.getSelectedItem());
 
@@ -1336,46 +1297,41 @@ public class AdminForm extends javax.swing.JFrame {
         //set the needed components to disply.true
         onOffPanel(true, true, true, true, true, true, true, true, true);
         onOffComponents(false, false, false, false, false, false, false, false, true);
-
+        
         //adding to listofId id of all vorkers and edding it to combobox 
         ArrayList<String> listofId = dataBase.showWorkersId();
         for (String id : listofId) {
             compIdOfTheServicToAddFeedBack.addItem(id);
         }
-        //clear the text fild
-        txtEnterPriceTaken.setText(null);
-        txtEnterFeedback.setText(null);
-        txtEnterWorkTypeDone.setText(null);
     }//GEN-LAST:event_btnAddFeedbackActionPerformed
-    /**
-     * add the feedback to the database
-     *
-     * @param evt
-     */
+/**
+ * add the feedback to the database
+ * @param evt 
+ */
     private void btnSendFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendFeedbackActionPerformed
         int id = 0;
         int rating = 0;
         float price = 0;
         Feedback feedback = new Feedback();
-
-        //flag that indecates if all values inserted properly
+       
+       //flag that indecates if all values inserted properly
         boolean flag = true;
         id = Integer.parseInt((String) compIdOfTheServicToAddFeedBack.getSelectedItem());
         rating = Integer.parseInt((String) compAddRating.getSelectedItem());
 
-        //if vlue inserted wrong notifaying the user to try agiain
+         //if vlue inserted wrong notifaying the user to try agiain
         if (isInteger(txtEnterPriceTaken.getText())) {
             price = Integer.parseInt(txtEnterPriceTaken.getText());
         } else {
             flag = false;
         }
-
-        //if all valuse inserted properly adding feedback to database
-        if (flag) {
-            String feedbackText = txtEnterFeedback.getText();
-            String workDone = txtEnterWorkTypeDone.getText();
-            feedback = new Feedback(id, feedbackText, rating, workDone, price);
-            admin.addFeedback(feedback);
+        
+         //if all valuse inserted properly adding feedback to database
+        if(flag){
+        String feedbackText = txtEnterFeedback.getText();
+        String workDone = txtEnterWorkTypeDone.getText();
+        feedback = new Feedback(id, feedbackText, rating, workDone, price);
+        admin.addFeedback(feedback);
         }
     }//GEN-LAST:event_btnSendFeedbackActionPerformed
     /**
@@ -1403,10 +1359,7 @@ public class AdminForm extends javax.swing.JFrame {
 
     }
 
-
-
     /** set visible the needed Components 
-
      *
      * @param sendMessage
      * @param readMessage

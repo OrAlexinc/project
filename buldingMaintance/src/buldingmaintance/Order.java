@@ -7,7 +7,6 @@ package buldingmaintance;
 
 import DB.DataBase;
 import java.sql.Date;
-import java.util.Calendar;
 
 /**
  *
@@ -24,6 +23,12 @@ public class Order {
     public Order() {
     }
   
+    /**
+     * 
+     * @param from
+     * @param to
+     * @param order 
+     */
     public Order(String from, String to, String order) {
         this.from = from;
         this.to = to;
@@ -73,7 +78,8 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order#"+OrderID+  "   from:" + from + "  to" + to + "\norder:" + order + " \ndateOrderd" + dateRecieved +"\n" ;
+        return "Order#"+OrderID+  "   from:" + from + "  to" + to + 
+               "\norder:" + order + " \ndateOrderd" + dateRecieved +"\n" ;
     }
         
 }

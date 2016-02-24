@@ -25,10 +25,13 @@ public class Payment {
     public Payment() {
     }
     
-    
-      
-   
-    
+    /**
+     * constructor
+     * @param from
+     * @param to
+     * @param comment
+     * @param sum 
+     */
     public Payment( String from,String to,String comment,int sum  ){   
         setFrom(from);
          setTo(to);
