@@ -6,7 +6,7 @@
 package buldingmaintance;
 
 /**
- *
+ *contain the information about professional worker provided by users
  * @author prime
  */
 public class Feedback {

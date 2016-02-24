@@ -15,10 +15,16 @@ import java.util.List;
  */
 public class Admin extends User {
 DataBase dataBase = DataBase.GetInstance();
-    public Admin(int ID, String firstName, String lastName, String email, String userName, String password, String buildingAddress, String phoneNumber, String userPermission, int apartmentId) {
+    
+public Admin(int ID, String firstName, String lastName, String email, String userName, String password, String buildingAddress, String phoneNumber, String userPermission, int apartmentId) {
         super(ID, firstName, lastName, email, userName, password, buildingAddress, phoneNumber, userPermission, apartmentId);
     }
 
+    /**
+     *
+     * @param selfUserName
+     * @return
+     */
     @Override
     public List<Message> RecieveMessage(String selfUserName) {
         return dataBase.recieveMessages(selfUserName);
@@ -28,11 +34,7 @@ DataBase dataBase = DataBase.GetInstance();
     public void SendMessage(Message message) {
        dataBase.sendMessage(message);
     }
-/*
-    public ArrayList<Payment> SeeAllPayments() {
-       return false;
-    }
-*/
+
     public void makePayment(Payment paymant){
         dataBase.makePayment(paymant);
     }

@@ -18,10 +18,15 @@ public class ExternalWorker {
     private String firstName;
     private String lastName;
     private Image photo;
-    private Feedback feedback;
 
     public ExternalWorker(){};    
-    
+    /**
+     * constructor
+     * @param workerId
+     * @param serviceName
+     * @param firstName
+     * @param lastName 
+     */
     public ExternalWorker(int workerId, String serviceName, String firstName, String lastName) {
         this.workerId = workerId;
         this.serviceName = serviceName;

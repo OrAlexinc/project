@@ -5,10 +5,8 @@
  */
 package buldingmaintance;
 
-import java.awt.Image;
-
 /**
- *
+ *makes sure every class that implements this is obligated to have all of the fields below
  * @author orgershov
  */
 public interface UserIntarface {
@@ -22,7 +20,4 @@ public interface UserIntarface {
     static final String phoneNumber="";
     static final String userPermission="";
     static final int apartmentId=0;
-    /*static final Image ProfilePhoto="";*/
-    
-   /*  public abstract UserIntarface();*/
 }

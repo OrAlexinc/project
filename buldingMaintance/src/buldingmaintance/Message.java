@@ -13,6 +13,12 @@ public class Message {
    DataBase dataBase = DataBase.GetInstance();
     public Message(){};
     
+    /**
+     * 
+     * @param content
+     * @param fromUser
+     * @param toUser 
+     */
     public Message(String content,String fromUser,String toUser){
         setContent(content);
         setFromUser(fromUser);

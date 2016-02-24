@@ -5,7 +5,6 @@ import java.awt.image.BufferedImage;
 import java.util.List;
 
 public class User {
-
     private int ID;
     private String firstName;
     private String lastName;
@@ -16,10 +15,23 @@ public class User {
     private String phoneNumber;
     private String userPermission;
     private int apartmentId;
-    private Image ProfilePhoto;
+    //private Image ProfilePhoto;
     DataBase dataBase = DataBase.GetInstance();
      public User(){};
     
+     /**
+     *constructor 
+     * @param ID
+     * @param firstName
+     * @param lastName
+     * @param email
+     * @param userName
+     * @param password
+     * @param buildingAddress
+     * @param phoneNumber
+     * @param userPermission
+     * @param apartmentId 
+     */
     public User(int ID, String firstName, String lastName, String email, 
                 String userName,String password, String buildingAddress, 
                 String phoneNumber, String userPermission, int apartmentId) {

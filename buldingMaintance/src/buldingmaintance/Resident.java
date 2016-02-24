@@ -18,6 +18,19 @@ DataBase dataBase = DataBase.GetInstance();
     public Resident() {
     }
 
+    /**
+     * constructor
+     * @param ID
+     * @param firstName
+     * @param lastName
+     * @param email
+     * @param userName
+     * @param password
+     * @param buildingAddress
+     * @param phoneNumber
+     * @param userPermission
+     * @param apartmentId 
+     */
     public Resident(int ID, String firstName, String lastName, String email, String userName,
             String password, String buildingAddress, String phoneNumber, String userPermission, int apartmentId) {
         super(ID, firstName, lastName, email, userName, password, buildingAddress, phoneNumber, userPermission, apartmentId);
