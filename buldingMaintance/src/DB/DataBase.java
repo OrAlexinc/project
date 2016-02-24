@@ -674,6 +674,5 @@ public class DataBase {
         }
         avg=totalSum/paymentCnt;
         return avg;
-    }
-    
+    }   
 }
