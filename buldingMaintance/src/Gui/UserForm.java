@@ -23,13 +23,13 @@ public class UserForm extends javax.swing.JFrame {
     List<ExternalWorker> workers = new ArrayList<ExternalWorker>();
     List<Feedback> feedbacks = new ArrayList<Feedback>();
     DataBase dataBase = DataBase.GetInstance();
-    String idLenghtError = "id must contin 9 digits";
-    String intErrorMessage = "you need enter only numbers to id/sum feild";
-    String numErrorTitle = "wrong input";
-    String nullValueError = "cant afford null value";
-    String nullValueTitle = "NULL FILD!!";
-    String noMoreMessages = "you dont have any more messages!!!!";
-    String mTitle = "no more messeges";
+    String idLenghtError =(LocalizationUtil.localizedResourceBundle.getString("idLenghtError"));
+    String intErrorMessage =(LocalizationUtil.localizedResourceBundle.getString("intErrorMessage"));
+    String numErrorTitle =(LocalizationUtil.localizedResourceBundle.getString("numErrorTitle"));
+    String nullValueError=(LocalizationUtil.localizedResourceBundle.getString("nullValueError"));
+    String nullValueTitle=(LocalizationUtil.localizedResourceBundle.getString("nullValueTitle"));
+    String noMoreMessages=(LocalizationUtil.localizedResourceBundle.getString("noMoreMessages"));
+    String mTitle=(LocalizationUtil.localizedResourceBundle.getString("mTitle"));
 
     public UserForm(Resident resident) {
         initComponents();
@@ -47,7 +47,6 @@ public class UserForm extends javax.swing.JFrame {
         btnMakeOrder.setText(LocalizationUtil.localizedResourceBundle.getString("btnMakeOrder"));
         btnMakepayment.setText(LocalizationUtil.localizedResourceBundle.getString("btnMakepayment"));
         btnOrderService.setText(LocalizationUtil.localizedResourceBundle.getString("btnOrderService"));
-
         btnSend.setText(LocalizationUtil.localizedResourceBundle.getString("btnSend"));
         btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnSendFeedback"));
         btnShowServiceList.setText(LocalizationUtil.localizedResourceBundle.getString("btnShowServiceList"));
@@ -65,6 +64,12 @@ public class UserForm extends javax.swing.JFrame {
         lblSendTo.setText(LocalizationUtil.localizedResourceBundle.getString("lblSendTo"));
         lblServieList.setText(LocalizationUtil.localizedResourceBundle.getString("lblServieList"));
         lblTypeOfService.setText(LocalizationUtil.localizedResourceBundle.getString("lblTypeOfService"));
+        btnSendMassege.setText(LocalizationUtil.localizedResourceBundle.getString("btnSendMassege"));
+        btnShowMesseges.setText(LocalizationUtil.localizedResourceBundle.getString("btnShowMessages"));
+        btnPay.setText(LocalizationUtil.localizedResourceBundle.getString("btnPay"));
+        lblSum.setText(LocalizationUtil.localizedResourceBundle.getString("lblSum"));
+        
+      
     }
 
     /**
@@ -540,7 +545,7 @@ public class UserForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, nullValueError, nullValueTitle, JOptionPane.ERROR_MESSAGE);
 
         } //if message faild is not null ending the message
-        else if (flag) {
+         if (flag) {
             String content = txtWriteMessage.getText();
             String username = (String) combSendTo.getSelectedItem();
             Message message = new Message(content, resident.getUserName(), username);

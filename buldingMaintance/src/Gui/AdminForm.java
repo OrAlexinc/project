@@ -31,14 +31,17 @@ public class AdminForm extends javax.swing.JFrame {
     java.util.List<ExternalWorker> workers = new ArrayList<ExternalWorker>();
     java.util.List<Feedback> feedbacks = new ArrayList<Feedback>();
     DataBase dataBase = DataBase.GetInstance();
-    String idLenghtError = "id must contin 9 digits";
-    String idErrorMessage = "you need enter only digits in the id";
-    String idErrorTitle = "wrong input";
-    String feedbackErrorMessage = "you need enter only digits to the id/rating/sum";
-    String feedbackLenghtError = "you neeed to enter numbers no longer than 9 digits";
-    String sumError = "you need enter numbers only";
-    String sumLenghtError = "you cant enter negative numbers";
-
+    String idLenghtError =(LocalizationUtil.localizedResourceBundle.getString("idLenghtError"));
+    String idErrorMessage =(LocalizationUtil.localizedResourceBundle.getString("idErrorMessage"));
+    String idErrorTitle=(LocalizationUtil.localizedResourceBundle.getString("idErrorTitle"));
+    String feedbackErrorMessage=(LocalizationUtil.localizedResourceBundle.getString("feedbackErrorMessage"));
+    String feedbackLenghtError=(LocalizationUtil.localizedResourceBundle.getString("feedbackLenghtError"));
+    String sumError =LocalizationUtil.localizedResourceBundle.getString("sumError");
+    String sumLenghtError=(LocalizationUtil.localizedResourceBundle.getString("sumLenghtError"));
+     String intErrorMessage =(LocalizationUtil.localizedResourceBundle.getString("intErrorMessage"));
+     String nameError=(LocalizationUtil.localizedResourceBundle.getString("nameError"));
+     String noMoreMessages=(LocalizationUtil.localizedResourceBundle.getString("noMoreMessages"));
+       String nullValueError=(LocalizationUtil.localizedResourceBundle.getString("nullValueError"));
     public AdminForm(Admin admin) {
 
         this.admin = admin;
@@ -53,17 +56,62 @@ public class AdminForm extends javax.swing.JFrame {
      * changes the languages of the text
      */
     private void SetSelectedLenguge() {
-        btnAddUser.setText(LocalizationUtil.localizedResourceBundle.getString("btnAddUser"));
-        btnMakePaymnet.setText(LocalizationUtil.localizedResourceBundle.getString("btnMakePaymnet"));
-        btnAddFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnAddFeedback"));
-        btnReadMessage.setText(LocalizationUtil.localizedResourceBundle.getString("btnReadMessage"));
+       btnAddFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnAddFeedback"));
         btnAddNewUser.setText(LocalizationUtil.localizedResourceBundle.getString("btnAddNewUser"));
         btnAddService.setText(LocalizationUtil.localizedResourceBundle.getString("btnAddService"));
+        btnAddTheServiceGuy.setText(LocalizationUtil.localizedResourceBundle.getString("btnAddTheServiceGuy"));
+        btnAddUser.setText(LocalizationUtil.localizedResourceBundle.getString("btnAddUser"));
+       btnDeleteService.setText(LocalizationUtil.localizedResourceBundle.getString("btnDeleteService"));
+       btnDeleteTheUser.setText(LocalizationUtil.localizedResourceBundle.getString("btnDeleteTheUser"));
+        btnMakePaymnet.setText(LocalizationUtil.localizedResourceBundle.getString("btnMakePaymnet"));
+        btnMakeTheOrder.setText(LocalizationUtil.localizedResourceBundle.getString("btnMakeTheOrder"));
         btnOrder.setText(LocalizationUtil.localizedResourceBundle.getString("btnOrder"));
         btnPay.setText(LocalizationUtil.localizedResourceBundle.getString("btnPay"));
+        btnReadMessage.setText(LocalizationUtil.localizedResourceBundle.getString("btnReadMessage"));
         btnSendMassege.setText(LocalizationUtil.localizedResourceBundle.getString("btnSendMassege"));
+        btnShowAllUsers.setText(LocalizationUtil.localizedResourceBundle.getString("btnShowAllUsers"));
+        btnShowMessages.setText(LocalizationUtil.localizedResourceBundle.getString("btnShowMessages"));
+        btnShowSerive.setText(LocalizationUtil.localizedResourceBundle.getString("btnShowSerive"));
+        btnShowUserById.setText(LocalizationUtil.localizedResourceBundle.getString("btnShowUserById"));
         btnUserManagemant.setText(LocalizationUtil.localizedResourceBundle.getString("btnUserManagemant"));
+        btnViewAllPayments.setText(LocalizationUtil.localizedResourceBundle.getString("btnViewAllPayments"));
         btnViewPayments.setText(LocalizationUtil.localizedResourceBundle.getString("btnViewPayments"));
+        btnViewWhoNotPayed.setText(LocalizationUtil.localizedResourceBundle.getString("btnViewWhoNotPayed"));
+        btnViewWhoPayd.setText(LocalizationUtil.localizedResourceBundle.getString("btnViewWhoPayd"));
+        lblApartmantId.setText(LocalizationUtil.localizedResourceBundle.getString("lblApartmantId"));
+        lblCommant.setText(LocalizationUtil.localizedResourceBundle.getString("lblCommant"));
+        lblDeleteService.setText(LocalizationUtil.localizedResourceBundle.getString("lblDeleteService"));
+        lblEddNewService.setText(LocalizationUtil.localizedResourceBundle.getString("lblEddNewService"));
+        lblEnteNewUserDetails.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnteNewUserDetails"));
+        lblEnterEmail.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterEmail"));
+        lblEnterFirstName.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterFirstName"));
+        lblEnterID.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterID"));
+        lblEnterIdOfServiceToDelete.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterIdOfServiceToDelete"));
+        lblEnterIdOfServieToShowFeeedback.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterIdOfServieToShowFeeedback"));
+        lblEnterLastName.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterLastName"));
+        lblEnterPassword.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterPassword"));
+        lblEnterPhoneNumber.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterPhoneNumber"));
+        lblEnterServiceGuyFirstName.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterServiceGuyFirstName"));
+        lblEnterServiceGuyId.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterServiceGuyId"));
+        lblEnterServiceGuyLastName.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterServiceGuyLastName"));
+        lblEnterServiceType.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterServiceType"));
+        lblEnterServieId.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterServieId"));
+        lblEnterUserName.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterUserName"));
+        lblEnterUserToDelete.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterUserToDelete"));
+        lblEnterWorkDone.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterWorkDone"));
+        lblSentTo.setText(LocalizationUtil.localizedResourceBundle.getString("lblSentTo"));
+        lblServiceType.setText(LocalizationUtil.localizedResourceBundle.getString("lblServiceType"));
+        lblSum.setText(LocalizationUtil.localizedResourceBundle.getString("lblSum"));
+        lblUserById.setText(LocalizationUtil.localizedResourceBundle.getString("lblUserById"));
+        btnSend.setText(LocalizationUtil.localizedResourceBundle.getString("btnSend"));
+        btnShowTheFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnShowTheFeedback"));
+        lblEddFeedbackAbutAService.setText(LocalizationUtil.localizedResourceBundle.getString("lblEddFeedbackAbutAService"));
+lblEnterFeddbackId.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterFeddbackId"));
+lblEnterRatingOfService.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterRatingOfService"));
+lblEnterPriveTaken.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterPriveTaken"));
+lblEnterWorkDone.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterWorkDone"));
+lblEnterFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterFeedback"));
+btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnSendFeedback"));
 
     }
 
@@ -76,7 +124,7 @@ public class AdminForm extends javax.swing.JFrame {
      */
     private boolean isInteger(String number) {
         if (number.matches("[0-9]+") == false || number.length() > 9) {
-            JOptionPane.showMessageDialog(null, "Ente only numbers", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, intErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
             return false;
         }
         return true;
@@ -93,7 +141,7 @@ public class AdminForm extends javax.swing.JFrame {
             if (id.length() == 9) {
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "Enter valid 9 digits id", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
             }
 
         }
@@ -964,7 +1012,7 @@ public class AdminForm extends javax.swing.JFrame {
         int id = 0;
        
         //flag in order to know if all valus that inserted are valid
-        boolean flag = false;
+        boolean flag = true;
 
             //create new resident object
         User resident = new Resident();
@@ -972,11 +1020,11 @@ public class AdminForm extends javax.swing.JFrame {
         
         //chking if valuse that inserted are valid if no than sen message to user to insert valid value
         if (!resident.setLastName(lastName)) {
-            JOptionPane.showMessageDialog(null, "only letters in lastname\first name and no longer than 20 letters", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,nameError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
             flag = false;
         }
         if (!resident.setFirstName(firstName)) {
-            JOptionPane.showMessageDialog(null, "only letters in lastname\first name and no longer than 20 letters", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, nameError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
             flag = false;
         }
 
@@ -1062,7 +1110,7 @@ public class AdminForm extends javax.swing.JFrame {
             
             //when the is no moe messages alerting the user
         } else if (!flag) {
-            JOptionPane.showMessageDialog(null, "you dont have any more messages!!!!", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, noMoreMessages, idErrorTitle, JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnShowMessagesActionPerformed
     /**
@@ -1130,7 +1178,7 @@ public class AdminForm extends javax.swing.JFrame {
       
         //if text fild is null alerting the user to rty again
         if (txtServieType.getText() == null) {
-            JOptionPane.showMessageDialog(null, "You must fill the Servie Type feild!!!!", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, nullValueError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
             flag = false;
         }
         
@@ -1242,11 +1290,11 @@ public class AdminForm extends javax.swing.JFrame {
             flag = false;
         }
         if (!externalWorker.setLastName(lastName)) {
-            JOptionPane.showMessageDialog(null, "only letters in lastname\first name and no longer than 20 letters", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, nameError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
             flag = false;
         }
         if (!externalWorker.setFirstName(firstName)) {
-            JOptionPane.showMessageDialog(null, "only letters in lastname\first name and no longer than 20 letters", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, nameError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
             flag = false;
         }
 
