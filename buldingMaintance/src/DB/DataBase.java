@@ -15,7 +15,7 @@ public class DataBase {
 
     String jdbcUrl = "jdbc:mysql://localhost:3306/building_maintainance?zeroDateTimeBehavior=convertToNull";
     String jdbcUser = "root";
-    String jdbcPassword="root";
+    String jdbcPassword;
     String jdbcDriver = "com.mysql.jdbc.Driver";
     List<Message> messages = new ArrayList<Message>();
     List<Order> orders = new ArrayList<Order>();
@@ -181,10 +181,9 @@ public class DataBase {
     }
 
     /**
-     * in order to sidplay all users id in combobox
-     *
+     * in order to display all user's id in combo-box
      * @param ID
-     * @return
+     * @returns all id's of all the users
      */
     public ArrayList<String> setUsersId() {
         ArrayList<String> usersId = new ArrayList<String>();
@@ -213,9 +212,9 @@ public class DataBase {
     }
 
     /**
-     * to display all usernmaes in combobox
+     * to display all user names in combo-box
      *
-     * @return
+     * @returns all the usernames
      */
     public ArrayList<String> listOfUsers() {
         ArrayList<String> usernames = new ArrayList<String>();
@@ -246,7 +245,7 @@ public class DataBase {
     /**
      * make sure that there will be no duplicates in messages table
      *
-     * @return
+     * @returns id
      */
     public int getMessageId() {
         int messageId = 0;
@@ -270,8 +269,11 @@ public class DataBase {
         }
         return messageId;
     }
-
-    public void sendMessage(Message message) {//adds message to a database
+/**
+ * adds message to a database
+ * @param message 
+ */
+    public void sendMessage(Message message) {
         try {
             Class.forName(jdbcDriver);
 
@@ -291,7 +293,11 @@ public class DataBase {
             e.printStackTrace();
         }
     }
-
+/**
+ * gets a list of all the messages for id provided 
+ * @param userName
+ * @return 
+ */
     public List<Message> recieveMessages(String userName) {
         List<Message> thisUserMessages = new ArrayList<Message>();
 
@@ -352,11 +358,13 @@ public class DataBase {
         }
         return orderId;
     }
-
-    public void makeOrder(Order order) {//adds an order to a database
+/**
+ * adds an order to a database
+ * @param order 
+ */
+    public void makeOrder(Order order) {
         try {
             Class.forName(jdbcDriver);
-            /* java.sql.Timestamp timestamp = new java.sql.Timestamp(order.getDateRecieved().getTimeInMillis());*/
             Statement statement = connection.createStatement();
             String insertUser = "insert into  orders values(" + order.getOrderID() + ",'"
                     + order.getOrder() + "'" + ",'"
@@ -374,7 +382,7 @@ public class DataBase {
     }
 
     /**
-     * making sure that will be no duplicates in payment table
+     * makes sure that will be no duplicates in payment table
      *
      * @return
      */
@@ -400,8 +408,11 @@ public class DataBase {
         }
         return paymentId;
     }
-
-    public void makePayment(Payment payment) {//adds an payment to a database
+/**
+ * adds an payment to a database
+ * @param payment 
+ */
+    public void makePayment(Payment payment) {
         try {
             Class.forName(jdbcDriver);
             java.sql.Timestamp timestamp = new java.sql.Timestamp(payment.getDateRecieved().getDate());
@@ -421,7 +432,11 @@ public class DataBase {
             e.printStackTrace();
         }
     }
-
+/**
+ * returns list of all payments done
+ * @param user
+ * @return 
+ */
     public List<Payment> recievePayments() {
         List<Payment> allPayments = new ArrayList<Payment>();
 
@@ -429,7 +444,8 @@ public class DataBase {
             Class.forName(jdbcDriver);
 
             Statement statement = connection.createStatement();
-           
+
+       
             String pullPayments = "SELECT * FROM payments";
 
             ResultSet resultSet = statement.executeQuery(pullPayments);
@@ -461,7 +477,7 @@ public class DataBase {
      *
      * @param username
      * @param password
-     * @return user if successfully added, null if not
+     * @return user if successfully logged in, null if not
      */
     public User logIn(String username, String password) {
         try {
@@ -502,8 +518,11 @@ public class DataBase {
 
         return null;
     }
-
-    public void AddExternalWorkers(ExternalWorker worker) { //gets an object from type ExternalWorker and adds its fields to database
+/**
+ * gets an object from type ExternalWorker and adds its fields to database
+ * @param worker 
+ */
+    public void AddExternalWorkers(ExternalWorker worker) {
 
         try {
             Class.forName(jdbcDriver);
@@ -523,7 +542,10 @@ public class DataBase {
             e.printStackTrace();
         }
     }
-
+/**
+ * returns the list of all workers
+ * @return 
+ */
     public List<ExternalWorker> showAllWorkers() {
         ExternalWorker worker = new ExternalWorker();
         try {
@@ -555,7 +577,7 @@ public class DataBase {
     }
 
     /**
-     * to shov all workers id in combobox
+     * shows all worker's id in combo-box
      *
      * @param id
      */
@@ -589,7 +611,10 @@ public class DataBase {
         }
         return listOfId;
     }
-
+/**
+ * removes worker by id entered
+ * @param id 
+ */
     public void RemoveExternalWorker(int id) {
         try {
             Class.forName(jdbcDriver);
@@ -604,7 +629,10 @@ public class DataBase {
             e.printStackTrace();
         }
     }
-
+/**
+ * adds new feedback to database
+ * @param feedback 
+ */
     public void AddFeedbackForWorker(Feedback feedback) {
 
         try {
@@ -626,6 +654,11 @@ public class DataBase {
         }
     }
 
+    /**
+     * gets worker id and shows all the feedbacks about him
+     * @param id
+     * @return 
+     */
     public List<Feedback> showWorkersFeedbackById(int id) {
         Feedback feedback = new Feedback();
         try {
@@ -657,6 +690,11 @@ public class DataBase {
         return feedbacks;
     }
     
+    
+    /**
+     * returns the average of all payments
+     * @return 
+     */
     public float showPaymentsAverage(){
         float totalSum=0;
         int paymentCnt=0;
@@ -685,7 +723,10 @@ public class DataBase {
         return avg;
     }   
     
-    
+    /**
+     * returns the list of all users who not payed
+     * @return 
+     */
     public List<User> showWhoNotPayed(){
         List<User> users=null; 
         User user=null;
