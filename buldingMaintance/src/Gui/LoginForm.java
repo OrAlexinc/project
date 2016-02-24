@@ -172,8 +172,8 @@ DataBase dataBase = DataBase.GetInstance();
     String username=txtUsername.getText();
     String password=txtPassword.getText();
  
-    String connctionEror="wrong user name or passsword";
-    String ErorType="Wrong Input";
+    String connctionEror=(LocalizationUtil.localizedResourceBundle.getString("connctionEror"));
+    String ErorType=(LocalizationUtil.localizedResourceBundle.getString("ErorType"));
      User user=dataBase.logIn(username, password);
      
      //if user not exist in database alering the user
