@@ -422,15 +422,14 @@ public class DataBase {
         }
     }
 
-    public List<Payment> recievePayments(User user) {
+    public List<Payment> recievePayments() {
         List<Payment> allPayments = new ArrayList<Payment>();
 
         try {
             Class.forName(jdbcDriver);
 
             Statement statement = connection.createStatement();
-            String toUsername = user.getUserName();
-
+           
             String pullPayments = "SELECT * FROM payments";
 
             ResultSet resultSet = statement.executeQuery(pullPayments);
