@@ -15,7 +15,7 @@ public class DataBase {
 
     String jdbcUrl = "jdbc:mysql://localhost:3306/building_maintainance?zeroDateTimeBehavior=convertToNull";
     String jdbcUser = "root";
-    String jdbcPassword="root";
+    String jdbcPassword;
     String jdbcDriver = "com.mysql.jdbc.Driver";
     List<Message> messages = new ArrayList<Message>();
     List<Order> orders = new ArrayList<Order>();
@@ -516,8 +516,11 @@ public class DataBase {
 
         return null;
     }
-
-    public void AddExternalWorkers(ExternalWorker worker) { //gets an object from type ExternalWorker and adds its fields to database
+/**
+ * gets an object from type ExternalWorker and adds its fields to database
+ * @param worker 
+ */
+    public void AddExternalWorkers(ExternalWorker worker) {
 
         try {
             Class.forName(jdbcDriver);
@@ -537,7 +540,10 @@ public class DataBase {
             e.printStackTrace();
         }
     }
-
+/**
+ * returns the list of all workers
+ * @return 
+ */
     public List<ExternalWorker> showAllWorkers() {
         ExternalWorker worker = new ExternalWorker();
         try {
