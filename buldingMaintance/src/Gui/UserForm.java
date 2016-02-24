@@ -24,11 +24,12 @@ public class UserForm extends javax.swing.JFrame {
     DataBase dataBase = DataBase.GetInstance();
     String idLenghtError = "id must contin 9 digits";
     String intErrorMessage = "you need enter only numbers to id/sum feild";
-    String numErrorTitle = "wrong input";   
-    String nullValueError="cant afford null value";
-    String nullValueTitle="NULL FILD!!";
+    String numErrorTitle = "wrong input";
+    String nullValueError = "cant afford null value";
+    String nullValueTitle = "NULL FILD!!";
     String noMoreMessages = "you dont have any more messages!!!!";
-     String mTitle = "no more messeges";
+    String mTitle = "no more messeges";
+
     public UserForm(Resident resident) {
         initComponents();
         this.resident = resident;
@@ -38,7 +39,8 @@ public class UserForm extends javax.swing.JFrame {
     }
 
     /**
-     * cheaking if sring can safly converted to integer
+     * checking if the value is number and in the size of integer if yes return
+     * true
      *
      * @param number
      * @return
@@ -52,7 +54,7 @@ public class UserForm extends javax.swing.JFrame {
     }
 
     /**
-     * cheaks if the id is valid
+     * checks if the id is valid
      *
      * @param id
      * @return
@@ -435,45 +437,62 @@ public class UserForm extends javax.swing.JFrame {
 
         setBounds(250, 250, 957, 524);
     }// </editor-fold>//GEN-END:initComponents
-
+      /**
+     * when button send message clicked
+     *
+     * @param evt
+     */
     private void btnSendMassegeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendMassegeActionPerformed
-
+        //set the needed components to disply.true
         OnOffComponents(true, false, false, false, false);
         OnOffPanel(true, false, false, false, false);
-
+        //create arry list of usernames
         ArrayList<String> usernames = dataBase.listOfUsers();
-
+        //fill the combo box whith the list
         for (String user : usernames) {
             combSendTo.addItem(user);
         }
+        //clear text from all fildes
         txtWriteMessage.setText(null);
     }//GEN-LAST:event_btnSendMassegeActionPerformed
-
+   /**
+    * what happens when show message button clicked
+    * @param evt 
+    */
+    
     private void btnViewMassegeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewMassegeActionPerformed
-
+        //set the needed components to disply.true
         OnOffComponents(false, true, false, false, false);
         OnOffPanel(true, true, false, false, false);
+
+        //add all the messages from database  to messege list     
         messages = resident.RecieveMessage(resident.getUserName());
+
+        //clear text from all fildes
         txtShowMessage.setText(null);
 
     }//GEN-LAST:event_btnViewMassegeActionPerformed
 
     /**
-     * show my messages
+     * show my messages button
      *
      * @param evt
      */
     private void btnShowMessegesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowMessegesActionPerformed
+       //flag that indicates if thers is no more messages      
         boolean flag = true;
-        
+
         if (flag) {
             String allMessages = "";
+           //adding all messages from messages list lt a string to display on textbox
             for (Message message : messages) {
                 allMessages += message.toString();
             }
             txtShowMessage.setText(allMessages);
             flag = false;
-        } else if (!flag) {
+        } 
+         //when the is no moe messages alerting the user
+        else if (!flag) {
             JOptionPane.showMessageDialog(null, noMoreMessages, mTitle, JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnShowMessegesActionPerformed
@@ -486,8 +505,7 @@ public class UserForm extends javax.swing.JFrame {
         boolean flag = true;
         if (txtWriteMessage.getText().equals("")) {
             flag = false;
-            JOptionPane.showMessageDialog(null, nullValueError, nullValueTitle
-                    , JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, nullValueError, nullValueTitle, JOptionPane.ERROR_MESSAGE);
 
         } else if (flag) {
             String content = txtWriteMessage.getText();
@@ -513,13 +531,13 @@ public class UserForm extends javax.swing.JFrame {
 
         ArrayList<String> listOfId = new ArrayList<String>();
         listOfId = dataBase.showWorkersId();
-        
+
         for (String id : listOfId) {
             combIdOfServiceToSeeFeedback.addItem(id);
             compIdOfTheServicToOrder.addItem(id);
         }
-        
-        txtEnterPriceTaken.setText(null);      
+
+        txtEnterPriceTaken.setText(null);
         txtEnterFeedback.setText(null);
     }//GEN-LAST:event_btnMakeOrderActionPerformed
     /**
@@ -531,22 +549,21 @@ public class UserForm extends javax.swing.JFrame {
         boolean flag = true;
         if (txtSum.getText().equals("") || txtPaymentCommant.getText().equals("")) {
             flag = false;
-            JOptionPane.showMessageDialog(null,nullValueError, nullValueTitle, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, nullValueError, nullValueTitle, JOptionPane.ERROR_MESSAGE);
 
-        
             int sum = 0;
             String workerFeedback = "";
             Payment pay = new Payment();
 
             if (isInteger(txtSum.getText())) {
-                sum = Integer.parseInt(txtSum.getText());              
+                sum = Integer.parseInt(txtSum.getText());
+            } else {
+                flag = false;
             }
-            else
-                flag=false;
-        if(flag){
-            String commant = txtPaymentCommant.getText();
-            pay = new Payment(resident.getUserName(), "Admin", commant, sum);
-        }
+            if (flag) {
+                String commant = txtPaymentCommant.getText();
+                pay = new Payment(resident.getUserName(), "Admin", commant, sum);
+            }
             resident.addPayment(pay);
         }
         txtSum.setText(null);
@@ -572,7 +589,7 @@ public class UserForm extends javax.swing.JFrame {
             Order order = new Order(resident.getUserName(), id, type);
             resident.callService(order);
         }
-      txtEnterTypeOfService.setText(null);
+        txtEnterTypeOfService.setText(null);
     }//GEN-LAST:event_btnOrderServiceActionPerformed
     /**
      * add a feedback abut a service
@@ -599,12 +616,12 @@ public class UserForm extends javax.swing.JFrame {
      */
     private void btnSendFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendFeedbackActionPerformed
         boolean flag0 = true;
-        
+
         if (txtEnterPriceTaken.getText().equals("")
                 || txtEnterFeedback.getText().equals("")
                 || txtEnterWorkTypeDone.getText().equals("")) {
             flag0 = false;
-            JOptionPane.showMessageDialog(null,nullValueError, nullValueTitle, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, nullValueError, nullValueTitle, JOptionPane.ERROR_MESSAGE);
 
         } else if (flag0) {
 
@@ -612,12 +629,12 @@ public class UserForm extends javax.swing.JFrame {
             int rating = 0;
             float price = 0;
             boolean flag = true;
-            Feedback feedback = new Feedback();        
-           String workerFeedback = "";
-                  
+            Feedback feedback = new Feedback();
+            String workerFeedback = "";
+
             id = Integer.parseInt((String) compIdOfTheServicToAddFeedBack.getSelectedItem());
             rating = Integer.parseInt((String) compAddRating.getSelectedItem());
-           
+
             if (isInteger(txtEnterPriceTaken.getText())) {
                 price = Integer.parseInt(txtEnterPriceTaken.getText());
             } else {
@@ -649,7 +666,7 @@ public class UserForm extends javax.swing.JFrame {
             workerFeedback += feedback.toString();
         }
         txtListOfServices.setText(workerFeedback);
-       
+
     }//GEN-LAST:event_btnShowTheFeedbackActionPerformed
     /**
      * show the list if the services
@@ -659,7 +676,7 @@ public class UserForm extends javax.swing.JFrame {
     private void btnShowServiceListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowServiceListActionPerformed
         String allWorkers = "";
         workers = dataBase.showAllWorkers();
-        
+
         for (ExternalWorker worker : workers) {
             allWorkers += worker.toString();
         }
@@ -678,14 +695,16 @@ public class UserForm extends javax.swing.JFrame {
         jpnAddFeedback.setVisible(feedback);
 
     }
-/**
- * set the needed comopnents on and off
- * @param sendMessage
- * @param viewMessage
- * @param payment
- * @param order
- * @param feedback 
- */
+
+    /**
+     * set the needed comopnents on and off
+     *
+     * @param sendMessage
+     * @param viewMessage
+     * @param payment
+     * @param order
+     * @param feedback
+     */
     public void OnOffComponents(boolean sendMessage, boolean viewMessage,
             boolean payment, boolean order, boolean feedback) {
         btnSend.setVisible(sendMessage);
