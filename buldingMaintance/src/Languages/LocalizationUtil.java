@@ -18,6 +18,6 @@ public class LocalizationUtil {
     static
     {
         // gets the bundle for the default locale used
-        localizedResourceBundle = ResourceBundle.getBundle("language_eng", new Locale("en"));
+        localizedResourceBundle = ResourceBundle.getBundle("languages.uimessages", new Locale("iw"));
     }
 }
