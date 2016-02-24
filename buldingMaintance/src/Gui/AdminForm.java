@@ -31,13 +31,13 @@ public class AdminForm extends javax.swing.JFrame {
     java.util.List<ExternalWorker> workers = new ArrayList<ExternalWorker>();
     java.util.List<Feedback> feedbacks = new ArrayList<Feedback>();
     DataBase dataBase = DataBase.GetInstance();
-    String idLenghtError = "id must contin 9 digits";
-    String idErrorMessage = "you need enter only digits in the id";
-    String idErrorTitle = "wrong input";
-    String feedbackErrorMessage = "you need enter only digits to the id/rating/sum";
-    String feedbackLenghtError = "you neeed to enter numbers no longer than 9 digits";
-    String sumError = "you need enter numbers only";
-    String sumLenghtError = "you cant enter negative numbers";
+    String idLenghtError =(LocalizationUtil.localizedResourceBundle.getString("idLenghtError"));
+    String idErrorMessage =(LocalizationUtil.localizedResourceBundle.getString("idErrorMessage"));
+    String idErrorTitle=(LocalizationUtil.localizedResourceBundle.getString("idErrorTitle"));
+    String feedbackErrorMessage=(LocalizationUtil.localizedResourceBundle.getString("feedbackErrorMessage"));
+    String feedbackLenghtError=(LocalizationUtil.localizedResourceBundle.getString("feedbackLenghtError"));
+    String sumError =LocalizationUtil.localizedResourceBundle.getString("sumError");
+    String sumLenghtError=(LocalizationUtil.localizedResourceBundle.getString("sumLenghtError"));
 
     public AdminForm(Admin admin) {
 
@@ -100,6 +100,15 @@ public class AdminForm extends javax.swing.JFrame {
         lblServiceType.setText(LocalizationUtil.localizedResourceBundle.getString("lblServiceType"));
         lblSum.setText(LocalizationUtil.localizedResourceBundle.getString("lblSum"));
         lblUserById.setText(LocalizationUtil.localizedResourceBundle.getString("lblUserById"));
+        btnSend.setText(LocalizationUtil.localizedResourceBundle.getString("btnSend"));
+        btnShowTheFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnShowTheFeedback"));
+        lblEddFeedbackAbutAService.setText(LocalizationUtil.localizedResourceBundle.getString("lblEddFeedbackAbutAService"));
+lblEnterFeddbackId.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterFeddbackId"));
+lblEnterRatingOfService.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterRatingOfService"));
+lblEnterPriveTaken.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterPriveTaken"));
+lblEnterWorkDone.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterWorkDone"));
+lblEnterFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterFeedback"));
+btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnSendFeedback"));
 
     }
 
@@ -1000,7 +1009,7 @@ public class AdminForm extends javax.swing.JFrame {
         int id = 0;
        
         //flag in order to know if all valus that inserted are valid
-        boolean flag = false;
+        boolean flag = true;
 
             //create new resident object
         User resident = new Resident();
