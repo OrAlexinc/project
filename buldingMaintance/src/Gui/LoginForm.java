@@ -29,7 +29,7 @@ DataBase dataBase = DataBase.GetInstance();
         rBtnEnglish.setActionCommand("en");
         rBtnHebrow.setActionCommand("iw");
         rBtnRussian.setActionCommand("ru");
-       // btnLogin= new javax.swing.JButton(LocalizationUtil.localizedResourceBundle.getString("btnLogin"));
+       
         
     }
        
