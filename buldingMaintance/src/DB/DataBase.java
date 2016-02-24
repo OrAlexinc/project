@@ -675,4 +675,44 @@ public class DataBase {
         avg=totalSum/paymentCnt;
         return avg;
     }   
+    
+    
+    public List<User> showWhoNotPayed(){
+        List<User> users=null;
+        User user=null;
+        try {
+            Class.forName(jdbcDriver);
+
+            Statement statement = connection.createStatement();
+
+            String sqlAverage = "SELECT * FROM payments where Sum= " + 0 + "";
+
+            ResultSet resultSet = statement.executeQuery(sqlAverage);
+
+            while (resultSet.next()) { 
+                int id = resultSet.getInt("ID");
+                String firstName = resultSet.getString("FirstName");
+                String lastName = resultSet.getString("LastName");
+                String email = resultSet.getString("Email");
+                String userName = resultSet.getString("UserName");
+                String Password = resultSet.getString("Password");
+                String buildingAddress = resultSet.getString("BuildingAddress");
+                int apartmentId = resultSet.getInt("Apartmentid");
+                String phoneNumber = resultSet.getString("PhoneNumber");
+                String userPermission = resultSet.getString("UserPermission");
+            
+                user = new User(id, firstName, lastName, email, userName, Password,
+                            buildingAddress, phoneNumber, userPermission, apartmentId);
+                users.add(user);
+            }
+
+        } catch (SQLException sqle) {
+            System.out.println("SQLException: " + sqle.getMessage());
+            System.out.println("Vendor Error: " + sqle.getErrorCode());
+        } catch (ClassNotFoundException e) {
+            System.out.println("Class not found exeption");
+        }
+        
+        return users;
+    }   
 }
