@@ -575,7 +575,7 @@ public class DataBase {
     }
 
     /**
-     * to shov all workers id in combobox
+     * shows all worker's id in combo-box
      *
      * @param id
      */
@@ -609,7 +609,10 @@ public class DataBase {
         }
         return listOfId;
     }
-
+/**
+ * removes worker by id entered
+ * @param id 
+ */
     public void RemoveExternalWorker(int id) {
         try {
             Class.forName(jdbcDriver);
@@ -624,7 +627,10 @@ public class DataBase {
             e.printStackTrace();
         }
     }
-
+/**
+ * adds new feedback to database
+ * @param feedback 
+ */
     public void AddFeedbackForWorker(Feedback feedback) {
 
         try {
@@ -646,6 +652,11 @@ public class DataBase {
         }
     }
 
+    /**
+     * gets worker id and shows all the feedbacks about him
+     * @param id
+     * @return 
+     */
     public List<Feedback> showWorkersFeedbackById(int id) {
         Feedback feedback = new Feedback();
         try {
@@ -677,6 +688,11 @@ public class DataBase {
         return feedbacks;
     }
     
+    
+    /**
+     * returns the average of all payments
+     * @return 
+     */
     public float showPaymentsAverage(){
         float totalSum=0;
         int paymentCnt=0;
@@ -705,7 +721,10 @@ public class DataBase {
         return avg;
     }   
     
-    
+    /**
+     * returns the list of all users who not payed
+     * @return 
+     */
     public List<User> showWhoNotPayed(){
         List<User> users=null; 
         User user=null;
