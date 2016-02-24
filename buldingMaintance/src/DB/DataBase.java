@@ -186,7 +186,7 @@ public class DataBase {
      * @param ID
      * @return
      */
-    public ArrayList<String> eetUsersId() {
+    public ArrayList<String> setUsersId() {
         ArrayList<String> usersId = new ArrayList<String>();
         try {
             Class.forName(jdbcDriver);
