@@ -151,7 +151,7 @@ DataBase dataBase = DataBase.GetInstance();
     }// </editor-fold>//GEN-END:initComponents
 
     /**
- * click on login botton
+ * click on login button
  * @param evt 
  */
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
