@@ -232,7 +232,7 @@ public class AdminForm extends javax.swing.JFrame {
             }
         });
         jplMainPannel.add(btnSendMassege);
-        btnSendMassege.setBounds(47, 42, 179, 43);
+        btnSendMassege.setBounds(47, 42, 270, 43);
 
         btnReadMessage.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnReadMessage.setText("read messeges");
@@ -243,7 +243,7 @@ public class AdminForm extends javax.swing.JFrame {
             }
         });
         jplMainPannel.add(btnReadMessage);
-        btnReadMessage.setBounds(47, 103, 179, 44);
+        btnReadMessage.setBounds(47, 103, 270, 44);
 
         btnMakePaymnet.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnMakePaymnet.setText("make payment");
@@ -254,7 +254,7 @@ public class AdminForm extends javax.swing.JFrame {
             }
         });
         jplMainPannel.add(btnMakePaymnet);
-        btnMakePaymnet.setBounds(47, 165, 179, 48);
+        btnMakePaymnet.setBounds(47, 165, 270, 48);
 
         btnOrder.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnOrder.setText("order  maintinance");
@@ -265,7 +265,7 @@ public class AdminForm extends javax.swing.JFrame {
             }
         });
         jplMainPannel.add(btnOrder);
-        btnOrder.setBounds(47, 231, 179, 46);
+        btnOrder.setBounds(47, 231, 270, 46);
 
         btnViewPayments.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnViewPayments.setText("view payments");
@@ -276,7 +276,7 @@ public class AdminForm extends javax.swing.JFrame {
             }
         });
         jplMainPannel.add(btnViewPayments);
-        btnViewPayments.setBounds(47, 295, 179, 45);
+        btnViewPayments.setBounds(47, 295, 270, 45);
 
         btnAddUser.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnAddUser.setText("add/delete user");
@@ -287,7 +287,7 @@ public class AdminForm extends javax.swing.JFrame {
             }
         });
         jplMainPannel.add(btnAddUser);
-        btnAddUser.setBounds(47, 358, 179, 41);
+        btnAddUser.setBounds(47, 358, 270, 41);
 
         btnAddService.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnAddService.setText("add/delete service");
@@ -298,7 +298,7 @@ public class AdminForm extends javax.swing.JFrame {
             }
         });
         jplMainPannel.add(btnAddService);
-        btnAddService.setBounds(47, 417, 179, 39);
+        btnAddService.setBounds(47, 417, 270, 39);
 
         jpnSendMassege.setOpaque(false);
         jpnSendMassege.setLayout(null);
@@ -394,11 +394,11 @@ public class AdminForm extends javax.swing.JFrame {
 
         lblEnterLastName.setText("lastname");
         jpnAddUser.add(lblEnterLastName);
-        lblEnterLastName.setBounds(40, 150, 70, 16);
+        lblEnterLastName.setBounds(40, 150, 70, 14);
 
         lblEnterEmail.setText("email");
         jpnAddUser.add(lblEnterEmail);
-        lblEnterEmail.setBounds(40, 190, 70, 16);
+        lblEnterEmail.setBounds(40, 190, 70, 14);
 
         btnAddNewUser.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnAddNewUser.setText("add");
@@ -414,11 +414,11 @@ public class AdminForm extends javax.swing.JFrame {
         lblEnteNewUserDetails.setLabelFor(jpnAddUser);
         lblEnteNewUserDetails.setText("Ente new user details");
         jpnAddUser.add(lblEnteNewUserDetails);
-        lblEnteNewUserDetails.setBounds(140, 40, 190, 16);
+        lblEnteNewUserDetails.setBounds(140, 40, 190, 14);
 
         lblEnterUserToDelete.setText("enter the id of the user to delete");
         jpnAddUser.add(lblEnterUserToDelete);
-        lblEnterUserToDelete.setBounds(360, 60, 200, 16);
+        lblEnterUserToDelete.setBounds(360, 60, 200, 14);
 
         btnDeleteTheUser.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnDeleteTheUser.setText("delete");
@@ -431,35 +431,35 @@ public class AdminForm extends javax.swing.JFrame {
         jpnAddUser.add(btnDeleteTheUser);
         btnDeleteTheUser.setBounds(360, 130, 110, 31);
         jpnAddUser.add(txtEnterUserName);
-        txtEnterUserName.setBounds(140, 270, 130, 22);
+        txtEnterUserName.setBounds(140, 270, 130, 20);
 
         lblEnterUserName.setText("username");
         jpnAddUser.add(lblEnterUserName);
-        lblEnterUserName.setBounds(40, 270, 60, 16);
+        lblEnterUserName.setBounds(40, 270, 60, 14);
 
         lblEnterPhoneNumber.setText("phone number");
         jpnAddUser.add(lblEnterPhoneNumber);
         lblEnterPhoneNumber.setBounds(40, 230, 100, 20);
         jpnAddUser.add(txtEnterEmail);
-        txtEnterEmail.setBounds(140, 190, 130, 22);
+        txtEnterEmail.setBounds(140, 190, 130, 20);
         jpnAddUser.add(txtEnterPhoneNumber);
-        txtEnterPhoneNumber.setBounds(140, 230, 130, 22);
+        txtEnterPhoneNumber.setBounds(140, 230, 130, 20);
         jpnAddUser.add(txtEnterLastName);
-        txtEnterLastName.setBounds(140, 150, 130, 22);
+        txtEnterLastName.setBounds(140, 150, 130, 20);
         jpnAddUser.add(txtEnderName);
-        txtEnderName.setBounds(140, 110, 130, 22);
+        txtEnderName.setBounds(140, 110, 130, 20);
         jpnAddUser.add(txtEnterID);
-        txtEnterID.setBounds(140, 70, 130, 22);
+        txtEnterID.setBounds(140, 70, 130, 20);
 
         lblEnterID.setText("ID");
         jpnAddUser.add(lblEnterID);
-        lblEnterID.setBounds(40, 70, 70, 16);
+        lblEnterID.setBounds(40, 70, 70, 14);
         jpnAddUser.add(txtEnterPassword);
-        txtEnterPassword.setBounds(140, 310, 130, 22);
+        txtEnterPassword.setBounds(140, 310, 130, 20);
 
         lblEnterPassword.setText("password");
         jpnAddUser.add(lblEnterPassword);
-        lblEnterPassword.setBounds(40, 310, 70, 16);
+        lblEnterPassword.setBounds(40, 310, 70, 14);
 
         jpnAddService.setOpaque(false);
         jpnAddService.setLayout(null);
@@ -492,7 +492,7 @@ public class AdminForm extends javax.swing.JFrame {
         lblUserById.setText("show suder by id");
         lblUserById.setFocusCycleRoot(true);
         jpnUserManagment.add(lblUserById);
-        lblUserById.setBounds(40, 310, 130, 16);
+        lblUserById.setBounds(40, 310, 130, 14);
 
         btnShowAllUsers.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnShowAllUsers.setText("show all users");
@@ -515,23 +515,23 @@ public class AdminForm extends javax.swing.JFrame {
 
         lblEnterFeddbackId.setText("id fo service");
         jpnAddFeedback.add(lblEnterFeddbackId);
-        lblEnterFeddbackId.setBounds(50, 80, 130, 16);
+        lblEnterFeddbackId.setBounds(50, 80, 130, 14);
 
         lblEnterRatingOfService.setText("reating(0-10)");
         jpnAddFeedback.add(lblEnterRatingOfService);
-        lblEnterRatingOfService.setBounds(230, 80, 90, 16);
+        lblEnterRatingOfService.setBounds(230, 80, 90, 14);
 
         lblEnterPriveTaken.setText("price taken");
         jpnAddFeedback.add(lblEnterPriveTaken);
-        lblEnterPriveTaken.setBounds(400, 80, 130, 16);
+        lblEnterPriveTaken.setBounds(400, 80, 130, 14);
         jpnAddFeedback.add(txtEnterPriceTaken);
-        txtEnterPriceTaken.setBounds(400, 110, 130, 22);
+        txtEnterPriceTaken.setBounds(400, 110, 130, 20);
 
         lblEnterWorkDone.setText("enter the work type");
         jpnAddFeedback.add(lblEnterWorkDone);
-        lblEnterWorkDone.setBounds(50, 150, 130, 16);
+        lblEnterWorkDone.setBounds(50, 150, 130, 14);
         jpnAddFeedback.add(txtEnterWorkTypeDone);
-        txtEnterWorkTypeDone.setBounds(40, 180, 190, 22);
+        txtEnterWorkTypeDone.setBounds(40, 180, 190, 20);
 
         txtEnterFeedback.setColumns(20);
         txtEnterFeedback.setRows(5);
@@ -542,7 +542,7 @@ public class AdminForm extends javax.swing.JFrame {
 
         lblEnterFeedback.setText("enter feedback");
         jpnAddFeedback.add(lblEnterFeedback);
-        lblEnterFeedback.setBounds(50, 210, 120, 16);
+        lblEnterFeedback.setBounds(50, 210, 120, 14);
 
         btnSendFeedback.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnSendFeedback.setText("send feedback");
@@ -566,7 +566,7 @@ public class AdminForm extends javax.swing.JFrame {
         jpnAddFeedback.setBounds(0, 0, 630, 480);
 
         jpnUserManagment.add(combIdOfUserToDisplay);
-        combIdOfUserToDisplay.setBounds(30, 340, 120, 22);
+        combIdOfUserToDisplay.setBounds(30, 340, 120, 20);
 
         jpnAddService.add(jpnUserManagment);
         jpnUserManagment.setBounds(0, 0, 630, 480);
@@ -583,17 +583,17 @@ public class AdminForm extends javax.swing.JFrame {
 
         lblEnterServiceGuyLastName.setText("lastname");
         jpnAddService.add(lblEnterServiceGuyLastName);
-        lblEnterServiceGuyLastName.setBounds(30, 230, 52, 16);
+        lblEnterServiceGuyLastName.setBounds(30, 230, 43, 14);
 
         lblEnterServiceGuyId.setText("ID");
         jpnAddService.add(lblEnterServiceGuyId);
-        lblEnterServiceGuyId.setBounds(30, 300, 12, 16);
+        lblEnterServiceGuyId.setBounds(30, 300, 11, 14);
         jpnAddService.add(txtEnterServiceGuyFirsttName);
-        txtEnterServiceGuyFirsttName.setBounds(30, 190, 120, 22);
+        txtEnterServiceGuyFirsttName.setBounds(30, 190, 120, 20);
         jpnAddService.add(txtEnterServiceGuyLastName);
-        txtEnterServiceGuyLastName.setBounds(30, 260, 120, 22);
+        txtEnterServiceGuyLastName.setBounds(30, 260, 120, 20);
         jpnAddService.add(txtEnterServiceGuyId);
-        txtEnterServiceGuyId.setBounds(30, 330, 130, 22);
+        txtEnterServiceGuyId.setBounds(30, 330, 130, 20);
 
         btnAddTheServiceGuy.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnAddTheServiceGuy.setText("add");
@@ -613,7 +613,7 @@ public class AdminForm extends javax.swing.JFrame {
 
         lblEnterIdOfServiceToDelete.setText("ender id of servic to delete");
         jpnAddService.add(lblEnterIdOfServiceToDelete);
-        lblEnterIdOfServiceToDelete.setBounds(380, 90, 180, 16);
+        lblEnterIdOfServiceToDelete.setBounds(380, 90, 180, 14);
 
         btnDeleteService.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnDeleteService.setText("delete");
@@ -627,14 +627,14 @@ public class AdminForm extends javax.swing.JFrame {
         btnDeleteService.setBounds(380, 160, 120, 40);
 
         jpnAddService.add(combIdOfServieToDelete);
-        combIdOfServieToDelete.setBounds(380, 120, 160, 22);
+        combIdOfServieToDelete.setBounds(380, 120, 160, 20);
 
         jpnAddUser.add(jpnAddService);
         jpnAddService.setBounds(0, 0, 630, 480);
 
         lblApartmantId.setText("apartment");
         jpnAddUser.add(lblApartmantId);
-        lblApartmantId.setBounds(40, 350, 59, 16);
+        lblApartmantId.setBounds(40, 350, 50, 14);
 
         txtApartment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -642,10 +642,10 @@ public class AdminForm extends javax.swing.JFrame {
             }
         });
         jpnAddUser.add(txtApartment);
-        txtApartment.setBounds(140, 350, 130, 22);
+        txtApartment.setBounds(140, 350, 130, 20);
 
         jpnAddUser.add(combIdOfUserToDelete);
-        combIdOfUserToDelete.setBounds(360, 90, 180, 22);
+        combIdOfUserToDelete.setBounds(360, 90, 180, 20);
 
         jpnService.add(jpnAddUser);
         jpnAddUser.setBounds(0, 0, 630, 480);
@@ -667,9 +667,9 @@ public class AdminForm extends javax.swing.JFrame {
 
         lblServiceType.setText("Service type");
         jpnService.add(lblServiceType);
-        lblServiceType.setBounds(290, 320, 80, 16);
+        lblServiceType.setBounds(290, 320, 80, 14);
         jpnService.add(txtServieType);
-        txtServieType.setBounds(270, 340, 100, 22);
+        txtServieType.setBounds(270, 340, 100, 20);
 
         txtShowServices.setEditable(false);
         txtShowServices.setColumns(20);
@@ -681,7 +681,7 @@ public class AdminForm extends javax.swing.JFrame {
 
         lblEnterIdOfServieToShowFeeedback.setText("enter id of service to view feedback");
         jpnService.add(lblEnterIdOfServieToShowFeeedback);
-        lblEnterIdOfServieToShowFeeedback.setBounds(370, 50, 220, 16);
+        lblEnterIdOfServieToShowFeeedback.setBounds(370, 50, 220, 14);
 
         btnShowTheFeedback.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnShowTheFeedback.setText("show feedback");
@@ -695,7 +695,7 @@ public class AdminForm extends javax.swing.JFrame {
         btnShowTheFeedback.setBounds(370, 120, 200, 30);
 
         jpnService.add(combIdOfServiceToSeeFeedback);
-        combIdOfServiceToSeeFeedback.setBounds(380, 80, 200, 22);
+        combIdOfServiceToSeeFeedback.setBounds(380, 80, 200, 20);
 
         jpnService.add(compIdOfTheServicToOrder);
         compIdOfTheServicToOrder.setBounds(60, 340, 120, 20);
@@ -714,7 +714,7 @@ public class AdminForm extends javax.swing.JFrame {
         jpnMakePayment.add(jpnViewPayments);
         jpnViewPayments.setBounds(0, 0, 630, 480);
         jpnMakePayment.add(txtSum);
-        txtSum.setBounds(50, 94, 125, 22);
+        txtSum.setBounds(50, 94, 125, 20);
 
         btnPay.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnPay.setText("pay");
@@ -766,7 +766,7 @@ public class AdminForm extends javax.swing.JFrame {
         scrollWriteMessage.setBounds(50, 70, 410, 170);
 
         jpnSendMassege.add(combSendTo);
-        combSendTo.setBounds(120, 20, 110, 22);
+        combSendTo.setBounds(120, 20, 110, 20);
 
         jplMainPannel.add(jpnSendMassege);
         jpnSendMassege.setBounds(320, 0, 630, 480);
@@ -780,7 +780,7 @@ public class AdminForm extends javax.swing.JFrame {
             }
         });
         jplMainPannel.add(btnUserManagemant);
-        btnUserManagemant.setBounds(50, 470, 180, 40);
+        btnUserManagemant.setBounds(50, 470, 270, 40);
 
         btnAddFeedback.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnAddFeedback.setText("add feedback");
@@ -791,7 +791,7 @@ public class AdminForm extends javax.swing.JFrame {
             }
         });
         jplMainPannel.add(btnAddFeedback);
-        btnAddFeedback.setBounds(50, 520, 180, 40);
+        btnAddFeedback.setBounds(50, 520, 270, 40);
 
         BackgrundImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gui/adminBackgrund.png"))); // NOI18N
         jplMainPannel.add(BackgrundImage);
