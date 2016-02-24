@@ -70,7 +70,8 @@ public class Message {
     
     @Override
     public String toString() {
-        return "Message"+ content + "\n   from:" + fromUser +"\nRecived"+timeCreated+"\n";
+        return "Message: "+ content + "\nfrom: " + fromUser +"\nRecived"+timeCreated+
+                "\n*************************************************\n";
     }
     
     
