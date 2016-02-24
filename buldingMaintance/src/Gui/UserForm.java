@@ -545,7 +545,7 @@ public class UserForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, nullValueError, nullValueTitle, JOptionPane.ERROR_MESSAGE);
 
         } //if message faild is not null ending the message
-        else if (flag) {
+         if (flag) {
             String content = txtWriteMessage.getText();
             String username = (String) combSendTo.getSelectedItem();
             Message message = new Message(content, resident.getUserName(), username);

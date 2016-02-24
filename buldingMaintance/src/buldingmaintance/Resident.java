@@ -59,6 +59,12 @@ DataBase dataBase = DataBase.GetInstance();
        
         return dataBase.showWorkersFeedbackById(id);
     }
+
+    @Override
+    public void SendMessage(Message message) {
+       dataBase.sendMessage(message);
+    }
+    
     @Override
     public String toString() {
         return super.toString();
