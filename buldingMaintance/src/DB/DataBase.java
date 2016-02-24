@@ -181,12 +181,11 @@ public class DataBase {
     }
 
     /**
-     * in order to sidplay all users id in combobox
-     *
+     * in order to display all user's id in combo-box
      * @param ID
-     * @return
+     * @returns all id's of all the users
      */
-    public ArrayList<String> eetUsersId() {
+    public ArrayList<String> setUsersId() {
         ArrayList<String> usersId = new ArrayList<String>();
         try {
             Class.forName(jdbcDriver);
@@ -213,9 +212,9 @@ public class DataBase {
     }
 
     /**
-     * to display all usernmaes in combobox
+     * to display all user names in combo-box
      *
-     * @return
+     * @returns all the usernames
      */
     public ArrayList<String> listOfUsers() {
         ArrayList<String> usernames = new ArrayList<String>();
@@ -246,7 +245,7 @@ public class DataBase {
     /**
      * make sure that there will be no duplicates in messages table
      *
-     * @return
+     * @returns id
      */
     public int getMessageId() {
         int messageId = 0;
@@ -270,8 +269,11 @@ public class DataBase {
         }
         return messageId;
     }
-
-    public void sendMessage(Message message) {//adds message to a database
+/**
+ * adds message to a database
+ * @param message 
+ */
+    public void sendMessage(Message message) {
         try {
             Class.forName(jdbcDriver);
 
@@ -291,7 +293,11 @@ public class DataBase {
             e.printStackTrace();
         }
     }
-
+/**
+ * gets a list of all the messages for id provided 
+ * @param userName
+ * @return 
+ */
     public List<Message> recieveMessages(String userName) {
         List<Message> thisUserMessages = new ArrayList<Message>();
 

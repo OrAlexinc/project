@@ -916,7 +916,7 @@ public class AdminForm extends javax.swing.JFrame {
         txtApartment.setText(null);
        
         //fill arraylist listOfId whith id from database
-        ArrayList<String> listOfId = dataBase.eetUsersId();
+        ArrayList<String> listOfId = dataBase.setUsersId();
 
         //fill combobox whith id fom listOfId
         for (String id : listOfId) {
@@ -1175,7 +1175,7 @@ public class AdminForm extends javax.swing.JFrame {
         users = admin.showAllUser();
    
         //add to listOfId id off all user from the database ann adding it to combobox
-        ArrayList<String> listOfId = dataBase.eetUsersId();
+        ArrayList<String> listOfId = dataBase.setUsersId();
         for (String id : listOfId) {
             combIdOfUserToDisplay.addItem(id);
         }
