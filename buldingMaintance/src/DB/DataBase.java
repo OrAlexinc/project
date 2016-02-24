@@ -10,8 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataBase {
-
+public class DataBase { 
     protected static DataBase instance = new DataBase();
 
     String jdbcUrl = "jdbc:mysql://localhost:3306/building_maintainance?zeroDateTimeBehavior=convertToNull";
@@ -42,11 +41,18 @@ public class DataBase {
     }
     DataBase dataBase = DataBase.GetInstance();
 
+ /**
+ * creating instance of database and all of the methods
+ * @author prime
+ */
     public static DataBase GetInstance() {
         return instance;
     }
-
-    public void AddUser(User user) { //gets an object from type user and adds its fields to database
+/**
+ * gets an object from type user and adds its fields to database
+ * @param user 
+ */
+    public void AddUser(User user) { 
 
         try {
             Class.forName(jdbcDriver);
@@ -94,7 +100,7 @@ public class DataBase {
 
     /**
      *
-     * @return all users in database
+     * @return all the users from database
      */
     public List<User> viewAllUsers() {
         List<User> allUsers = new ArrayList<User>();
@@ -134,6 +140,10 @@ public class DataBase {
         return allUsers;
     }
 
+    /**
+     * @param ID
+     * @return returns the user related to id  
+     */
     public User showUserById(int ID) {
         User user = new User();
         try {
