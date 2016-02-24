@@ -8,6 +8,9 @@ package Gui;
 import DB.DataBase;
 import Languages.LocalizationUtil;
 import buldingmaintance.*;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,11 +24,12 @@ DataBase dataBase = DataBase.GetInstance();
      */
     public LoginForm() {
         initComponents();
-       // btnLogin.setText(LocalizationUtil.localizedResourceBundle.getString("LoginKey"));
-        //lblUsername.setText(LocalizationUtil.localizedResourceBundle.getString("UserNameKey"));
-        //lblPassword.setText(LocalizationUtil.localizedResourceBundle.getString("PasswordKey"));
+        rBtnEnglish.setActionCommand("en");
+        rBtnHebrow.setActionCommand("iw");
+       // btnLogin= new javax.swing.JButton(LocalizationUtil.localizedResourceBundle.getString("btnLogin"));
+        
     }
-
+       
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,18 +39,19 @@ DataBase dataBase = DataBase.GetInstance();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grupLanguage = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         btnLogin = new javax.swing.JButton();
         txtUsername = new javax.swing.JTextField();
         txtPassword = new javax.swing.JTextField();
-        lblEnglish = new javax.swing.JLabel();
-        lblPassword = new javax.swing.JLabel();
-        lblHebrew = new javax.swing.JLabel();
         lblUsername = new javax.swing.JLabel();
-        lblRussian = new javax.swing.JLabel();
+        lblPassword = new javax.swing.JLabel();
+        rBtnHebrow = new javax.swing.JRadioButton();
+        rBtnEnglish = new javax.swing.JRadioButton();
+        btnSelectLanguge = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(289, 264));
+        setMinimumSize(new java.awt.Dimension(500, 300));
         getContentPane().setLayout(null);
 
         btnLogin.setFont(new java.awt.Font("Aharoni", 0, 18)); // NOI18N
@@ -57,61 +62,72 @@ DataBase dataBase = DataBase.GetInstance();
             }
         });
 
-        lblEnglish.setText("English");
+        lblUsername.setText(" username");
 
         lblPassword.setText("password");
 
-        lblHebrew.setText("עיברית");
+        grupLanguage.add(rBtnHebrow);
+        rBtnHebrow.setText("hebrow");
 
-        lblUsername.setText(" username");
+        grupLanguage.add(rBtnEnglish);
+        rBtnEnglish.setText("English");
 
-        lblRussian.setText("Pусский");
+        btnSelectLanguge.setText("select");
+        btnSelectLanguge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSelectLangugeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
+                        .addGap(30, 30, 30)
+                        .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rBtnHebrow))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(125, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblRussian, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblHebrew, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEnglish, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(150, 150, 150))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(52, 52, 52)
+                                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(79, 79, 79)
+                                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnSelectLanguge, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(rBtnEnglish, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(25, 25, 25))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(lblEnglish, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblHebrew, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblRussian, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addContainerGap(98, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                    .addComponent(lblUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rBtnHebrow))
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPassword)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
-                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rBtnEnglish))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSelectLanguge)))
+                .addGap(46, 46, 46))
         );
 
         getContentPane().add(jPanel1);
@@ -121,7 +137,7 @@ DataBase dataBase = DataBase.GetInstance();
     }// </editor-fold>//GEN-END:initComponents
 
     /**
- * click on login button
+ * click on login botton
  * @param evt 
  */
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
@@ -160,31 +176,30 @@ DataBase dataBase = DataBase.GetInstance();
        user.getPhoneNumber(),user.getUserPermission(),
        user.getApartmentId());
          java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
             public void run() {
                 new AdminForm(admin).setVisible(true);
             }
         });
         
     }
+  
+ 
+    
     }//GEN-LAST:event_btnLoginActionPerformed
 
-    private void lblHebrewMouseClicked(java.awt.event.MouseEvent evt) {                                        
-        
-    } 
-    
-    
-    private void lblRussianMouseClicked(java.awt.event.MouseEvent evt) {                                        
-        
-    } 
-    
-    
-    
-    private void lblEnglishMouseClicked(java.awt.event.MouseEvent evt) {                                        
-        
-    } 
-    
-    
+    private void btnSelectLangugeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectLangugeActionPerformed
+  // take the action command that was defined on the radio button
+                String selectedLanguage = grupLanguage.getSelection().getActionCommand();             
+                LocalizationUtil.localizedResourceBundle = ResourceBundle.getBundle("languages.uimessages", new Locale(selectedLanguage));
+                btnLogin.setText(LocalizationUtil.localizedResourceBundle.getString("btnLogin"));
+                lblPassword.setText(LocalizationUtil.localizedResourceBundle.getString("lblPassword"));
+                lblUsername.setText(LocalizationUtil.localizedResourceBundle.getString("lblUsername"));
+                rBtnEnglish.setText(LocalizationUtil.localizedResourceBundle.getString("rBtnEnglish"));
+                rBtnHebrow.setText(LocalizationUtil.localizedResourceBundle.getString("rBtnHebrow"));
+                btnSelectLanguge.setText(LocalizationUtil.localizedResourceBundle.getString("btnSelectLanguge"));
+                
+    }//GEN-LAST:event_btnSelectLangugeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -218,12 +233,13 @@ DataBase dataBase = DataBase.GetInstance();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnSelectLanguge;
+    private javax.swing.ButtonGroup grupLanguage;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblEnglish;
-    private javax.swing.JLabel lblHebrew;
     private javax.swing.JLabel lblPassword;
-    private javax.swing.JLabel lblRussian;
     private javax.swing.JLabel lblUsername;
+    private javax.swing.JRadioButton rBtnEnglish;
+    private javax.swing.JRadioButton rBtnHebrow;
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables

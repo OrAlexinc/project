@@ -172,6 +172,37 @@ public class DataBase {
         return user;
     }
     /**
+     * in order to sidplay all users id in combobox
+     * @param ID
+     * @return 
+     */
+    public ArrayList<String> eetUsersId() {
+        ArrayList<String> usersId = new  ArrayList<String>();
+        try {
+            Class.forName(jdbcDriver);
+
+            Statement statement = connection.createStatement();
+
+            String sqlUser = "SELECT * FROM  users  ID";
+
+            ResultSet resultSet = statement.executeQuery(sqlUser);
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("ID");
+               
+
+                usersId.add(Integer.toString(id));
+            }
+
+        } catch (SQLException sqle) {
+            System.out.println("SQLException: " + sqle.getMessage());
+            System.out.println("Vendor Error: " + sqle.getErrorCode());
+        } catch (ClassNotFoundException e) {
+            System.out.println("Class not found exeption");
+        }
+        return usersId;
+    }
+    /**
      * to display all usernmaes in combobox
      * @return 
      */
