@@ -16,16 +16,15 @@ public class DataBase {
 
     String jdbcUrl = "jdbc:mysql://localhost:3306/building_maintainance?zeroDateTimeBehavior=convertToNull";
     String jdbcUser = "root";
-    String jdbcPassword="root";
+    String jdbcPassword;
     String jdbcDriver = "com.mysql.jdbc.Driver";
     List<Message> messages = new ArrayList<Message>();
     List<Order> orders = new ArrayList<Order>();
     List<Payment> payments = new ArrayList<Payment>();
     List<User> users = new ArrayList<User>();
     List<ExternalWorker> workers = new ArrayList<ExternalWorker>();
-    List<Feedback> feedbacks=new ArrayList<Feedback>(); 
+    List<Feedback> feedbacks = new ArrayList<Feedback>();
 
-    
     Connection connection;
 
     private DataBase() {
@@ -47,7 +46,6 @@ public class DataBase {
         return instance;
     }
 
-    
     public void AddUser(User user) { //gets an object from type user and adds its fields to database
 
         try {
@@ -171,13 +169,15 @@ public class DataBase {
         }
         return user;
     }
+
     /**
      * in order to sidplay all users id in combobox
+     *
      * @param ID
-     * @return 
+     * @return
      */
     public ArrayList<String> eetUsersId() {
-        ArrayList<String> usersId = new  ArrayList<String>();
+        ArrayList<String> usersId = new ArrayList<String>();
         try {
             Class.forName(jdbcDriver);
 
@@ -189,7 +189,6 @@ public class DataBase {
 
             while (resultSet.next()) {
                 int id = resultSet.getInt("ID");
-               
 
                 usersId.add(Integer.toString(id));
             }
@@ -202,13 +201,15 @@ public class DataBase {
         }
         return usersId;
     }
+
     /**
      * to display all usernmaes in combobox
-     * @return 
+     *
+     * @return
      */
- public ArrayList<String> listOfUsers() {
-        ArrayList<String> usernames= new ArrayList<String>();
-        String userName="";
+    public ArrayList<String> listOfUsers() {
+        ArrayList<String> usernames = new ArrayList<String>();
+        String userName = "";
         try {
             Class.forName(jdbcDriver);
 
@@ -218,8 +219,8 @@ public class DataBase {
 
             ResultSet resultSet = statement.executeQuery(sqlUser);
 
-           while (resultSet.next()) {
-                 userName = resultSet.getString("UserName");
+            while (resultSet.next()) {
+                userName = resultSet.getString("UserName");
                 usernames.add(userName);
             }
 
@@ -231,6 +232,7 @@ public class DataBase {
         }
         return usernames;
     }
+
     /**
      * make sure that there will be no duplicates in messages table
      *
@@ -452,8 +454,6 @@ public class DataBase {
      * @param password
      * @return user if successfully added, null if not
      */
-    
-    
     public User logIn(String username, String password) {
         try {
             Class.forName(jdbcDriver);
@@ -500,11 +500,11 @@ public class DataBase {
             Class.forName(jdbcDriver);
 
             Statement statement = connection.createStatement();
-           String insertWorker = "insert into  external_workers values("+ worker.getWorkerId() +","
-                   + "'" + worker.getServiceName() + "',"
-                   + "'" + worker.getFirstName() + "',"
-                   + "'" + worker.getLastName() + "',"
-                   + "'" + worker.getPhoto() +  "');";
+            String insertWorker = "insert into  external_workers values(" + worker.getWorkerId() + ","
+                    + "'" + worker.getServiceName() + "',"
+                    + "'" + worker.getFirstName() + "',"
+                    + "'" + worker.getLastName() + "',"
+                    + "'" + worker.getPhoto() + "');";
 
             statement.executeUpdate(insertWorker);
         } catch (SQLException sqle) {
@@ -516,7 +516,7 @@ public class DataBase {
     }
 
     public List<ExternalWorker> showAllWorkers() {
-        ExternalWorker worker =new ExternalWorker();
+        ExternalWorker worker = new ExternalWorker();
         try {
             Class.forName(jdbcDriver);
 
@@ -526,15 +526,14 @@ public class DataBase {
 
             ResultSet resultSet = statement.executeQuery(sqlWorker);
 
-           while (resultSet.next()) {
+            while (resultSet.next()) {
                 int id = resultSet.getInt("workerID");
                 String serviceName = resultSet.getString("serviceName");
                 String firstName = resultSet.getString("firstName");
                 String lastName = resultSet.getString("lastName");
-                
 
-                 worker=new ExternalWorker(id, serviceName, firstName, lastName );
-                 workers.add(worker);
+                worker = new ExternalWorker(id, serviceName, firstName, lastName);
+                workers.add(worker);
             }
 
         } catch (SQLException sqle) {
@@ -545,15 +544,17 @@ public class DataBase {
         }
         return workers;
     }
-     /**
+
+    /**
      * to shov all workers id in combobox
-     * @param id 
+     *
+     * @param id
      */
     public ArrayList<String> showWorkersId() {
-        String ids="";
-       
-        ArrayList<String> listOfId=new ArrayList<String>();
-        
+        String ids = "";
+
+        ArrayList<String> listOfId = new ArrayList<String>();
+
         try {
             Class.forName(jdbcDriver);
 
@@ -563,14 +564,12 @@ public class DataBase {
 
             ResultSet resultSet = statement.executeQuery(sqlWorker);
 
-           while (resultSet.next()) {
+            while (resultSet.next()) {
                 int id = resultSet.getInt("workerID");
-                ids= Integer.toString(id);
-                
-               listOfId.add(ids);
-                
+                ids = Integer.toString(id);
 
-              
+                listOfId.add(ids);
+
             }
 
         } catch (SQLException sqle) {
@@ -581,7 +580,7 @@ public class DataBase {
         }
         return listOfId;
     }
-   
+
     public void RemoveExternalWorker(int id) {
         try {
             Class.forName(jdbcDriver);
@@ -615,11 +614,11 @@ public class DataBase {
             System.out.println("Vendor Error: " + sqle.getErrorCode());
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        }        
+        }
     }
-    
+
     public List<Feedback> showWorkersFeedbackById(int id) {
-        Feedback feedback=new Feedback();
+        Feedback feedback = new Feedback();
         try {
             Class.forName(jdbcDriver);
 
@@ -629,16 +628,15 @@ public class DataBase {
 
             ResultSet resultSet = statement.executeQuery(sqlFeedback);
 
-           while (resultSet.next()) {
+            while (resultSet.next()) {
                 int Id = resultSet.getInt("workerID");
                 String feedBack = resultSet.getString("feedback");
                 int rating = resultSet.getInt("rating");
                 String workDone = resultSet.getString("workDone");
-                float priceTaken=resultSet.getFloat("priceTaken");
-                
+                float priceTaken = resultSet.getFloat("priceTaken");
 
-                 feedback = new Feedback(Id, feedBack,rating ,workDone,priceTaken);
-                 feedbacks.add(feedback);
+                feedback = new Feedback(Id, feedBack, rating, workDone, priceTaken);
+                feedbacks.add(feedback);
             }
 
         } catch (SQLException sqle) {
@@ -649,4 +647,72 @@ public class DataBase {
         }
         return feedbacks;
     }
+    
+    public float showPaymentsAverage(){
+        float totalSum=0;
+        int paymentCnt=0;
+        float avg=0;
+        try {
+            Class.forName(jdbcDriver);
+
+            Statement statement = connection.createStatement();
+
+            String sqlAverage = "SELECT Sum FROM payments";
+
+            ResultSet resultSet = statement.executeQuery(sqlAverage);
+
+            while (resultSet.next()) { 
+                totalSum += resultSet.getFloat("Sum");
+                paymentCnt++;
+            }
+
+        } catch (SQLException sqle) {
+            System.out.println("SQLException: " + sqle.getMessage());
+            System.out.println("Vendor Error: " + sqle.getErrorCode());
+        } catch (ClassNotFoundException e) {
+            System.out.println("Class not found exeption");
+        }
+        avg=totalSum/paymentCnt;
+        return avg;
+    }   
+    
+    
+    public List<User> showWhoNotPayed(){
+        List<User> users=null;
+        User user=null;
+        try {
+            Class.forName(jdbcDriver);
+
+            Statement statement = connection.createStatement();
+
+            String sqlAverage = "SELECT * FROM payments where Sum= " + 0 + "";
+
+            ResultSet resultSet = statement.executeQuery(sqlAverage);
+
+            while (resultSet.next()) { 
+                int id = resultSet.getInt("ID");
+                String firstName = resultSet.getString("FirstName");
+                String lastName = resultSet.getString("LastName");
+                String email = resultSet.getString("Email");
+                String userName = resultSet.getString("UserName");
+                String Password = resultSet.getString("Password");
+                String buildingAddress = resultSet.getString("BuildingAddress");
+                int apartmentId = resultSet.getInt("Apartmentid");
+                String phoneNumber = resultSet.getString("PhoneNumber");
+                String userPermission = resultSet.getString("UserPermission");
+            
+                user = new User(id, firstName, lastName, email, userName, Password,
+                            buildingAddress, phoneNumber, userPermission, apartmentId);
+                users.add(user);
+            }
+
+        } catch (SQLException sqle) {
+            System.out.println("SQLException: " + sqle.getMessage());
+            System.out.println("Vendor Error: " + sqle.getErrorCode());
+        } catch (ClassNotFoundException e) {
+            System.out.println("Class not found exeption");
+        }
+        
+        return users;
+    }   
 }
