@@ -38,7 +38,10 @@ public class AdminForm extends javax.swing.JFrame {
     String feedbackLenghtError=(LocalizationUtil.localizedResourceBundle.getString("feedbackLenghtError"));
     String sumError =LocalizationUtil.localizedResourceBundle.getString("sumError");
     String sumLenghtError=(LocalizationUtil.localizedResourceBundle.getString("sumLenghtError"));
-
+     String intErrorMessage =(LocalizationUtil.localizedResourceBundle.getString("intErrorMessage"));
+     String nameError=(LocalizationUtil.localizedResourceBundle.getString("nameError"));
+     String noMoreMessages=(LocalizationUtil.localizedResourceBundle.getString("noMoreMessages"));
+       String nullValueError=(LocalizationUtil.localizedResourceBundle.getString("nullValueError"));
     public AdminForm(Admin admin) {
 
         this.admin = admin;
@@ -121,7 +124,7 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
      */
     private boolean isInteger(String number) {
         if (number.matches("[0-9]+") == false || number.length() > 9) {
-            JOptionPane.showMessageDialog(null, "Ente only numbers", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, intErrorMessage, idErrorTitle, JOptionPane.ERROR_MESSAGE);
             return false;
         }
         return true;
@@ -138,7 +141,7 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
             if (id.length() == 9) {
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "Enter valid 9 digits id", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, idLenghtError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
             }
 
         }
@@ -1017,11 +1020,11 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
         
         //chking if valuse that inserted are valid if no than sen message to user to insert valid value
         if (!resident.setLastName(lastName)) {
-            JOptionPane.showMessageDialog(null, "only letters in lastname\first name and no longer than 20 letters", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,nameError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
             flag = false;
         }
         if (!resident.setFirstName(firstName)) {
-            JOptionPane.showMessageDialog(null, "only letters in lastname\first name and no longer than 20 letters", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, nameError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
             flag = false;
         }
 
@@ -1107,7 +1110,7 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
             
             //when the is no moe messages alerting the user
         } else if (!flag) {
-            JOptionPane.showMessageDialog(null, "you dont have any more messages!!!!", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, noMoreMessages, idErrorTitle, JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnShowMessagesActionPerformed
     /**
@@ -1175,7 +1178,7 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
       
         //if text fild is null alerting the user to rty again
         if (txtServieType.getText() == null) {
-            JOptionPane.showMessageDialog(null, "You must fill the Servie Type feild!!!!", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, nullValueError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
             flag = false;
         }
         
@@ -1287,11 +1290,11 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
             flag = false;
         }
         if (!externalWorker.setLastName(lastName)) {
-            JOptionPane.showMessageDialog(null, "only letters in lastname\first name and no longer than 20 letters", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, nameError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
             flag = false;
         }
         if (!externalWorker.setFirstName(firstName)) {
-            JOptionPane.showMessageDialog(null, "only letters in lastname\first name and no longer than 20 letters", idErrorTitle, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, nameError, idErrorTitle, JOptionPane.ERROR_MESSAGE);
             flag = false;
         }
 
