@@ -6,6 +6,7 @@
 package Gui;
 
 import DB.DataBase;
+import Languages.LocalizationUtil;
 import buldingmaintance.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +36,35 @@ public class UserForm extends javax.swing.JFrame {
         this.resident = resident;
         OnOffComponents(false, false, false, false, false);
         OnOffPanel(false, false, false, false, false);
+        SetSelectedLenguge();
+    }
 
+    /**
+     * changes the languages of the text
+     */
+    private void SetSelectedLenguge() {
+        btnAddAFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnAddAFeedback"));
+        btnMakeOrder.setText(LocalizationUtil.localizedResourceBundle.getString("btnMakeOrder"));
+        btnMakepayment.setText(LocalizationUtil.localizedResourceBundle.getString("btnMakepayment"));
+        btnOrderService.setText(LocalizationUtil.localizedResourceBundle.getString("btnOrderService"));
+
+        btnSend.setText(LocalizationUtil.localizedResourceBundle.getString("btnSend"));
+        btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnSendFeedback"));
+        btnShowServiceList.setText(LocalizationUtil.localizedResourceBundle.getString("btnShowServiceList"));
+        btnShowTheFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnShowTheFeedback"));
+        btnViewMassege.setText(LocalizationUtil.localizedResourceBundle.getString("btnViewMassege"));
+        lblEddFeedbackAbutAService.setText(LocalizationUtil.localizedResourceBundle.getString("lblEddFeedbackAbutAService"));
+        lblEnterFeddbackId.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterFeddbackId"));
+        lblEnterFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterFeedback"));
+        lblEnterIdOfServiceToSeeFeeedback.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterIdOfServiceToSeeFeeedback"));
+        lblEnterPriveTaken.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterPriveTaken"));
+        lblEnterRatingOfService.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterRatingOfService"));
+        lblEnterWorkDone.setText(LocalizationUtil.localizedResourceBundle.getString("lblEnterWorkDone"));
+        lblIdOfService.setText(LocalizationUtil.localizedResourceBundle.getString("lblIdOfService"));
+        lblPaymentCommant.setText(LocalizationUtil.localizedResourceBundle.getString("lblPaymentCommant"));
+        lblSendTo.setText(LocalizationUtil.localizedResourceBundle.getString("lblSendTo"));
+        lblServieList.setText(LocalizationUtil.localizedResourceBundle.getString("lblServieList"));
+        lblTypeOfService.setText(LocalizationUtil.localizedResourceBundle.getString("lblTypeOfService"));
     }
 
     /**
@@ -709,7 +738,7 @@ public class UserForm extends javax.swing.JFrame {
         txtListOfServices.setText(workerFeedback);
 
     }//GEN-LAST:event_btnShowTheFeedbackActionPerformed
-   /**
+    /**
      * show all workers from the database
      *
      * @param evt
@@ -717,7 +746,7 @@ public class UserForm extends javax.swing.JFrame {
     private void btnShowServiceListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowServiceListActionPerformed
         String allWorkers = "";
         workers = dataBase.showAllWorkers();
-      //adding all workers to the string workerList to display on textbox
+        //adding all workers to the string workerList to display on textbox
         for (ExternalWorker worker : workers) {
             allWorkers += worker.toString();
         }
