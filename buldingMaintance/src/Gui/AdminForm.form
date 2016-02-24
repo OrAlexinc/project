@@ -371,7 +371,7 @@
                               </Events>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="330" y="270" width="110" height="40"/>
+                                  <AbsoluteConstraints x="330" y="280" width="130" height="30"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
@@ -458,13 +458,6 @@
                                   <Constraints>
                                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                                       <AbsoluteConstraints x="360" y="60" width="200" height="-1"/>
-                                    </Constraint>
-                                  </Constraints>
-                                </Component>
-                                <Component class="javax.swing.JTextField" name="txtIdOfTheUserToDelete">
-                                  <Constraints>
-                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                      <AbsoluteConstraints x="360" y="90" width="140" height="-1"/>
                                     </Constraint>
                                   </Constraints>
                                 </Component>
@@ -666,18 +659,6 @@
                                             </Constraint>
                                           </Constraints>
                                         </Component>
-                                        <Component class="javax.swing.JTextField" name="txtShowUserById">
-                                          <Properties>
-                                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                              <Font name="Tahoma" size="18" style="0"/>
-                                            </Property>
-                                          </Properties>
-                                          <Constraints>
-                                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                              <AbsoluteConstraints x="40" y="340" width="100" height="-1"/>
-                                            </Constraint>
-                                          </Constraints>
-                                        </Component>
                                         <Component class="javax.swing.JButton" name="btnShowAllUsers">
                                           <Properties>
                                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -843,6 +824,18 @@
                                             </Component>
                                           </SubComponents>
                                         </Container>
+                                        <Component class="javax.swing.JComboBox" name="combIdOfUserToDisplay">
+                                          <Properties>
+                                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                              <StringArray count="0"/>
+                                            </Property>
+                                          </Properties>
+                                          <Constraints>
+                                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                              <AbsoluteConstraints x="30" y="340" width="120" height="-1"/>
+                                            </Constraint>
+                                          </Constraints>
+                                        </Component>
                                       </SubComponents>
                                     </Container>
                                     <Component class="javax.swing.JLabel" name="lblEnterServiceType">
@@ -955,16 +948,6 @@
                                         </Constraint>
                                       </Constraints>
                                     </Component>
-                                    <Component class="javax.swing.JTextField" name="txtEnterIdOfServiceToDelete">
-                                      <Properties>
-                                        <Property name="toolTipText" type="java.lang.String" value=""/>
-                                      </Properties>
-                                      <Constraints>
-                                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                          <AbsoluteConstraints x="380" y="120" width="160" height="-1"/>
-                                        </Constraint>
-                                      </Constraints>
-                                    </Component>
                                     <Component class="javax.swing.JButton" name="btnDeleteService">
                                       <Properties>
                                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -981,6 +964,18 @@
                                       <Constraints>
                                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                                           <AbsoluteConstraints x="380" y="160" width="120" height="40"/>
+                                        </Constraint>
+                                      </Constraints>
+                                    </Component>
+                                    <Component class="javax.swing.JComboBox" name="combIdOfServieToDelete">
+                                      <Properties>
+                                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                          <StringArray count="0"/>
+                                        </Property>
+                                      </Properties>
+                                      <Constraints>
+                                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                          <AbsoluteConstraints x="380" y="120" width="160" height="-1"/>
                                         </Constraint>
                                       </Constraints>
                                     </Component>
@@ -1006,6 +1001,18 @@
                                     </Constraint>
                                   </Constraints>
                                 </Component>
+                                <Component class="javax.swing.JComboBox" name="combIdOfUserToDelete">
+                                  <Properties>
+                                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                      <StringArray count="0"/>
+                                    </Property>
+                                  </Properties>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                      <AbsoluteConstraints x="360" y="90" width="180" height="-1"/>
+                                    </Constraint>
+                                  </Constraints>
+                                </Component>
                               </SubComponents>
                             </Container>
                             <Component class="javax.swing.JLabel" name="lblEnterServieId">
@@ -1014,14 +1021,7 @@
                               </Properties>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="60" y="300" width="240" height="30"/>
-                                </Constraint>
-                              </Constraints>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="txtIdOfServiceToOrder">
-                              <Constraints>
-                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="60" y="340" width="220" height="-1"/>
+                                  <AbsoluteConstraints x="40" y="310" width="240" height="30"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
@@ -1040,7 +1040,7 @@
                               </Events>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="60" y="380" width="100" height="30"/>
+                                  <AbsoluteConstraints x="430" y="380" width="100" height="30"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
@@ -1050,14 +1050,14 @@
                               </Properties>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="330" y="310" width="80" height="-1"/>
+                                  <AbsoluteConstraints x="290" y="320" width="80" height="-1"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
                             <Component class="javax.swing.JTextField" name="txtServieType">
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="330" y="340" width="100" height="-1"/>
+                                  <AbsoluteConstraints x="270" y="340" width="100" height="-1"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
@@ -1088,14 +1088,7 @@
                               </Properties>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="340" y="50" width="220" height="-1"/>
-                                </Constraint>
-                              </Constraints>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="txtEnterIdOfServiceToShowFeeedback">
-                              <Constraints>
-                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="340" y="80" width="200" height="-1"/>
+                                  <AbsoluteConstraints x="370" y="50" width="220" height="-1"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
@@ -1114,7 +1107,31 @@
                               </Events>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="340" y="120" width="200" height="30"/>
+                                  <AbsoluteConstraints x="370" y="120" width="200" height="30"/>
+                                </Constraint>
+                              </Constraints>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="combIdOfServiceToSeeFeedback">
+                              <Properties>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="0"/>
+                                </Property>
+                              </Properties>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="380" y="80" width="200" height="-1"/>
+                                </Constraint>
+                              </Constraints>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="compIdOfTheServicToOrder">
+                              <Properties>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="0"/>
+                                </Property>
+                              </Properties>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="60" y="340" width="120" height="20"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
