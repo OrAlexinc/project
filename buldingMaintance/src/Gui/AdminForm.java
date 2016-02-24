@@ -62,8 +62,8 @@ public class AdminForm extends javax.swing.JFrame {
         btnAddService.setText(LocalizationUtil.localizedResourceBundle.getString("btnAddService"));
         btnAddTheServiceGuy.setText(LocalizationUtil.localizedResourceBundle.getString("btnAddTheServiceGuy"));
         btnAddUser.setText(LocalizationUtil.localizedResourceBundle.getString("btnAddUser"));
-        btnDeleteService.setText(LocalizationUtil.localizedResourceBundle.getString("btnDeleteService"));
-        btnDeleteTheUser.setText(LocalizationUtil.localizedResourceBundle.getString("btnDeleteTheUser"));
+       btnDeleteService.setText(LocalizationUtil.localizedResourceBundle.getString("btnDeleteService"));
+       btnDeleteTheUser.setText(LocalizationUtil.localizedResourceBundle.getString("btnDeleteTheUser"));
         btnMakePaymnet.setText(LocalizationUtil.localizedResourceBundle.getString("btnMakePaymnet"));
         btnMakeTheOrder.setText(LocalizationUtil.localizedResourceBundle.getString("btnMakeTheOrder"));
         btnOrder.setText(LocalizationUtil.localizedResourceBundle.getString("btnOrder"));
