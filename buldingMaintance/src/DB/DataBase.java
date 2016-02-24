@@ -678,7 +678,7 @@ public class DataBase {
     
     
     public List<User> showWhoNotPayed(){
-        List<User> users=null;
+        List<User> users=null; 
         User user=null;
         try {
             Class.forName(jdbcDriver);
