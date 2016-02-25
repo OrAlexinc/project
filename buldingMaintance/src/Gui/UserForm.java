@@ -252,9 +252,9 @@ public class UserForm extends javax.swing.JFrame {
 
         lblTypeOfService.setText("type of service");
         jpnOrderMaintinace.add(lblTypeOfService);
-        lblTypeOfService.setBounds(190, 370, 90, 16);
+        lblTypeOfService.setBounds(190, 370, 90, 14);
         jpnOrderMaintinace.add(txtEnterTypeOfService);
-        txtEnterTypeOfService.setBounds(170, 400, 130, 22);
+        txtEnterTypeOfService.setBounds(170, 400, 130, 20);
 
         btnOrderService.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnOrderService.setText("order");
@@ -290,21 +290,21 @@ public class UserForm extends javax.swing.JFrame {
 
         lblEnterFeddbackId.setText("id fo service");
         jpnAddFeedback.add(lblEnterFeddbackId);
-        lblEnterFeddbackId.setBounds(50, 80, 130, 16);
+        lblEnterFeddbackId.setBounds(50, 80, 130, 14);
 
         lblEnterRatingOfService.setText("reating(0-10)");
         jpnAddFeedback.add(lblEnterRatingOfService);
-        lblEnterRatingOfService.setBounds(230, 80, 90, 16);
+        lblEnterRatingOfService.setBounds(230, 80, 90, 14);
 
         lblEnterPriveTaken.setText("price taken");
         jpnAddFeedback.add(lblEnterPriveTaken);
-        lblEnterPriveTaken.setBounds(400, 80, 130, 16);
+        lblEnterPriveTaken.setBounds(400, 80, 130, 14);
         jpnAddFeedback.add(txtEnterPriceTaken);
-        txtEnterPriceTaken.setBounds(400, 110, 130, 22);
+        txtEnterPriceTaken.setBounds(400, 110, 130, 20);
 
         lblEnterFeedback.setText("enter feedback");
         jpnAddFeedback.add(lblEnterFeedback);
-        lblEnterFeedback.setBounds(50, 210, 120, 16);
+        lblEnterFeedback.setBounds(50, 210, 120, 14);
 
         txtEnterFeedback.setColumns(20);
         txtEnterFeedback.setRows(5);
@@ -326,9 +326,9 @@ public class UserForm extends javax.swing.JFrame {
 
         lblEnterWorkDone.setText("enter the work type");
         jpnAddFeedback.add(lblEnterWorkDone);
-        lblEnterWorkDone.setBounds(50, 150, 130, 16);
+        lblEnterWorkDone.setBounds(50, 150, 130, 14);
         jpnAddFeedback.add(txtEnterWorkTypeDone);
-        txtEnterWorkTypeDone.setBounds(40, 180, 190, 22);
+        txtEnterWorkTypeDone.setBounds(40, 180, 190, 20);
 
         compAddRating.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
         jpnAddFeedback.add(compAddRating);
@@ -342,7 +342,7 @@ public class UserForm extends javax.swing.JFrame {
 
         lblEnterIdOfServiceToSeeFeeedback.setText("Enter id of service to see feedback");
         jpnOrderMaintinace.add(lblEnterIdOfServiceToSeeFeeedback);
-        lblEnterIdOfServiceToSeeFeeedback.setBounds(420, 80, 210, 16);
+        lblEnterIdOfServiceToSeeFeeedback.setBounds(420, 80, 210, 14);
 
         btnShowTheFeedback.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnShowTheFeedback.setText("show feedback");
@@ -367,7 +367,7 @@ public class UserForm extends javax.swing.JFrame {
         btnShowServiceList.setBounds(390, 290, 140, 40);
 
         jpnOrderMaintinace.add(combIdOfServiceToSeeFeedback);
-        combIdOfServiceToSeeFeedback.setBounds(420, 110, 200, 22);
+        combIdOfServiceToSeeFeedback.setBounds(420, 110, 200, 20);
 
         jpnOrderMaintinace.add(compIdOfTheServicToOrder);
         compIdOfTheServicToOrder.setBounds(30, 402, 120, 20);
@@ -402,7 +402,7 @@ public class UserForm extends javax.swing.JFrame {
         scrollWriteMassege.setBounds(70, 80, 510, 250);
 
         jpnSendMassege.add(combSendTo);
-        combSendTo.setBounds(150, 50, 110, 22);
+        combSendTo.setBounds(150, 50, 110, 20);
 
         jpnMain.add(jpnSendMassege);
         jpnSendMassege.setBounds(290, 0, 670, 460);
@@ -416,7 +416,7 @@ public class UserForm extends javax.swing.JFrame {
             }
         });
         jpnMain.add(btnSendMassege);
-        btnSendMassege.setBounds(50, 60, 190, 50);
+        btnSendMassege.setBounds(50, 60, 250, 50);
 
         btnViewMassege.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnViewMassege.setText("view massege");
@@ -427,7 +427,7 @@ public class UserForm extends javax.swing.JFrame {
             }
         });
         jpnMain.add(btnViewMassege);
-        btnViewMassege.setBounds(50, 140, 190, 50);
+        btnViewMassege.setBounds(50, 140, 250, 50);
 
         btnMakepayment.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnMakepayment.setText("make patment");
@@ -439,7 +439,7 @@ public class UserForm extends javax.swing.JFrame {
             }
         });
         jpnMain.add(btnMakepayment);
-        btnMakepayment.setBounds(50, 220, 190, 50);
+        btnMakepayment.setBounds(50, 220, 250, 50);
 
         btnMakeOrder.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnMakeOrder.setText("order maintainace");
@@ -450,7 +450,7 @@ public class UserForm extends javax.swing.JFrame {
             }
         });
         jpnMain.add(btnMakeOrder);
-        btnMakeOrder.setBounds(50, 300, 190, 50);
+        btnMakeOrder.setBounds(50, 300, 250, 50);
 
         btnAddAFeedback.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnAddAFeedback.setText("add feedback");
@@ -461,7 +461,7 @@ public class UserForm extends javax.swing.JFrame {
             }
         });
         jpnMain.add(btnAddAFeedback);
-        btnAddAFeedback.setBounds(50, 380, 190, 50);
+        btnAddAFeedback.setBounds(50, 380, 250, 50);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gui/UFBackgrund.png"))); // NOI18N
         jpnMain.add(jLabel1);

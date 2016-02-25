@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class DataBase { 
@@ -15,7 +16,7 @@ public class DataBase {
 
     String jdbcUrl = "jdbc:mysql://localhost:3306/building_maintainance?zeroDateTimeBehavior=convertToNull";
     String jdbcUser = "root";
-    String jdbcPassword="root";
+    String jdbcPassword;
     String jdbcDriver = "com.mysql.jdbc.Driver";
     List<Message> messages = new ArrayList<Message>();
     List<Order> orders = new ArrayList<Order>();
@@ -278,11 +279,13 @@ public class DataBase {
             Class.forName(jdbcDriver);
 
             Statement statement = connection.createStatement();
-            java.sql.Timestamp timestamp = new java.sql.Timestamp(message.getTimeCreated().getTime());
+            Calendar calendar=Calendar.getInstance();
+            java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+            
             String insertUser = "insert into  messages values(" + message.getMessageID() + ",'"
                     + message.getFromUser() + "'" + ",'"
                     + message.getToUser() + "','"
-                    + message.getTimeCreated() + "','"
+                    + ourJavaDateObject + "','"
                     + message.getContent() + "');";
 
             statement.executeUpdate(insertUser);
@@ -366,10 +369,14 @@ public class DataBase {
         try {
             Class.forName(jdbcDriver);
             Statement statement = connection.createStatement();
+            
+            Calendar calendar=Calendar.getInstance();
+            java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+            
             String insertUser = "insert into  orders values(" + order.getOrderID() + ",'"
                     + order.getOrder() + "'" + ",'"
                     + order.getFrom() + "','"
-                    + order.getDateRecieved() + "','"
+                    + ourJavaDateObject + "','"
                     + order.getTo() + "');";
 
             statement.executeUpdate(insertUser);
@@ -415,13 +422,16 @@ public class DataBase {
     public void makePayment(Payment payment) {
         try {
             Class.forName(jdbcDriver);
-            java.sql.Timestamp timestamp = new java.sql.Timestamp(payment.getDateRecieved().getDate());
             Statement statement = connection.createStatement();
+
+             Calendar calendar=Calendar.getInstance();
+            java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+            
             String insertUser = "insert into  payments values(" + payment.getPaymentId() + ",'"
                     + payment.getFrom() + "'" + ",'"
                     + payment.getTo() + "','"
                     + payment.getSum() + "','"
-                    + payment.getDateRecieved() + "','"
+                    + ourJavaDateObject + "','"
                     + payment.getComment() + "');";
 
             statement.executeUpdate(insertUser);
