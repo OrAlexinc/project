@@ -17,7 +17,7 @@ public class Order {
     private String from;
     private String to;
     private String order;
-    private Date dateRecieved=new Date(2000);
+    private Date dateRecieved;
   DataBase dataBase = DataBase.GetInstance();
 
     public Order() {

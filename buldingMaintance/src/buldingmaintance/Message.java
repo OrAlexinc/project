@@ -1,7 +1,6 @@
 package buldingmaintance;
 import DB.DataBase;
 import java.sql.Date;
-import java.util.Calendar;
 
 public class Message {
     
@@ -10,7 +9,7 @@ public class Message {
     private String fromUser;
     private String toUser;
     private Date timeCreated;
-   DataBase dataBase = DataBase.GetInstance();
+    DataBase dataBase = DataBase.GetInstance();
     public Message(){};
     
     /**
