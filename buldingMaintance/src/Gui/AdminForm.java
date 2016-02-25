@@ -45,6 +45,7 @@ public class AdminForm extends javax.swing.JFrame {
      String nameError=(LocalizationUtil.localizedResourceBundle.getString("nameError"));
      String noMoreMessages=(LocalizationUtil.localizedResourceBundle.getString("noMoreMessages"));
        String nullValueError=(LocalizationUtil.localizedResourceBundle.getString("nullValueError"));
+       String userAddedMessage=(LocalizationUtil.localizedResourceBundle.getString("userAddedMessage"));
     public AdminForm(Admin admin) {
 
         this.admin = admin;
@@ -1058,6 +1059,21 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
         if (flag) {  
             resident = new Resident(id, firstName, lastName, email, userName, password, admin.getBuildingAddress(), phoneNumber, "resident", apartmantId);
             admin.addUser(resident);
+        
+            //alerting the admin that the user has added
+             JOptionPane.showMessageDialog(null,userAddedMessage,null, JOptionPane.INFORMATION_MESSAGE);
+        //clear text from all fildes
+        txtEnterPhoneNumber.setText(null);
+        txtEnterLastName.setText(null);
+        txtEnderName.setText(null);
+        txtEnterEmail.setText(null);
+        txtEnterPassword.setText(null);
+        txtEnterUserName.setText(null);
+        txtEnterID.setText(null);
+        txtApartment.setText(null);
+        
+        
+        
         }
 
     }//GEN-LAST:event_btnAddNewUserActionPerformed
@@ -1142,7 +1158,7 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
         
          String userWhoNotPayed = "";
        //addingusers who not payed from list notPayed to string  in order to dislay on textbox
-        for (User notPayed : notPayed) {
+        for (User notPay : notPayed) {
             userWhoNotPayed += notPayed.toString();
         }
         txtViewPayments.setText(userWhoNotPayed);
