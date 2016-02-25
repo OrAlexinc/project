@@ -41,6 +41,9 @@ public Admin(int ID, String firstName, String lastName, String email, String use
     public  List<Payment> recievePayments(User user){
         return dataBase.recievePayments();
     }
+     public  List<User> NotPayedYet(){
+        return dataBase.showWhoNotPayed();
+    }
     public void addUser(User user){
         dataBase.AddUser(user);
     }
@@ -71,6 +74,7 @@ public Admin(int ID, String firstName, String lastName, String email, String use
        
         return dataBase.showWorkersFeedbackById(id);
     }
+    
     @Override
     public String toString() {
         return  super.toString();

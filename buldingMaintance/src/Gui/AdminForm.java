@@ -30,7 +30,10 @@ public class AdminForm extends javax.swing.JFrame {
     java.util.List<Order> orders = new ArrayList<Order>();
     java.util.List<ExternalWorker> workers = new ArrayList<ExternalWorker>();
     java.util.List<Feedback> feedbacks = new ArrayList<Feedback>();
+     java.util. ArrayList<User> notPayed = new ArrayList<User>();
+    
     DataBase dataBase = DataBase.GetInstance();
+    
     String idLenghtError =(LocalizationUtil.localizedResourceBundle.getString("idLenghtError"));
     String idErrorMessage =(LocalizationUtil.localizedResourceBundle.getString("idErrorMessage"));
     String idErrorTitle=(LocalizationUtil.localizedResourceBundle.getString("idErrorTitle"));
@@ -938,8 +941,11 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
 
         //add payments from database to payment list
         payments = admin.recievePayments(admin);
-
-        //clear text from all fildes
+            
+        //add all userr who not payed yet to list
+        notPayed=(ArrayList<User>) admin.NotPayedYet();
+        
+//clear text from all fildes
         txtViewPayments.setText(null);
         txtShowServices.setText(null);
     }//GEN-LAST:event_btnViewPaymentsActionPerformed
@@ -1133,6 +1139,13 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
      */
     private void btnViewWhoNotPayedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewWhoNotPayedActionPerformed
       
+        
+         String userWhoNotPayed = "";
+       //addingusers who not payed from list notPayed to string  in order to dislay on textbox
+        for (User notPayed : notPayed) {
+            userWhoNotPayed += notPayed.toString();
+        }
+        txtViewPayments.setText(userWhoNotPayed);
     }//GEN-LAST:event_btnViewWhoNotPayedActionPerformed
     /**
      * show all total payments 

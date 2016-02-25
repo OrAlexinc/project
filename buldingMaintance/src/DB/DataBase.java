@@ -745,7 +745,7 @@ public class DataBase {
 
             Statement statement = connection.createStatement();
 
-            String sqlAverage = "SELECT * FROM payments where Sum= " + 0 + "";
+            String sqlAverage = "SELECT * FROM USERS WHERE id not in (SELECT fromUser FROM payments)";
 
             ResultSet resultSet = statement.executeQuery(sqlAverage);
 
