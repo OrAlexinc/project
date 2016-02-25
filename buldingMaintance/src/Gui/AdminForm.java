@@ -1058,8 +1058,13 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
         //if all valus that inserted are valid addes user to database
         if (flag) {  
             resident = new Resident(id, firstName, lastName, email, userName, password, admin.getBuildingAddress(), phoneNumber, "resident", apartmantId);
-            admin.addUser(resident);
-        
+            String isDone=admin.addUser(resident);
+         if(!isDone.equals("ok"))
+         {
+              JOptionPane.showMessageDialog(null,isDone,null, JOptionPane.INFORMATION_MESSAGE);
+         }
+         else
+         {
             //alerting the admin that the user has added
              JOptionPane.showMessageDialog(null,userAddedMessage,null, JOptionPane.INFORMATION_MESSAGE);
         //clear text from all fildes
@@ -1071,7 +1076,7 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
         txtEnterUserName.setText(null);
         txtEnterID.setText(null);
         txtApartment.setText(null);
-        
+         }
         
         
         }

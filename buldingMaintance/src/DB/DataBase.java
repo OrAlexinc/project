@@ -16,7 +16,7 @@ public class DataBase {
 
     String jdbcUrl = "jdbc:mysql://localhost:3306/building_maintainance?zeroDateTimeBehavior=convertToNull";
     String jdbcUser = "root";
-    String jdbcPassword="root";
+    String jdbcPassword;
     String jdbcDriver = "com.mysql.jdbc.Driver";
     List<Message> messages = new ArrayList<Message>();
     List<Order> orders = new ArrayList<Order>();
@@ -53,7 +53,7 @@ public class DataBase {
  * gets an object from type user and adds its fields to database
  * @param user 
  */
-    public void AddUser(User user) { 
+    public String AddUser(User user) { 
 
         try {
             Class.forName(jdbcDriver);
@@ -73,10 +73,14 @@ public class DataBase {
             statement.executeUpdate(insertUser);
         } catch (SQLException sqle) {
             System.out.println("SQLException: " + sqle.getMessage());
+           
             System.out.println("Vendor Error: " + sqle.getErrorCode());
+            
+            return "SQLException: " + sqle.getMessage();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+        return "ok";
     }
 
     /**

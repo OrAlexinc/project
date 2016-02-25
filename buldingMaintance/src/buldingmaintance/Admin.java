@@ -44,8 +44,8 @@ public Admin(int ID, String firstName, String lastName, String email, String use
      public  List<User> NotPayedYet(){
         return dataBase.showWhoNotPayed();
     }
-    public void addUser(User user){
-        dataBase.AddUser(user);
+    public String addUser(User user){
+        return dataBase.AddUser(user);
     }
     public void deleteUser(int id){
         dataBase.RemoveUser(id);
