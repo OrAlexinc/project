@@ -369,7 +369,7 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
         lblSentTo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblSentTo.setText("send to");
         jpnSendMassege.add(lblSentTo);
-        lblSentTo.setBounds(50, 20, 59, 22);
+        lblSentTo.setBounds(19, 20, 100, 22);
 
         jpnReadMessages.setBackground(new java.awt.Color(255, 102, 51));
         jpnReadMessages.setOpaque(false);
@@ -400,7 +400,7 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
             }
         });
         jpnViewPayments.add(btnViewWhoPayd);
-        btnViewWhoPayd.setBounds(474, 85, 98, 41);
+        btnViewWhoPayd.setBounds(474, 85, 150, 41);
 
         btnViewWhoNotPayed.setText("ramining");
         btnViewWhoNotPayed.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -410,7 +410,7 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
             }
         });
         jpnViewPayments.add(btnViewWhoNotPayed);
-        btnViewWhoNotPayed.setBounds(474, 144, 98, 40);
+        btnViewWhoNotPayed.setBounds(474, 144, 150, 40);
 
         btnViewAllPayments.setText("All");
         btnViewAllPayments.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -420,7 +420,7 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
             }
         });
         jpnViewPayments.add(btnViewAllPayments);
-        btnViewAllPayments.setBounds(474, 211, 98, 40);
+        btnViewAllPayments.setBounds(474, 211, 150, 40);
 
         jpnService.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jpnService.setOpaque(false);
@@ -442,15 +442,15 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
 
         lblEnterFirstName.setText("firstname");
         jpnAddUser.add(lblEnterFirstName);
-        lblEnterFirstName.setBounds(40, 110, 70, 20);
+        lblEnterFirstName.setBounds(10, 110, 100, 20);
 
         lblEnterLastName.setText("lastname");
         jpnAddUser.add(lblEnterLastName);
-        lblEnterLastName.setBounds(40, 150, 70, 14);
+        lblEnterLastName.setBounds(10, 150, 100, 16);
 
         lblEnterEmail.setText("email");
         jpnAddUser.add(lblEnterEmail);
-        lblEnterEmail.setBounds(40, 190, 70, 14);
+        lblEnterEmail.setBounds(10, 190, 100, 16);
 
         btnAddNewUser.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnAddNewUser.setText("add");
@@ -461,16 +461,16 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
             }
         });
         jpnAddUser.add(btnAddNewUser);
-        btnAddNewUser.setBounds(80, 380, 130, 40);
+        btnAddNewUser.setBounds(140, 380, 160, 40);
 
         lblEnteNewUserDetails.setLabelFor(jpnAddUser);
         lblEnteNewUserDetails.setText("Ente new user details");
         jpnAddUser.add(lblEnteNewUserDetails);
-        lblEnteNewUserDetails.setBounds(140, 40, 190, 14);
+        lblEnteNewUserDetails.setBounds(140, 40, 190, 16);
 
         lblEnterUserToDelete.setText("enter the id of the user to delete");
         jpnAddUser.add(lblEnterUserToDelete);
-        lblEnterUserToDelete.setBounds(360, 60, 200, 14);
+        lblEnterUserToDelete.setBounds(360, 60, 240, 16);
 
         btnDeleteTheUser.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnDeleteTheUser.setText("delete");
@@ -481,37 +481,37 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
             }
         });
         jpnAddUser.add(btnDeleteTheUser);
-        btnDeleteTheUser.setBounds(360, 130, 110, 31);
+        btnDeleteTheUser.setBounds(360, 130, 160, 31);
         jpnAddUser.add(txtEnterUserName);
-        txtEnterUserName.setBounds(140, 270, 130, 20);
+        txtEnterUserName.setBounds(140, 270, 130, 22);
 
         lblEnterUserName.setText("username");
         jpnAddUser.add(lblEnterUserName);
-        lblEnterUserName.setBounds(40, 270, 60, 14);
+        lblEnterUserName.setBounds(10, 270, 90, 16);
 
         lblEnterPhoneNumber.setText("phone number");
         jpnAddUser.add(lblEnterPhoneNumber);
-        lblEnterPhoneNumber.setBounds(40, 230, 100, 20);
+        lblEnterPhoneNumber.setBounds(10, 230, 130, 20);
         jpnAddUser.add(txtEnterEmail);
-        txtEnterEmail.setBounds(140, 190, 130, 20);
+        txtEnterEmail.setBounds(140, 190, 130, 22);
         jpnAddUser.add(txtEnterPhoneNumber);
-        txtEnterPhoneNumber.setBounds(140, 230, 130, 20);
+        txtEnterPhoneNumber.setBounds(140, 230, 130, 22);
         jpnAddUser.add(txtEnterLastName);
-        txtEnterLastName.setBounds(140, 150, 130, 20);
+        txtEnterLastName.setBounds(140, 150, 130, 22);
         jpnAddUser.add(txtEnderName);
-        txtEnderName.setBounds(140, 110, 130, 20);
+        txtEnderName.setBounds(140, 110, 130, 22);
         jpnAddUser.add(txtEnterID);
-        txtEnterID.setBounds(140, 70, 130, 20);
+        txtEnterID.setBounds(140, 70, 130, 22);
 
         lblEnterID.setText("ID");
         jpnAddUser.add(lblEnterID);
-        lblEnterID.setBounds(40, 70, 70, 14);
+        lblEnterID.setBounds(40, 70, 70, 16);
         jpnAddUser.add(txtEnterPassword);
-        txtEnterPassword.setBounds(140, 310, 130, 20);
+        txtEnterPassword.setBounds(140, 310, 130, 22);
 
         lblEnterPassword.setText("password");
         jpnAddUser.add(lblEnterPassword);
-        lblEnterPassword.setBounds(40, 310, 70, 14);
+        lblEnterPassword.setBounds(10, 310, 100, 16);
 
         jpnAddService.setOpaque(false);
         jpnAddService.setLayout(null);
@@ -519,7 +519,7 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
         lblEddNewService.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblEddNewService.setText("edd a new service");
         jpnAddService.add(lblEddNewService);
-        lblEddNewService.setBounds(40, 40, 180, 22);
+        lblEddNewService.setBounds(40, 40, 220, 22);
 
         jpnUserManagment.setOpaque(false);
         jpnUserManagment.setLayout(null);
@@ -539,12 +539,12 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
             }
         });
         jpnUserManagment.add(btnShowUserById);
-        btnShowUserById.setBounds(40, 380, 110, 40);
+        btnShowUserById.setBounds(40, 380, 210, 40);
 
         lblUserById.setText("show suder by id");
         lblUserById.setFocusCycleRoot(true);
         jpnUserManagment.add(lblUserById);
-        lblUserById.setBounds(40, 310, 130, 14);
+        lblUserById.setBounds(40, 310, 270, 16);
 
         btnShowAllUsers.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnShowAllUsers.setText("show all users");
@@ -555,7 +555,7 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
             }
         });
         jpnUserManagment.add(btnShowAllUsers);
-        btnShowAllUsers.setBounds(450, 380, 150, 40);
+        btnShowAllUsers.setBounds(400, 380, 200, 40);
 
         jpnAddFeedback.setOpaque(false);
         jpnAddFeedback.setLayout(null);
@@ -567,23 +567,23 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
 
         lblEnterFeddbackId.setText("id fo service");
         jpnAddFeedback.add(lblEnterFeddbackId);
-        lblEnterFeddbackId.setBounds(50, 80, 130, 14);
+        lblEnterFeddbackId.setBounds(50, 80, 140, 16);
 
         lblEnterRatingOfService.setText("reating(0-10)");
         jpnAddFeedback.add(lblEnterRatingOfService);
-        lblEnterRatingOfService.setBounds(230, 80, 90, 14);
+        lblEnterRatingOfService.setBounds(230, 80, 120, 16);
 
         lblEnterPriveTaken.setText("price taken");
         jpnAddFeedback.add(lblEnterPriveTaken);
-        lblEnterPriveTaken.setBounds(400, 80, 130, 14);
+        lblEnterPriveTaken.setBounds(400, 80, 130, 16);
         jpnAddFeedback.add(txtEnterPriceTaken);
-        txtEnterPriceTaken.setBounds(400, 110, 130, 20);
+        txtEnterPriceTaken.setBounds(400, 110, 130, 22);
 
         lblEnterWorkDone.setText("enter the work type");
         jpnAddFeedback.add(lblEnterWorkDone);
-        lblEnterWorkDone.setBounds(50, 150, 130, 14);
+        lblEnterWorkDone.setBounds(50, 150, 170, 16);
         jpnAddFeedback.add(txtEnterWorkTypeDone);
-        txtEnterWorkTypeDone.setBounds(40, 180, 190, 20);
+        txtEnterWorkTypeDone.setBounds(40, 180, 190, 22);
 
         txtEnterFeedback.setColumns(20);
         txtEnterFeedback.setRows(5);
@@ -594,7 +594,7 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
 
         lblEnterFeedback.setText("enter feedback");
         jpnAddFeedback.add(lblEnterFeedback);
-        lblEnterFeedback.setBounds(50, 210, 120, 14);
+        lblEnterFeedback.setBounds(50, 210, 160, 16);
 
         btnSendFeedback.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnSendFeedback.setText("send feedback");
@@ -605,7 +605,7 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
             }
         });
         jpnAddFeedback.add(btnSendFeedback);
-        btnSendFeedback.setBounds(50, 380, 150, 40);
+        btnSendFeedback.setBounds(50, 380, 230, 40);
 
         compAddRating.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
         jpnAddFeedback.add(compAddRating);
@@ -615,10 +615,10 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
         compIdOfTheServicToAddFeedBack.setBounds(50, 110, 120, 20);
 
         jpnUserManagment.add(jpnAddFeedback);
-        jpnAddFeedback.setBounds(0, 0, 630, 480);
+        jpnAddFeedback.setBounds(10, 0, 630, 480);
 
         jpnUserManagment.add(combIdOfUserToDisplay);
-        combIdOfUserToDisplay.setBounds(30, 340, 120, 20);
+        combIdOfUserToDisplay.setBounds(30, 340, 120, 22);
 
         jpnAddService.add(jpnUserManagment);
         jpnUserManagment.setBounds(0, 0, 630, 480);
@@ -635,17 +635,17 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
 
         lblEnterServiceGuyLastName.setText("lastname");
         jpnAddService.add(lblEnterServiceGuyLastName);
-        lblEnterServiceGuyLastName.setBounds(30, 230, 43, 14);
+        lblEnterServiceGuyLastName.setBounds(30, 230, 230, 16);
 
         lblEnterServiceGuyId.setText("ID");
         jpnAddService.add(lblEnterServiceGuyId);
-        lblEnterServiceGuyId.setBounds(30, 300, 11, 14);
+        lblEnterServiceGuyId.setBounds(30, 300, 120, 16);
         jpnAddService.add(txtEnterServiceGuyFirsttName);
-        txtEnterServiceGuyFirsttName.setBounds(30, 190, 120, 20);
+        txtEnterServiceGuyFirsttName.setBounds(30, 190, 120, 22);
         jpnAddService.add(txtEnterServiceGuyLastName);
-        txtEnterServiceGuyLastName.setBounds(30, 260, 120, 20);
+        txtEnterServiceGuyLastName.setBounds(30, 260, 120, 22);
         jpnAddService.add(txtEnterServiceGuyId);
-        txtEnterServiceGuyId.setBounds(30, 330, 130, 20);
+        txtEnterServiceGuyId.setBounds(30, 330, 130, 22);
 
         btnAddTheServiceGuy.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnAddTheServiceGuy.setText("add");
@@ -656,16 +656,16 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
             }
         });
         jpnAddService.add(btnAddTheServiceGuy);
-        btnAddTheServiceGuy.setBounds(30, 375, 130, 40);
+        btnAddTheServiceGuy.setBounds(30, 375, 240, 40);
 
         lblDeleteService.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblDeleteService.setText("delete a service");
         jpnAddService.add(lblDeleteService);
-        lblDeleteService.setBounds(380, 46, 160, 20);
+        lblDeleteService.setBounds(380, 46, 180, 20);
 
         lblEnterIdOfServiceToDelete.setText("ender id of servic to delete");
         jpnAddService.add(lblEnterIdOfServiceToDelete);
-        lblEnterIdOfServiceToDelete.setBounds(380, 90, 180, 14);
+        lblEnterIdOfServiceToDelete.setBounds(380, 90, 220, 16);
 
         btnDeleteService.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnDeleteService.setText("delete");
@@ -676,17 +676,17 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
             }
         });
         jpnAddService.add(btnDeleteService);
-        btnDeleteService.setBounds(380, 160, 120, 40);
+        btnDeleteService.setBounds(380, 160, 200, 40);
 
         jpnAddService.add(combIdOfServieToDelete);
-        combIdOfServieToDelete.setBounds(380, 120, 160, 20);
+        combIdOfServieToDelete.setBounds(380, 120, 160, 22);
 
         jpnAddUser.add(jpnAddService);
         jpnAddService.setBounds(0, 0, 630, 480);
 
         lblApartmantId.setText("apartment");
         jpnAddUser.add(lblApartmantId);
-        lblApartmantId.setBounds(40, 350, 50, 14);
+        lblApartmantId.setBounds(9, 350, 90, 16);
 
         txtApartment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -694,13 +694,13 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
             }
         });
         jpnAddUser.add(txtApartment);
-        txtApartment.setBounds(140, 350, 130, 20);
+        txtApartment.setBounds(140, 350, 130, 22);
 
         jpnAddUser.add(combIdOfUserToDelete);
-        combIdOfUserToDelete.setBounds(360, 90, 180, 20);
+        combIdOfUserToDelete.setBounds(360, 90, 230, 22);
 
         jpnService.add(jpnAddUser);
-        jpnAddUser.setBounds(0, 0, 630, 480);
+        jpnAddUser.setBounds(0, 0, 630, 470);
 
         lblEnterServieId.setText("enter the id of servie you want to order");
         jpnService.add(lblEnterServieId);
@@ -719,9 +719,9 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
 
         lblServiceType.setText("Service type");
         jpnService.add(lblServiceType);
-        lblServiceType.setBounds(290, 320, 80, 14);
+        lblServiceType.setBounds(290, 320, 80, 16);
         jpnService.add(txtServieType);
-        txtServieType.setBounds(270, 340, 100, 20);
+        txtServieType.setBounds(270, 340, 100, 22);
 
         txtShowServices.setEditable(false);
         txtShowServices.setColumns(20);
@@ -733,7 +733,7 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
 
         lblEnterIdOfServieToShowFeeedback.setText("enter id of service to view feedback");
         jpnService.add(lblEnterIdOfServieToShowFeeedback);
-        lblEnterIdOfServieToShowFeeedback.setBounds(370, 50, 220, 14);
+        lblEnterIdOfServieToShowFeeedback.setBounds(370, 50, 220, 16);
 
         btnShowTheFeedback.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnShowTheFeedback.setText("show feedback");
@@ -747,13 +747,13 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
         btnShowTheFeedback.setBounds(370, 120, 200, 30);
 
         jpnService.add(combIdOfServiceToSeeFeedback);
-        combIdOfServiceToSeeFeedback.setBounds(380, 80, 200, 20);
+        combIdOfServiceToSeeFeedback.setBounds(380, 80, 200, 22);
 
         jpnService.add(compIdOfTheServicToOrder);
         compIdOfTheServicToOrder.setBounds(60, 340, 120, 20);
 
         jpnViewPayments.add(jpnService);
-        jpnService.setBounds(0, 0, 630, 460);
+        jpnService.setBounds(0, 0, 620, 450);
 
         txtViewPayments.setEditable(false);
         txtViewPayments.setColumns(20);
@@ -766,7 +766,7 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
         jpnMakePayment.add(jpnViewPayments);
         jpnViewPayments.setBounds(0, 0, 630, 480);
         jpnMakePayment.add(txtSum);
-        txtSum.setBounds(50, 94, 125, 20);
+        txtSum.setBounds(50, 94, 125, 22);
 
         btnPay.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnPay.setText("pay");
@@ -818,7 +818,7 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
         scrollWriteMessage.setBounds(50, 70, 410, 170);
 
         jpnSendMassege.add(combSendTo);
-        combSendTo.setBounds(120, 20, 110, 20);
+        combSendTo.setBounds(120, 20, 110, 22);
 
         jplMainPannel.add(jpnSendMassege);
         jpnSendMassege.setBounds(320, 0, 630, 480);

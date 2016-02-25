@@ -24,7 +24,7 @@ DataBase dataBase = DataBase.GetInstance();
      */
     public LoginForm() {
         initComponents();
-       
+       setLeguge();
         //radio buttons to select lenuge
         rBtnEnglish.setActionCommand("en");
         rBtnHebrow.setActionCommand("iw");
@@ -32,7 +32,16 @@ DataBase dataBase = DataBase.GetInstance();
        
         
     }
-       
+       //changes the langue ofbuttons
+     private void setLeguge(){
+       btnLogin.setText(LocalizationUtil.localizedResourceBundle.getString("btnLogin"));
+                lblPassword.setText(LocalizationUtil.localizedResourceBundle.getString("lblPassword"));
+                lblUsername.setText(LocalizationUtil.localizedResourceBundle.getString("lblUsername"));
+                rBtnEnglish.setText(LocalizationUtil.localizedResourceBundle.getString("rBtnEnglish"));
+                rBtnHebrow.setText(LocalizationUtil.localizedResourceBundle.getString("rBtnHebrow"));
+                rBtnRussian.setText(LocalizationUtil.localizedResourceBundle.getString("rBtnRussian"));
+                btnSelectLanguge.setText(LocalizationUtil.localizedResourceBundle.getString("btnSelectLanguge"));  
+     }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -224,13 +233,7 @@ DataBase dataBase = DataBase.GetInstance();
   // take the action command that was defined on the radio button
                 String selectedLanguage = grupLanguage.getSelection().getActionCommand();             
                 LocalizationUtil.localizedResourceBundle = ResourceBundle.getBundle("languages.uimessages", new Locale(selectedLanguage));
-                btnLogin.setText(LocalizationUtil.localizedResourceBundle.getString("btnLogin"));
-                lblPassword.setText(LocalizationUtil.localizedResourceBundle.getString("lblPassword"));
-                lblUsername.setText(LocalizationUtil.localizedResourceBundle.getString("lblUsername"));
-                rBtnEnglish.setText(LocalizationUtil.localizedResourceBundle.getString("rBtnEnglish"));
-                rBtnHebrow.setText(LocalizationUtil.localizedResourceBundle.getString("rBtnHebrow"));
-                rBtnRussian.setText(LocalizationUtil.localizedResourceBundle.getString("rBtnRussian"));
-                btnSelectLanguge.setText(LocalizationUtil.localizedResourceBundle.getString("btnSelectLanguge"));
+                setLeguge();
                 
     }//GEN-LAST:event_btnSelectLangugeActionPerformed
 
