@@ -30,7 +30,7 @@ public class AdminForm extends javax.swing.JFrame {
     java.util.List<Order> orders = new ArrayList<Order>();
     java.util.List<ExternalWorker> workers = new ArrayList<ExternalWorker>();
     java.util.List<Feedback> feedbacks = new ArrayList<Feedback>();
-     java.util.List<User> notPayed = new ArrayList<Payment>();
+     java.util. ArrayList<User> notPayed = new ArrayList<User>();
     
     DataBase dataBase = DataBase.GetInstance();
     
@@ -943,7 +943,7 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
         payments = admin.recievePayments(admin);
             
         //add all userr who not payed yet to list
-        notPayed=admin.NotPayedYet();
+        notPayed=(ArrayList<User>) admin.NotPayedYet();
         
 //clear text from all fildes
         txtViewPayments.setText(null);
