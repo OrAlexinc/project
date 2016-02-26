@@ -536,7 +536,7 @@ public class DataBase {
  * gets an object from type ExternalWorker and adds its fields to database
  * @param worker 
  */
-    public void AddExternalWorkers(ExternalWorker worker) {
+    public String AddExternalWorkers(ExternalWorker worker) {
 
         try {
             Class.forName(jdbcDriver);
@@ -552,9 +552,11 @@ public class DataBase {
         } catch (SQLException sqle) {
             System.out.println("SQLException: " + sqle.getMessage());
             System.out.println("Vendor Error: " + sqle.getErrorCode());
+            return  "SQLException: " + sqle.getMessage();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+        return "ok";
     }
 /**
  * returns the list of all workers
@@ -749,6 +751,11 @@ public class DataBase {
 
             Statement statement = connection.createStatement();
 
+            
+            
+            
+            
+            
             String sqlAverage = "SELECT * FROM USERS WHERE id not in (SELECT fromUser FROM payments)";
 
             ResultSet resultSet = statement.executeQuery(sqlAverage);

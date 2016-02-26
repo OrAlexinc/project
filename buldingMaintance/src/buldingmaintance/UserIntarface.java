@@ -20,4 +20,6 @@ public interface UserIntarface {
     static final String phoneNumber="";
     static final String userPermission="";
     static final int apartmentId=0;
+    
+    
 }

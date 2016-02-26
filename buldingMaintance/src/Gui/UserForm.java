@@ -729,12 +729,12 @@ public class UserForm extends javax.swing.JFrame {
      * @param evt
      */
     private void btnShowTheFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowTheFeedbackActionPerformed
-        boolean flag = true;
+        
 
         int id = 0;
         String workerFeedback = "";
         //get the id of worker to show feedback abut him
-        id = Integer.parseInt((String) compIdOfTheServicToOrder.getSelectedItem());
+        id = Integer.parseInt((String) combIdOfServiceToSeeFeedback.getSelectedItem());
         //add all fedback abut the worker to list feedback and displays them     
         feedbacks = resident.seeFeedback(id);
         for (Feedback feedback : feedbacks) {

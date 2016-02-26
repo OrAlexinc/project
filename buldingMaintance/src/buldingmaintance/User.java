@@ -1,10 +1,12 @@
 package buldingmaintance;
+
 import DB.DataBase;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
-public class User {
+public class User implements UserIntarface {
+
     private int ID;
     private String firstName;
     private String lastName;
@@ -17,7 +19,11 @@ public class User {
     private int apartmentId;
     //private Image ProfilePhoto;
     DataBase dataBase = DataBase.GetInstance();
-     public User(){};
+
+    public User() {
+    }
+
+    ;
     
      /**
      *constructor 
@@ -32,9 +38,9 @@ public class User {
      * @param userPermission
      * @param apartmentId 
      */
-    public User(int ID, String firstName, String lastName, String email, 
-                String userName,String password, String buildingAddress, 
-                String phoneNumber, String userPermission, int apartmentId) {
+    public User(int ID, String firstName, String lastName, String email,
+            String userName, String password, String buildingAddress,
+            String phoneNumber, String userPermission, int apartmentId) {
         setID(ID);
         setFirstName(firstName);
         setLastName(lastName);
@@ -60,24 +66,26 @@ public class User {
     }
 
     public boolean setFirstName(String firstName) {
-       
-      if((firstName.matches("[a-zA-Z]+")==false)||firstName.length()>20)
-        return false;
+
+        if ((firstName.matches("[a-zA-Z]+") == false) || firstName.length() > 20) {
+            return false;
+        }
         this.firstName = firstName;
         return true;
     }
 
     public String getLastName() {
-        
+
         return lastName;
     }
 
     public boolean setLastName(String lastName) {
-          if((lastName.matches("[a-zA-Z]+")==false)||lastName.length()>20)
-          return false;
+        if ((lastName.matches("[a-zA-Z]+") == false) || lastName.length() > 20) {
+            return false;
+        }
 
         this.lastName = lastName;
-           return true;
+        return true;
     }
 
     public String getEmail() {
@@ -117,8 +125,9 @@ public class User {
     }
 
     public boolean setPhoneNumber(String phoneNumber) {
-       if (phoneNumber.matches("[0-9]+") == false)
-           return false;
+        if (phoneNumber.matches("[0-9]+") == false) {
+            return false;
+        }
         this.phoneNumber = phoneNumber;
         return true;
     }
@@ -136,14 +145,15 @@ public class User {
     }
 
     public boolean setApartmentId(int apartmentId) {
-       if (apartmentId<0||apartmentId>999)
-           return false;
+        if (apartmentId < 0 || apartmentId > 999) {
+            return false;
+        }
         this.apartmentId = apartmentId;
         return true;
     }
 
     public void SendMessage(Message message) {
-                         //connect to database
+        //connect to database
     }
 
     public List<Message> RecieveMessage(String selfUserName) {
@@ -151,18 +161,18 @@ public class User {
         return dataBase.recieveMessages(userName);
     }
 
+   
     @Override
     public String toString() {
-        return   "ID:  " + ID + "\tfirstName:  " + firstName + "\tlastName:  " 
-                + lastName + ""+ "\n email:  " + email + "\tuserName:  " + 
-                userName + "\tpassword:  " + password + 
-                " \n buildingAddress:  " + buildingAddress + 
-                 "\tapartmentId:  " + apartmentId +"" +
-                "\tphoneNumber:  " + phoneNumber + ""
+        return "ID:  " + ID + "\tfirstName:  " + firstName + "\tlastName:  "
+                + lastName + "" + "\n email:  " + email + "\tuserName:  "
+                + userName + "\tpassword:  " + password
+                + " \n buildingAddress:  " + buildingAddress
+                + "\tapartmentId:  " + apartmentId + ""
+                + "\tphoneNumber:  " + phoneNumber + ""
                 + " \nuserPermission:  " + userPermission
-                +"\n************************************************************\n" ;
-                
+                + "\n************************************************************\n";
+
     }
 
-    
 }

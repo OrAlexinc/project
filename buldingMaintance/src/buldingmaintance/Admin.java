@@ -61,8 +61,8 @@ public Admin(int ID, String firstName, String lastName, String email, String use
     {
         dataBase.makeOrder(order);
     }
-    public void addService(ExternalWorker externalWorker){
-        dataBase.AddExternalWorkers(externalWorker);
+    public String addService(ExternalWorker externalWorker){
+      return  dataBase.AddExternalWorkers(externalWorker);
     }
     public void deleteServie(int id){
         dataBase.RemoveExternalWorker(id);

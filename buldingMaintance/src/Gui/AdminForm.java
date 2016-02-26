@@ -1057,7 +1057,7 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
         
         //if all valus that inserted are valid addes user to database
         if (flag) {  
-            resident = new Resident(id, firstName, lastName, email, userName, password, admin.getBuildingAddress(), phoneNumber, "resident", apartmantId);
+           
             String isDone=admin.addUser(resident);
          if(!isDone.equals("ok"))
          {
@@ -1065,6 +1065,8 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
          }
          else
          {
+             
+              resident = new Resident(id, firstName, lastName, email, userName, password, admin.getBuildingAddress(), phoneNumber, "resident", apartmantId);
             //alerting the admin that the user has added
              JOptionPane.showMessageDialog(null,userAddedMessage,null, JOptionPane.INFORMATION_MESSAGE);
         //clear text from all fildes
@@ -1334,8 +1336,17 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
 
         //if all valuse inserted properly adding worker to database
         if (flag) {
+              String isOk=  admin.addService(externalWorker);
+              if(isOk.equals("ok")){
             externalWorker = new ExternalWorker(id, serviceName, firstName, lastName);
-            admin.addService(externalWorker);
+             //clear text from all fildes
+        txtEnterServiceName.setText(null);
+        txtEnterServiceGuyFirsttName.setText(null);
+        txtEnterServiceGuyLastName.setText(null);
+        txtEnterServiceGuyId.setText(null);
+              }
+              else
+                   JOptionPane.showMessageDialog(null, isOk, null, JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnAddTheServiceGuyActionPerformed
     /**
@@ -1367,7 +1378,7 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
         for (Feedback feedback : feedbacks) {
             workerFeedback += feedback.toString();
         }
-        txtServieType.setText(workerFeedback);
+        txtShowServices.setText(workerFeedback);
 
     }//GEN-LAST:event_btnShowTheFeedbackActionPerformed
     /**
@@ -1414,6 +1425,9 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
         String workDone = txtEnterWorkTypeDone.getText();
         feedback = new Feedback(id, feedbackText, rating, workDone, price);
         admin.addFeedback(feedback);
+        txtEnterPriceTaken.setText(null);
+        txtEnterFeedback.setText(null);
+        txtEnterWorkTypeDone.setText(null);
         }
     }//GEN-LAST:event_btnSendFeedbackActionPerformed
     /**

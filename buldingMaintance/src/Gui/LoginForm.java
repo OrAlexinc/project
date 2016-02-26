@@ -65,6 +65,7 @@ DataBase dataBase = DataBase.GetInstance();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(500, 300));
+        setResizable(false);
         getContentPane().setLayout(null);
 
         btnLogin.setText("Login");
@@ -204,7 +205,7 @@ DataBase dataBase = DataBase.GetInstance();
             }
            
        });
-       
+         this.hide();
     }
   //if user permission is admin creating admin object and admin form
     else if((user.getUserPermission()).equals("admin")){
