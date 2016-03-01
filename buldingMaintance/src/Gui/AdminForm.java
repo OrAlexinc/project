@@ -461,7 +461,7 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
             }
         });
         jpnAddUser.add(btnAddNewUser);
-        btnAddNewUser.setBounds(140, 380, 160, 40);
+        btnAddNewUser.setBounds(140, 380, 200, 40);
 
         lblEnteNewUserDetails.setLabelFor(jpnAddUser);
         lblEnteNewUserDetails.setText("Ente new user details");
@@ -481,7 +481,7 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
             }
         });
         jpnAddUser.add(btnDeleteTheUser);
-        btnDeleteTheUser.setBounds(360, 130, 160, 31);
+        btnDeleteTheUser.setBounds(370, 130, 200, 31);
         jpnAddUser.add(txtEnterUserName);
         txtEnterUserName.setBounds(140, 270, 130, 22);
 
@@ -615,7 +615,7 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
         compIdOfTheServicToAddFeedBack.setBounds(50, 110, 120, 20);
 
         jpnUserManagment.add(jpnAddFeedback);
-        jpnAddFeedback.setBounds(10, 0, 630, 480);
+        jpnAddFeedback.setBounds(0, 0, 640, 480);
 
         jpnUserManagment.add(combIdOfUserToDisplay);
         combIdOfUserToDisplay.setBounds(30, 340, 120, 22);
@@ -715,7 +715,7 @@ btnSendFeedback.setText(LocalizationUtil.localizedResourceBundle.getString("btnS
             }
         });
         jpnService.add(btnMakeTheOrder);
-        btnMakeTheOrder.setBounds(430, 380, 100, 30);
+        btnMakeTheOrder.setBounds(410, 380, 170, 30);
 
         lblServiceType.setText("Service type");
         jpnService.add(lblServiceType);
