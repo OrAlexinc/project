@@ -1,0 +1,955 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="buldingMaintance">
+  <ClassDiagramComponents>
+    <Class name="Admin" package="buldingmaintance" visibility="public" xPosition="72.0" yPosition="641.0">
+      <Fields>
+        <Field name="dataBase" type="DataBase" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="ID"/>
+          <Argument type="String" name="firstName"/>
+          <Argument type="String" name="lastName"/>
+          <Argument type="String" name="email"/>
+          <Argument type="String" name="userName"/>
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="buildingAddress"/>
+          <Argument type="String" name="phoneNumber"/>
+          <Argument type="String" name="userPermission"/>
+          <Argument type="int" name="apartmentId"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="RecieveMessage" returnType="List&lt;Message&gt;" visibility="public">
+          <Argument type="String" name="selfUserName"/>
+        </Method>
+        <Method name="SendMessage" returnType="void" visibility="public">
+          <Argument type="Message" name="message"/>
+        </Method>
+        <Method name="makePayment" returnType="void" visibility="public">
+          <Argument type="Payment" name="paymant"/>
+        </Method>
+        <Method name="recievePayments" returnType="List&lt;Payment&gt;" visibility="public">
+          <Argument type="User" name="user"/>
+        </Method>
+        <Method name="addUser" returnType="void" visibility="public">
+          <Argument type="User" name="user"/>
+        </Method>
+        <Method name="deleteUser" returnType="void" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="showAllUser" returnType="List&lt;User&gt;" visibility="public"/>
+        <Method name="showUserById" returnType="User" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="order" returnType="void" visibility="public">
+          <Argument type="Order" name="order"/>
+        </Method>
+        <Method name="addService" returnType="void" visibility="public">
+          <Argument type="ExternalWorker" name="externalWorker"/>
+        </Method>
+        <Method name="deleteServie" returnType="void" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="addFeedback" returnType="void" visibility="public">
+          <Argument type="Feedback" name="feedbak"/>
+        </Method>
+        <Method name="seeFeedback" returnType="List&lt;Feedback&gt;" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="BuldingMaintance" package="buldingmaintance" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ExternalWorker" package="buldingmaintance" visibility="public" xPosition="2161.0" yPosition="1089.0">
+      <Fields>
+        <Field name="workerId" type="int" visibility="private"/>
+        <Field name="serviceName" type="String" visibility="private"/>
+        <Field name="firstName" type="String" visibility="private"/>
+        <Field name="lastName" type="String" visibility="private"/>
+        <Field name="photo" type="Image" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="workerId"/>
+          <Argument type="String" name="serviceName"/>
+          <Argument type="String" name="firstName"/>
+          <Argument type="String" name="lastName"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getWorkerId" returnType="int" visibility="public"/>
+        <Method name="setWorkerId" returnType="void" visibility="public">
+          <Argument type="int" name="workerId"/>
+        </Method>
+        <Method name="getServiceName" returnType="String" visibility="public"/>
+        <Method name="setServiceName" returnType="void" visibility="public">
+          <Argument type="String" name="serviceName"/>
+        </Method>
+        <Method name="getFirstName" returnType="String" visibility="public"/>
+        <Method name="setFirstName" returnType="boolean" visibility="public">
+          <Argument type="String" name="firstName"/>
+        </Method>
+        <Method name="getLastName" returnType="String" visibility="public"/>
+        <Method name="setLastName" returnType="boolean" visibility="public">
+          <Argument type="String" name="lastName"/>
+        </Method>
+        <Method name="getPhoto" returnType="Image" visibility="public"/>
+        <Method name="setPhoto" returnType="void" visibility="public">
+          <Argument type="Image" name="photo"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Feedback" package="buldingmaintance" visibility="public" xPosition="2965.0" yPosition="67.0">
+      <Fields>
+        <Field name="workerId" type="int" visibility="private"/>
+        <Field name="feedback" type="String" visibility="private"/>
+        <Field name="rating" type="int" visibility="private"/>
+        <Field name="workDone" type="String" visibility="private"/>
+        <Field name="priceTaken" type="float" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="workerId"/>
+          <Argument type="String" name="feedback"/>
+          <Argument type="int" name="rating"/>
+          <Argument type="String" name="workDone"/>
+          <Argument type="float" name="priceTaken"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getWorkerId" returnType="int" visibility="public"/>
+        <Method name="setWorkerId" returnType="void" visibility="public">
+          <Argument type="int" name="workerId"/>
+        </Method>
+        <Method name="getFeedback" returnType="String" visibility="public"/>
+        <Method name="setFeedback" returnType="void" visibility="public">
+          <Argument type="String" name="feedback"/>
+        </Method>
+        <Method name="getRating" returnType="int" visibility="public"/>
+        <Method name="setRating" returnType="boolean" visibility="public">
+          <Argument type="int" name="rating"/>
+        </Method>
+        <Method name="getWorkDone" returnType="String" visibility="public"/>
+        <Method name="setWorkDone" returnType="void" visibility="public">
+          <Argument type="String" name="workDone"/>
+        </Method>
+        <Method name="getPriceTaken" returnType="float" visibility="public"/>
+        <Method name="setPriceTaken" returnType="boolean" visibility="public">
+          <Argument type="float" name="priceTaken"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Message" package="buldingmaintance" visibility="public" xPosition="1311.0" yPosition="334.0">
+      <Fields>
+        <Field name="messageID" type="int" visibility="private" isStatic="true"/>
+        <Field name="content" type="String" visibility="private"/>
+        <Field name="fromUser" type="String" visibility="private"/>
+        <Field name="toUser" type="String" visibility="private"/>
+        <Field name="timeCreated" type="Date" visibility="private"/>
+        <Field name="dataBase" type="DataBase" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="content"/>
+          <Argument type="String" name="fromUser"/>
+          <Argument type="String" name="toUser"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="content"/>
+          <Argument type="String" name="fromUser"/>
+          <Argument type="String" name="toUser"/>
+          <Argument type="int" name="ID"/>
+          <Argument type="Date" name="time"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getContent" returnType="String" visibility="public"/>
+        <Method name="setContent" returnType="void" visibility="public">
+          <Argument type="String" name="content"/>
+        </Method>
+        <Method name="getFromUser" returnType="String" visibility="public"/>
+        <Method name="setFromUser" returnType="void" visibility="public">
+          <Argument type="String" name="fromUser"/>
+        </Method>
+        <Method name="getToUser" returnType="String" visibility="public"/>
+        <Method name="setToUser" returnType="void" visibility="public">
+          <Argument type="String" name="ToUser"/>
+        </Method>
+        <Method name="getMessageID" returnType="int" visibility="public"/>
+        <Method name="getTimeCreated" returnType="Date" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Order" package="buldingmaintance" visibility="public" xPosition="1667.0" yPosition="834.0">
+      <Fields>
+        <Field name="OrderID" type="int" visibility="private" isStatic="true"/>
+        <Field name="from" type="String" visibility="private"/>
+        <Field name="to" type="String" visibility="private"/>
+        <Field name="order" type="String" visibility="private"/>
+        <Field name="dateRecieved" type="Date" visibility="private"/>
+        <Field name="dataBase" type="DataBase" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="from"/>
+          <Argument type="String" name="to"/>
+          <Argument type="String" name="order"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getOrderID" returnType="int" visibility="public"/>
+        <Method name="setOrderID" returnType="void" visibility="public">
+          <Argument type="int" name="OrderID"/>
+        </Method>
+        <Method name="getFrom" returnType="String" visibility="public"/>
+        <Method name="setFrom" returnType="void" visibility="public">
+          <Argument type="String" name="from"/>
+        </Method>
+        <Method name="getTo" returnType="String" visibility="public"/>
+        <Method name="setTo" returnType="void" visibility="public">
+          <Argument type="String" name="to"/>
+        </Method>
+        <Method name="getOrder" returnType="String" visibility="public"/>
+        <Method name="setOrder" returnType="void" visibility="public">
+          <Argument type="String" name="order"/>
+        </Method>
+        <Method name="getDateRecieved" returnType="Date" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Payment" package="buldingmaintance" visibility="public" xPosition="2000.0" yPosition="345.0">
+      <Fields>
+        <Field name="paymentId" type="int" visibility="private" isStatic="true"/>
+        <Field name="from" type="String" visibility="private"/>
+        <Field name="to" type="String" visibility="private"/>
+        <Field name="sum" type="float" visibility="private"/>
+        <Field name="comment" type="String" visibility="private"/>
+        <Field name="dateRecieved" type="Date" visibility="private"/>
+        <Field name="dataBase" type="DataBase" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="from"/>
+          <Argument type="String" name="to"/>
+          <Argument type="String" name="comment"/>
+          <Argument type="int" name="sum"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="from"/>
+          <Argument type="String" name="to"/>
+          <Argument type="String" name="comment"/>
+          <Argument type="float" name="sum"/>
+          <Argument type="int" name="sNumber"/>
+          <Argument type="Date" name="time"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getPaymentId" returnType="int" visibility="public"/>
+        <Method name="setPaymentId" returnType="void" visibility="public">
+          <Argument type="int" name="paymentId"/>
+        </Method>
+        <Method name="getFrom" returnType="String" visibility="public"/>
+        <Method name="setFrom" returnType="void" visibility="public">
+          <Argument type="String" name="from"/>
+        </Method>
+        <Method name="getTo" returnType="String" visibility="public"/>
+        <Method name="setTo" returnType="void" visibility="public">
+          <Argument type="String" name="to"/>
+        </Method>
+        <Method name="getComment" returnType="String" visibility="public"/>
+        <Method name="setComment" returnType="void" visibility="public">
+          <Argument type="String" name="note"/>
+        </Method>
+        <Method name="getSum" returnType="float" visibility="public"/>
+        <Method name="setSum" returnType="boolean" visibility="public">
+          <Argument type="int" name="sum"/>
+        </Method>
+        <Method name="getDateRecieved" returnType="Date" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Resident" package="buldingmaintance" visibility="public" xPosition="3863.0" yPosition="435.0">
+      <Fields>
+        <Field name="dataBase" type="DataBase" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="ID"/>
+          <Argument type="String" name="firstName"/>
+          <Argument type="String" name="lastName"/>
+          <Argument type="String" name="email"/>
+          <Argument type="String" name="userName"/>
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="buildingAddress"/>
+          <Argument type="String" name="phoneNumber"/>
+          <Argument type="String" name="userPermission"/>
+          <Argument type="int" name="apartmentId"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="writeMessage" returnType="void" visibility="public">
+          <Argument type="Message" name="message"/>
+        </Method>
+        <Method name="addPayment" returnType="void" visibility="public">
+          <Argument type="Payment" name="pay"/>
+        </Method>
+        <Method name="readMessage" returnType="List&lt;Message&gt;" visibility="public">
+          <Argument type="String" name="userName"/>
+        </Method>
+        <Method name="callService" returnType="void" visibility="public">
+          <Argument type="Order" name="order"/>
+        </Method>
+        <Method name="addFeedback" returnType="void" visibility="public">
+          <Argument type="Feedback" name="feedbak"/>
+        </Method>
+        <Method name="seeFeedback" returnType="List&lt;Feedback&gt;" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="User" package="buldingmaintance" visibility="public" xPosition="642.0" yPosition="1675.0">
+      <Fields>
+        <Field name="ID" type="int" visibility="private"/>
+        <Field name="firstName" type="String" visibility="private"/>
+        <Field name="lastName" type="String" visibility="private"/>
+        <Field name="email" type="String" visibility="private"/>
+        <Field name="userName" type="String" visibility="private"/>
+        <Field name="password" type="String" visibility="private"/>
+        <Field name="buildingAddress" type="String" visibility="private"/>
+        <Field name="phoneNumber" type="String" visibility="private"/>
+        <Field name="userPermission" type="String" visibility="private"/>
+        <Field name="apartmentId" type="int" visibility="private"/>
+        <Field name="dataBase" type="DataBase" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="ID"/>
+          <Argument type="String" name="firstName"/>
+          <Argument type="String" name="lastName"/>
+          <Argument type="String" name="email"/>
+          <Argument type="String" name="userName"/>
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="buildingAddress"/>
+          <Argument type="String" name="phoneNumber"/>
+          <Argument type="String" name="userPermission"/>
+          <Argument type="int" name="apartmentId"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getID" returnType="int" visibility="public"/>
+        <Method name="setID" returnType="void" visibility="public">
+          <Argument type="int" name="ID"/>
+        </Method>
+        <Method name="getFirstName" returnType="String" visibility="public"/>
+        <Method name="setFirstName" returnType="boolean" visibility="public">
+          <Argument type="String" name="firstName"/>
+        </Method>
+        <Method name="getLastName" returnType="String" visibility="public"/>
+        <Method name="setLastName" returnType="boolean" visibility="public">
+          <Argument type="String" name="lastName"/>
+        </Method>
+        <Method name="getEmail" returnType="String" visibility="public"/>
+        <Method name="setEmail" returnType="void" visibility="public">
+          <Argument type="String" name="email"/>
+        </Method>
+        <Method name="getUserName" returnType="String" visibility="public"/>
+        <Method name="setUserName" returnType="void" visibility="public">
+          <Argument type="String" name="userName"/>
+        </Method>
+        <Method name="getPassword" returnType="String" visibility="public"/>
+        <Method name="setPassword" returnType="void" visibility="public">
+          <Argument type="String" name="password"/>
+        </Method>
+        <Method name="getBuildingAddress" returnType="String" visibility="public"/>
+        <Method name="setBuildingAddress" returnType="void" visibility="public">
+          <Argument type="String" name="buildingAddress"/>
+        </Method>
+        <Method name="getPhoneNumber" returnType="String" visibility="public"/>
+        <Method name="setPhoneNumber" returnType="boolean" visibility="public">
+          <Argument type="String" name="phoneNumber"/>
+        </Method>
+        <Method name="getUserPermission" returnType="String" visibility="public"/>
+        <Method name="setUserPermission" returnType="void" visibility="public">
+          <Argument type="String" name="userPermission"/>
+        </Method>
+        <Method name="getApartmentId" returnType="int" visibility="public"/>
+        <Method name="setApartmentId" returnType="boolean" visibility="public">
+          <Argument type="int" name="apartmentId"/>
+        </Method>
+        <Method name="SendMessage" returnType="void" visibility="public">
+          <Argument type="Message" name="message"/>
+        </Method>
+        <Method name="RecieveMessage" returnType="List&lt;Message&gt;" visibility="public">
+          <Argument type="String" name="selfUserName"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="DataBase" package="DB" visibility="public" xPosition="-16.0" yPosition="1386.0">
+      <Fields>
+        <Field name="instance" type="DataBase" visibility="protected" isStatic="true"/>
+        <Field name="jdbcUrl" type="String" visibility="package"/>
+        <Field name="jdbcUser" type="String" visibility="package"/>
+        <Field name="jdbcPassword" type="String" visibility="package"/>
+        <Field name="jdbcDriver" type="String" visibility="package"/>
+        <Field name="messages" type="List&lt;Message&gt;" visibility="package"/>
+        <Field name="orders" type="List&lt;Order&gt;" visibility="package"/>
+        <Field name="payments" type="List&lt;Payment&gt;" visibility="package"/>
+        <Field name="users" type="List&lt;User&gt;" visibility="package"/>
+        <Field name="workers" type="List&lt;ExternalWorker&gt;" visibility="package"/>
+        <Field name="feedbacks" type="List&lt;Feedback&gt;" visibility="package"/>
+        <Field name="connection" type="Connection" visibility="package"/>
+        <Field name="dataBase" type="DataBase" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="private"/>
+      </Constructors>
+      <Methods>
+        <Method name="GetInstance" returnType="DataBase" visibility="public" isStatic="true"/>
+        <Method name="AddUser" returnType="void" visibility="public">
+          <Argument type="User" name="user"/>
+        </Method>
+        <Method name="RemoveUser" returnType="void" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="viewAllUsers" returnType="List&lt;User&gt;" visibility="public"/>
+        <Method name="showUserById" returnType="User" visibility="public">
+          <Argument type="int" name="ID"/>
+        </Method>
+        <Method name="setUsersId" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="listOfUsers" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="getMessageId" returnType="int" visibility="public"/>
+        <Method name="sendMessage" returnType="void" visibility="public">
+          <Argument type="Message" name="message"/>
+        </Method>
+        <Method name="recieveMessages" returnType="List&lt;Message&gt;" visibility="public">
+          <Argument type="String" name="userName"/>
+        </Method>
+        <Method name="getOrderId" returnType="int" visibility="public"/>
+        <Method name="makeOrder" returnType="void" visibility="public">
+          <Argument type="Order" name="order"/>
+        </Method>
+        <Method name="getPaymentId" returnType="int" visibility="public"/>
+        <Method name="makePayment" returnType="void" visibility="public">
+          <Argument type="Payment" name="payment"/>
+        </Method>
+        <Method name="recievePayments" returnType="List&lt;Payment&gt;" visibility="public"/>
+        <Method name="logIn" returnType="User" visibility="public">
+          <Argument type="String" name="username"/>
+          <Argument type="String" name="password"/>
+        </Method>
+        <Method name="AddExternalWorkers" returnType="void" visibility="public">
+          <Argument type="ExternalWorker" name="worker"/>
+        </Method>
+        <Method name="showAllWorkers" returnType="List&lt;ExternalWorker&gt;" visibility="public"/>
+        <Method name="showWorkersId" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="RemoveExternalWorker" returnType="void" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="AddFeedbackForWorker" returnType="void" visibility="public">
+          <Argument type="Feedback" name="feedback"/>
+        </Method>
+        <Method name="showWorkersFeedbackById" returnType="List&lt;Feedback&gt;" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="showPaymentsAverage" returnType="float" visibility="public"/>
+        <Method name="showWhoNotPayed" returnType="List&lt;User&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="AdminForm" package="Gui" visibility="public" xPosition="4119.0" yPosition="2623.0">
+      <Fields>
+        <Field name="admin" type="Admin" visibility="package"/>
+        <Field name="users" type="java.util.List&lt;User&gt;" visibility="package"/>
+        <Field name="messages" type="java.util.List&lt;Message&gt;" visibility="package"/>
+        <Field name="payments" type="java.util.List&lt;Payment&gt;" visibility="package"/>
+        <Field name="orders" type="java.util.List&lt;Order&gt;" visibility="package"/>
+        <Field name="workers" type="java.util.List&lt;ExternalWorker&gt;" visibility="package"/>
+        <Field name="feedbacks" type="java.util.List&lt;Feedback&gt;" visibility="package"/>
+        <Field name="dataBase" type="DataBase" visibility="package"/>
+        <Field name="idLenghtError" type="String" visibility="package"/>
+        <Field name="idErrorMessage" type="String" visibility="package"/>
+        <Field name="idErrorTitle" type="String" visibility="package"/>
+        <Field name="feedbackErrorMessage" type="String" visibility="package"/>
+        <Field name="feedbackLenghtError" type="String" visibility="package"/>
+        <Field name="sumError" type="String" visibility="package"/>
+        <Field name="sumLenghtError" type="String" visibility="package"/>
+        <Field name="btnAddFeedback" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnAddNewUser" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnAddService" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnAddTheServiceGuy" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnAddUser" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnDeleteService" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnDeleteTheUser" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnMakePaymnet" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnMakeTheOrder" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnOrder" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnPay" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnReadMessage" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnSend" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnSendFeedback" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnSendMassege" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnShowAllUsers" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnShowMessages" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnShowSerive" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnShowTheFeedback" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnShowUserById" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnUserManagemant" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnViewAllPayments" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnViewPayments" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnViewWhoNotPayed" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnViewWhoPayd" type="javax.swing.JButton" visibility="private"/>
+        <Field name="combIdOfServiceToSeeFeedback" type="javax.swing.JComboBox" visibility="private"/>
+        <Field name="combIdOfServieToDelete" type="javax.swing.JComboBox" visibility="private"/>
+        <Field name="combIdOfUserToDelete" type="javax.swing.JComboBox" visibility="private"/>
+        <Field name="combIdOfUserToDisplay" type="javax.swing.JComboBox" visibility="private"/>
+        <Field name="combSendTo" type="javax.swing.JComboBox" visibility="private"/>
+        <Field name="compAddRating" type="javax.swing.JComboBox" visibility="private"/>
+        <Field name="compIdOfTheServicToAddFeedBack" type="javax.swing.JComboBox" visibility="private"/>
+        <Field name="compIdOfTheServicToOrder" type="javax.swing.JComboBox" visibility="private"/>
+        <Field name="jplMainPannel" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jpnAddFeedback" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jpnAddService" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jpnAddUser" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jpnMakePayment" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jpnReadMessages" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jpnSendMassege" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jpnService" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jpnUserManagment" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jpnViewPayments" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="lblApartmantId" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblCommant" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblDeleteService" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblEddFeedbackAbutAService" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblEddNewService" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblEnteNewUserDetails" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblEnterEmail" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblEnterFeddbackId" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblEnterFeedback" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblEnterFirstName" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblEnterID" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblEnterIdOfServiceToDelete" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblEnterIdOfServieToShowFeeedback" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblEnterLastName" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblEnterPassword" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblEnterPhoneNumber" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblEnterPriveTaken" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblEnterRatingOfService" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblEnterServiceGuyFirstName" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblEnterServiceGuyId" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblEnterServiceGuyLastName" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblEnterServiceType" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblEnterServieId" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblEnterUserName" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblEnterUserToDelete" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblEnterWorkDone" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblSentTo" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblServiceType" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblSum" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblUserById" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="scrollEnterFeedback" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="scrollPaymentCommant" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="scrollShowMessage" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="scrollShowSerivices" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="scrollUserManagment" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="scrollViewPaymenys" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="scrollWriteMessage" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="txtApartment" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtEnderName" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtEnterEmail" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtEnterFeedback" type="javax.swing.JTextArea" visibility="private"/>
+        <Field name="txtEnterID" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtEnterLastName" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtEnterPassword" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtEnterPhoneNumber" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtEnterPriceTaken" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtEnterServiceGuyFirsttName" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtEnterServiceGuyId" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtEnterServiceGuyLastName" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtEnterServiceName" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtEnterUserName" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtEnterWorkTypeDone" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtPaymentCommant" type="javax.swing.JTextArea" visibility="private"/>
+        <Field name="txtServieType" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtShowMessage" type="javax.swing.JTextArea" visibility="private"/>
+        <Field name="txtShowServices" type="javax.swing.JTextArea" visibility="private"/>
+        <Field name="txtSum" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtUserManagment" type="javax.swing.JTextPane" visibility="private"/>
+        <Field name="txtViewPayments" type="javax.swing.JTextArea" visibility="private"/>
+        <Field name="txtWriteMessage" type="javax.swing.JTextArea" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Admin" name="admin"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="SetSelectedLenguge" returnType="void" visibility="private"/>
+        <Method name="isInteger" returnType="boolean" visibility="private">
+          <Argument type="String" name="number"/>
+        </Method>
+        <Method name="isValidId" returnType="boolean" visibility="private">
+          <Argument type="String" name="id"/>
+        </Method>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="btnSendMassegeActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnReadMessageActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnMakePaymnetActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnOrderActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnViewPaymentsActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnAddUserActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnAddServiceActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnAddNewUserActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnDeleteTheUserActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnSendActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnShowMessagesActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnViewWhoPaydActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnViewWhoNotPayedActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnViewAllPaymentsActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnShowSeriveActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnMakeTheOrderActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnPayActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnUserManagemantActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnShowAllUsersActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnShowUserByIdActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="txtApartmentActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnAddTheServiceGuyActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnDeleteServiceActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnShowTheFeedbackActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnAddFeedbackActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnSendFeedbackActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="onOffPanel" returnType="void" visibility="private">
+          <Argument type="boolean" name="sendMessage"/>
+          <Argument type="boolean" name="readMessage"/>
+          <Argument type="boolean" name="makePayment"/>
+          <Argument type="boolean" name="viewPayment"/>
+          <Argument type="boolean" name="service"/>
+          <Argument type="boolean" name="addUser"/>
+          <Argument type="boolean" name="addService"/>
+          <Argument type="boolean" name="userManagemant"/>
+          <Argument type="boolean" name="feedback"/>
+        </Method>
+        <Method name="onOffComponents" returnType="void" visibility="private">
+          <Argument type="boolean" name="sendMessage"/>
+          <Argument type="boolean" name="readMessage"/>
+          <Argument type="boolean" name="makePayment"/>
+          <Argument type="boolean" name="viewPayment"/>
+          <Argument type="boolean" name="service"/>
+          <Argument type="boolean" name="addUser"/>
+          <Argument type="boolean" name="addService"/>
+          <Argument type="boolean" name="userManagemant"/>
+          <Argument type="boolean" name="feedback"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="LoginForm" package="Gui" visibility="public" xPosition="161.0" yPosition="2814.0">
+      <Fields>
+        <Field name="dataBase" type="DataBase" visibility="package"/>
+        <Field name="btnLogin" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnSelectLanguge" type="javax.swing.JButton" visibility="private"/>
+        <Field name="grupLanguage" type="javax.swing.ButtonGroup" visibility="private"/>
+        <Field name="jPanel1" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="lblPassword" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblUsername" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="rBtnEnglish" type="javax.swing.JRadioButton" visibility="private"/>
+        <Field name="rBtnHebrow" type="javax.swing.JRadioButton" visibility="private"/>
+        <Field name="rBtnRussian" type="javax.swing.JRadioButton" visibility="private"/>
+        <Field name="txtPassword" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtUsername" type="javax.swing.JTextField" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="btnLoginActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnSelectLangugeActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="rBtnHebrowActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="txtPasswordActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="txtUsernameActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="UserForm" package="Gui" visibility="public" xPosition="4332.0" yPosition="782.0">
+      <Fields>
+        <Field name="resident" type="Resident" visibility="package"/>
+        <Field name="messages" type="List&lt;Message&gt;" visibility="package"/>
+        <Field name="workers" type="List&lt;ExternalWorker&gt;" visibility="package"/>
+        <Field name="feedbacks" type="List&lt;Feedback&gt;" visibility="package"/>
+        <Field name="dataBase" type="DataBase" visibility="package"/>
+        <Field name="idLenghtError" type="String" visibility="package"/>
+        <Field name="intErrorMessage" type="String" visibility="package"/>
+        <Field name="numErrorTitle" type="String" visibility="package"/>
+        <Field name="nullValueError" type="String" visibility="package"/>
+        <Field name="nullValueTitle" type="String" visibility="package"/>
+        <Field name="noMoreMessages" type="String" visibility="package"/>
+        <Field name="mTitle" type="String" visibility="package"/>
+        <Field name="btnAddAFeedback" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnMakeOrder" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnMakepayment" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnOrderService" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnPay" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnSend" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnSendFeedback" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnSendMassege" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnShowMesseges" type="javax.swing.JButton" visibility="private" isFinal="true"/>
+        <Field name="btnShowServiceList" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnShowTheFeedback" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnViewMassege" type="javax.swing.JButton" visibility="private"/>
+        <Field name="combIdOfServiceToSeeFeedback" type="javax.swing.JComboBox" visibility="private"/>
+        <Field name="combSendTo" type="javax.swing.JComboBox" visibility="private"/>
+        <Field name="compAddRating" type="javax.swing.JComboBox" visibility="private"/>
+        <Field name="compIdOfTheServicToAddFeedBack" type="javax.swing.JComboBox" visibility="private"/>
+        <Field name="compIdOfTheServicToOrder" type="javax.swing.JComboBox" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jpnAddFeedback" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jpnMain" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jpnOrderMaintinace" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jpnPayment" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jpnSendMassege" type="javax.swing.JPanel" visibility="private" isFinal="true"/>
+        <Field name="jpnViewMassege" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="lblEddFeedbackAbutAService" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblEnterFeddbackId" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblEnterFeedback" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblEnterIdOfServiceToSeeFeeedback" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblEnterPriveTaken" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblEnterRatingOfService" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblEnterWorkDone" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblIdOfService" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblPaymentCommant" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblSendTo" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblServieList" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblSum" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblTypeOfService" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="scrollEnterFeedback" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="scrollListOfServices" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="scrollPaymentCommant" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="scrollShowMessage" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="scrollWriteMassege" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="txtEnterFeedback" type="javax.swing.JTextArea" visibility="private"/>
+        <Field name="txtEnterPriceTaken" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtEnterTypeOfService" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtEnterWorkTypeDone" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtListOfServices" type="javax.swing.JTextArea" visibility="private"/>
+        <Field name="txtPaymentCommant" type="javax.swing.JTextArea" visibility="private"/>
+        <Field name="txtShowMessage" type="javax.swing.JTextArea" visibility="private"/>
+        <Field name="txtSum" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtWriteMessage" type="javax.swing.JTextArea" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Resident" name="resident"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="SetSelectedLenguge" returnType="void" visibility="private"/>
+        <Method name="isInteger" returnType="boolean" visibility="private">
+          <Argument type="String" name="number"/>
+        </Method>
+        <Method name="isValidId" returnType="boolean" visibility="private">
+          <Argument type="String" name="id"/>
+        </Method>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="btnSendMassegeActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnViewMassegeActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnShowMessegesActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnSendActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnMakepaymentActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnMakeOrderActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnPayActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnOrderServiceActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnAddAFeedbackActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnSendFeedbackActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnShowTheFeedbackActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnShowServiceListActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="OnOffPanel" returnType="void" visibility="public">
+          <Argument type="boolean" name="sendMessage"/>
+          <Argument type="boolean" name="viewMessage"/>
+          <Argument type="boolean" name="payment"/>
+          <Argument type="boolean" name="order"/>
+          <Argument type="boolean" name="feedback"/>
+        </Method>
+        <Method name="OnOffComponents" returnType="void" visibility="public">
+          <Argument type="boolean" name="sendMessage"/>
+          <Argument type="boolean" name="viewMessage"/>
+          <Argument type="boolean" name="payment"/>
+          <Argument type="boolean" name="order"/>
+          <Argument type="boolean" name="feedback"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="LocalizationUtil" package="Languages" visibility="public" xPosition="265.0" yPosition="201.0">
+      <Fields>
+        <Field name="localizedResourceBundle" type="ResourceBundle" visibility="public" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Interface name="UserIntarface" package="buldingmaintance" visibility="public" xPosition="320.0" yPosition="420.0">
+      <Methods/>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="orders" source="DB.DataBase" target="buldingmaintance.Order" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Order&gt;"/>
+    <HasRelation name="dataBase" source="buldingmaintance.User" target="DB.DataBase" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="feedbacks" source="Gui.UserForm" target="buldingmaintance.Feedback" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Feedback&gt;"/>
+    <HasRelation name="workers" source="Gui.UserForm" target="buldingmaintance.ExternalWorker" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;ExternalWorker&gt;"/>
+    <HasRelation name="users" source="DB.DataBase" target="buldingmaintance.User" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;User&gt;"/>
+    <UseRelation source="DB.DataBase" target="DB.DataBase" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="buldingmaintance.Admin" target="buldingmaintance.Payment" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="dataBase" source="buldingmaintance.Admin" target="DB.DataBase" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="orders" source="Gui.AdminForm" target="buldingmaintance.Order" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="java.util.List&lt;Order&gt;"/>
+    <UseRelation source="buldingmaintance.Resident" target="buldingmaintance.Payment" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="workers" source="Gui.AdminForm" target="buldingmaintance.ExternalWorker" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="java.util.List&lt;ExternalWorker&gt;"/>
+    <HasRelation name="dataBase" source="buldingmaintance.Payment" target="DB.DataBase" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="dataBase" source="buldingmaintance.Message" target="DB.DataBase" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="DB.DataBase" target="buldingmaintance.User" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="workers" source="DB.DataBase" target="buldingmaintance.ExternalWorker" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;ExternalWorker&gt;"/>
+    <UseRelation source="buldingmaintance.Admin" target="buldingmaintance.Feedback" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="payments" source="DB.DataBase" target="buldingmaintance.Payment" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Payment&gt;"/>
+    <UseRelation source="buldingmaintance.Resident" target="buldingmaintance.Order" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="DB.DataBase" target="buldingmaintance.Feedback" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="feedbacks" source="Gui.AdminForm" target="buldingmaintance.Feedback" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="java.util.List&lt;Feedback&gt;"/>
+    <HasRelation name="feedbacks" source="DB.DataBase" target="buldingmaintance.Feedback" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Feedback&gt;"/>
+    <HasRelation name="messages" source="Gui.AdminForm" target="buldingmaintance.Message" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="java.util.List&lt;Message&gt;"/>
+    <UseRelation source="buldingmaintance.Admin" target="buldingmaintance.ExternalWorker" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="buldingmaintance.Admin" target="buldingmaintance.Message" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="dataBase" source="Gui.AdminForm" target="DB.DataBase" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="resident" source="Gui.UserForm" target="buldingmaintance.Resident" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="users" source="Gui.AdminForm" target="buldingmaintance.User" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="java.util.List&lt;User&gt;"/>
+    <HasRelation name="dataBase" source="Gui.LoginForm" target="DB.DataBase" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="dataBase" source="DB.DataBase" target="DB.DataBase" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="buldingmaintance.User" target="buldingmaintance.Message" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="buldingmaintance.Resident" target="buldingmaintance.Feedback" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="dataBase" source="Gui.UserForm" target="DB.DataBase" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="DB.DataBase" target="buldingmaintance.ExternalWorker" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="dataBase" source="buldingmaintance.Resident" target="DB.DataBase" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="buldingmaintance.Admin" target="buldingmaintance.Order" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="DB.DataBase" target="buldingmaintance.Message" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="buldingmaintance.Resident" target="buldingmaintance.User"/>
+    <HasRelation name="messages" source="DB.DataBase" target="buldingmaintance.Message" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Message&gt;"/>
+    <HasRelation name="instance" source="DB.DataBase" target="DB.DataBase" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="DB.DataBase" target="buldingmaintance.Payment" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="DB.DataBase" target="buldingmaintance.Order" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="buldingmaintance.Resident" target="buldingmaintance.Message" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="admin" source="Gui.AdminForm" target="buldingmaintance.Admin" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="buldingmaintance.Admin" target="buldingmaintance.User"/>
+    <HasRelation name="payments" source="Gui.AdminForm" target="buldingmaintance.Payment" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="java.util.List&lt;Payment&gt;"/>
+    <HasRelation name="messages" source="Gui.UserForm" target="buldingmaintance.Message" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Message&gt;"/>
+    <UseRelation source="buldingmaintance.Admin" target="buldingmaintance.User" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="dataBase" source="buldingmaintance.Order" target="DB.DataBase" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
